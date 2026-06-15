@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="shell">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="hero">
+      <view class="hero-inner">
+        <view class="hero-text">
+          <text class="hero-title">Maintenant que vous avez choisi la date,</text>
+          <text class="hero-title">sélectionnez l’horaire</text>
+        </view>
+        <image src="/assets/infirmier.png" class="hero-doctor" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <view class="content">
+      <view class="time-card">
+        <view class="time-rail">
+          <view class="time-rail-dot" style="top: {{40 + selectedIndex * 102}}rpx;"></view>
+        </view>
+
+        <scroll-view
+          class="time-scroll"
+          scroll-y="true"
+          show-scrollbar="{{false}}"
+          enhanced="true"
+          bounces="true"
+          scroll-into-view="{{scrollIntoView}}"
+        >
+          <view class="time-list">
+            <view
+              id="slot-{{index}}"
+              class="time-row {{selectedIndex === index ? 'time-row-active' : ''}}"
+              wx:for="{{slots}}"
+              wx:key="label"
+              data-index="{{index}}"
+              bindtap="onSelectSlot"
+            >
+              <view class="time-pill">
+                <text class="time-text-left">{{item.start}}</text>
+                <text class="time-separator">-</text>
+                <text class="time-text-right">{{item.end}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <button class="btn next" bindtap="onNext">Suivant</button>
+    </view>
+  </view>
+
+  <view class="fixed-menu-container">
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

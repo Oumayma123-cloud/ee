@@ -1,0 +1,343 @@
+📁 [Folder] Login BO
+  🚀 [Request] login (POST - {{base_url_server}}/api/backoffice/v1/auth//login-bo)
+  🚀 [Request] /validate-jwt (POST - {{base_url}}/api/backoffice/v1/auth/verification-jwt)
+  🚀 [Request] refresh token (POST - {{base_url}}/api/backoffice/v1/auth/refresh-token)
+  🚀 [Request] update user (PUT - {{base_url}}/api/backoffice/v1/auth/modifier-utilisateur/882ff7cf-b3bb-435f-9b50-c4df63a6aadc)
+  🚀 [Request] liste users (GET - {{base_url_server}}/api/backoffice/v1/auth/liste-utilisateurs?client=mobile)
+  🚀 [Request] add user (POST - {{base_url_server}}/api/backoffice/v1/auth/ajouter-utilisateur)
+  🚀 [Request] liste role (GET - {{base_url}}/api/backoffice/v1/auth/liste-roles?client_id=client_mobile)
+  🚀 [Request] add role (POST - {{base_url}}/api/backoffice/v1/auth/ajouter-role)
+  🚀 [Request] user roles (GET - {{base_url}}/api/backoffice/v1/auth/utilisateur-roles/9293b7c4-a3c9-4cd2-9227-d285d1dda8f7)
+  🚀 [Request] user info (GET - {{base_url_server}}/api/backoffice/v1/auth/utilisateur-info/97810a00-96cb-4deb-8f36-cbe2bd07fe57)
+📁 [Folder] login mobile
+  📁 [Folder] authentification
+    🚀 [Request] login (POST - {{base_url_server}}/api/mobile/v1/auth/login)
+    🚀 [Request] login 2 (POST - {{base_url_server}}/api/mobile/v1/auth/login)
+    🚀 [Request] list parent (GET - {{base_url_server}}/api/mobile/v1/auth/membre-parents)
+    🚀 [Request] user info (GET - {{base_url_server}}/api/mobile/v1/auth/utilisateur-info)
+    🚀 [Request] /validate-jwt (POST - {{base_url}}/api/mobile/v1/auth/verification-jwt)
+    🚀 [Request] refresh token (POST - {{base_url}}/api/mobile/v1/auth/refresh-token)
+    🚀 [Request] register (POST - {{base_url_server}}/api/mobile/v1/auth/register)
+    🚀 [Request] update user (PUT - {{base_url}}/api/mobile/v1/auth/modifier-utilisateur)
+    🚀 [Request] Delete Account (DELETE - {{base_url_server}}/api/mobile/v1/auth/supprimer-mon-compte)
+📁 [Folder] sante
+  📁 [Folder] mobile
+    📁 [Folder] Urgence
+      🚀 [Request] Voir mes demandes (GET - {{base_url}}/api/mobile/v1/sante/demande-ambulance?parent_id=521)
+      🚀 [Request] Suivre une demande (GET - {{base_url}}/api/mobile/v1/sante/demande-ambulance/487?parent_id=521)
+      🚀 [Request] Créer une demande ambulance (POST - {{base_url}}/api/mobile/v1/sante/demande-ambulance)
+      🚀 [Request] Demande-en-cours (GET - {{base_url}}/api/mobile/v1/sante/demande-ambulance/en-cours?parent_id=521)
+      🚀 [Request] Demander un retour (POST - {{base_url}}/api/mobile/v1/sante/demande-ambulance/333/retour-maison)
+      🚀 [Request] mise a jour demande (PUT - {{base_url}}/api/mobile/v1/sante/demande-ambulance/54/informations)
+      🚀 [Request] cloturer une demande (PUT - {{base_url}}/api/mobile/v1/sante/demande-ambulance/489)
+      🚀 [Request] restore la cloture une demande (PUT - {{base_url}}/api/mobile/v1/sante/demande-ambulance/43/restore-cloturer)
+    📁 [Folder] medecin a domicile
+      🚀 [Request] Voir mes demandes (GET - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile)
+      🚀 [Request] Créer une demande (POST - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile)
+      🚀 [Request] Suivre la progression (GET - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile/436)
+      🚀 [Request] demande-en-cours (GET - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile/en-cours?parent_id=521)
+      🚀 [Request] detail-prestation (GET - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile/details)
+      🚀 [Request] mise a jour demande (PUT - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile/533)
+      🚀 [Request] cloturer une demande (PUT - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile/813/cloturer)
+      🚀 [Request] restore la cloture une demande (PUT - {{base_url}}/api/mobile/v1/sante/medecin-a-domicile/360/cloturer-restore)
+    📁 [Folder] infirmier a domicile
+      🚀 [Request] Voir mes demandes (GET - {{base_url}}/api/mobile/v1/sante/infirmier-a-domicile)
+      🚀 [Request] Créer une demande (POST - {{base_url_server}}/api/mobile/v1/sante/infirmier-a-domicile)
+      🚀 [Request] Suivre la progression (GET - {{base_url}}/api/mobile/v1/sante/infirmier-a-domicile/437)
+      🚀 [Request] demande-en-cours (GET - {{base_url}}/api/mobile/v1/sante/infirmier-a-domicile/en-cours?parent_id=521)
+      🚀 [Request] detail-prestation (GET - {{base_url}}/api/mobile/v1/sante/infirmier-a-domicile/details)
+      🚀 [Request] mise a jour demande (PUT - {{base_url}}/api/mobile/v1/sante/infirmier-a-domicile/800)
+      🚀 [Request] cloturer une demande (PUT - {{base_url_server}}/api/mobile/v1/sante/infirmier-a-domicile/811/cloturer)
+      🚀 [Request] restore la cloture une demande (PUT - {{base_url}}/api/mobile/v1/sante/infirmier-a-domicile/551/restore-cloturer)
+    📁 [Folder] medecin de garde
+      🚀 [Request] Créer une demande (POST - {{base_url}}/api/mobile/v1/sante/medecin-de-garde)
+      🚀 [Request] Get Current prestation (GET - {{base_url}}/api/mobile/v1/sante/medecin-de-garde/en-cours?parent_id=521)
+      🚀 [Request] Cloturer une demande (PUT - {{base_url}}/api/mobile/v1/sante/medecin-de-garde/798/cloturer)
+      🚀 [Request] Force Cloturer (PUT - {{base_url}}/api/mobile/v1/sante/medecin-de-garde/798/force-cloturer)
+      🚀 [Request] Voir mes demandes (GET - {{base_url}}/api/mobile/v1/sante/medecin-de-garde)
+    📁 [Folder] Cliniques
+      🚀 [Request] Lister les cliniques par ID de ville (GET - {{base_url}}/api/mobile/v1/sante/cliniques/ville/4)
+      🚀 [Request] Lister toutes les cliniques (GET - {{base_url}}/api/mobile/v1/sante/cliniques?page=2&pageSize=10)
+      🚀 [Request] Afficher une clinique par ID (GET - {{base_url}}/api/mobile/v1/sante/cliniques/2)
+      🚀 [Request] Afficher une clinique par clinique_id (UUID) (GET - {{base_url}}/api/mobile/v1/sante/cliniques/uuid/3fa85f64-5717-4562-b3fc-2c963f66afa6)
+    📁 [Folder] Villes
+      📁 [Folder] Mobile
+        🚀 [Request] Liste villes (GET - {{base_url}}/api/mobile/v1/sante/villes)
+    📁 [Folder] Medecin & Infirmier
+      🚀 [Request] Eligibility check (POST - {{base_url_server}}/api/mobile/v1/sante/prestation-eligibilite/check)
+    📁 [Folder] Suivi Medicaments
+      🚀 [Request] Liste des médicaments (GET - {{base_url}}/api/mobile/v1/sante/medicaments?q=doli&fields=minimal&page=)
+      🚀 [Request] Liste des rappels (GET - {{base_url}}/api/mobile/v1/sante/medicaments/suivi?parent_id=521)
+      🚀 [Request] Liste des rappels aujourd'hui (GET - {{base_url}}/api/mobile/v1/sante/medicaments/suivi/jour?parent_id=521)
+      🚀 [Request] Ajouter un rappel (POST - {{base_url}}/api/mobile/v1/sante/medicaments/suivi)
+      🚀 [Request] Modifier le rappel (PATCH - {{base_url}}/api/mobile/v1/sante/medicaments/suivi/48)
+      🚀 [Request] Supprimer (Soft Delete) (DELETE - {{base_url}}/api/mobile/v1/sante/medicaments/suivi/14)
+    🚀 [Request] Demande-en-cours-generale (GET - {{base_url}}/api/mobile/v1/sante/en-cours?parent_id=521)
+    🚀 [Request] Suivre Prestation by UUID (GET - {{base_url}}/api/mobile/v1/sante/suivi-prestation?prestationId=9127f0df-c54d-f011-8720-d44e5581b808)
+    🚀 [Request] Get intervenants (GET - {{base_url}}/api/mobile/v1/sante/suivi-prestation?prestationId=0b488d3e-0f3c-f011-871d-c494a48d704b)
+  📁 [Folder] BackOffice
+    📁 [Folder] Urgence
+      📁 [Folder] Cliniques
+        📁 [Folder] Backoffice
+          📁 [Folder] Cron
+            🚀 [Request] Synchroniser les cliniques depuis MAI (par nom de ville) (GET - {{base_url}}/api/backoffice/v1/sante/cliniques/sync/casablanca)
+          🚀 [Request] Lister toutes les cliniques (GET - {{base_url}}/api/backoffice/v1/sante/cliniques?page=1&pageSize=10)
+          🚀 [Request] Afficher une clinique par ID (GET - {{base_url}}/api/backoffice/v1/sante/cliniques/5)
+          🚀 [Request] Afficher une clinique par UUID (GET - {{base_url}}/api/backoffice/v1/sante/cliniques/uuid/d46cba0b-3c7b-ea11-8100-005056b9b62e)
+          🚀 [Request] Lister les cliniques par ville_id (GET - {{base_url}}/api/backoffice/v1/sante/cliniques/ville/1)
+      🚀 [Request] Liste des prestations (GET - {{base_url}}/api/backoffice/v1/sante/demande-ambulance?pageSize=10)
+      🚀 [Request] Créer une nouvelle prestation (POST - {{base_url}}/api/backoffice/v1/sante/demande-ambulance)
+      🚀 [Request] Détails d’une prestation (GET - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/341)
+      🚀 [Request] Mettre à jour une prestation (PUT - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/36)
+      🚀 [Request] Demande de retour -> Dar (POST - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/342/retour-maison)
+      🚀 [Request] Get last prestation by user id (GET - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/check-en-cours/85)
+      🚀 [Request] Demande Transfert (POST - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/demande/329/transfert)
+      🚀 [Request] Supprimer une prestation (soft delete) (DELETE - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/119)
+      🚀 [Request] Restaurer une prestation supprimée (POST - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/119/restore)
+      🚀 [Request] Force Sync From MAI (POST - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/force/sync/343)
+      🚀 [Request] Force Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/328/force-cloturer)
+      🚀 [Request] Force Restore Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/37/restore-cloturer)
+      🚀 [Request] Annulation (POST - {{base_url}}/api/backoffice/v1/sante/demande-ambulance/421/annulation)
+    📁 [Folder] Médecin à domicile
+      🚀 [Request] Liste des prestations medecin (GET - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile?sortBy=cree_le&sortOrder=desc)
+      🚀 [Request] Créer une prestation medecin (POST - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile)
+      🚀 [Request] Voir les détails d’une prestation (GET - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/544)
+      🚀 [Request] Modifier une prestation (PUT - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/240)
+      🚀 [Request] Supprimer une prestation (soft delete) (DELETE - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/240)
+      🚀 [Request] Restaurer une prestation supprimée (POST - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/240/restore)
+      🚀 [Request] Force Sync From MAI (POST - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/force/sync/542)
+      🚀 [Request] Force Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/238/force-cloturer)
+      🚀 [Request] Force Restore Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/238/restore-cloturer)
+      🚀 [Request] Annulation (POST - {{base_url}}/api/backoffice/v1/sante/medecin-a-domicile/538/annulation)
+    📁 [Folder] Infirmier à domicile
+      🚀 [Request] Liste des prestations infirmier (GET - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile)
+      🚀 [Request] Créer une prestation infirmier (POST - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile)
+      🚀 [Request] Voir les détails d’une prestation (GET - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/437)
+      🚀 [Request] Modifier une prestation (PUT - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/241)
+      🚀 [Request] Supprimer une prestation (soft delete) (DELETE - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/241)
+      🚀 [Request] Restaurer une prestation supprimée (POST - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/241/restore)
+      🚀 [Request] Force Sync From MAI (POST - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/force/sync/521)
+      🚀 [Request] Force Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/587/force-cloturer)
+      🚀 [Request] Force Restore Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/241/restore-cloturer)
+      🚀 [Request] Annulation (POST - {{base_url}}/api/backoffice/v1/sante/infirmier-a-domicile/535/annulation)
+    📁 [Folder] Villes
+      🚀 [Request] Get all villes (GET - {{base_url}}/api/backoffice/v1/sante/villes)
+      🚀 [Request] Search by name (GET - {{base_url}}/api/backoffice/v1/sante/villes/nom/rabat)
+      🚀 [Request] Get ville by ID (GET - {{base_url}}/api/backoffice/v1/sante/villes/1)
+    📁 [Folder] Medecin de garde
+      🚀 [Request] liste prestation medecin de garde (GET - {{base_url}}/api/backoffice/v1/sante/medecin-de-garde)
+      🚀 [Request] create (POST - {{base_url}}/api/backoffice/v1/sante/medecin-de-garde)
+      🚀 [Request] Annulation (POST - {{base_url}}/api/backoffice/v1/sante/medecin-de-garde/791/annulation)
+      🚀 [Request] Force Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/medecin-de-garde/621/force-cloturer)
+      🚀 [Request] Force Restore Cloturer (PUT - {{base_url}}/api/backoffice/v1/sante/medecin-de-garde/621/restore-cloturer)
+📁 [Folder] profile
+  🚀 [Request] get token auth (POST - http://217.182.133.168:16101/api/token/get-token?username=testtiqqa&password=test@12345__)
+  🚀 [Request] Profile (GET - {{base_url}}/api/mobile/v1/utilisateur/profile)
+  🚀 [Request] New Request (GET - )
+📁 [Folder] GroupeServices
+  🚀 [Request] Liste des groupes de services (GET - {{base_url}}/api/v1/backoffice/groupes-services?page=1&sortBy=order&sortOrder=desc)
+  🚀 [Request] Créer un groupe de services (POST - {{base_url}}/api/v1/backoffice/groupes-services)
+  🚀 [Request] Récupérer un groupe de services (GET - {{base_url}}/api/groupes-services/1)
+  🚀 [Request] Mettre à jour un groupe de services (PUT - {{base_url}}/api/groupes-services/1)
+  🚀 [Request] Supprimer un groupe de services (DELETE - {{base_url}}/api/groupes-services/1)
+  🚀 [Request] Restaurer un groupe de services (POST - {{base_url}}/api/groupes-services/1/restore)
+  🚀 [Request] Liste des services d'un groupe (GET - {{base_url}}/api/groupes-services/1/services?pageSize=10)
+  🚀 [Request] Liste des sous-groupes d'un groupe (GET - {{base_url}}/api/groupes-services/1/sous-groupes?pageSize=10)
+📁 [Folder] Services
+  🚀 [Request] Liste des services (GET - {{base_url}}/api/v1/backoffice/services?page=2)
+  🚀 [Request] Créer un service (POST - {{base_url}}/api/v1/backoffice/services)
+  🚀 [Request] Récupérer un service (GET - {{base_url}}/api/v1/backoffice/services/1)
+  🚀 [Request] Mettre à jour un service (PUT - {{base_url}}/api/v1/backoffice/services/1)
+  🚀 [Request] Supprimer un service (DELETE - {{base_url}}/api/v1/backoffice/services/6)
+  🚀 [Request] Restaurer un service (POST - {{base_url}}/api/v1/backoffice/services/1/restore)
+📁 [Folder] aide menagere
+  📁 [Folder] mobile
+    🚀 [Request] evaluer-prestation (POST - {{base_url}}/api/mobile/v1/aide/evaluer-prestation)
+    🚀 [Request] commander initial (POST - {{base_url}}/api/mobile/v1/aide/commande-initial)
+    🚀 [Request] Get list Services (GET - {{base_url}}/api/mobile/v1/aide/services?parent_id=521)
+    🚀 [Request] evaluer-prestation (POST - {{base_url}}/api/mobile/v1/aide/evaluer-prestation)
+    🚀 [Request] mes prestation (GET - {{base_url}}/api/mobile/v1/aide/mes-prestations?parent_id=521)
+    🚀 [Request] cloturer-prestation (POST - {{base_url}}/api/mobile/v1/aide/cloturer-prestation/284)
+    🚀 [Request] edit commande (PUT - {{base_url}}/api/mobile/v1/aide/modification-commande/284)
+    🚀 [Request] detail prestation (GET - {{base_url}}/api/mobile/v1/aide/mes-prestations)
+    🚀 [Request] statut paiements (POST - {{base_url}}/api/mobile/v1/aide/evaluer-prestation)
+    🚀 [Request] commander initial (POST - {{base_url}}/api/mobile/v1/aide/commande-initial)
+    🚀 [Request] commander initial Copy (POST - {{base_url}}/api/mobile/v1/aide/commande-initial)
+    🚀 [Request] liste service Copy (GET - {{base_url}}/api/backoffice/v1/aide/services)
+    🚀 [Request] commander  hani (POST - {{base_url}}/api/mobile/v1/aide/commande-hani)
+    🚀 [Request] commander  hani Copy (POST - {{base_url}}/api/mobile/v1/aide/commande-hani)
+    🚀 [Request] commander  hani Copy 2 (GET - {{base_url}}/api/mobile/v1/aide/en-cours)
+  📁 [Folder] backoffice
+    🚀 [Request] detail partenaire (GET - {{base_url}}/api/backoffice/v1/aide/detail-partenaire/60a12aa2-c2dc-4e9b-8209-10ec6bb30c58)
+    🚀 [Request] llste commande hani (GET - {{base_url}}/api/backoffice/v1/aide/commandes-hani)
+    🚀 [Request] llste commande (GET - {{base_url}}/api/backoffice/v1/aide/commandes?page=1&pageSize=10)
+    🚀 [Request] liste service hani (GET - {{base_url}}/api/backoffice/v1/aide/services-hani)
+    🚀 [Request] liste service (GET - {{base_url}}/api/backoffice/v1/aide/services)
+    🚀 [Request] detail partenaire (GET - {{base_url}}/api/backoffice/v1/aide/detail-partenaire/60a12aa2-c2dc-4e9b-8209-10ec6bb30c58)
+    🚀 [Request] llste commande hani (GET - {{base_url}}/api/backoffice/v1/aide/commandes-hani)
+    🚀 [Request] llste commande (GET - {{base_url}}/api/backoffice/v1/aide/commandes?page=1&pageSize=10)
+    🚀 [Request] llste commande Copy (GET - {{base_url}}/api/backoffice/v1/aide/coupons)
+    🚀 [Request] liste service hani (GET - {{base_url}}/api/backoffice/v1/aide/services-hani)
+    🚀 [Request] liste service hani Copy (GET - {{base_url}}/api/backoffice/v1/aide/services-hani)
+    🚀 [Request] liste service (GET - {{base_url}}/api/backoffice/v1/aide/services)
+    🚀 [Request] login Copy (POST - {{base_url}}/api/backoffice/v1/auth/login-bo)
+    🚀 [Request] commander initial backoffice (POST - {{base_url}}/api/mobile/v1/aide/commande-initial)
+    🚀 [Request] commander initial backoffice Copy (POST - {{base_url}}/api/mobile/v1/aide/commande-initial)
+📁 [Folder] clubs
+  📁 [Folder] backoffice
+    📁 [Folder] api clubs
+      🚀 [Request] liste des clubs (GET - {{base_url}}/api/backoffice/v1/clubs)
+      🚀 [Request] ajouter un clubs (POST - {{base_url}}/api/backoffice/v1/clubs)
+      🚀 [Request] détails de clubs (GET - {{base_url}}/api/backoffice/v1/clubs/1)
+      🚀 [Request] modifier clubs  (PUT - {{base_url}}/api/backoffice/v1/clubs/1)
+      🚀 [Request] liste des activités (GET - {{base_url}}/api/backoffice/v1/clubs/activites)
+      🚀 [Request] supprimer clubs  (DELETE - {{base_url}}/api/backoffice/v1/clubs/2)
+    📁 [Folder] api activités
+📁 [Folder] Clubs Service Admin API
+  📁 [Folder] Clubs
+    🚀 [Request] List Clubs (GET - {{base_url}}/api/backoffice/v1/clubs/clubs?page=2)
+    🚀 [Request] Create Club (POST - {{base_url}}/api/backoffice/v1/clubs/clubs)
+    🚀 [Request] Get Club (GET - {{base_url}}/api/backoffice/v1/clubs/clubs/{{club_id}})
+    🚀 [Request] Update Club (PUT - {{base_url}}/api/backoffice/v1/clubs/clubs/{{club_id}})
+    🚀 [Request] Delete Club (DELETE - {{base_url}}/api/backoffice/v1/clubs/clubs/{{club_id}})
+  📁 [Folder] Activities
+    🚀 [Request] List Activities (GET - {{base_url}}/api/backoffice/v1/clubs/13/activites)
+    🚀 [Request] Create Activity (POST - {{base_url}}/api/backoffice/v1/clubs/activites)
+    🚀 [Request] Get Activity (GET - {{base_url}}/api/backoffice/v1/clubs/activites/{{activite_id}})
+    🚀 [Request] Update Activity (PUT - {{base_url}}/api/backoffice/v1/clubs/activites/{{activite_id}})
+    🚀 [Request] Delete Activity (DELETE - {{base_url}}/api/backoffice/v1/clubs/activites/{{activite_id}})
+    🚀 [Request] Get Upcoming Activities (GET - {{base_url}}/api/backoffice/v1/clubs/activites/upcoming)
+    🚀 [Request] Get Recurring Activities (GET - {{base_url}}/api/backoffice/v1/clubs/activites/recurring)
+    🚀 [Request] Check Activity Availability (GET - {{base_url}}/api/backoffice/v1/clubs/activites/{{activite_id}}/availability)
+    🚀 [Request] Generate Recurring Instances (POST - {{base_url}}/api/backoffice/v1/clubs/activites/{{activite_id}}/generate-instances)
+  📁 [Folder] Coaches
+    🚀 [Request] List Coaches (GET - {{base_url}}/api/backoffice/v1/clubs/coachs)
+    🚀 [Request] Create Coach (POST - {{base_url}}/api/backoffice/v1/clubs/coachs)
+    🚀 [Request] Get Coach (GET - {{base_url}}/api/backoffice/v1/clubs/coachs/{{coach_id}})
+    🚀 [Request] Update Coach (PUT - {{base_url}}/api/backoffice/v1/clubs/coachs/{{coach_id}})
+    🚀 [Request] Delete Coach (DELETE - {{base_url}}/api/backoffice/v1/clubs/coachs/{{coach_id}})
+    🚀 [Request] Update Coach Availability (PUT - {{base_url}}/api/backoffice/v1/clubs/coachs/{{coach_id}}/availability)
+  📁 [Folder] Thematiques
+    🚀 [Request] List Thematiques (GET - {{base_url}}/api/backoffice/v1/clubs/{{club_id}}/thematiques)
+    🚀 [Request] Create Thematique (POST - {{base_url}}/api/backoffice/v1/clubs/thematiques)
+    🚀 [Request] Get Thematique (GET - {{base_url}}/api/backoffice/v1/clubs/thematiques/{{thematique_id}})
+    🚀 [Request] Update Thematique (PUT - {{base_url}}/api/backoffice/v1/clubs/thematiques/{{thematique_id}})
+    🚀 [Request] Delete Thematique (DELETE - {{base_url}}/api/backoffice/v1/clubs/thematiques/{{thematique_id}})
+  📁 [Folder] Videos
+    🚀 [Request] List Videos (GET - {{base_url}}/api/backoffice/v1/clubs/videos)
+    🚀 [Request] Create Video (POST - {{base_url}}/api/backoffice/v1/clubs/videos)
+    🚀 [Request] Get Video (GET - {{base_url}}/api/backoffice/v1/clubs/videos/{{video_id}})
+    🚀 [Request] Update Video (PUT - {{base_url}}/api/backoffice/v1/clubs/videos/{{video_id}})
+    🚀 [Request] Delete Video (DELETE - {{base_url}}/api/backoffice/v1/clubs/videos/{{video_id}})
+    🚀 [Request] Get Videos by Club (GET - {{base_url}}/api/backoffice/v1/clubs/{{club_id}}/videos)
+  📁 [Folder] Inscriptions
+    🚀 [Request] List Inscriptions (GET - {{base_url}}/api/backoffice/v1/clubs/inscriptions)
+    🚀 [Request] Create Inscription (POST - {{base_url}}/api/backoffice/v1/clubs/inscriptions)
+    🚀 [Request] Get Inscription (GET - {{base_url}}/api/backoffice/v1/clubs/inscriptions/{{inscription_id}})
+    🚀 [Request] Update Inscription (PUT - {{base_url}}/api/backoffice/v1/clubs/inscriptions/{{inscription_id}})
+    🚀 [Request] Delete Inscription (DELETE - {{base_url}}/api/backoffice/v1/clubs/inscriptions/{{inscription_id}})
+    🚀 [Request] Get Activity Stats (GET - {{base_url}}/api/backoffice/v1/clubs/inscriptions/activity/{{activite_id}}/stats)
+📁 [Folder] Rabbit MQ
+  🚀 [Request] Test (POST - {{base_url}}/api/backoffice/v1/test/rabbitmq)
+  🚀 [Request] Test queue urgence (POST - {{base_url}}/api/test/queues/urgence-prestation)
+📁 [Folder] FCM notifications
+  🚀 [Request] Test (POST - {{base_url}}/api/mobile/v1/notification/test)
+  🚀 [Request] Send from BO (POST - {{base_url}}/api/backoffice/v1/notification/broadcast)
+📁 [Folder] M2T services - categories - paiements
+  📁 [Folder] Mobile
+    📁 [Folder] Facturier
+      🚀 [Request] Get Facturier Categories (GET - {{base_url}}/api/mobile/v1/paiements/epag/facturier/categories)
+      🚀 [Request] Get Facturier by code category (GET - {{base_url}}/api/mobile/v1/paiements/epag/facturier/007/list)
+      🚀 [Request] Get Services by code facturier (GET - {{base_url}}/api/mobile/v1/paiements/epag/facturier/0009/services)
+      🚀 [Request] Get Form by facturier and service Code (GET - {{base_url_server}}/api/mobile/v1/paiements/epag/facturier/0009/form/0002)
+      🚀 [Request] Vérifier factures impayées (POST - {{base_url}}/api/mobile/v1/paiements/epag/facturier/factures-impayees)
+      🚀 [Request] Vérifier un paiement (POST - {{base_url}}/api/mobile/v1/paiements/epag/facturier/verifier-paiement)
+    📁 [Folder] Token Paiement
+      🚀 [Request] Generate Token (POST - {{base_url}}/api/mobile/v1/paiements/m2t/generer-token)
+    📁 [Folder] Credit Card
+      🚀 [Request] formulaire-enregistrement-carte (GET - {{base_url}}/api/mobile/v1/paiements/m2t/formulaire-enregistrement-carte)
+      🚀 [Request] liste-cartes-enregistrees (GET - {{base_url}}/api/mobile/v1/paiements/m2t/cartes-enregistrees)
+      🚀 [Request] Paiement Service (POST - {{base_url}}/api/mobile/v1/paiements/m2t/paiement-carte-bancaire/service)
+      🚀 [Request] Paiement Epag (POST - {{base_url}}/api/mobile/v1/paiements/m2t/paiement-carte-bancaire/epag)
+    🚀 [Request] Agences (GET - {{base_url}}/api/mobile/v1/paiements/agences?marque=CHAABI CASH&ville=sale)
+  📁 [Folder] BackOffice
+    🚀 [Request] les paiements (GET - {{base_url}}/api/backoffice/v1/paiements/paiements)
+    🚀 [Request] details d'un paiment (GET - {{base_url}}/api/backoffice/v1/paiements/paiements/239)
+📁 [Folder] Create Paiement - M2T
+  🚀 [Request] Create payment - Mobile (POST - {{base_url}}/api/mobile/v1/paiements/utilisateur-paiements)
+  🚀 [Request] Create payment - BO (POST - {{base_url}}/api/backoffice/v1/paiements/paiements)
+  🚀 [Request] Download Recu (GET - {{base_url}}/api/mobile/v1/paiements/download/epag/receipt/833/8602830)
+  🚀 [Request] M2T CallBack Credit Card (POST - {{base_url}}/api/backoffice/v1/paiements/m2t/callback-credit-card)
+  🚀 [Request] Generate HMAC (POST - {{base_url}}/api/backoffice/v1/paiements/m2t/generate-hmac)
+  🚀 [Request] M2T CallBack Token (POST - {{base_url}}/api/backoffice/v1/paiements/m2t/callback)
+  🚀 [Request] CheckSUM md5 (POST - {{base_url_local}}/api/backoffice/v1/paiements/m2t/generate-checksum)
+📁 [Folder] Paiement Par Tiers
+  📁 [Folder] Mobile
+    📁 [Folder] Demandeur
+      🚀 [Request] Demander (POST - {{base_url}}/api/mobile/v1/paiements/tiers/demander)
+    📁 [Folder] Payeur
+      🚀 [Request] Liste des demandes (GET - {{base_url}}/api/mobile/v1/paiements/tiers/en-attente)
+      🚀 [Request] Accepter (POST - {{base_url}}/api/mobile/v1/paiements/tiers/9/accepter)
+📁 [Folder] Abonnement
+  🚀 [Request] Liste Packs (GET - {{base_url}}/api/mobile/v1/paiements/abonnement/packs)
+  🚀 [Request] Liste Packs - Get from M2T (GET - {{base_url}}/api/mobile/v1/paiements/abonnement/list-packs)
+  🚀 [Request] Paiement Pack (POST - {{base_url}}/api/mobile/v1/paiements/abonnement/paiement)
+  🚀 [Request] Abonnement actual (GET - {{base_url}}/api/mobile/v1/paiements/abonnement/current/406)
+  🚀 [Request] Abonnements Actifs (GET - {{base_url}}/api/mobile/v1/paiements/abonnement/actifs)
+  🚀 [Request] Dernier abonnement (GET - {{base_url}}/api/mobile/v1/paiements/abonnement/dernier-paye)
+  🚀 [Request] Web Paiements En Attente (GET - {{base_url}}/api/mobile/v1/paiements/abonnement/web-paiements/en-attente)
+  🚀 [Request] Activer Web Paiement Abonnement (POST - {{base_url}}/api/mobile/v1/paiements/abonnement/web-paiements/activer)
+📁 [Folder] MAI
+  🚀 [Request] Access Token (POST - {{MAIWEBAPI_BASE_URL}}/api/v1/Auth/Token)
+  🚀 [Request] Souscriptions (POST - {{MAIWEBAPI_BASE_URL}}/api/v1/Souscriptions)
+  🚀 [Request] Get liste cliniques Copy (GET - {{MAIWEBAPI_BASE_URL}}/api/v1/Souscriptions/)
+  🚀 [Request] Met à jour la date de rendez-vous (PUT - {{MAIWEBAPI_BASE_URL}}/api/v1/MedecinDomicile/36174e8a-5662-f011-8723-e819ee009bf6?dateRendezvous=2025-08-30T09:57:07Z)
+  🚀 [Request] Get liste cliniques (GET - {{MAIWEBAPI_BASE_URL}}/api/v1/Cliniques/Marrakech)
+  🚀 [Request] Check status (GET - {{MAIWEBAPI_BASE_URL}}/api/v1/Prestations/Suivi?prestationId=f38bc5e1-c5d5-f011-8728-f27ab9727f0d)
+📁 [Folder] Satisfaction
+  📁 [Folder] Mobile
+    🚀 [Request] create statisfaction with presttaion (POST - {{base_url}}/api/mobile/v1/satisfaction/prestation)
+  📁 [Folder] BackOffice
+    🚀 [Request] Get all satisfactions (GET - {{base_url}}/api/backoffice/v1/satisfaction?page=1&pageSize=25&sortBy=cree_le&sortOrder=desc)
+📁 [Folder] ERP codebarres
+  🚀 [Request] OAuth2 – obtenir token (POST - https://sp.codebarre.ma/api/authentication/oauth2/token)
+  🚀 [Request] https://sp.codebarre.ma/api/call/sp.payment.callback.service/process_callback (POST - https://sp.codebarre.ma/api/call/sp.payment.callback.service/process_callback)
+📁 [Folder] Agenda
+  🚀 [Request] Get List (GET - {{base_url}}/api/mobile/v1/agenda?page=1)
+📁 [Folder] Code promo Abonnement
+  📁 [Folder] BackOffice
+    📁 [Folder] Compagnes
+      🚀 [Request] Lister les campagnes (GET - {{base_url}}/api/backoffice/v1/paiements/code-promo/campagnes?page=1&pageSize=10&sortBy=cree_le&sortOrder=asc)
+      🚀 [Request] Voir une campagne (GET - {{base_url}}/api/backoffice/v1/paiements/code-promo/campagnes/1)
+      🚀 [Request] Créer une campagne (POST - {{base_url}}/api/backoffice/v1/paiements/code-promo/campagnes)
+      🚀 [Request] Mettre à jour une campagne (PUT - {{base_url}}/api/backoffice/v1/paiements/code-promo/campagnes/1)
+      🚀 [Request] Supprimer une campagne (DELETE - {{base_url}}/api/backoffice/v1/paiements/code-promo/campagnes/1)
+    📁 [Folder] Codes
+      🚀 [Request] Lister les codes (GET - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes?page=1&pageSize=10&sortBy=cree_le&sortOrder=desc&q=&campagne_id=&statut=)
+      🚀 [Request] Voir un code (GET - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes/1)
+      🚀 [Request] Créer un code (single) (POST - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes)
+      🚀 [Request] Créer des codes (bulk) (POST - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes)
+      🚀 [Request] Mettre à jour un code (PUT - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes/6)
+      🚀 [Request] Supprimer un code (DELETE - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes/6)
+      🚀 [Request] Supprimer les codes (POST - {{base_url}}/api/backoffice/v1/paiements/code-promo/codes/bulk-delete)
+    📁 [Folder] Utilisations
+      🚀 [Request] Lister les utilisations (GET - {{base_url}}/api/backoffice/v1/paiements/code-promo/utilisations)
+      🚀 [Request] Détails d'une utilisation (GET - {{base_url}}/api/backoffice/v1/paiements/code-promo/utilisations/1)
+      🚀 [Request] SoftDelete En_attente Code promo utilisation (DELETE - {{base_url}}/api/backoffice/v1/paiements/code-promo/utilisations/44)
+  📁 [Folder] Mobile
+    🚀 [Request] verifier code promo (POST - {{base_url}}/api/mobile/v1/paiements/code-promo/verifier)
+    🚀 [Request] Générer un code de parrainage (POST - {{base_url}}/api/mobile/v1/paiements/code-promo/parrainage/generer)
+    🚀 [Request] Get Status parrainage (GET - {{base_url}}/api/mobile/v1/paiements/code-promo/parrainage)
+📁 [Folder] Payzone Paiement
+  🚀 [Request] Generate form (POST - {{base_url}}/api/mobile/v1/paiements/payzone/paiement-carte-bancaire)
+📁 [Folder] Web
+  🚀 [Request] Get list pack (GET - {{base_url}}/api/web/v1/paiements/abonnement/packs)
+  🚀 [Request] generate payzone form (POST - {{base_url}}/api/web/v1/paiements/abonnement/paiement)
+  🚀 [Request] generate payzone form Copy (POST - {{base_url}}/api/web/v1/paiements/abonnement/paiement)
+  🚀 [Request] code promo apply (POST - {{base_url}}/api/web/v1/paiements/abonnement/code-promo/appliquer)
+📁 [Folder] paiements
+  🚀 [Request] historique-paiements (GET - {{base_url}}/api/mobile/v1/paiements/historique-paiements?page=1&per_page=6&year=2026)
+🚀 [Request] Get Thematiques videos (GET - {{base_url}}/api/mobile/v1/clubs/thematiques/videos)
+🚀 [Request] New Request (POST - https://backend.tiqqa.ma/api/mobile/v1/auth/m2t-register)
+🚀 [Request] New Request (GET - https://backend.tiqqa.ma/api/mobile/v1/paiements/abonnement/list-packs)
+🚀 [Request] sliders (GET - {{base_url_server}}/api/mobile/v1/slider/liste?page=1&pageSize=200&dans_home=true)

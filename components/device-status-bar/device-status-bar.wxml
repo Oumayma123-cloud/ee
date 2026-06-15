@@ -1,0 +1,26 @@
+<view class="dsb-root {{fillStatusBar && edgePadding ? 'dsb-root--edge' : ''}}" style="{{rootStyle}}">
+  <view wx:if="{{showTime || showIndicators}}" class="dsb-row">
+    <text wx:if="{{showTime}}" class="dsb-time">{{timeText}}</text>
+    <view wx:if="{{showIndicators}}" class="dsb-right">
+      <view class="dsb-signal">
+        <view class="dsb-sig-bar dsb-sig-bar--1"></view>
+        <view class="dsb-sig-bar dsb-sig-bar--2"></view>
+        <view class="dsb-sig-bar dsb-sig-bar--3"></view>
+        <view class="dsb-sig-bar dsb-sig-bar--4"></view>
+      </view>
+      <view class="dsb-wifi">
+        <image
+          class="dsb-wifi-img"
+          src="/assets/icons/wifi-status-ios.svg"
+          mode="aspectFit"
+        />
+      </view>
+      <view class="dsb-battery">
+        <view class="dsb-battery-body">
+          <view class="dsb-battery-fill"></view>
+        </view>
+        <view class="dsb-battery-cap"></view>
+      </view>
+    </view>
+  </view>
+</view>

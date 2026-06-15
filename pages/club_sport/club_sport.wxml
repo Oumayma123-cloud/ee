@@ -1,0 +1,119 @@
+<view class="sport-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="sport-hero-area">
+      <view class="sport-hero-main">
+        <image class="sport-hero-img" src="/assets/club.png" mode="aspectFill"></image>
+        <view class="sport-hero-overlay">
+          <text class="sport-hero-title">DÉCOUVREZ NOS CLUBS TIQQA</text>
+          <view class="sport-hero-btn" bindtap="onHeroCta">
+            <text class="sport-hero-btn-txt">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Date Navigation Strip -->
+    <view class="sport-date-strip">
+      <view class="date-arrow-btn" bindtap="onPrevDate">←</view>
+      <view class="date-center">
+        <image class="date-calendar-icon" src="/assets/vocale.png" mode="aspectFit"></image>
+        <text class="date-text">{{currentDate}}</text>
+      </view>
+      <view class="date-arrow-btn" bindtap="onNextDate">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="sport-main-header">
+      <view class="sport-title-row">
+        <image class="sport-title-img-script" src="/assets/Clubs.png" mode="heightFix"></image>
+        <text class="sport-title-text">SPORT</text>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards & Scrollbar Area -->
+    <view class="sport-grid-container">
+
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="sport-grid">
+
+          <!-- Activités Card -->
+          <view class="sport-card" bindtap="onCardTap" data-type="activites">
+            <view class="sport-card-img-wrap">
+              <image class="sport-card-img" src="/assets/Sp1.png" mode="aspectFill"></image>
+            </view>
+            <view class="sport-card-footer">
+              <text class="sport-card-label">ACTIVITÉS</text>
+            </view>
+          </view>
+
+          <!-- Communauté Card -->
+          <view class="sport-card" bindtap="onCardTap" data-type="communaute">
+            <view class="sport-card-img-wrap">
+              <image class="sport-card-img" src="/assets/Sp2.png" mode="aspectFill"></image>
+            </view>
+            <view class="sport-card-footer">
+              <text class="sport-card-label">COMMUNAUTÉ</text>
+            </view>
+          </view>
+
+          <!-- Vidéos Card -->
+          <view class="sport-card" bindtap="onCardTap" data-type="videos">
+            <view class="sport-card-img-wrap">
+              <image class="sport-card-img" src="/assets/Sp3.png" mode="aspectFill"></image>
+            </view>
+            <view class="sport-card-footer">
+              <text class="sport-card-label">VIDÉOS</text>
+            </view>
+          </view>
+
+          <!-- Coach Card -->
+          <view class="sport-card" bindtap="onCardTap" data-type="coach">
+            <view class="sport-card-img-wrap">
+              <image class="sport-card-img" src="/assets/Sp4.png" mode="aspectFill"></image>
+            </view>
+            <view class="sport-card-footer">
+              <text class="sport-card-label">COACH</text>
+            </view>
+          </view>
+
+        </view>
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+      <!-- Dynamic Functional Scrollbar -->
+      <view class="sport-scrollbar">
+        <view class="sport-scroll-arrow">↑</view>
+        <view class="sport-scroll-track">
+          <view class="sport-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+        </view>
+        <view class="sport-scroll-arrow">↓</view>
+      </view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Étapes de Renouvellement",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "device-status-bar": "/components/device-status-bar/device-status-bar",
+    "bottom-nav-bar": "/components/bottom-nav-bar/bottom-nav-bar"
+  }
+}

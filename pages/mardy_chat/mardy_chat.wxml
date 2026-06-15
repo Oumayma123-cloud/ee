@@ -1,0 +1,53 @@
+<view class="container">
+  <!-- Header -->
+  <view class="header">
+    <view class="back-btn" bindtap="onBack">
+      <view class="back-circle"><text class="back-arrow">←</text></view>
+      <text class="back-text">Retour</text>
+    </view>
+    <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+    <view class="avatar-bubble" bindtap="onProfileTap">
+      <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <!-- Title -->
+  <view class="title-wrap">
+    <text class="title">L'{{avatar === 'mardy' ? 'MARDY' : 'MARDYA'}}</text>
+  </view>
+
+  <!-- Video Interface -->
+  <view class="video-container">
+    <image class="video-img" src="{{avatar === 'mardy' ? '/assets/benmimoun-2 (1).png' : '/assets/benmimoun-2 (2).png'}}" mode="aspectFill"></image>
+    
+    <!-- Controls Overlay -->
+    <view class="controls-overlay">
+      <view class="control-btn {{!micEnabled ? 'disabled' : ''}}" bindtap="toggleMic">
+        <image class="control-icon" src="/assets/voice.png" mode="aspectFit"></image>
+      </view>
+      <view class="control-btn hangup" bindtap="onHangup">
+        <text class="hangup-icon">✕</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Welcome Dialog Overlay -->
+  <view class="modal-overlay" wx:if="{{showWelcome}}" bindtap="closeWelcome">
+    <view class="dialog-box" catchtap="true">
+      <text class="dialog-title">Bienvenue</text>
+      <text class="dialog-text">Salam, je m'améliore chaque jour. Au moindre doute ou hésitation, nos conseillers Tiqqa sont là pour vous 24 sur 24</text>
+      
+      <view class="welcome-controls">
+        <text class="timer">00:00 / 00:00</text>
+        <view class="welcome-actions">
+          <image class="w-icon" src="/assets/voice.png" mode="aspectFit"></image>
+          <text class="w-text" bindtap="closeWelcome">✕</text>
+          <view class="fullscreen-icon"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bottom Nav -->
+  <bottom-nav-bar active-tab="mic" />
+</view>

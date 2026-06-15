@@ -1,0 +1,364 @@
+/* ========== passport-steps.wxss ========== */
+page {
+  background: #ffffff;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.scroll-content {
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.scroll-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ====== HEADER ====== */
+.header-section {
+  width: 100%;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 32rpx 12rpx;
+}
+
+.back-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 27rpx;
+  background: #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1rpx 3rpx rgba(0,0,0,0.1);
+}
+
+.back-arrow-txt {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.back-label {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.logo {
+  width: 150rpx;
+  height: 60rpx;
+}
+
+.avatar-container {
+  width: 100rpx;
+  height: 110rpx;
+}
+
+.avatar-img {
+  width: 100rpx;
+  height: 110rpx;
+  display: block;
+}
+
+/* ====== BODY ====== */
+.body-section {
+  background: #ffffff;
+  padding: 36rpx 40rpx 0;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+/* Titre */
+.title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 40rpx;
+  flex-wrap: wrap;
+}
+
+.title-script {
+  font-family: 'The Cottage', 'Brush Script MT', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  letter-spacing: 2px;
+  color: #98766B;
+  margin-right: 6px;
+}
+
+.title-bold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #98766B;
+}
+
+/* ====== ACCORDION LAYOUT ====== */
+.accordion-layout-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.accordion-list {
+  width: 303px;
+  margin-right: 15px;
+}
+
+/* ====== ACCORDION LAYOUT (NO CONTAINER BOX) ====== */
+.step-wrapper {
+  margin-bottom: 24rpx;
+  width: 303px;
+  box-sizing: border-box;
+}
+
+/* Bouton Header Inactif */
+.header-button {
+  width: 100%;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  min-height: 44px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.header-button--inactive {
+  background-color: #ffffff;
+  border: 1px solid #98766B91;
+}
+
+/* Bouton Header Highlight (Blue Border) */
+.header-button--highlight {
+  background-color: #ffffff !important;
+  border: 2.5px solid #0084FF !important;
+  box-shadow: 0 4px 12px rgba(0, 132, 255, 0.08);
+}
+
+.item-title--highlight {
+  color: #525355;
+}
+
+.chevron--highlight {
+  border-right: 2px solid #98766B;
+  border-bottom: 2px solid #98766B;
+  transform: rotate(45deg);
+}
+
+/* Bouton Header Actif (Marron) */
+.header-button--active {
+  background-color: #98766B !important;
+  border: 1px solid #98766B !important;
+  box-shadow: 0 6px 16px rgba(152, 118, 107, 0.25);
+}
+
+/* Titre */
+.item-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  flex: 1;
+  white-space: pre-line;
+  line-height: 1.3;
+}
+
+.item-title--inactive {
+  color: #525355;
+}
+
+.item-title--active {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+/* Chevron */
+.chevron {
+  width: 6px;
+  height: 6px;
+  margin-left: 10px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.chevron--inactive {
+  border-right: 2px solid #98766B;
+  border-bottom: 2px solid #98766B;
+  transform: rotate(45deg);
+}
+
+.chevron--active {
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+/* Contenu Body (Sans cadre, sans bordure, fond transparent sur page blanche) */
+.body-content {
+  padding: 16px 16px 8px;
+  box-sizing: border-box;
+  background: transparent;
+  width: 100%;
+}
+
+.item-rich-content {
+  display: block;
+  width: 100%;
+}
+
+/* ====== SCROLLBAR CUSTOM ====== */
+.custom-scrollbar {
+  width: 42rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 68px;
+}
+
+.scrollbar-arrow-up,
+.scrollbar-arrow-down {
+  width: 38rpx;
+  height: 38rpx;
+  border-radius: 50%;
+  background: #EAEAEA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-arrow-char {
+  font-size: 22rpx;
+  color: #525355;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.scrollbar-track {
+  width: 14px;
+  background: #fcfcfc;
+  border: 1px solid rgba(152, 118, 107, 0.15);
+  border-radius: 20px;
+  margin: 14rpx 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollbar-thumb {
+  width: 14px;
+  background: #98766B;
+  border-radius: 20px;
+  position: absolute;
+  left: 0;
+}
+
+/* ====== AIDE & BOUTON ====== */
+.help-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.help-text-container {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.help-text-red {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-size: 11px;
+  color: #9D605F;
+}
+
+.help-text-gray {
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-size: 11px;
+  color: #525355;
+}
+
+.call-btn {
+  width: 216px !important;
+  height: 42px !important;
+  background: #A68B80 !important;
+  border-radius: 21px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.call-btn-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  display: block;
+}
+
+.call-btn::after {
+  border: none;
+}
+
+.call-btn-txt {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Bottom spacer */
+.bottom-spacer {
+  height: 0;
+}
+
+/* Custom Bottom Nav styles */
+.custom-bottom-nav {
+  background-color: #E2E2E2 !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}

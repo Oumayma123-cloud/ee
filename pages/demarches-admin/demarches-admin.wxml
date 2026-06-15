@@ -1,0 +1,173 @@
+<view class="container">
+
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false" bindscroll="onScroll">
+    <view class="scroll-inner">
+
+      <!-- 1. Header (White Background) -->
+      <tiqqa-header bind:back="onBack" />
+
+      <!-- 2. Top Strip (Maroonish Beige) -->
+      <view class="top-strip"></view>
+
+      <!-- 3. Hero Section (Maroon Theme) -->
+      <view class="hero-section">
+        <view class="hero-window">
+          <view class="hero-window-header">
+            <view class="window-dots">
+              <view class="window-dot window-dot--active"></view>
+              <view class="window-dot"></view>
+              <view class="window-dot"></view>
+              <view class="window-dot"></view>
+            </view>
+          </view>
+          
+          <view class="hero-window-body">
+            <image class="hero-bg" src="/assets/da.png" mode="aspectFill"></image>
+            <view class="hero-overlay">
+              <text class="hero-title">VOS DÉMARCHES ADMINISTRATIVES SIMPLIFIÉES</text>
+              <view class="hero-btn" bindtap="onHeroCta">
+                <text class="hero-btn-txt">ACCÉDER</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 4. Date Zone (Light Beige/Blue) -->
+      <view class="date-zone"></view>
+
+      <!-- 5. Services Section (White) -->
+      <view class="services-section">
+        <view class="section-title-row section-title-row--centered">
+          <text class="section-title-script">{{showRenewalType === 'permis-guide' ? 'Guide' : 'Demarches'}}</text>
+          <text class="section-title-bold">{{showRenewalType === 'permis-guide' ? ' PERMIS' : ' ADMINISTRATIVES'}}</text>
+        </view>
+
+        <view class="grid-container {{(showRenewalType === 'passport' || showRenewalType === 'permis') ? 'grid-container--centered' : ''}}">
+          <view class="services-grid {{(showRenewalType === 'passport' || showRenewalType === 'permis') ? 'services-grid--centered' : ''}}">
+
+            <block wx:if="{{!showRenewalType}}">
+              <!-- CNIE -->
+              <view class="service-card" bindtap="onServiceTap" data-type="cnie">
+                <view class="service-card-photo-wrap">
+                  <image class="service-card-photo" src="/assets/carte nationale.png" mode="aspectFit"></image>
+                </view>
+                <view class="service-card-footer">
+                  <text class="service-card-label">CARTE NATIONALE\nD'IDENTITÉ\nELECTRONIQUE</text>
+                </view>
+              </view>
+
+              <!-- Passport -->
+              <view class="service-card" bindtap="onServiceTap" data-type="passport">
+                <view class="service-card-photo-wrap">
+                  <image class="service-card-photo" src="/assets/passport.png" mode="aspectFit"></image>
+                </view>
+                <view class="service-card-footer">
+                  <text class="service-card-label">PASSEPORT</text>
+                </view>
+              </view>
+
+              <!-- Permis -->
+              <view class="service-card" bindtap="onServiceTap" data-type="permis">
+                <view class="service-card-photo-wrap">
+                  <image class="service-card-photo" src="/assets/permis.png" mode="aspectFit"></image>
+                </view>
+                <view class="service-card-footer">
+                  <text class="service-card-label">PERMIS DE\nCONDUIRE</text>
+                </view>
+              </view>
+            </block>
+
+            <block wx:else>
+              <!-- Passport Renewal Card -->
+              <view wx:if="{{showRenewalType === 'passport'}}" class="service-card" bindtap="onServiceTap" data-type="passport-action">
+                <view class="service-card-photo-wrap">
+                  <image class="service-card-photo" src="/assets/passport.png" mode="aspectFit"></image>
+                </view>
+                <view class="service-card-footer">
+                  <text class="service-card-label">RENOUVELLEMENT\nDE PASSEPORT</text>
+                </view>
+              </view>
+
+              <!-- CNIE Renewal Grid (3 cards) -->
+              <block wx:if="{{showRenewalType === 'cnie'}}">
+                <view class="service-card" bindtap="onServiceTap" data-type="cnie-action">
+                  <view class="service-card-photo-wrap">
+                    <image class="service-card-photo" src="/assets/carte nationale.png" mode="aspectFit"></image>
+                  </view>
+                  <view class="service-card-footer">
+                    <text class="service-card-label">RENOUVELLEMENT\nCNIE</text>
+                  </view>
+                </view>
+
+                <view class="service-card" bindtap="onServiceTap" data-type="cnie-derogation-va">
+                  <view class="service-card-photo-wrap">
+                    <image class="service-card-photo" src="/assets/carte nationale.png" mode="aspectFit"></image>
+                  </view>
+                  <view class="service-card-footer">
+                    <text class="service-card-label">FORMULAIRE DE\nDEMANDE\nDEROGATION CNIE\nVA ⤓</text>
+                  </view>
+                </view>
+
+                <view class="service-card" bindtap="onServiceTap" data-type="cnie-derogation-vf">
+                  <view class="service-card-photo-wrap">
+                    <image class="service-card-photo" src="/assets/carte nationale.png" mode="aspectFit"></image>
+                  </view>
+                  <view class="service-card-footer">
+                    <text class="service-card-label">FORMULAIRE DE\nDEMANDE\nDEROGATION CNIE\nVF ⤓</text>
+                  </view>
+                </view>
+              </block>
+
+              <!-- Permis Single Card -->
+              <view wx:if="{{showRenewalType === 'permis'}}" class="service-card" bindtap="onServiceTap" data-type="permis-action">
+                <view class="service-card-photo-wrap">
+                  <image class="service-card-photo" src="/assets/permis.png" mode="aspectFit"></image>
+                </view>
+                <view class="service-card-footer">
+                  <text class="service-card-label">RENOUVELLEMENT\nPERMIS DE\nCONDUIRE</text>
+                </view>
+              </view>
+
+              <!-- Permis Renewal Guide (3 cards) -->
+              <block wx:if="{{showRenewalType === 'permis-guide'}}">
+                <view class="service-card" bindtap="onServiceTap" data-type="permis-expiration">
+                  <view class="service-card-photo-wrap">
+                    <image class="service-card-photo" src="/assets/permis.png" mode="aspectFit"></image>
+                  </view>
+                  <view class="service-card-footer">
+                    <text class="service-card-label">EXPIRATION DE\nVOTRE PERMIS</text>
+                  </view>
+                </view>
+
+                <view class="service-card" bindtap="onServiceTap" data-type="permis-domicile">
+                  <view class="service-card-photo-wrap">
+                    <image class="service-card-photo" src="/assets/permis.png" mode="aspectFit"></image>
+                  </view>
+                  <view class="service-card-footer">
+                    <text class="service-card-label">CHANGEMENT DE\nDOMICILE</text>
+                  </view>
+                </view>
+
+                <view class="service-card" bindtap="onServiceTap" data-type="permis-perte">
+                  <view class="service-card-photo-wrap">
+                    <image class="service-card-photo" src="/assets/permis.png" mode="aspectFit"></image>
+                  </view>
+                  <view class="service-card-footer">
+                    <text class="service-card-label">PERTE OU VOL DU\nPERMIS</text>
+                  </view>
+                </view>
+              </block>
+            </block>
+
+          </view>
+        </view>
+
+        <view class="bottom-spacer"></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+</view>

@@ -1,0 +1,378 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F5F5F5;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-content {
+  flex: 1;
+  height: 100%;
+  padding-bottom: 20rpx;
+  background-color: #F2F5F2;
+}
+
+.scroll-inner {
+  min-height: 100%;
+}
+
+/* ========== HEADER ========== */
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  padding: 14rpx 16rpx 12rpx 16rpx;
+  overflow: visible;
+}
+
+.back-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.back-circle {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background-color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+
+.back-arrow-txt {
+  font-size: 24rpx;
+  color: #4A4A4A;
+}
+
+.back-label {
+  font-size: 24rpx;
+  color: #4A4A4A;
+}
+
+.logo {
+  width: 170rpx;
+  height: 54rpx;
+}
+
+.avatar-outer {
+  width: 84rpx;
+  height: 84rpx;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4rpx solid #FFFFFF;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.12);
+}
+
+/* ========== SECTION ATTENTE ========== */
+.attente-wrapper {
+  background-color: #61C589; /* Vert du design */
+  padding: 24rpx 0 28rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.attente-section {
+  width: calc(100% - 16rpx);
+  margin: 0 8rpx;
+  padding: 32rpx 20rpx;
+  background-color: #F8FDF9; /* Fond légèrement blanc/vert pour la carte */
+  border-radius: 28rpx;
+  text-align: center;
+  box-shadow: 0 10rpx 22rpx rgba(0,0,0,0.08);
+}
+
+.attente-titre {
+  display: block;
+  color: #2F6D4A;
+  font-size: 32rpx;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.7rpx;
+  margin-bottom: 14rpx;
+  text-align: center;
+}
+
+.attente-desc {
+  display: block;
+  font-size: 28rpx;
+  color: #18432B;
+  line-height: 1.7;
+  font-weight: 500;
+  text-align: center;
+  padding: 0 12rpx;
+}
+
+/* ========== WRAPPER GRID ========== */
+.grid-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #F2F5F2; /* Fond gris derrière les vidéos */
+  padding: 24rpx 20rpx 0 58rpx;
+  margin-top: 32rpx;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: none;
+  gap: 18rpx;
+  min-height: 520rpx;
+}
+
+/* ========== GRILLE VIDEOS ========== */
+.videos-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22rpx;
+  padding: 0;
+  box-sizing: border-box;
+  width: calc(100% - 76rpx);
+}
+
+.video-card {
+  width: 100%;
+  margin-bottom: 22rpx;
+  box-sizing: border-box;
+  border-radius: 32rpx;
+  overflow: hidden;
+  background: #F7F7F7;
+  box-shadow: 0 6rpx 18rpx rgba(0,0,0,0.06);
+}
+
+.video-thumb {
+  position: relative;
+  width: 100%;
+  height: 240rpx;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay sombre */
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bouton play vert */
+.play-btn {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #4CAF7D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-icon {
+  font-size: 30rpx;
+  color: #FFFFFF;
+  margin-left: 6rpx;
+}
+
+/* Barre titre verte */
+.video-title-bar {
+  background-color: #3D8C60;
+  padding: 18rpx 14rpx;
+}
+
+.video-title {
+  display: block;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.scroll-indicator {
+  flex: 0 0 34rpx;
+  width: 34rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10rpx;
+  gap: 10rpx;
+  margin-left: 14rpx;
+  height: 404rpx;
+  box-sizing: border-box;
+}
+
+.scroll-track {
+  width: 24rpx;
+  height: 320rpx;
+  background: #E0E6E0;
+  border-radius: 20rpx;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.scroll-arrow {
+  width: 32rpx;
+  height: 32rpx;
+  background: #dfe2e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-arrow-text {
+  font-size: 16rpx;
+  color: #707070;
+  font-weight: bold;
+}
+
+.scroll-thumb {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  background: #3D8C60;
+  border-radius: 20rpx;
+  transition: top 160ms ease-in-out;
+}
+
+/* Bouton simuler appel */
+.simulate-call-btn {
+  margin: 30rpx auto;
+  background-color: #E53935;
+  border-radius: 60rpx;
+  padding: 24rpx 50rpx;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.simulate-call-txt {
+  color: #FFFFFF;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+/* Espacement en bas de page pour coller au design */
+.bottom-spacer {
+  height: 0;
+}
+
+/* ========== MODAL URGENCE ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-card {
+  width: 580rpx;
+  background-color: #3C3C3C;
+  border-radius: 24rpx;
+  padding: 50rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-text {
+  display: block;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 30rpx;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 40rpx;
+}
+
+/* Bouton vert : Confirmer */
+.modal-btn--confirm {
+  width: 100%;
+  background-color: #4CAF7D;
+  border-radius: 50rpx;
+  padding: 26rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.modal-btn-txt--confirm {
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 28rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Bouton blanc : Annuler */
+.modal-btn--cancel {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 50rpx;
+  padding: 26rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-btn-txt--cancel {
+  color: #333333;
+  font-family: 'Inter', sans-serif;
+  font-size: 28rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.action-close {
+  width: 82rpx;
+  height: 82rpx;
+  margin-top: 10rpx;
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1rpx solid rgba(255, 255, 255, 0.18);
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-close-text {
+  color: #FFFFFF;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.modal-card--action {
+  min-height: 360rpx;
+  justify-content: center;
+}

@@ -1,0 +1,583 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+.container.details-mode {
+  background-color: #ffffff;
+}
+
+/* Sidebar Specific Styles */
+.sidebar-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15); /* Lighter overlay */
+  z-index: 2;
+  backdrop-filter: blur(4px); /* Slightly more blur */
+}
+
+.sidebar-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%; /* Reduced width */
+  height: 100%;
+  background: linear-gradient(180deg, #C19A89 0%, #A57865 100%);
+  z-index: 5;
+  box-shadow: 15rpx 0 40rpx rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 50rpx; /* More horizontal padding */
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Decorative Circles (More visible and accurate) */
+.circle-deco {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.deco-1 {
+  width: 320rpx;
+  height: 320rpx;
+  top: 20rpx;
+  right: -80rpx;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.deco-2 {
+  /* Large bottom curve like in Figma */
+  width: 600rpx;
+  height: 600rpx;
+  bottom: 100rpx;
+  left: 100rpx;
+  background: rgba(255, 255, 255, 0.06);
+  opacity: 0.8;
+}
+
+.deco-3 {
+  width: 450rpx;
+  height: 450rpx;
+  bottom: -150rpx;
+  right: -150rpx;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.header-motif {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Figma Header & Menu Styling inside Sidebar */
+.figma-header {
+  display: flex;
+  flex-direction: column;
+  gap: 50rpx; /* More vertical spacing */
+  margin-bottom: 100rpx;
+  padding-top: calc(30rpx + env(safe-area-inset-top));
+}
+
+.figma-back {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.figma-back-arrow {
+  color: #ffffff;
+  font-size: 48rpx;
+  font-weight: 300;
+}
+
+.figma-user-info {
+  display: flex;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.figma-avatar {
+  width: 130rpx;
+  height: 130rpx;
+  background-color: rgba(123, 90, 75, 0.8);
+  border: 4rpx solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.figma-avatar text {
+  color: #ffffff;
+  font-size: 54rpx;
+  font-weight: bold;
+}
+
+.figma-user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.figma-user-name {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5rpx;
+}
+
+.figma-user-phone {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2rpx;
+}
+
+.figma-menu {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: auto;
+}
+
+.figma-menu-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
+
+.figma-icon-placeholder {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx; /* Reduced space between icon and text */
+  flex-shrink: 0;
+}
+
+.figma-icon-img {
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  /* SVGs are already colored (white for menu, #444 for logout) */
+}
+
+.figma-menu-content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44rpx 0;
+  border-bottom: 1.5rpx solid rgba(255, 255, 255, 0.12);
+}
+
+.figma-menu-label {
+  font-size: 34rpx;
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.figma-menu-arrow {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 30rpx;
+}
+
+.figma-logout-wrap {
+  margin-top: 50rpx;
+  margin-bottom: 160rpx;
+}
+
+.figma-logout-btn {
+  background: rgba(245, 230, 222, 1);
+  border-radius: 24rpx;
+  padding: 30rpx 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+}
+
+.figma-logout-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logout-icon-img {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 24rpx;
+}
+
+.logout-text {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #444444;
+  line-height: 1;
+}
+
+.nav-bar-container {
+  width: calc(100% + 100rpx);
+  margin-left: -50rpx;
+}
+
+/* Detailed View Card Logic (remains consistent) */
+.header-bg {
+  width: 100%;
+  padding-bottom: 40rpx;
+  background: linear-gradient(180deg, #C19A89 0%, #A57865 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 88rpx;
+  padding: 0 40rpx;
+}
+
+.back-btn {
+  position: absolute;
+  left: 30rpx;
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+}
+
+.back-arrow {
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.logo {
+  width: 160rpx;
+  height: 50rpx;
+}
+
+.content-card {
+  flex: 1;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 60rpx 60rpx 0 0;
+  padding: 40rpx 40rpx 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 -10rpx 30rpx rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  margin-top: -30rpx;
+  z-index: 10;
+}
+
+.tabs-container {
+  display: flex;
+  background: #ffffff;
+  border: 1rpx solid #E0E0E0;
+  border-radius: 50rpx;
+  overflow: hidden;
+  margin-bottom: 40rpx;
+  height: 84rpx;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #A47764;
+  gap: 16rpx;
+}
+
+.tab.active {
+  background-color: #A47764;
+  color: #ffffff;
+}
+
+.tab-icon-wrap {
+  width: 36rpx;
+  height: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-icon-img {
+  width: 28rpx;
+  height: 28rpx;
+  filter: brightness(0) invert(1);
+}
+
+.tab-label {
+  font-weight: 500;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.avatar-circle {
+  width: 130rpx;
+  height: 130rpx;
+  background-color: #A47764;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12rpx;
+  box-shadow: 0 8rpx 20rpx rgba(164, 119, 100, 0.2);
+}
+
+.avatar-circle text {
+  color: #ffffff;
+  font-size: 60rpx;
+  font-weight: 500;
+}
+
+.user-name {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #000000;
+}
+
+.form-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 30rpx;
+}
+
+.input-group {
+  margin-bottom: 24rpx;
+}
+
+.label {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8rpx;
+}
+
+.input {
+  width: 100%;
+  height: 80rpx;
+  background-color: #FAFAFA;
+  border: 1rpx solid #F0F0F0;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  color: #000000;
+}
+
+.phone-input-wrap {
+  display: flex;
+  gap: 16rpx;
+}
+
+.operator-selector {
+  width: 120rpx;
+  height: 80rpx;
+  background-color: #FAFAFA;
+  border: 1rpx solid #F0F0F0;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  box-sizing: border-box;
+}
+
+.operator-logo {
+  width: 70rpx;
+  height: 35rpx;
+}
+
+.dropdown-arrow {
+  font-size: 18rpx;
+  color: #A47764;
+}
+
+.select-input {
+  width: 100%;
+  height: 80rpx;
+  border: 1rpx solid #EEEEEE;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.select-value {
+  font-size: 26rpx;
+  color: #000000;
+}
+
+.separator-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10rpx;
+  margin: 30rpx 0;
+}
+
+.dot {
+  width: 8rpx;
+  height: 8rpx;
+  background-color: #E0E0E0;
+  border-radius: 50%;
+}
+
+.emergency-section {
+  background-color: #F9F9F9;
+  color: #333333;
+  border-radius: 24rpx;
+  padding: 24rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.emergency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.emergency-card {
+  background-color: #ffffff;
+  border: 1rpx solid #E3EAF2;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.contact-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  background-color: #F0F2F5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon-img {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-name {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.contact-phone {
+  font-size: 22rpx;
+  color: #666;
+}
+
+.footer-btn-wrap {
+  padding: 24rpx 0;
+  flex-shrink: 0;
+}
+
+.btn-valider {
+  width: 100% !important;
+  height: 90rpx;
+  background-color: #A47764 !important;
+  color: #ffffff !important;
+  border-radius: 45rpx !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  box-shadow: 0 8rpx 16rpx rgba(164, 119, 100, 0.2);
+}
+
+/* Modal Styles */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.member-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 50rpx 50rpx 0 0;
+  z-index: 1001;
+  padding: 40rpx;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.modal-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 40rpx;
+}
+

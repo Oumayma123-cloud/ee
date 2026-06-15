@@ -1,0 +1,108 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== ZONE TEXTE ========== */
+.call-info-area {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.call-title {
+  position: absolute;
+  top: 122px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: #3F3F46;
+}
+
+.call-subtitle {
+  position: absolute;
+  top: 164px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 31px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+/* ========== ESPACE VIDE CENTRAL ========== */
+.call-spacer {
+  flex: 1;
+}
+
+/* ========== BOUTONS ========== */
+.call-actions {
+  padding: 0 80rpx 140rpx 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.call-action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #333333;
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+  margin-bottom: 16rpx;
+  display: block;
+  text-align: center;
+}
+
+/* Cercle commun */
+.call-btn {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ACCEPTER = rouge */
+.call-btn--accept {
+  background-color: #E53935;
+}
+
+/* REFUSER = vert */
+.call-btn--refuse {
+  background-color: #7ED85C;
+}
+
+/* Icône téléphone SVG */
+.phone-img {
+  width: 68rpx;
+  height: 68rpx;
+}
+
+/* Rotation raccrocher */
+.phone-img--refuse {
+  transform: rotate(20deg);
+}

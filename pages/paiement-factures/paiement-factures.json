@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "bottom-nav-bar": "/components/bottom-nav-bar/bottom-nav-bar"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "black"
+}

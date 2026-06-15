@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="header-bg">
+    <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+    <view class="header-content">
+      <view class="back-btn" bindtap="onBack">
+        <text class="back-arrow">←</text>
+      </view>
+      <view class="logo-wrap">
+        <image class="logo" src="/assets/logo-tiqqa-header.png" mode="widthFix"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="content-card">
+    <text class="title">Ajouter un membre de famille</text>
+
+    <view class="form-container">
+      <view class="input-group">
+        <text class="label">Nom</text>
+        <input class="input" placeholder="Nom" value="{{nom}}" bindinput="onInput" data-field="nom" />
+      </view>
+
+      <view class="input-group">
+        <text class="label">Prénom</text>
+        <input class="input" placeholder="Prénom" value="{{prenom}}" bindinput="onInput" data-field="prenom" />
+      </view>
+
+      <view class="input-group">
+        <text class="label">Numéro de téléphone</text>
+        <input class="input" placeholder="06-6258825" value="{{phone}}" bindinput="onInput" data-field="phone" type="number" />
+      </view>
+
+      <view class="input-group">
+        <text class="label">Numéro de la carte nationale</text>
+        <input class="input" placeholder="" value="{{cin}}" bindinput="onInput" data-field="cin" />
+      </view>
+
+      <button class="btn-ajouter" bindtap="onAjouter" disabled="{{loading}}">
+        {{loading ? 'Chargement...' : 'Ajouter'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- Success Modal Overlay -->
+  <view class="modal-overlay" wx:if="{{showSuccessModal}}">
+    <view class="modal-box">
+      <text class="modal-text">Invitation envoyée avec succès, Votre proche recevra un SMS avec un lien pour rejoindre l'application.</text>
+      <view class="modal-close-btn" bindtap="closeModal">
+        <text class="modal-close-text">X</text>
+      </view>
+    </view>
+  </view>
+</view>

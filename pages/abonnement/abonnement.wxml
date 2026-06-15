@@ -1,0 +1,98 @@
+<view class="container">
+  <view class="mobile-card">
+    <scroll-view class="content-scroll" scroll-y show-scrollbar="{{false}}">
+      
+      <!-- Standardized Header -->
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="back-wrap" bindtap="onBack">
+            <view class="back-circle">←</view>
+            <text class="back-text">Retour</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <!-- Using prof.png as a placeholder for the man's avatar -->
+              <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-content">
+        <!-- Title -->
+        <view class="page-header">
+          <text class="page-title">Abonnement</text>
+        </view>
+
+        <!-- Subtitle section -->
+        <view class="subtitle-section">
+          <text class="subtitle-bold">Choisissez votre abonnement</text>
+          <text class="subtitle-text">Accédez à toutes les fonctionnalités premium et profitez d'une expérience complète</text>
+        </view>
+
+        <!-- Blue Info Box -->
+        <view class="info-box-blue">
+          <view class="info-icon-blue">i</view>
+          <text class="info-text-blue">Votre abonnement se termine le 01/10. <text class="text-bold">En le renouvelant dès maintenant, il sera actif du 02/10 au 01/11.</text></text>
+        </view>
+
+        <!-- Plans -->
+        <view class="plans-container">
+          <!-- Plan 1 -->
+          <view class="plan-card {{selectedPlan === '1_mois' ? 'plan-card--selected' : ''}}" bindtap="selectPlan" data-plan="1_mois">
+            <view class="plan-info">
+              <text class="plan-duration">1 mois</text>
+              <view class="plan-price-wrap">
+                <text class="plan-price-bold">199 MAD</text>
+                <text class="plan-price-small"> / 1 mois</text>
+              </view>
+            </view>
+            <view class="plan-radio {{selectedPlan === '1_mois' ? 'plan-radio--selected' : ''}}">
+              <text wx:if="{{selectedPlan === '1_mois'}}" class="radio-check">✓</text>
+            </view>
+          </view>
+
+          <!-- Plan 2 -->
+          <view class="plan-card {{selectedPlan === '3_mois' ? 'plan-card--selected' : ''}}" bindtap="selectPlan" data-plan="3_mois">
+            <view class="plan-info">
+              <text class="plan-duration">3 mois</text>
+              <view class="plan-price-wrap">
+                <text class="plan-price-bold">597 MAD</text>
+                <text class="plan-price-small"> / 3 mois</text>
+              </view>
+            </view>
+            <view class="plan-radio {{selectedPlan === '3_mois' ? 'plan-radio--selected' : ''}}">
+              <text wx:if="{{selectedPlan === '3_mois'}}" class="radio-check">✓</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- Brown Info Box -->
+        <view class="info-box-brown">
+          <view class="info-icon-brown">i</view>
+          <text class="info-text-brown">Pour le paiement en espèces, rendez-vous à l'agence Chaabi Pay ou Chaabi Cash la plus proche. Un agent vous assistera pour finaliser l'opération .</text>
+        </view>
+
+        <!-- Continue Button -->
+        <view class="action-section">
+          <button class="btn-continue" bindtap="onContinue">Continuer</button>
+          
+          <view class="footer-links">
+            <text class="footer-text">Annulation possible à tout moment </text>
+            <text class="footer-link">Conditions d'utilisation</text>
+          </view>
+        </view>
+
+        <view class="bottom-spacer"></view>
+      </view>
+
+    </scroll-view>
+
+    <!-- Bottom Nav Bar -->
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

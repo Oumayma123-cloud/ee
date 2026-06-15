@@ -1,0 +1,388 @@
+page {
+  height: 100%;
+  background: #ffffff !important;
+}
+
+.page-horaire {
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0 !important;
+  background: #ffffff !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Pas de scroll sur la carte : sinon le scroll-view des créneaux ne reçoit pas le geste */
+.mobile-card {
+  margin: 0 auto !important;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 750rpx !important;
+  max-width: 100% !important;
+}
+
+.mobile-card--figma {
+  width: 750rpx !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  border-radius: 0 !important;
+  min-height: 1619.2307692308rpx;
+  overflow-x: hidden;
+  position: relative;
+  box-shadow: none !important;
+}
+
+/* 312 px Figma : hauteur jusqu’au bloc vert créneaux */
+.horaire-above-slots {
+  flex-shrink: 0;
+  /* Header + hero : min-height pour ne pas couper le header après ajout de la barre statut */
+  min-height: 540rpx;
+  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+/* En-tête + statut : même principe que medecin-domicile (capture 2) */
+/* New Header Styles from Photo */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+
+.doctor-hero--horaire {
+  width: 750rpx;
+  height: 345.7692307692rpx;
+  margin-left: 0;
+  margin-top: 0;
+  flex-shrink: 0;
+  background: #c1e2cb;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 12rpx 28rpx 16rpx;
+  box-sizing: border-box;
+}
+
+.doctor-image {
+  width: 248rpx;
+  height: 252rpx;
+  flex-shrink: 0;
+}
+
+/* Descendre un peu la photo pour l’aligner avec la bande menthe / le texte */
+.doctor-hero--horaire .doctor-image {
+  transform: translateY(18rpx);
+}
+
+.doctor-copy {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 56rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero-instruction {
+  display: block;
+  box-sizing: border-box;
+  max-width: 400rpx;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  letter-spacing: 1rpx;
+  color: #000000;
+  text-align: left;
+}
+
+/* Zone créneaux */
+.slots-block {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Figma : 402×316 px, left -6, #70B682 — barres 328×44, radius 30, interstice ≈ 22px (demi-hauteur / repère rouge) */
+.slots-block--figma {
+  width: 750rpx;
+  min-height: 607.6923076923rpx;
+  margin-left: 0;
+  margin-top: 0;
+  flex-shrink: 0;
+  background: #70b682;
+  opacity: 1;
+  padding: 7.6923076923rpx 30.7692307692rpx 7.6923076923rpx 19.2307692308rpx;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Barre latérale : même hauteur que le scroll-view (liste défilante) */
+.slots-block--figma .timeline {
+  width: 32rpx;
+  margin-right: 12rpx;
+  min-height: 0;
+  height: 420rpx;
+  position: relative;
+}
+
+.slots-block--figma .timeline-rail {
+  position: absolute;
+  left: 50%;
+  top: 8rpx;
+  bottom: 8rpx;
+  width: 3rpx;
+  margin-left: -1.5rpx;
+  border-radius: 2rpx;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.slots-block--figma .timeline-thumb {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  width: 16rpx;
+  height: 16rpx;
+  margin-left: 0;
+  margin-top: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.18);
+}
+
+/*
+ * Hauteur < contenu des pilules : défilement obligatoire (sinon pas de scroll / pastille figée).
+ * ~420rpx ≈ 210px @375 — 5 créneaux + interstices dépassent toujours.
+ */
+.slots-block--figma .slots-scroll {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 420rpx;
+  box-sizing: border-box;
+}
+
+.timeline {
+  width: 28rpx;
+  flex-shrink: 0;
+  margin-right: 14rpx;
+  position: relative;
+  align-self: stretch;
+  min-height: 200rpx;
+}
+
+.timeline-rail {
+  position: absolute;
+  left: 50%;
+  top: 12rpx;
+  bottom: 12rpx;
+  width: 4rpx;
+  margin-left: -2rpx;
+  border-radius: 2rpx;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.slots-block--figma .slots-list {
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* Figma : même hauteur que la bande claire / repère rouge entre barres (≈ 22px) */
+  gap: 42.3280420481rpx;
+  margin-left: 13.4615384615rpx;
+  box-sizing: border-box;
+}
+
+.slots-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+/* Pilules Figma : 328×44.02 px, radius 30, left barre 39px depuis le bord zone verte */
+.slots-block--figma .slot-pill {
+  width: 631.5384615385rpx;
+  max-width: 100%;
+  height: 84.6566666667rpx;
+  border-radius: 57.6923076923rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.slots-block--figma .slot-label {
+  font-size: 28rpx;
+}
+
+.slot-pill {
+  height: 64rpx;
+  border-radius: 32rpx;
+  background: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.slot-pill--selected {
+  background: #1f5d40;
+}
+
+.slot-label {
+  color: #1a1a1a;
+  font-size: 28rpx;
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
+}
+
+.slot-label--selected {
+  color: #ffffff;
+}
+
+/* Action Footer */
+.action-footer {
+  padding: 60rpx 40rpx;
+  background-color: #ffffff;
+}
+
+.btn-valider {
+  width: 100% !important;
+  height: 110rpx;
+  background-color: #77B080;
+  color: #ffffff;
+  border-radius: 55rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+.bottom-spacer {
+  height: 160rpx;
+}
+
+.fixed-menu-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.bottom-nav.bottom-nav--in-card {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: none;
+  margin: auto 0 0;
+  border-radius: 0 0 57.6923076923rpx 57.6923076923rpx;
+  align-self: stretch;
+  border-top: none;
+  box-shadow: none;
+}

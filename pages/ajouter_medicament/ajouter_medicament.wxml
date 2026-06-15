@@ -1,0 +1,468 @@
+<view class="suivi-container">
+  <view class="suivi-shell">
+    
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Title Section -->
+    <view class="title-container">
+      <image src="/assets/title-ajouter-medicament.png" class="section-title-img" mode="aspectFit"></image>
+    </view>
+
+    <!-- Content Grid Layout -->
+    <view class="main-content-wrapper">
+      <view class="meds-list">
+        
+        <!-- Form Fields Card -->
+        <view class="form-card">
+          
+          <!-- Name Input with Autocomplete suggestion -->
+          <view class="form-group">
+            <text class="form-label">Nom du médicament</text>
+            <view class="select-box-container" bindtap="toggleNameDropdown">
+              <view class="input-autocomplete-wrap">
+                <input 
+                  class="form-input" 
+                  type="text" 
+                  value="{{medName}}" 
+                  bindinput="onNameInput"
+                  placeholder="Doliprane"
+                  placeholder-style="color: #c0c0c0; font-weight: 500;"
+                  placeholder-class="input-placeholder"
+                  catchtap="onInputTap"
+                />
+                <view class="autocomplete-suggestion" wx:if="{{showSuggestion}}">
+                  <text class="suggestion-typed">{{medName}}</text>
+                  <text class="suggestion-gray">{{suggestionText}}</text>
+                </view>
+              </view>
+              <image class="chevron-down-icon {{showNameDropdown ? 'chevron-rotate' : ''}}" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+            </view>
+
+            <!-- Expanded Dropdown for Medication Names -->
+            <view class="dropdown-list-container" wx:if="{{showNameDropdown}}">
+              <view 
+                wx:for="{{medNameOptions}}" 
+                wx:key="index"
+                class="dropdown-item {{medName === item ? 'item-active' : ''}}"
+                catchtap="selectName"
+                data-name="{{item}}"
+              >
+                <text class="dropdown-item-text">{{item}}</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- Frequency Dropdown -->
+          <view class="form-group">
+            <text class="form-label">Fréquence de prise</text>
+            <view class="select-box-container" bindtap="toggleFrequencyDropdown">
+              <text class="select-value-text">{{selectedFrequency}}</text>
+              <image class="chevron-down-icon {{showFrequencyDropdown ? 'chevron-rotate' : ''}}" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+            </view>
+            
+            <!-- Open Dropdown List -->
+            <view class="dropdown-list-container" wx:if="{{showFrequencyDropdown}}">
+              <view 
+                wx:for="{{frequencies}}" 
+                wx:key="index"
+                class="dropdown-item {{selectedFrequency === item ? 'item-active' : ''}}"
+                catchtap="selectFrequency"
+                data-freq="{{item}}"
+              >
+                <text class="dropdown-item-text">{{item}}</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- Date de début Picker -->
+          <view class="form-group">
+            <text class="form-label">Date de début</text>
+            <view class="select-box-container" bindtap="openDatePickerModal">
+              <text class="select-value-text">{{startDate}}</text>
+              <image class="calendar-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSI0IiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSIyIiByeT0iMiI+PC9yZWN0PjxsaW5lIHgxPSIxNiIgeTE9IjIiIHgyPSIxNiIgeTI9IjYiPjwvbGluZT48bGluZSB4MT0iOCIgeTE9IjIiIHgyPSI4IiB5Mj0iNiI+PC9saW5lPjxsaW5lIHgxPSIzIiB5MT0iMTAiIHgyPSIyMSIgeTI9IjEwIj48L2xpbmU+PC9zdmc+" mode="aspectFit"></image>
+            </view>
+          </view>
+
+          <!-- Instructions (optionnel) -->
+          <view class="form-group">
+            <text class="form-label">Instructions ( optionnel )</text>
+            <view class="select-box-container instructions-box">
+              <input 
+                class="form-input instructions-input" 
+                type="text" 
+                value="{{instructions}}" 
+                bindinput="onInstructionsInput"
+                placeholder="Ex: à prendre avec de l'eau"
+                placeholder-style="color: #c0c0c0; font-weight: 500;"
+              />
+              <image class="calendar-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cmVjdCB4PSIzIiB5PSI0IiB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHJ4PSIyIiByeT0iMiI+PC9yZWN0PjxsaW5lIHgxPSIxNiIgeTE9IjIiIHgyPSIxNiIgeTI9IjYiPjwvbGluZT48bGluZSB4MT0iOCIgeTE9IjIiIHgyPSI4IiB5Mj0iNiI+PC9saW5lPjxsaW5lIHgxPSIzIiB5MT0iMTAiIHgyPSIyMSIgeTI9IjEwIj48L2xpbmU+PC9zdmc+" mode="aspectFit"></image>
+            </view>
+          </view>
+
+        </view>
+
+        <!-- Centered Validation Button (Green brand color matching mockup) -->
+        <view class="footer-actions">
+          <button class="btn-valider" bindtap="onSubmit">Valider</button>
+        </view>
+      </view>
+
+      <!-- Scrollbar on the right -->
+      <view class="side-scrollbar">
+        <view class="scroll-arrow-up" bindtap="scrollUp">
+          <text class="arrow-text-scroll">↑</text>
+        </view>
+        <view class="scroll-track" bindtap="onTrackTap">
+          <view 
+            class="scroll-handle" 
+            style="top: {{scrollHandleTop}}px;"
+            bindtouchstart="onHandleTouchStart"
+            bindtouchmove="onHandleTouchMove"
+            bindtap="onTrackTap"
+          ></view>
+        </view>
+        <view class="scroll-arrow-down" bindtap="scrollDown">
+          <text class="arrow-text-scroll">↓</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Centered Custom Date Picker Modal -->
+    <view class="modal-mask" wx:if="{{showDatePickerModal}}" bindtap="closeDatePickerModal"></view>
+    <view class="custom-date-modal" wx:if="{{showDatePickerModal}}">
+      <view class="date-modal-header">
+        <view class="month-selector">
+          <view class="month-arrow" bindtap="prevMonth">◀</view>
+          <text class="month-title">{{monthsList[pickerMonth - 1]}} {{pickerYear}}</text>
+          <view class="month-arrow" bindtap="nextMonth">▶</view>
+        </view>
+      </view>
+      
+      <!-- Weekday Labels -->
+      <view class="weekdays-row">
+        <text class="weekday-lbl">L</text>
+        <text class="weekday-lbl">M</text>
+        <text class="weekday-lbl">M</text>
+        <text class="weekday-lbl">J</text>
+        <text class="weekday-lbl">V</text>
+        <text class="weekday-lbl">S</text>
+        <text class="weekday-lbl">D</text>
+      </view>
+
+      <!-- Calendar Grid -->
+      <view class="days-grid">
+        <view 
+          wx:for="{{pickerDays}}" 
+          wx:key="index" 
+          class="day-cell {{item.empty ? 'day-empty' : ''}} {{item.dayNum === selectedDay ? 'day-selected' : ''}}"
+          bindtap="selectDay"
+          data-day="{{item.dayNum}}"
+        >
+          <text class="day-text">{{item.dayNum}}</text>
+        </view>
+      </view>
+
+      <!-- Modal Actions -->
+      <view class="date-modal-footer">
+        <button class="btn-cancel" bindtap="closeDatePickerModal">Annuler</button>
+        <button class="btn-confirm" bindtap="confirmDatePicker">Confirmer</button>
+      </view>
+    </view>
+
+    <!-- Centered Custom Time Picker Modal (Heure de prise) -->
+    <view class="modal-mask" wx:if="{{showTimePickerModal}}" bindtap="closeAllModals"></view>
+    <view class="custom-time-modal" wx:if="{{showTimePickerModal}}">
+      <!-- Close button top-right -->
+      <text class="modal-close-btn" bindtap="closeAllModals">×</text>
+      
+      <view class="time-modal-header">
+        <text class="time-modal-title">{{selectedFrequency === 'Tous les X heures' ? 'Intervalle en heures' : (selectedFrequency === 'Tous les X jours' ? 'Intervalle en jours' : (selectedFrequency === 'Hebdomadaire' ? 'Jour de la semaine' : (selectedFrequency === 'Mensuel' ? 'Jour du mois' : 'Heure de prise')))}}</text>
+      </view>
+      
+      <!-- If selectedFrequency is Tous les X heures or Tous les X jours, show interval selector and first intake -->
+      <view class="interval-selector-wrapper" wx:if="{{selectedFrequency === 'Tous les X heures' || selectedFrequency === 'Tous les X jours'}}">
+        <view class="interval-container">
+          <view class="interval-btn" bindtap="decrementInterval">-</view>
+          <view class="interval-value-box">
+            <text class="interval-num">{{intervalValue}}</text>
+            <text class="interval-label">{{selectedFrequency === 'Tous les X jours' ? 'jours' : 'heures'}}</text>
+          </view>
+          <view class="interval-btn" bindtap="incrementInterval">+</view>
+        </view>
+        
+        <view class="section-sublabel">Premiers prise à</view>
+        
+        <view class="time-selector-container">
+          <view class="time-select-box" bindtap="toggleFirstIntakeDropdown">
+            <text class="time-select-value">{{firstIntakeTime}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+          
+          <!-- First Intake Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'firstIntake'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{firstIntakeTime === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- If selectedFrequency is Hebdomadaire, show vertical day list + time picker -->
+      <view class="hebdo-wrapper" wx:elif="{{selectedFrequency === 'Hebdomadaire'}}">
+        <!-- Vertical list of full day names -->
+        <view class="day-list">
+          <view
+            wx:for="{{daysOfWeekFull}}"
+            wx:key="index"
+            class="day-list-item {{selectedDayOfWeek === item ? 'day-list-item-active' : ''}}"
+            bindtap="selectDayOfWeek"
+            data-day="{{item}}"
+          >
+            <text class="day-list-item-text">{{item}}</text>
+          </view>
+        </view>
+
+        <view class="section-sublabel">Heure de prise</view>
+
+        <view class="time-selector-container">
+          <view class="time-select-box" bindtap="toggleFirstIntakeDropdown">
+            <text class="time-select-value">{{firstIntakeTime}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+
+          <!-- First Intake Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'firstIntake'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{firstIntakeTime === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- If selectedFrequency is Mensuel, show day-of-month incrementer + time picker -->
+      <view class="interval-selector-wrapper" wx:elif="{{selectedFrequency === 'Mensuel'}}">
+        <view class="interval-container">
+          <view class="interval-btn" bindtap="decrementDayOfMonth">-</view>
+          <view class="interval-value-box">
+            <text class="interval-num">{{dayOfMonth}}</text>
+          </view>
+          <view class="interval-btn" bindtap="incrementDayOfMonth">+</view>
+        </view>
+
+        <view class="section-sublabel">Heure de prise</view>
+
+        <view class="time-selector-container">
+          <view class="time-select-box" bindtap="toggleFirstIntakeDropdown">
+            <text class="time-select-value">{{firstIntakeTime}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+
+          <!-- First Intake Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'firstIntake'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{firstIntakeTime === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- If selectedFrequency is 3 fois/jrs, show Matin, Midi & Soir columns -->
+      <view class="time-selectors-row" wx:aria-hidden="false" wx:elif="{{selectedFrequency === '3 fois/jrs'}}">
+        <!-- Matin Column -->
+        <view class="time-selector-col">
+          <text class="time-selector-label">Matin</text>
+          <view class="time-select-box" bindtap="toggleMatinDropdown">
+            <text class="time-select-value">{{selectedTimeMatin}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+          
+          <!-- Matin Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'matin'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{selectedTimeMatin === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+
+        <!-- Midi Column -->
+        <view class="time-selector-col">
+          <text class="time-selector-label">Midi</text>
+          <view class="time-select-box" bindtap="toggleMidiDropdown">
+            <text class="time-select-value">{{selectedTimeMidi}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+          
+          <!-- Midi Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'midi'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{selectedTimeMidi === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+
+        <!-- Soir Column -->
+        <view class="time-selector-col">
+          <text class="time-selector-label">Soir</text>
+          <view class="time-select-box" bindtap="toggleSoirDropdown">
+            <text class="time-select-value">{{selectedTimeSoir}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+          
+          <!-- Soir Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'soir'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{selectedTimeSoir === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- If selectedFrequency is 2 fois/jrs, show side-by-side Matin & Soir columns -->
+      <view class="time-selectors-row" wx:elif="{{selectedFrequency === '2 fois/jrs'}}">
+        <!-- Matin Column -->
+        <view class="time-selector-col">
+          <text class="time-selector-label">Matin</text>
+          <view class="time-select-box" bindtap="toggleMatinDropdown">
+            <text class="time-select-value">{{selectedTimeMatin}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+          
+          <!-- Matin Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'matin'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{selectedTimeMatin === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+
+        <!-- Soir Column -->
+        <view class="time-selector-col">
+          <text class="time-selector-label">Soir</text>
+          <view class="time-select-box" bindtap="toggleSoirDropdown">
+            <text class="time-select-value">{{selectedTimeSoir}}</text>
+            <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+          </view>
+          
+          <!-- Soir Dropdown -->
+          <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'soir'}}">
+            <view 
+              wx:for="{{timeOptions}}" 
+              wx:key="index"
+              class="time-dropdown-item {{selectedTimeSoir === item ? 'time-item-active' : ''}}"
+              catchtap="selectTime"
+              data-time="{{item}}"
+            >
+              <text class="time-item-text">{{item}}</text>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- Else, show single time selector container for 1 fois/jrs -->
+      <view class="time-selector-container" wx:else>
+        <view class="time-select-box" bindtap="toggleMatinDropdown">
+          <text class="time-select-value">{{selectedTimeMatin}}</text>
+          <image class="time-clock-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM5OTk5OTkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMCI+PC9jaXJjbGU+PHBvbHlsaW5lIHBvaW50cz0iMTIgNiAxMiAxMiAxNiAxNCI+PC9wb2x5bGluZT48L3N2Zz4=" mode="aspectFit"></image>
+        </view>
+
+        <scroll-view scroll-y="true" class="time-dropdown-scroll" wx:if="{{showTimeDropdown && activePicker === 'matin'}}">
+          <view 
+            wx:for="{{timeOptions}}" 
+            wx:key="index"
+            class="time-dropdown-item {{selectedTimeMatin === item ? 'time-item-active' : ''}}"
+            catchtap="selectTime"
+            data-time="{{item}}"
+          >
+            <text class="time-item-text">{{item}}</text>
+          </view>
+        </scroll-view>
+      </view>
+      
+      <!-- Valider Action Button -->
+      <button class="modal-btn-action" bindtap="goToFrequencyModal">Valider</button>
+    </view>
+
+    <!-- Centered Custom Frequency Modal -->
+    <view class="modal-mask" wx:if="{{showFrequencyModal}}" bindtap="closeAllModals"></view>
+    <view class="custom-time-modal" wx:if="{{showFrequencyModal}}">
+      <!-- Close button top-right -->
+      <text class="modal-close-btn" bindtap="closeAllModals">×</text>
+      
+      <view class="time-modal-header">
+        <text class="time-modal-title">Fréquence</text>
+      </view>
+      
+      <view class="frequency-display-box">
+        <text class="frequency-display-text">{{frequencyText}}</text>
+      </view>
+      
+      <!-- Fermer Action Button -->
+      <button class="modal-btn-action" bindtap="confirmFrequency">Fermer</button>
+    </view>
+
+    <!-- Bottom Spacing for Bottom Bar -->
+    <view class="bottom-spacer"></view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+  </view>
+</view>

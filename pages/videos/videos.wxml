@@ -1,0 +1,110 @@
+<view class="videos-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="videos-hero-area">
+      <view class="videos-hero-main">
+        <image class="videos-hero-img" src="/assets/P2.png" mode="aspectFill"></image>
+        
+        <!-- Custom Hero Overlay for Videos -->
+        <view class="videos-hero-overlay">
+          <view class="hero-overlay-content">
+            <image class="hero-overlay-logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+            <view class="hero-overlay-divider"></view>
+            <view class="hero-overlay-text-wrap">
+              <text class="hero-overlay-name">TARIK HAJJI</text>
+              <text class="hero-overlay-role">CO-FONDATEUR DE TIQQA</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards Area -->
+    <view class="videos-grid-container">
+
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="videos-spacer"></view> <!-- Small gap below hero -->
+
+        <view class="videos-grid">
+
+          <!-- Card 1 -->
+          <view class="videos-card" bindtap="onCardTap" data-type="video1">
+            <view class="videos-card-img-wrap">
+              <image class="videos-card-img" src="/assets/P1.png" mode="aspectFill"></image>
+            </view>
+            <view class="videos-card-footer">
+              <text class="videos-card-label">PAROLE</text>
+            </view>
+          </view>
+
+          <!-- Card 2 -->
+          <view class="videos-card" bindtap="onCardTap" data-type="video2">
+            <view class="videos-card-img-wrap">
+              <image class="videos-card-img" src="/assets/P2.png" mode="aspectFill"></image>
+            </view>
+            <view class="videos-card-footer">
+              <text class="videos-card-label">PAROLE</text>
+            </view>
+          </view>
+
+          <!-- Card 3 -->
+          <view class="videos-card" bindtap="onCardTap" data-type="video3">
+            <view class="videos-card-img-wrap">
+              <image class="videos-card-img" src="/assets/P3.png" mode="aspectFill"></image>
+            </view>
+            <view class="videos-card-footer">
+              <text class="videos-card-label">PAROLE</text>
+            </view>
+          </view>
+
+          <!-- Card 4 -->
+          <view class="videos-card" bindtap="onCardTap" data-type="video4">
+            <view class="videos-card-img-wrap">
+              <image class="videos-card-img" src="/assets/P4.png" mode="aspectFill"></image>
+            </view>
+            <view class="videos-card-footer">
+              <text class="videos-card-label">PAROLE</text>
+            </view>
+          </view>
+
+          <!-- Card 5 -->
+          <view class="videos-card" bindtap="onCardTap" data-type="video5">
+            <view class="videos-card-img-wrap">
+              <image class="videos-card-img" src="/assets/P5.png" mode="aspectFill"></image>
+            </view>
+            <view class="videos-card-footer">
+              <text class="videos-card-label">PAROLE</text>
+            </view>
+          </view>
+
+        </view>
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

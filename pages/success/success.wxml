@@ -1,0 +1,38 @@
+<view class="page">
+  <device-status-bar fillStatusBar="{{true}}" />
+  <!-- ===== HEADER ===== -->
+  <view class="header">
+    <view class="logo-container">
+      <image 
+        class="logo-img"
+        src="/assets/logo-tiqqa-header.png"
+        mode="widthFix"
+      />
+    </view>
+  </view>
+
+  <!-- ===== SUCCESS CARD ===== -->
+  <view class="card">
+
+    <!-- PHONE IMAGE -->
+    <view class="image-container">
+      <image 
+        class="phone-image"
+        src="/assets/phone.png"
+        mode="aspectFit"
+      />
+    </view>
+
+    <!-- SUCCESS MESSAGE -->
+    <text class="success-title">{{successMessage}}</text>
+
+    <!-- CONTINUE BUTTON -->
+    <view class="button-container">
+      <view class="btn-arrow" bindtap="goToHome">
+        <text class="arrow-icon">→</text>
+      </view>
+    </view>
+
+  </view>
+
+</view>

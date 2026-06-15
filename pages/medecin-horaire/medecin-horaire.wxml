@@ -1,0 +1,67 @@
+<view class="page-horaire">
+  <view class="mobile-card mobile-card--figma">
+    <view class="horaire-above-slots">
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="back-wrap" bindtap="onBack">
+            <view class="back-circle">←</view>
+            <text class="back-text">Retour</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+            </view>
+            <view class="avatar-bubble-tail"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="doctor-hero doctor-hero--horaire">
+        <image class="doctor-image" src="/assets/services/service-home-doctor.png" mode="aspectFit"></image>
+        <view class="doctor-copy">
+          <text class="hero-instruction">
+            Maintenant que vous avez choisi la date, sélectionnez l'horaire
+          </text>
+        </view>
+      </view>
+    </view>
+
+    <view class="slots-block slots-block--figma">
+      <view class="timeline" aria-hidden="true">
+        <view class="timeline-rail"></view>
+        <view class="timeline-thumb" style="top: {{scrollThumbTopPct}}%;"></view>
+      </view>
+      <scroll-view
+        class="slots-scroll"
+        scroll-y="{{true}}"
+        show-scrollbar="{{false}}"
+        bindscroll="onSlotsScroll"
+      >
+        <view class="slots-list">
+          <view
+            wx:for="{{slots}}"
+            wx:key="id"
+            data-id="{{item.id}}"
+            bindtap="onSelectSlot"
+            class="slot-pill {{item.selected ? 'slot-pill--selected' : ''}}"
+          >
+            <text class="slot-label {{item.selected ? 'slot-label--selected' : ''}}">{{item.start}} - {{item.end}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="action-footer">
+      <button class="btn-valider" bindtap="onNextStep">Suivant</button>
+    </view>
+    <view class="bottom-spacer"></view>
+  </view>
+
+  <view class="fixed-menu-container">
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

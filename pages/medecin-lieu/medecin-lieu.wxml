@@ -1,0 +1,68 @@
+<view class="page-lieu">
+  <view class="mobile-card mobile-card--figma">
+    <view class="lieu-mint-block">
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="back-wrap" bindtap="onBack">
+            <view class="back-circle">←</view>
+            <text class="back-text">Retour</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+            </view>
+            <view class="avatar-bubble-tail"></view>
+          </view>
+        </view>
+      </view>
+      <view class="loc-title-wrap">
+        <text class="loc-title">Confirmez votre lieu de rendez-vous</text>
+      </view>
+    </view>
+
+    <view class="loc-green-block loc-green-block--figma">
+      <view class="loc-map-block">
+        <view class="loc-address-bar" bindtap="onEditAddress">
+          <text class="loc-address-text">{{address}}</text>
+          <text class="loc-edit-icon">✎</text>
+        </view>
+        <view class="loc-map-shell">
+          <map
+            id="lieuMap"
+            class="loc-map"
+            subkey="{{mapSubkey}}"
+            latitude="{{lat}}"
+            longitude="{{lng}}"
+            scale="{{scale}}"
+            show-location="{{showUserOnMap}}"
+            enable-scroll="{{true}}"
+            enable-zoom="{{true}}"
+            show-compass="{{false}}"
+            markers="{{markers}}"
+            polyline="{{polyline}}"
+            circles="{{circles}}"
+            include-points="{{includePoints}}"
+          ></map>
+        </view>
+      </view>
+    </view>
+
+    <view class="loc-footer-white loc-footer--figma">
+      <image
+        class="loc-doctor"
+        src="/assets/services/service-home-doctor.png"
+        mode="aspectFit"
+      ></image>
+      <view class="loc-actions">
+        <view class="loc-btn loc-btn--next" bindtap="onNextStep">Suivant</view>
+        <view class="loc-btn loc-btn--geo" bindtap="onActivateLocation">Activer La Localisation</view>
+      </view>
+    </view>
+
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

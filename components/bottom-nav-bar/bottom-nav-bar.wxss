@@ -1,0 +1,9 @@
+/* styles are primarily in app.wxss */
+.nav-icon.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.nav-icon {
+  opacity: 1;
+  transition: all 0.2s ease;
+}

@@ -1,0 +1,240 @@
+.container {
+  background-color: #d0d0d0;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.shell {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  border-radius: 30rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rpx;
+}
+
+/* Header identique à `pages/sante/sante` */
+/* New Header Styles from Photo */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+
+.hero-title {
+  background: #C1E2CB;
+  padding: 30rpx 28rpx 12rpx;
+  text-align: center;
+  color: #1b2b24;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.map-main-area {
+  background: #70B682;
+  padding-bottom: 20rpx;
+  padding-top: 10rpx;
+}
+
+.bottom-divider-band {
+  background: #C1E2CB;
+  height: 20rpx;
+  width: 100%;
+}
+
+.location-box {
+  width: 282px;
+  height: 48px;
+  margin: 18rpx auto 12rpx;
+  background: #678E71;
+  border-radius: 37px;
+  border: 1px solid #678E71;
+  padding: 0 40rpx;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+
+.location-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  min-width: 0;
+}
+.location-label {
+  font-size: 20rpx;
+  font-weight: 700;
+  opacity: 0.95;
+  line-height: 28rpx;
+}
+.location-input {
+  flex: 1;
+  min-width: 0;
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 400;
+  height: 28rpx;
+  line-height: 28rpx;
+}
+.location-placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+.edit-icon {
+  width: 30rpx;
+  height: 30rpx;
+  opacity: 0.85;
+}
+
+.map-container {
+  margin: 10rpx 28rpx 0;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #ffffff;
+  height: 320rpx;
+}
+
+.doctor-area {
+  background: #ffffff;
+  padding: 14rpx 0 8rpx;
+  font-size: 0;
+  line-height: 0;
+}
+.doctor {
+  width: 260rpx;
+  height: 220rpx;
+  display: block;
+  margin: 0 auto;
+  vertical-align: bottom;
+}
+
+/* Action Footer */
+.action-footer {
+  padding: 60rpx 40rpx 180rpx; /* 180rpx bottom padding prevents overlap with the fixed menu */
+  background-color: #ffffff;
+  margin-top: auto; /* Pushes the buttons to the bottom, removing the blank space below them */
+}
+
+.btn-valider {
+  width: 100% !important;
+  height: 110rpx;
+  background-color: #77B080;
+  color: #ffffff;
+  border-radius: 55rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+.fixed-menu-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+

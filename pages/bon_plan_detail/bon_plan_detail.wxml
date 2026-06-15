@@ -1,0 +1,66 @@
+<view class="bon-plan-detail-container">
+  <view class="mobile-card">
+    
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Product Image Area -->
+    <view class="product-image-container {{deal.id >= 6 && deal.id <= 8 ? 'product-image-container--full' : ''}}">
+      <image class="detail-product-img {{deal.id >= 6 && deal.id <= 8 ? 'detail-product-img--full' : ''}}" src="{{deal.image}}" mode="{{deal.id >= 6 && deal.id <= 8 ? 'aspectFill' : 'aspectFit'}}"></image>
+    </view>
+
+    <!-- Gold Stripe Divider -->
+    <view class="gold-divider-stripe"></view>
+
+    <!-- Content Scroll View -->
+    <scroll-view class="detail-content-scroll" scroll-y>
+      <view class="detail-content-wrap">
+        
+        <!-- Dynamic Deal Title -->
+        <text class="detail-title">{{deal.subtitle}}</text>
+
+        <!-- Descriptif Block -->
+        <view class="descriptif-section">
+          <text class="section-heading">Descriptif</text>
+          
+          <view class="discount-row">
+            <text class="discount-label">Réduction: </text>
+            <text class="discount-value">{{deal.titlePrefix ? deal.titlePrefix + ' ' : ''}}{{deal.titleSuffix}}</text>
+          </view>
+
+          <view class="description-paragraph">
+            <rich-text class="desc-text" nodes="{{deal.description}}"></rich-text>
+          </view>
+        </view>
+
+        <!-- Obtain Code Button -->
+        <view class="btn-wrap">
+          <view class="obtain-code-btn" bindtap="onObtainCode">
+            <text class="obtain-code-btn-text">OBTENIR MON CODE</text>
+          </view>
+        </view>
+        
+      </view>
+    </scroll-view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

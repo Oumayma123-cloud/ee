@@ -1,0 +1,301 @@
+page {
+  height: 100%;
+  background: #1d1f23;
+}
+
+.page-lieu {
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 16rpx 0 calc(20rpx + env(safe-area-inset-bottom));
+  background: #1d1f23;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.mobile-card {
+  margin: 0 auto;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+  box-shadow: 0 12rpx 48rpx rgba(0, 0, 0, 0.22);
+}
+
+.mobile-card--figma {
+  width: 750rpx;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 57.6923076923rpx;
+  min-height: 1619.2307692308rpx;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Bande menthe #C1E2CB : statut + barre + titre (maquette image 2) */
+.lieu-mint-block {
+  flex-shrink: 0;
+  height: auto;
+  background: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* New Header Styles from Photo */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+
+.loc-title-wrap {
+  /* Figma: width 402, height 57, top 101, left -6 */
+  width: 773.0769230769rpx;
+  height: 109.6153846154rpx;
+  margin-left: -11.5384615385rpx;
+  margin-top: 0;
+  padding: 0 40rpx;
+  background: #c1e2cb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.loc-title {
+  display: block;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 30rpx;
+  line-height: 1.45;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Bloc carte #70B682 — 402 px de large Figma, aligné comme les autres écrans */
+.loc-green-block--figma {
+  width: 773.0769230769rpx;
+  height: 553.8461538462rpx;
+  margin-left: -11.5384615385rpx;
+  flex-shrink: 0;
+  background: #70b682;
+  border-bottom: 28rpx solid #c1e2cb;
+  box-sizing: border-box;
+  padding: 16rpx 30.7692307692rpx 20rpx;
+}
+
+.loc-map-block {
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* Barre lieu : 328×44 px, radius 30 (même logique que créneaux horaire) */
+.loc-address-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+  width: 631.5384615385rpx;
+  max-width: 100%;
+  height: 84.6566666667rpx;
+  padding: 0 22rpx;
+  margin: 0 auto 14rpx;
+  border-radius: 57.6923076923rpx;
+  background: rgba(0, 0, 0, 0.28);
+  box-sizing: border-box;
+}
+
+.loc-address-text {
+  flex: 1;
+  min-width: 0;
+  font-size: 24rpx;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.35;
+}
+
+.loc-edit-icon {
+  flex-shrink: 0;
+  font-size: 32rpx;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.loc-map-shell {
+  display: block;
+  width: 450rpx;
+  height: 397.8461538462rpx;
+  margin-left: 173.0769230769rpx;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+/* Carte Figma: 234x207 px */
+.loc-map {
+  width: 450rpx;
+  height: 397.8461538462rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.loc-footer--figma {
+  flex-shrink: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rpx 40rpx 16rpx;
+  box-sizing: border-box;
+}
+
+.loc-doctor {
+  display: block;
+  width: 248rpx;
+  height: 252rpx;
+  margin: 0 auto 2rpx;
+  transform: translateY(8rpx);
+}
+
+.loc-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  width: 100%;
+  padding-top: 10rpx;
+  box-sizing: border-box;
+}
+
+/* Boutons Figma : 316×58 px, radius 40 — comme medecin-domicile / horaire */
+.loc-btn {
+  width: 607.6923076923rpx;
+  max-width: 100%;
+  height: 111.5384615385rpx;
+  border-radius: 76.9230769231rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.loc-btn--next {
+  background: #70b682;
+}
+
+.loc-btn--geo {
+  background: #4a554d;
+}
+
+.bottom-nav.bottom-nav--in-card {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: none;
+  margin: auto 0 0;
+  border-radius: 0 0 57.6923076923rpx 57.6923076923rpx;
+  align-self: stretch;
+  border-top: none;
+  box-shadow: none;
+}

@@ -1,0 +1,110 @@
+<view class="container">
+  <view class="mobile-card">
+    <scroll-view class="content-scroll" scroll-y show-scrollbar="{{false}}">
+      
+      <!-- Standardized Header -->
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="back-wrap" bindtap="onBack">
+            <view class="back-circle">←</view>
+            <text class="back-text">Retour</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="page-content">
+        <!-- Title -->
+        <view class="page-title-wrap">
+          <text class="page-title">REÇU DE PAIEMENT</text>
+          <view class="title-separator"></view>
+        </view>
+
+        <!-- Success Message -->
+        <view class="success-box">
+          <text class="success-text">Votre paiement a été accepté. Merci de vérifier l'état de votre commande dans le site marchand.</text>
+          <text class="success-link" bindtap="onReturnHome">Cliquez ici pour retourner au site marchand</text>
+        </view>
+
+        <!-- Section 1 -->
+        <view class="section">
+          <text class="section-title">DÉTAIL DE PAIEMENT</text>
+          <view class="detail-card">
+            <view class="detail-row">
+              <text class="detail-label">Date de paiement</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">01/09/2025 12:07:37</text>
+            </view>
+            <view class="detail-row">
+              <text class="detail-label">N° de paiement</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">014491</text>
+            </view>
+            <view class="detail-row">
+              <text class="detail-label">Code d'autorisation</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">026751</text>
+            </view>
+            <view class="detail-row">
+              <text class="detail-label">Méthode de paiement</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">VISA</text>
+            </view>
+            <view class="detail-row">
+              <text class="detail-label">N° de carte de paiement</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">**** **** **** 4264</text>
+            </view>
+            <view class="detail-row">
+              <text class="detail-label">N° transaction</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">25244MHIF12512365</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- Section 2 -->
+        <view class="section">
+          <text class="section-title">DÉTAIL DE LA COMMANDE</text>
+          <view class="detail-card">
+            <view class="detail-row">
+              <text class="detail-label">Identifiant</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">475-17567247572651</text>
+            </view>
+            <view class="detail-row">
+              <text class="detail-label">Montant</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">199 MAD</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- Section 3 -->
+        <view class="section">
+          <text class="section-title">INFORMATIONS DU CLIENT</text>
+          <view class="detail-card">
+            <view class="detail-row">
+              <text class="detail-label">Nom</text>
+              <text class="detail-colon">:</text>
+              <text class="detail-value">Thiufa Souad</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="bottom-spacer"></view>
+      </view>
+    </scroll-view>
+
+    <!-- Bottom Nav Bar -->
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

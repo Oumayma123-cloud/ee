@@ -1,0 +1,68 @@
+<view class="container">
+  <view class="shell">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="banner-area">
+      <view class="banner-top-bar"></view>
+      <view class="banner-section">
+        <image src="/assets/banner1.png" class="banner-img" mode="aspectFill"></image>
+        <view class="banner-content">
+          <text class="banner-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+          <view class="btn-acceder">ACCÉDER</view>
+        </view>
+      </view>
+      <view class="banner-nav-bar">
+        <view class="nav-arrow-wrapper" bindtap="onPrev">
+          <text class="arrow-text">←</text>
+        </view>
+        <view class="nav-arrow-wrapper" bindtap="onNext">
+          <text class="arrow-text">→</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-title">
+      <text class="thin">Ma</text> <text class="bold">SANTÉ</text>
+    </view>
+
+    <view class="main-content-wrapper">
+      <view class="cards-grid">
+        <view class="pay-card" wx:for="{{payMethods}}" wx:key="title">
+          <image src="{{item.image}}" class="card-image" mode="aspectFit"></image>
+          <text class="card-title">{{item.title}}</text>
+          <button class="confirm-btn" size="mini" bindtap="onConfirm" data-title="{{item.title}}">CONFIRMEZ</button>
+        </view>
+      </view>
+
+      <view class="side-scrollbar">
+        <view class="scroll-arrow-up">
+          <text class="arrow-text">←</text>
+        </view>
+        <view class="scroll-track">
+          <view class="scroll-handle"></view>
+        </view>
+        <view class="scroll-arrow-down">
+          <text class="arrow-text">←</text>
+        </view>
+      </view>
+    </view>
+
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

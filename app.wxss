@@ -1,0 +1,358 @@
+/** tiqqa – Vivre en toute tiqqa – Global design tokens */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-SemiBold.ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Variable.ttf');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+page {
+  --color-bg: #B38F7F;
+  --color-bg-shape: #8F6E61;
+  --color-bg-card: rgba(143, 110, 97, 0.35);
+  --color-bg-elevated: #9A7A6D;
+  --color-primary: #8F6E61;
+  --color-primary-dim: rgba(143, 110, 97, 0.25);
+  --color-text: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.9);
+  --color-text-muted: rgba(255, 255, 255, 0.75);
+  --color-accent: #8f6e61;
+  --color-border: rgba(255, 255, 255, 0.2);
+  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --radius-sm: 12rpx;
+  --radius-md: 20rpx;
+  --radius-lg: 28rpx;
+  --radius-xl: 40rpx;
+  --radius-bottom: 60rpx;
+  --shadow-card: 0 8rpx 32rpx rgba(0, 0, 0, 0.12);
+  --safe-bottom: env(safe-area-inset-bottom);
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+page,
+view,
+text,
+button,
+input,
+textarea {
+  font-family: var(--font-display);
+}
+
+.container {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-bottom: calc(120rpx + var(--safe-bottom));
+}
+
+.container--no-tab {
+  padding-bottom: var(--safe-bottom);
+}
+
+/* Parcours médecin : contenu défilant, barre d’onglets fixe en bas (scroll-view) */
+.page.page--medecin-flow {
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 24rpx 0 calc(12rpx + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  background: #1d1f23;
+}
+
+.medecin-flow-scroll {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.medecin-flow-nav {
+  width: 670rpx;
+  max-width: 100%;
+  margin: 8rpx auto 0;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* -----------------------------------------------------------------------------
+   Barre navigation basse – coins arrondis ; flux médecin : fond clair via --light
+   ----------------------------------------------------------------------------- */
+
+.bottom-nav {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 872rpx;
+  height: 120rpx;
+  box-sizing: border-box;
+  opacity: 1;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 20rpx;
+}
+
+.bottom-nav--light {
+  background: #ECF2F7;
+}
+
+/* Même débordement du micro / ombres que la barre flottante (safe-bottom) */
+.bottom-nav.bottom-nav--light.bottom-nav--in-card {
+  overflow: visible;
+}
+
+.bottom-nav.bottom-nav--light.safe-bottom:not(.bottom-nav--in-card) {
+  position: fixed;
+  bottom: -10rpx;
+  left: -44rpx;
+  width: 838rpx;
+  height: 161rpx;
+  z-index: 9999;
+  display: flex;
+  background: #ECF2F7;
+  border-radius: 60rpx;
+  box-shadow: 0 0 20rpx rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  overflow: visible;
+  align-items: center;
+  padding: 0 64rpx; /* Extra padding to offset the bleed and keep icons centered in screen */
+}
+
+.bottom-nav.bottom-nav--light.safe-bottom:not(.bottom-nav--in-card) .nav-item {
+  flex: 1;
+}
+
+/* Figma → rpx : × (750 / 390). Trait icônes #61605B ; rouge urgence #D62D16 (dans le PNG ou calques) */
+.bottom-nav .nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 88rpx;
+  box-sizing: border-box;
+}
+
+/* Home icon */
+.bottom-nav .nav-item:nth-child(1) .nav-icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+/* Bulle messages + badge */
+.bottom-nav .nav-badge-slot {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  flex-shrink: 0;
+}
+
+.bottom-nav .nav-badge-slot .nav-icon {
+  width: 44rpx;
+  height: 44rpx;
+  display: block;
+}
+
+/* Icône micro */
+.bottom-nav .nav-mic .mic-icon {
+  width: 44rpx;
+  height: 44rpx;
+  opacity: 1;
+}
+
+/* Calendrier */
+.bottom-nav .nav-item:nth-child(4) .nav-icon {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+/*
+ * Ambulance cadre Figma 47.11×39.46 px (groupe @308.68,783.94).
+ * Sirène 6.66×4.17 @330.64,789.84 | Étoile 10.45×10.6 @321.33,799.23 | #D62D16
+ * Préférer un PNG ambulance en contours gris sans rouge pour éviter le double rendu.
+ */
+/* Ambulance */
+.bottom-nav .nav-item:nth-child(5) .nav-ambulance-slot {
+  position: relative;
+  width: 56rpx;
+  height: 56rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-nav .nav-item:nth-child(5) .nav-icon--ambulance {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.nav-ambulance-siren {
+  position: absolute;
+  z-index: 2;
+  left: 55%;
+  top: 15%;
+  width: 10rpx;
+  height: 8rpx;
+  background: #d62d16;
+  border-radius: 10rpx 10rpx 0 0;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.nav-ambulance-star {
+  position: absolute;
+  z-index: 2;
+  left: 30%;
+  top: 60%;
+  width: 18rpx;
+  height: 18rpx;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.nav-ambulance-star-bar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3.8461538462rpx;
+  height: 20.3846153846rpx;
+  margin-left: -1.9230769231rpx;
+  margin-top: -10.1923076923rpx;
+  background: #d62d16;
+  border-radius: 0.35rpx;
+  transform-origin: center center;
+}
+
+.nav-ambulance-star-bar--r60 {
+  transform: rotate(60deg);
+}
+
+.nav-ambulance-star-bar--rm60 {
+  transform: rotate(-60deg);
+}
+
+.bottom-nav .nav-badge .badge {
+  position: absolute;
+  top: -10rpx;
+  right: -12rpx;
+  min-width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  background: #eedd44;
+  color: #000000;
+  font-size: 16rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6rpx;
+  box-sizing: border-box;
+  line-height: 1;
+  border: 2rpx solid #f5f5f5;
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+/*
+ * Micro (capture) : cercle plus grand que les icônes, disque gris clair, halo blanc + bleu diffus.
+ * Dimensions Figma : anneau 64,07 px → rpx ; disque 44,32×44,37 px. Pas de trait sombre : le relief vient du glow.
+ */
+.bottom-nav .nav-item.nav-mic {
+  align-self: center;
+}
+
+.bottom-nav .nav-mic .mic-ring {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1), 0 0 0 4rpx #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.bottom-nav .nav-mic .mic-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rangée statut (composant device-status-bar) : pleine largeur dans .status-row */
+.status-row device-status-bar {
+  width: 100%;
+  display: block;
+}
+
+/* Force loading of Suivi Médicaments styles (workaround for WeChat watcher bug) */
+@import "pages/suivi_medicaments/suivi_medicaments.wxss";
+@import "pages/bon_plan/bon_plan.wxss";
+@import "pages/bon_plan_detail/bon_plan_detail.wxss";
+@import "pages/clubs/clubs.wxss";
+@import "pages/bienetre/bienetre.wxss";
+@import "pages/club_sante/club_sante.wxss";
+@import "pages/club_religion/club_religion.wxss";
+@import "pages/club_solidarite/club_solidarite.wxss";
+@import "pages/club_technologie/club_technologie.wxss";
+@import "pages/club_voyages/club_voyages.wxss";
+@import "pages/club_beaute/club_beaute.wxss";
+@import "pages/club_nutrition/club_nutrition.wxss";
+@import "pages/club_culture/club_culture.wxss";
+@import "pages/club_jardinage/club_jardinage.wxss";
+@import "pages/club_finance/club_finance.wxss";
+@import "pages/club_artisanat/club_artisanat.wxss";
+@import "pages/club_cuisine/club_cuisine.wxss";
+@import "pages/club_sport/club_sport.wxss";
+@import "pages/jeux/jeux.wxss";
+@import "pages/videos/videos.wxss";
+@import "pages/video_detail/video_detail.wxss";
+@import "pages/ajouter_famille/ajouter_famille.wxss";
+
+

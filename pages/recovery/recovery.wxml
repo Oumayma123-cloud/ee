@@ -1,0 +1,69 @@
+<view class="page">
+  <device-status-bar fillStatusBar="{{false}}" />
+  <!-- HEADER -->
+  <view class="header">
+    <view class="back-btn" bindtap="onBack">
+      <text class="back-arrow">←</text>
+    </view>
+    <view class="logo-container">
+      <image 
+        class="logo-img"
+        src="/assets/logo-tiqqa-header.png"
+        mode="widthFix"
+      />
+    </view>
+
+    <view class="header-text">
+      <text class="header-title">
+        Récupération 
+        de mot de passe
+      </text>
+
+      <text class="header-subtitle">
+        Veuillez saisir le code envoyé au 
+        numéro de téléphone :
+        {{phoneNumber}}
+      </text>
+    </view>
+
+  </view>
+
+  <!-- CARD -->
+  <view class="card">
+
+    <!-- PASSWORD INPUTS -->
+    <input 
+      class="input"
+      placeholder="Nouveau mot de passe"
+      placeholder-class="ph"
+      password="{{true}}"
+      bindinput="onPasswordInput"
+    />
+    <input 
+      class="input"
+      placeholder="Confirmer le nouveau mot de passe"
+      placeholder-class="ph"
+      password="{{true}}"
+      bindinput="onConfirmPasswordInput"
+    />
+
+    <text class="timer">
+      Code expires in : {{seconds > 9 ? seconds : '0' + seconds}} : 00
+    </text>
+
+    <view class="resend-row">
+      <text class="resend-text">Vous n'avez pas reçu le code ?</text>
+      <text class="resend-link">Renvoyer le code</text>
+    </view>
+
+    <button 
+      class="btn" 
+      bindtap="handleValidate">
+      Valider
+    </button>
+
+  </view>
+
+  <view class="footer-line"></view>
+
+</view>

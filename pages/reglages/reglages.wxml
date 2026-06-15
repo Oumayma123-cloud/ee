@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="mobile-card">
+    <scroll-view class="content-scroll" scroll-y show-scrollbar="{{false}}">
+      
+      <!-- Standardized Header -->
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="back-wrap" bindtap="onBack">
+            <view class="back-circle">←</view>
+            <text class="back-text">Retour</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- Hero Section -->
+      <view class="hero-section">
+        <view class="hero-image-wrap">
+          <image class="hero-img" src="/assets/hero/hero-home2.png" mode="aspectFill"></image>
+          <view class="hero-overlay">
+            <text class="hero-title">DÉCOUVREZ NOTRE APPLICATION!</text>
+            <view class="hero-btn">
+              <text class="hero-btn-text">LIRE PLUS</text>
+            </view>
+          </view>
+        </view>
+        <!-- Arrow Navigation Bar -->
+        <view class="hero-nav-bar">
+          <view class="nav-arrow left-arrow">←</view>
+          <view class="nav-arrow right-arrow">→</view>
+        </view>
+      </view>
+
+      <!-- Title Section -->
+      <view class="section-title-wrap">
+        <text class="title-script">Mes</text>
+        <text class="title-bold">RÉGLAGES</text>
+      </view>
+
+      <!-- Grid Section -->
+      <view class="settings-grid">
+        <view class="grid-card" bindtap="onMardy">
+          <image class="card-img" src="/assets/photo-re.png" mode="aspectFit"></image>
+          <view class="card-label-wrap">
+            <text class="card-label">L'MARDY ET</text>
+            <text class="card-label">L'MARDYA</text>
+          </view>
+        </view>
+
+        <view class="grid-card" bindtap="onPaiements">
+          <image class="card-img" src="/assets/photo-reg.png" mode="aspectFit"></image>
+          <view class="card-label-wrap">
+            <text class="card-label">PAIEMENTS</text>
+          </view>
+        </view>
+
+        <view class="grid-card" bindtap="onUrgences">
+          <image class="card-img" src="/assets/ambulance.png" mode="aspectFit"></image>
+          <view class="card-label-wrap">
+            <text class="card-label">URGENCES</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </scroll-view>
+
+    <!-- Bottom Nav Bar -->
+    <bottom-nav-bar active-tab="mic" variant="fixed" message-count="0" bind:navtap="onNavTap" />
+  </view>
+</view>

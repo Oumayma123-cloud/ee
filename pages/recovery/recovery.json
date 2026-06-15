@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "device-status-bar": "../../components/device-status-bar/device-status-bar"
+  }
+}

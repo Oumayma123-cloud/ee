@@ -1,0 +1,125 @@
+<view class="suivi-container">
+  <view class="suivi-shell">
+    
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Banner Area -->
+    <view class="banner-area">
+      <view class="banner-top-bar"></view>
+      <view class="banner-section">
+        <image src="/assets/banner1.png" class="banner-img" mode="aspectFill"></image>
+        <view class="banner-content">
+          <text class="banner-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+          <view class="btn-acceder">ACCÉDER</view>
+        </view>
+      </view>
+      <view class="banner-nav-bar">
+        <view class="nav-arrow-wrapper">
+          <text class="arrow-text-banner">←</text>
+        </view>
+        <view class="nav-arrow-wrapper">
+          <text class="arrow-text-banner">→</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Title Section -->
+    <view class="title-container">
+      <image src="/assets/title-liste-medicaments.png" class="section-title-img" mode="aspectFit"></image>
+      <view class="add-btn-circle" bindtap="onAddMedicament">
+        <text class="add-icon">+</text>
+      </view>
+    </view>
+
+    <!-- Content Grid Layout -->
+    <view class="main-content-wrapper">
+      <view class="meds-list">
+        <view class="med-item" wx:for="{{medications}}" wx:key="id">
+          <view class="med-header">
+            <text class="med-name">{{item.name}}</text>
+            <!-- Custom switch -->
+            <view class="custom-switch {{item.checked ? 'switch-active' : ''}}" bindtap="onToggleSwitch" data-id="{{item.id}}">
+              <view class="switch-knob">
+                <text class="switch-check">✓</text>
+              </view>
+            </view>
+          </view>
+          
+          <view class="med-divider"></view>
+          
+          <view class="med-badge">
+            <text class="badge-text">{{item.frequency}}</text>
+          </view>
+          
+          <view class="med-info">
+            <text class="info-label">Prochaine prise : <text class="info-time">{{item.nextDose}}</text></text>
+          </view>
+          
+          <!-- Action Buttons -->
+          <view class="action-buttons-row">
+            <view class="act-btn" bindtap="onModify" data-id="{{item.id}}">
+              <image class="act-btn-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9JyMzYzdkNTgnIHN0cm9rZS13aWR0aD0nMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cGF0aCBkPSdNMTEgNEg0YTIgMiAwIDAgMC0yIDJ2MTRhMiAyIDAgMCAwIDIgMmgxNGEyIDIgMCAwIDAgMi0ydi03Jz48L3BhdGg+PHBhdGggZD0nTTE4LjUgMi41YTIuMTIxIDIuMTIxIDAgMSAxIDMgM0wxMiAxNWwtNCAxIDEtNHonPjwvcGF0aD48L3N2Zz4=" mode="aspectFit"></image>
+              <text class="act-btn-text">Modifier</text>
+            </view>
+            <view class="act-btn" bindtap="onPause" data-id="{{item.id}}">
+              <image class="act-btn-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9JyMzYzdkNTgnIHN0cm9rZS13aWR0aD0nMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cmVjdCB4PSc2JyB5PSc0JyB3aWR0aD0nNCcgaGVpZ2h0PScxNic+PC9yZWN0PjxyZWN0IHg9JzE0JyB5PSc0JyB3aWR0aD0nNCcgaGVpZ2h0PScxNic+PC9yZWN0Pjwvc3ZnPg==" mode="aspectFit"></image>
+              <text class="act-btn-text">Pause</text>
+            </view>
+            <view class="act-btn" bindtap="onDelete" data-id="{{item.id}}">
+              <image class="act-btn-icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9JyMzYzdkNTgnIHN0cm9rZS13aWR0aD0nMicgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJz48cG9seWxpbmUgcG9pbnRzPSczIDYgNSA2IDIxIDYnPjwvcG9seWxpbmU+PHBhdGggZD0nTTE5IDZ2MTRhMiAyIDAgMCAxLTIgMkg3YTIgMiAwIDAgMS0yLTJWNm0zIDBWNGEyIDIgMCAwIDEgMi0yaDRhMiAyIDAgMCAxIDIgMnYyJz48L3BhdGg+PGxpbmUgeDE9JzEwJyB5MT0nMTEnIHgyPScxMCcgeTI9JzE3Jz48L2xpbmU+PGxpbmUgeDE9JzE0JyB5MT0nMTEnIHgyPScxNCcgeTI9JzE3Jz48L2xpbmU+PC9zdmc+" mode="aspectFit"></image>
+              <text class="act-btn-text">Supprimer</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- Footer Dark Green Action Buttons -->
+        <view class="footer-actions">
+          <button class="footer-btn" bindtap="onRappels">Mes rappels du jour</button>
+          <button class="footer-btn" bindtap="onAddMedicament">Ajouter un médicament</button>
+        </view>
+      </view>
+
+      <!-- Scrollbar on the right -->
+      <view class="side-scrollbar">
+        <view class="scroll-arrow-up" bindtap="scrollUp">
+          <text class="arrow-text-scroll">↑</text>
+        </view>
+        <view class="scroll-track" bindtap="onTrackTap">
+          <view 
+            class="scroll-handle" 
+            style="top: {{scrollHandleTop}}px;"
+            bindtouchstart="onHandleTouchStart"
+            bindtouchmove="onHandleTouchMove"
+            bindtap="onTrackTap"
+          ></view>
+        </view>
+        <view class="scroll-arrow-down" bindtap="scrollDown">
+          <text class="arrow-text-scroll">↓</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Bottom Spacing for Bottom Bar -->
+    <view class="bottom-spacer"></view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+  </view>
+</view>

@@ -1,0 +1,88 @@
+<view class="page">
+  <device-status-bar fillStatusBar="{{true}}" />
+  <!-- ===== HEADER ===== -->
+  <view class="header">
+
+    <view class="logo-container">
+      <image 
+        class="logo-img"
+        src="/assets/logo-tiqqa-header.png"
+        mode="widthFix"
+      />
+    </view>
+
+    <view class="progress-wrapper">
+      <view class="progress-bar">
+        <view class="progress-bg"></view>
+        <view class="progress-active step2"></view>
+      </view>
+      <text class="step">ETAPE 2/3</text>
+    </view>
+
+  </view>
+
+  <!-- ===== CARD ===== -->
+  <view class="card">
+
+    <text class="title">Vérification</text>
+
+    <text class="subtitle">
+      Veuillez saisir le code qui vous a été envoyé
+      au numéro de téléphone : {{maskedPhone}}
+    </text>
+
+    <!-- CODE INPUT -->
+    <view class="code-box" bindtap="focusCodeInput">
+      <view class="code-input">{{code[0]}}</view>
+      <view class="code-input">{{code[1]}}</view>
+      <view class="code-input">{{code[2]}}</view>
+      <view class="code-input">{{code[3]}}</view>
+    </view>
+
+    <text class="timer">Code expires in : {{seconds > 9 ? seconds : '0' + seconds}} : 00</text>
+
+    <view class="resend-row">
+      <text class="resend-text">Vous n'avez pas reçu le code ?</text>
+      <text class="resend-link">Renvoyer le code</text>
+    </view>
+
+    <!-- VALIDATE BUTTON (show only when all 4 digits entered) -->
+    <button class="btn" bindtap="handleValidate" wx:if="{{currentIndex === 4}}">
+      Valider
+    </button>
+
+  </view>
+
+  <!-- ===== KEYPAD (show only when focused) ===== -->
+  <view class="keypad" wx:if="{{inputFocused}}">
+
+    <view class="key-row">
+      <view class="key" bindtap="handleKey" data-key="1">1</view>
+      <view class="key" bindtap="handleKey" data-key="2">2<text class="letters">ABC</text></view>
+      <view class="key" bindtap="handleKey" data-key="3">3<text class="letters">DEF</text></view>
+    </view>
+
+    <view class="key-row">
+      <view class="key" bindtap="handleKey" data-key="4">4<text class="letters">GHI</text></view>
+      <view class="key" bindtap="handleKey" data-key="5">5<text class="letters">JKL</text></view>
+      <view class="key" bindtap="handleKey" data-key="6">6<text class="letters">MNO</text></view>
+    </view>
+
+    <view class="key-row">
+      <view class="key" bindtap="handleKey" data-key="7">7<text class="letters">PQRS</text></view>
+      <view class="key" bindtap="handleKey" data-key="8">8<text class="letters">TUV</text></view>
+      <view class="key" bindtap="handleKey" data-key="9">9<text class="letters">WXYZ</text></view>
+    </view>
+
+    <view class="key-row">
+      <view class="key empty"></view>
+      <view class="key" bindtap="handleKey" data-key="0">0</view>
+      <view class="key" bindtap="handleKey" data-key="delete">⌫</view>
+    </view>
+
+  </view>
+
+  <!-- footer black line -->
+  <view class="footer-line"></view>
+
+</view>

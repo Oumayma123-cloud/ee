@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "device-status-bar": "../../components/device-status-bar/device-status-bar",
+    "bottom-nav-bar": "../../components/bottom-nav-bar/bottom-nav-bar"
+  },
+  "navigationStyle": "custom"
+}

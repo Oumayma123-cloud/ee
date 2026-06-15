@@ -1,0 +1,78 @@
+<view class="page">
+  <view class="mobile-card">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-scroll">
+      <view class="annule-mint-zone">
+        <text class="annule-title">RENDEZ VOUS ANNULÉ</text>
+        <view class="annule-desc-wrap">
+          <text class="annule-desc">Suite à l'annulation de votre rendez-vous, une notification vous sera envoyée dès que le remboursement sera effectué. Ou vous pouvez reprogrammer un autre RDV</text>
+        </view>
+
+        <view class="annule-recap-card">
+          <view class="annule-recap-header">
+            <text class="annule-recap-heading">Récapitulatif</text>
+            <view class="annule-recap-divider"></view>
+          </view>
+
+          <view class="annule-row">
+            <text class="annule-label">Date</text>
+            <text class="annule-value">{{dateLine}}</text>
+          </view>
+          <view class="annule-row">
+            <text class="annule-label">Adresse d'intervention</text>
+            <text class="annule-value">{{adresse}}</text>
+          </view>
+          <view class="annule-row">
+            <text class="annule-label">Le montant à payer</text>
+            <text class="annule-value">{{montant}}</text>
+          </view>
+          <view class="annule-row">
+            <text class="annule-label">Mode de paiement</text>
+            <text class="annule-value">{{modePaiement}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="annule-white-zone">
+        <view class="annule-doctor-wrap">
+          <image class="annule-doctor" src="/assets/services/medecin-rdv-annule-doctor.png" mode="aspectFill"></image>
+        </view>
+        <view class="annule-actions">
+          <view
+            class="annule-btn annule-btn--primary"
+            hover-class="annule-btn--hover"
+            hover-stay-time="100"
+            bindtap="onConfirmRdv"
+          >Confirmez le Rendez-vous</view>
+          <view
+            class="annule-btn annule-btn--secondary"
+            hover-class="annule-btn--hover"
+            hover-stay-time="100"
+            bindtap="onCancelExit"
+          >Annulez</view>
+        </view>
+        <view class="annule-bottom-spacer"></view>
+      </view>
+    </view>
+
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

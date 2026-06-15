@@ -1,0 +1,57 @@
+<view class="login-page">
+  <device-status-bar fillStatusBar="{{true}}" />
+  <!-- Header with logo -->
+  <view class="login-header">
+    <image class="login-logo" src="/assets/logo-tiqqa-header.png" mode="widthFix" />
+  </view>
+
+  <!-- White content card -->
+  <view class="login-card">
+    <view class="login-title-wrap">
+      <text class="login-title">Bienvenue</text>
+    </view>
+
+    <view class="login-field">
+      <text class="login-label">Téléphone</text>
+      <view class="login-input-container">
+        <input
+          class="login-input"
+          type="text"
+          placeholder="example @gmail.com"
+          placeholder-class="login-placeholder"
+          value="{{phone}}"
+          bindinput="onPhoneInput"
+        />
+      </view>
+    </view>
+
+    <view class="login-field">
+      <text class="login-label">Mot de Passe</text>
+      <view class="login-input-container">
+        <input
+          class="login-input"
+          type="{{showPassword ? 'text' : 'password'}}"
+          placeholder="**********"
+          placeholder-class="login-placeholder"
+          value="{{password}}"
+          bindinput="onPasswordInput"
+        />
+        <view class="login-eye" bindtap="togglePassword">
+          <image class="login-eye-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239BA5B1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E" mode="aspectFit" wx:if="{{showPassword}}"></image>
+          <image class="login-eye-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239BA5B1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24'%3E%3C/path%3E%3Cline x1='1' y1='1' x2='23' y2='23'%3E%3C/line%3E%3C/svg%3E" mode="aspectFit" wx:if="{{!showPassword}}"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="login-forgot-wrap">
+      <text class="login-forgot" bindtap="onForgotPassword">Mot de passe oublié</text>
+    </view>
+
+    <view class="login-actions">
+      <button class="login-btn login-btn--primary" bindtap="onLogin">Se connecter</button>
+      <button class="login-btn login-btn--outline" bindtap="onSignUp">S'inscrire</button>
+    </view>
+  </view>
+  <!-- Home indicator bar -->
+  <view class="home-indicator"></view>
+</view>

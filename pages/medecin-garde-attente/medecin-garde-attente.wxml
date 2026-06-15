@@ -1,0 +1,144 @@
+<view class="container">
+
+  <scroll-view class="scroll-content" scroll-y="true" enable-flex="true" show-scrollbar="false" bindscroll="onScroll" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+    <view class="scroll-inner">
+
+      <!-- Header -->
+    <tiqqa-header bind:back="onBack" />
+
+    <!-- Section attente -->
+    <view class="attente-wrapper">
+      <view class="attente-section">
+        <text class="attente-titre">ATTENTE ESTIMÉE À 10 MINUTES</text>
+        <text class="attente-desc">Merci de patienter, vous serez mis en relation avec un médecin. En attendant, vous pouvez consulter des ressources utiles pour votre santé.</text>
+      </view>
+    </view>
+
+    <!-- Grille de vidéos -->
+    <view class="grid-wrapper">
+
+      <!-- Grille vidéos -->
+      <view class="videos-grid">
+
+        <view id="video-1" class="video-card" bindtap="onVideoTap" data-id="1">
+          <view class="video-thumb">
+            <image class="thumb-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
+            <view class="play-overlay">
+              <view class="play-btn">
+                <text class="play-icon">▶</text>
+              </view>
+            </view>
+
+          </view>
+          <view class="video-title-bar">
+            <text class="video-title">Tension Artérielle Après 60 Ans : Ce Qu'il Faut Surveiller !</text>
+          </view>
+        </view>
+
+        <view id="video-2" class="video-card" bindtap="onVideoTap" data-id="2">
+          <view class="video-thumb">
+            <image class="thumb-img" src="/assets/benmimoun-2 (2).png" mode="aspectFill"></image>
+            <view class="play-overlay">
+              <view class="play-btn">
+                <text class="play-icon">▶</text>
+              </view>
+            </view>
+
+          </view>
+          <view class="video-title-bar">
+            <text class="video-title">Mieux Dormir Après 60 Ans : Astuces Pour Un Bon Sommeil</text>
+          </view>
+        </view>
+
+        <view id="video-3" class="video-card" bindtap="onVideoTap" data-id="3">
+          <view class="video-thumb">
+            <image class="thumb-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
+            <view class="play-overlay">
+              <view class="play-btn">
+                <text class="play-icon">▶</text>
+              </view>
+            </view>
+
+          </view>
+          <view class="video-title-bar">
+            <text class="video-title">Diabète Après 60 Ans : Prévenir, Comprendre Et Agir</text>
+          </view>
+        </view>
+
+        <view id="video-4" class="video-card" bindtap="onVideoTap" data-id="4">
+          <view class="video-thumb">
+            <image class="thumb-img" src="/assets/benmimoun-2 (2).png" mode="aspectFill"></image>
+            <view class="play-overlay">
+              <view class="play-btn">
+                <text class="play-icon">▶</text>
+              </view>
+            </view>
+
+          </view>
+          <view class="video-title-bar">
+            <text class="video-title">Santé Mentale Après 60 Ans : Prévenir, Détecter, Agir</text>
+          </view>
+        </view>
+
+      </view>
+
+      <view class="scroll-indicator">
+        <view class="scroll-arrow scroll-arrow--up" bindtap="onScrollUp">
+          <text class="scroll-arrow-text">↑</text>
+        </view>
+        <view class="scroll-track">
+          <view class="scroll-thumb" style="top: {{scrollThumbTop}}rpx;"></view>
+        </view>
+        <view class="scroll-arrow scroll-arrow--down" bindtap="onScrollDown">
+          <text class="scroll-arrow-text">↓</text>
+        </view>
+      </view>
+
+    </view>
+
+    <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <!-- MODAL : Intervention d'urgence -->
+  <view class="modal-overlay" wx:if="{{showUrgenceModal}}" bindtap="onHideUrgence">
+    <view class="modal-card" catchtap="">
+      <text class="modal-text">une intervention d'urgence a été déclenchée</text>
+      <view class="modal-btn modal-btn--confirm" bindtap="onConfirmAmbulance">
+        <text class="modal-btn-txt modal-btn-txt--confirm">Confirmer l'envoi de l'ambulance</text>
+      </view>
+      <view class="modal-btn modal-btn--cancel" bindtap="onCancelDemande">
+        <text class="modal-btn-txt modal-btn-txt--cancel">Annuler la demande</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- MODAL : Visite de médecin à domicile -->
+  <view class="modal-overlay" wx:if="{{showDoctorVisitModal}}" bindtap="onHideDoctorVisit">
+    <view class="modal-card" catchtap="">
+      <text class="modal-text">Vous avez besoin d'une visite de médecin à domicile</text>
+      <view class="modal-btn modal-btn--confirm" bindtap="onConfirmDoctorVisit">
+        <text class="modal-btn-txt modal-btn-txt--confirm">Confirmer</text>
+      </view>
+      <view class="modal-btn modal-btn--cancel" bindtap="onCancelDoctorVisit">
+        <text class="modal-btn-txt modal-btn-txt--cancel">Annuler</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- MODAL : Action à entreprendre -->
+  <view class="modal-overlay" wx:if="{{showActionModal}}" bindtap="onCloseActionModal">
+    <view class="modal-card modal-card--action" catchtap="">
+      <text class="modal-text">Action à entreprendre</text>
+      <view class="modal-btn modal-btn--confirm" bindtap="onDoBreathingExercises">
+        <text class="modal-btn-txt modal-btn-txt--confirm">Faire des exercices de respiration</text>
+      </view>
+      <view class="action-close" bindtap="onCloseActionModal">
+        <text class="action-close-text">×</text>
+      </view>
+    </view>
+  </view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+</view>

@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="shell">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="hero-banner">
+      <image src="/assets/banner1.png" class="banner-img" mode="aspectFill"></image>
+      <view class="banner-content">
+        <text class="banner-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+        <button class="banner-btn">ACCÉDER</button>
+      </view>
+    </view>
+
+    <view class="content-area">
+      <view class="nav-arrows">
+        <view class="circle-btn" bindtap="onPrev"><text class="arrow-text">←</text></view>
+        <view class="circle-btn" bindtap="onNext"><text class="arrow-text">→</text></view>
+      </view>
+      
+      <view class="recap-card">
+        <view class="card-header-flex">
+          <text class="card-title">paiement effectué</text>
+          <view class="check-icon-wrap">
+             <text class="check-icon">✓</text>
+          </view>
+        </view>
+
+        <view class="text-desc">
+          <text>la date et l'heure initiales ne sont plus valables. Merci de bien vouloir </text>
+          <text class="bold-desc">modifier votre RDV</text>
+        </view>
+      </view>
+
+      <view class="action-buttons">
+        <button class="action-btn" bindtap="onModify">MODIFIER LE RDV</button>
+        <button class="action-btn" bindtap="onCancelRemboursement">ANNULER LE RDV ET REMBOURSEMENT</button>
+      </view>
+    </view>
+
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

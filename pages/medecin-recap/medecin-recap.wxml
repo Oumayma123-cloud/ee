@@ -1,0 +1,59 @@
+<view class="page-recap">
+  <view class="mobile-card mobile-card--figma">
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="back-wrap" bindtap="onBack">
+            <view class="back-circle">←</view>
+            <text class="back-text">Retour</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+            </view>
+            <view class="avatar-bubble-tail"></view>
+          </view>
+        </view>
+      </view>
+
+    <view class="recap-green-zone">
+      <view class="recap-panel">
+        <text class="recap-title">Récapitulatif de votre RDV</text>
+
+        <view class="recap-item">
+          <text class="recap-label">Date</text>
+          <text class="recap-value">{{date}}</text>
+        </view>
+
+        <view class="recap-item">
+          <text class="recap-label">Heure</text>
+          <text class="recap-value">{{heure}}</text>
+        </view>
+
+        <view class="recap-item">
+          <text class="recap-label">Lieu</text>
+          <text class="recap-value recap-value--link">{{lieu}}</text>
+        </view>
+
+        <view class="recap-item">
+          <text class="recap-label">Tarif de la consultation</text>
+          <text class="recap-value">{{tarif}}</text>
+        </view>
+
+        <view class="recap-item recap-item--last">
+          <text class="recap-label">Temps restant pour le paiement</text>
+          <text class="recap-value">{{tempsRestant}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="confirm-area confirm-area--recap">
+      <view class="confirm-btn" bindtap="onConfirm">Confirmez le Rendez-vous</view>
+    </view>
+
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

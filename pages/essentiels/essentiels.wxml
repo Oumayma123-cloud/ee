@@ -1,0 +1,75 @@
+<view class="container">
+  <view class="mobile-card">
+    <scroll-view class="content-scroll" scroll-y show-scrollbar="{{false}}">
+      <!-- Standardized Header -->
+      <view class="horaire-header-wrap">
+        <view class="status-row">
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+        </view>
+        <view class="top-bar top-bar--horaire">
+          <view class="hamburger-menu-wrap" bindtap="onMenuTap" style="padding: 20rpx; z-index: 10;">
+            <text class="hamburger-icon" style="font-size: 50rpx; color: #000; font-weight: 300;">≡</text>
+          </view>
+          <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+          <view class="avatar-bubble" bindtap="onProfileTap">
+            <view class="avatar-wrap avatar-wrap--bubble">
+              <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+            </view>
+            <view class="avatar-bubble-tail"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- Hero Section -->
+      <view class="ess-hero-area">
+        <view class="ess-hero-main">
+          <image class="ess-hero-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
+          <view class="ess-hero-overlay">
+            <text class="ess-hero-title" style="text-transform: uppercase;">PAROLES SINCÈRES</text>
+            <view class="ess-hero-btn" bindtap="onHeroCta">
+              <text class="ess-hero-btn-txt" style="text-transform: none;">En savoir plus</text>
+            </view>
+          </view>
+        </view>
+        <view class="ess-hero-nav">
+          <view class="ess-hero-nav-arrow">←</view>
+          <view class="ess-hero-nav-arrow">→</view>
+        </view>
+      </view>
+
+      <!-- Main Section -->
+      <view class="ess-main">
+        <view class="ess-title-row">
+          <text class="ess-title-script">Mes</text>
+          <text class="ess-title-bold">ESSENTIELS</text>
+        </view>
+
+        <view class="ess-grid-container">
+          <!-- Grid of 4 Cards -->
+          <view class="ess-grid">
+            <view class="ess-card ess-card--sante" bindtap="onCardTap" data-type="sante">
+              <image class="ess-card-img" src="/assets/pat4.png" mode="aspectFit"></image>
+              <text class="ess-card-label">SANTÉ</text>
+            </view>
+            <view class="ess-card ess-card--clubs" bindtap="onCardTap" data-type="clubs">
+              <image class="ess-card-img" src="/assets/pa1.png" mode="aspectFit"></image>
+              <text class="ess-card-label">CLUBS TIQQA</text>
+            </view>
+            <view class="ess-card ess-card--services" bindtap="onCardTap" data-type="services">
+              <image class="ess-card-img" src="/assets/pat3.png" mode="aspectFit"></image>
+              <text class="ess-card-label">MES SERVICES</text>
+            </view>
+            <view class="ess-card ess-card--plans" bindtap="onCardTap" data-type="plans">
+              <image class="ess-card-img" src="/assets/pat2.png" mode="aspectFit"></image>
+              <text class="ess-card-label">BONS PLANS</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="ess-bottom-spacer"></view>
+      </view>
+    </scroll-view>
+
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="0" bind:navtap="onNavTap" />
+  </view>
+</view>

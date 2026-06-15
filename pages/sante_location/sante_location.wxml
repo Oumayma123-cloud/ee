@@ -1,0 +1,67 @@
+<view class="container">
+  <view class="shell">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="hero-title">
+      <text>Confirmez votre lieu de rendez-vous</text>
+    </view>
+    
+    <view class="map-main-area">
+      <view class="location-box">
+        <view class="location-left">
+          <text class="location-label">Lieu</text>
+          <input
+            class="location-input"
+            placeholder="350 B....."
+            placeholder-class="location-placeholder"
+            value="{{address}}"
+            bindinput="onAddressInput"
+          />
+        </view>
+        <text class="arrow-text" bindtap="onNext">✎</text>
+      </view>
+
+      <view class="map-container">
+        <map
+          longitude="{{longitude}}"
+          latitude="{{latitude}}"
+          scale="14"
+          show-location
+          markers="{{markers}}"
+          style="width: 100%; height: 320rpx;"
+        ></map>
+      </view>
+    </view>
+
+    <view class="bottom-divider-band"></view>
+
+    <view class="doctor-area">
+      <image src="/assets/infirmier.png" class="doctor" mode="aspectFit"></image>
+    </view>
+
+    <view class="action-footer">
+      <button class="btn-valider" style="margin-bottom: 24rpx;" bindtap="onFinalConfirm">Suivant</button>
+      <button class="btn-valider" style="background-color: #4b5d54;" bindtap="onLocate">Activer La Localisation</button>
+    </view>
+  </view>
+
+  <view class="fixed-menu-container">
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

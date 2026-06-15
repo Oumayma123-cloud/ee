@@ -1,0 +1,80 @@
+<!-- ========== Page Calendrier Aide Ménagère ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <tiqqa-header bind:back="onBack" />
+
+      <!-- 2. Hero Section (woman overflows upward only) -->
+      <view class="hero-section">
+        <view class="hero-left">
+          <view class="hero-bubble">
+            <text class="hero-bubble-text">Choisissez une date
+pour notre visite
+chez vous</text>
+          </view>
+        </view>
+        <view class="hero-right">
+          <image class="hero-woman" src="/assets/aide-menagere-woman-transparent-v2.png" mode="aspectFit"></image>
+        </view>
+      </view>
+
+      <!-- 3. Calendar -->
+      <view class="calendar-section">
+
+        <!-- Month Navigation -->
+        <view class="month-nav">
+          <view class="month-arrow" bindtap="onPrevMonth">
+            <text class="month-arrow-txt">◄</text>
+          </view>
+          <view class="month-title-wrap">
+            <text class="month-name-txt">{{monthName}}</text>
+            <text class="year-txt">{{year}}</text>
+          </view>
+          <view class="month-arrow" bindtap="onNextMonth">
+            <text class="month-arrow-txt">►</text>
+          </view>
+        </view>
+
+        <!-- Days Header -->
+        <view class="days-header">
+          <text class="day-name">Lun</text>
+          <text class="day-name">Mar</text>
+          <text class="day-name">Mer</text>
+          <text class="day-name">Jeu</text>
+          <text class="day-name">Ven</text>
+          <text class="day-name">Sam</text>
+          <text class="day-name">Dim</text>
+        </view>
+
+        <!-- Calendar Grid -->
+        <view class="calendar-grid">
+          <block wx:for="{{calendarDays}}" wx:key="index">
+            <view class="day-cell-wrap">
+              <view
+                class="day-cell {{item.isSelected ? 'day-cell--selected' : ''}}"
+                bindtap="onDayTap"
+                data-day="{{item.day}}"
+              >
+                <text class="day-num {{item.isSelected ? 'day-num--selected' : ''}}">{{item.day}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+
+      </view>
+
+      <!-- 4. SUIVANT Button -->
+      <view class="btn-suivant-wrap">
+        <view class="btn-suivant" bindtap="onSuivant">
+          <text class="btn-suivant-txt">SUIVANT</text>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+</view>

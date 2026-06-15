@@ -1,0 +1,85 @@
+<!-- ========== Page Aide Ménagère ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <tiqqa-header bind:back="onBack" />
+
+      <!-- 2. Hero Image -->
+      <view class="hero-image-section">
+        <image class="hero-image" src="/assets/aide-menagere-hero.jpg" mode="widthFix"></image>
+      </view>
+
+      <!-- 3. Date Strip -->
+      <view class="date-strip">
+        <view class="date-content">
+          <image class="date-icon" src="/assets/icons/icon-calendar.png" mode="aspectFit"></image>
+          <text class="date-text">MER 21 FÉV 2025 - 13:30</text>
+        </view>
+      </view>
+
+      <!-- 4. Title -->
+      <view class="title-container">
+        <text class="title-text">AIDE MÉNAGÈRE</text>
+      </view>
+
+      <!-- 5. Cards and Scrollbar Row -->
+      <view class="cards-indicator-row">
+        
+        <!-- Cards Column -->
+        <scroll-view class="cards-scroll-view" scroll-x="true" show-scrollbar="false">
+          <view class="cards-scroll-inner">
+            
+            <!-- Card 1: APPARTEMENT -->
+            <view class="option-card">
+              <view class="card-image-wrap">
+                <image class="card-image" src="/assets/aide-menagere-appartement.jpg" mode="aspectFill"></image>
+              </view>
+              <view class="card-info-box box-appartement">
+                <text class="card-label">APPARTEMENT</text>
+                <text class="card-price">200 MAD</text>
+              </view>
+              <view class="card-btn" bindtap="onBook" data-type="appartement">
+                <text class="card-btn-txt">PRENDRE RDV</text>
+              </view>
+            </view>
+
+            <!-- Card 2: VILLA -->
+            <view class="option-card">
+              <view class="card-image-wrap">
+                <image class="card-image" src="/assets/aide-menagere-villa.jpg" mode="aspectFill"></image>
+              </view>
+              <view class="card-info-box box-villa">
+                <text class="card-label">VILLA</text>
+                <text class="card-price">350 MAD</text>
+              </view>
+              <view class="card-btn" bindtap="onBook" data-type="villa">
+                <text class="card-btn-txt">PRENDRE RDV</text>
+              </view>
+            </view>
+
+          </view>
+        </scroll-view>
+
+        <!-- Vertical Scroll Indicator -->
+        <view class="scroll-indicator">
+          <view class="scroll-arrow scroll-arrow--up">
+            <text class="scroll-arrow-text">↑</text>
+          </view>
+          <view class="scroll-track">
+            <view class="scroll-thumb" style="top: 20rpx;"></view>
+          </view>
+          <view class="scroll-arrow scroll-arrow--down">
+            <text class="scroll-arrow-text">↓</text>
+          </view>
+        </view>
+
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+</view>

@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="shell">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-area">
+      <view class="recap-card">
+        <text class="card-title">Récapitulatif de votre RDV</text>
+
+        <view class="field">
+          <text class="label">Date</text>
+          <text class="value">{{date}}</text>
+        </view>
+
+        <view class="field">
+          <text class="label">Heure</text>
+          <text class="value">{{slot}}</text>
+        </view>
+
+        <view class="field">
+          <text class="label">Lieu</text>
+          <text class="value">{{address}}</text>
+        </view>
+
+        <view class="field">
+          <text class="label">Tarif de la consultation</text>
+          <text class="value">{{tarif}}</text>
+        </view>
+
+        <view class="field no-margin">
+          <text class="label">Temps restant pour le paiement</text>
+          <text class="value">{{remaining}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="doctor-wrap">
+      <image src="/assets/infirmier.png" class="doctor-image" mode="aspectFit"></image>
+    </view>
+
+    <button class="confirm-btn" bindtap="onConfirm">Confirmez le Rendez-vous</button>
+
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

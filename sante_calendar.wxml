@@ -1,0 +1,100 @@
+<view class="container">
+
+  <!-- HEADER + HERO -->
+  <view class="top-section">
+
+    <view class="header">
+      <view class="header-left" bindtap="onBack">
+        <view class="back-circle">
+          <text class="arrow-text">←</text>
+        </view>
+        <text class="back-text">Retour</text>
+      </view>
+
+      <view class="header-center">
+        <image class="header-logo" src="/assets/logo/logo-tiqqa.png" mode="widthFix"/>
+      </view>
+
+      <view class="profile-bubble">
+        <image class="profile" src="/assets/profile.png"/>
+        <view class="speech-tail"></view>
+      </view>
+    </view>
+
+    <view class="hero">
+      <text class="hero-title">
+        Choisissez une date pour votre visite chez vous
+      </text>
+      <image src="/assets/infirmier.png" class="hero-image"/>
+    </view>
+
+  </view>
+
+  <!-- CALENDAR -->
+  <view class="calendar-card">
+
+    <!-- MONTH -->
+    <view class="month-header">
+      <view class="month-btn" data-dir="-1" bindtap="changeMonth">‹</view>
+      <text class="month-title">{{currentMonthLabel}} {{currentYear}}</text>
+      <view class="month-btn" data-dir="1" bindtap="changeMonth">›</view>
+    </view>
+
+    <!-- WEEK DAYS -->
+    <view class="week-row">
+      <block wx:for="{{weeks}}" wx:key="index">
+        <text class="week-day">{{item}}</text>
+      </block>
+    </view>
+
+    <!-- DAYS -->
+    <view class="days-grid">
+      <block wx:for="{{calendarDays}}" wx:key="index">
+        <view class="day-wrapper">
+
+          <view wx:if="{{!item}}" class="empty"></view>
+
+          <view
+            wx:else
+            class="day {{item === selectedDay ? 'active' : ''}}"
+            data-day="{{item}}"
+            bindtap="selectDay"
+          >
+            {{item}}
+          </view>
+
+        </view>
+      </block>
+    </view>
+
+  </view>
+
+  <view class="action-wrapper">
+    <button class="next-btn" bindtap="onNext">Suivant</button>
+  </view>
+
+  <!-- Bottom navigation -->
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome">
+      <image src="/assets/icon-home.svg" class="nav-icon"></image>
+    </view>
+
+    <view class="nav-item" bindtap="goChat">
+      <image src="/assets/icon-chat.svg" class="nav-icon"></image>
+      <view class="badge">6</view>
+    </view>
+
+    <view class="nav-item nav-item-center" bindtap="goVoice">
+      <view class="nav-center-bg"></view>
+      <image src="/assets/icon-mic.svg" class="nav-icon nav-icon-center"></image>
+    </view>
+
+    <view class="nav-item" bindtap="goCalendar">
+      <image src="/assets/icon-calendar.svg" class="nav-icon"></image>
+    </view>
+
+    <view class="nav-item nav-item-active" bindtap="goUrgence">
+      <image src="/assets/icon-ambulance.svg" class="nav-icon"></image>
+    </view>
+  </view>
+</view>

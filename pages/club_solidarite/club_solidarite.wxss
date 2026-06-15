@@ -1,0 +1,368 @@
+/* ============================================================
+   Club Solidarité Page – club_solidarite.wxss
+   ============================================================ */
+
+.solidarite-container {
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mobile-card {
+  width: 750rpx;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 57.69rpx;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  z-index: 15;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+  z-index: 10;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 15;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.avatar-bubble-tail {
+  width: 0;
+  height: 0;
+  border-left: 8rpx solid transparent;
+  border-right: 8rpx solid transparent;
+  border-top: 8rpx solid #c19a89;
+  margin-top: -2rpx;
+}
+
+/* ── Hero Section ────────────────────────────────────────── */
+.solidarite-hero-area {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.solidarite-hero-main {
+  position: relative;
+  width: 100%;
+  height: 350rpx;
+}
+
+.solidarite-hero-img {
+  width: 100%;
+  height: 100%;
+}
+
+.solidarite-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-left: 40rpx;
+  padding-bottom: 40rpx;
+  box-sizing: border-box;
+}
+
+.solidarite-hero-title {
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 800;
+  max-width: 500rpx;
+  margin-bottom: 20rpx;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.5);
+  letter-spacing: 1rpx;
+}
+
+.solidarite-hero-btn {
+  width: 180rpx;
+  height: 54rpx;
+  background: #ffffff;
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+}
+
+.solidarite-hero-btn-txt {
+  color: #000000;
+  font-size: 22rpx;
+  font-weight: 800;
+  letter-spacing: 1rpx;
+}
+
+/* ── Date Navigation Strip ───────────────────────────────── */
+.solidarite-date-strip {
+  height: 75rpx;
+  background: #C6B9C8; /* Muted Lilac/Mauve */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.date-arrow-btn {
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 50%;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+  color: #9c7661;
+  font-weight: bold;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.date-center {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  flex: 1;
+  justify-content: center;
+}
+
+.date-calendar-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.date-text {
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #3a3a3a;
+  letter-spacing: 1rpx;
+}
+
+/* ── Main Title Section ──────────────────────────────────── */
+.solidarite-main-header {
+  flex-shrink: 0;
+  padding: 28rpx 40rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.solidarite-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  width: 100%;
+}
+
+.solidarite-title-img-script {
+  height: 30rpx;
+}
+
+.solidarite-title-img-solidarite {
+  height: 22rpx;
+}
+
+/* ── Grid & Scrollable Container ─────────────────────────── */
+.solidarite-grid-container {
+  display: flex;
+  flex: 1;
+  height: 0;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  gap: 20rpx;
+  margin-bottom: 110rpx;
+}
+
+.content-scroll {
+  flex: 1;
+  height: 100%;
+}
+
+.solidarite-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 232rpx);
+  gap: 18rpx;
+  padding-bottom: 30rpx;
+  justify-content: center;
+}
+
+/* ── Solidarite Cards ─────────────────────────────────────── */
+.solidarite-card {
+  width: 232rpx;
+  height: 298rpx;
+  border-radius: 18rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+}
+
+.solidarite-card-img-wrap {
+  width: 100%;
+  flex: 1;
+  background: #F2EFF2; /* Very Light Lilac */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.solidarite-card-img {
+  width: 100%;
+  height: 100%;
+}
+
+.solidarite-card-footer {
+  width: 100%;
+  height: 60rpx;
+  background: #C6B9C8; /* Muted Lilac/Mauve footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solidarite-card-label {
+  font-size: 20rpx;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 2rpx;
+  line-height: 1;
+}
+
+/* ── Custom Scrollbar ────────────────────────────────────── */
+.solidarite-scrollbar {
+  width: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+  height: 100%;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.solidarite-scroll-arrow {
+  width: 40rpx;
+  height: 40rpx;
+  background: #f2f2f2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20rpx;
+  color: #b3b3b3;
+}
+
+.solidarite-scroll-track {
+  width: 14rpx;
+  flex: 1;
+  background: #ffffff;
+  border: 1rpx solid #e6e6e6;
+  border-radius: 10rpx;
+  position: relative;
+  height: 100%;
+}
+
+.solidarite-scroll-thumb {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  background: #C6B9C8; /* Muted Lilac/Mauve thumb */
+  border-radius: 10rpx;
+  transition: top 0.05s linear;
+}
+
+.bottom-spacer {
+  height: 100rpx;
+}

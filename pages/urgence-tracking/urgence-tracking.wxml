@@ -1,0 +1,69 @@
+<view class="urgence-container" style="padding-top: {{statusBarHeight}}px;">
+  <!-- Header -->
+  <view class="header">
+    <view class="back-btn" bindtap="onBackTap">
+      <view class="back-circle">
+        <text class="back-arrow">←</text>
+      </view>
+      <text class="back-text">Retour</text>
+    </view>
+    
+    <image class="logo" src="../../assets/logo-tiqqa-header.png" mode="aspectFit"></image>
+
+    <view class="avatar-bubble" bindtap="onProfileTap">
+      <view class="avatar-wrap avatar-wrap--bubble">
+        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- Body -->
+  <scroll-view class="body-scroll" scroll-y="true">
+    <!-- Top Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Hero Section -->
+    <view class="hero-section">
+      <view class="operator-container">
+        <image class="operator-img" src="../../assets/center-appel.png" mode="aspectFit"></image>
+      </view>
+      <view class="question-bubble">
+        <text class="bubble-text">Etes-vous sur de vouloir déclencher <text class="text-red">l'Appel d'urgence?</text></text>
+      </view>
+    </view>
+
+    <!-- Bottom Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Tracking Section -->
+    <view class="tracking-content">
+      <!-- Location Input -->
+      <view class="location-box">
+        <view class="location-info">
+          <text class="location-label">Lieu</text>
+          <text class="location-value">350 B......</text>
+        </view>
+        <view class="edit-btn">
+          <!-- Simple pencil icon placeholder -->
+          <view class="pencil-icon">✎</view>
+        </view>
+      </view>
+
+      <!-- Map Area -->
+      <view class="map-container">
+        <image class="map-img" src="../../assets/map-tracking.png" mode="aspectFill"></image>
+      </view>
+
+      <!-- Buttons -->
+      <view class="action-buttons">
+        <view class="btn-confirm-final" bindtap="onFinalConfirm">Confirmez</view>
+        <view class="btn-activate-loc" bindtap="onActivateLoc">Activer localisation</view>
+      </view>
+    </view>
+
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+
+  <!-- Bottom Navigation -->
+  <bottom-nav-bar variant="fixed" active-tab="emergency" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+</view>

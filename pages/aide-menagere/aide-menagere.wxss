@@ -1,0 +1,302 @@
+/* ========== Container ========== */
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #F8FAFC;
+}
+
+.scroll-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.scroll-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== Header ========== */
+.header-section {
+  background: #ffffff;
+  padding-bottom: 20rpx;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 32rpx 12rpx;
+}
+
+.back-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 27rpx;
+  background: #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-arrow-txt {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.back-label {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.logo {
+  width: 150rpx;
+  height: 60rpx;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar-bubble {
+  position: relative;
+  width: 100rpx;
+  height: 110rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-img {
+  width: 100rpx;
+  height: 110rpx;
+  display: block;
+}
+
+.avatar-tail {
+  display: none;
+}
+
+/* ========== Hero Image ========== */
+.hero-image-section {
+  width: 100%;
+  height: 440rpx;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  display: block;
+}
+
+/* ========== Date Strip ========== */
+.date-strip {
+  background-color: #D4EBF8;
+  padding: 18rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.date-icon {
+  width: 38rpx;
+  height: 38rpx;
+  opacity: 0.8;
+}
+
+.date-text {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.5rpx;
+}
+
+/* ========== Title ========== */
+.title-container {
+  display: flex;
+  justify-content: center;
+  padding: 36rpx 0 24rpx;
+}
+
+.title-text {
+  font-size: 32rpx;
+  font-weight: 800;
+  color: #3B82B5;
+  letter-spacing: 1.5rpx;
+  text-transform: uppercase;
+}
+
+/* ========== Cards and Scrollbar Row ========== */
+.cards-indicator-row {
+  display: flex;
+  flex-direction: row;
+  padding: 0 10rpx 0 50rpx;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.cards-scroll-view {
+  flex: 1;
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cards-scroll-inner {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 18rpx;
+  padding-bottom: 20rpx;
+}
+
+/* Option Card */
+.option-card {
+  width: 262rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.10);
+  border: 1.5rpx solid rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image-wrap {
+  width: 100%;
+  height: 230rpx;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+
+.card-info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14rpx 0;
+  gap: 4rpx;
+}
+
+.box-appartement {
+  background-color: #CEE8F8;
+}
+
+.box-villa {
+  background-color: #9EC9E8;
+}
+
+.card-label {
+  font-size: 16rpx;
+  font-weight: 700;
+  color: #1A5A88;
+  letter-spacing: 0.8rpx;
+  text-transform: uppercase;
+}
+
+.card-price {
+  font-size: 32rpx;
+  font-weight: 900;
+  color: #1A5A88;
+  line-height: 1.1;
+}
+
+.card-btn {
+  background: #2C7CB3;
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 20rpx 20rpx;
+}
+
+.card-btn:active {
+  opacity: 0.9;
+}
+
+.card-btn-txt {
+  color: #ffffff;
+  font-size: 18rpx;
+  font-weight: 900;
+  letter-spacing: 0.5rpx;
+}
+
+/* ========== Scroll Indicator ========== */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  flex-shrink: 0;
+  padding-top: 0;
+}
+
+.scroll-arrow {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #EFEFEF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1rpx 4rpx rgba(0, 0, 0, 0.06);
+}
+
+.scroll-arrow-text {
+  font-size: 16rpx;
+  color: #999999;
+  font-weight: bold;
+}
+
+.scroll-track {
+  width: 20rpx;
+  height: 200rpx;
+  background: #FFFFFF;
+  border-radius: 10rpx;
+  position: relative;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.08);
+  border: 1.5rpx solid #E0EAF3;
+}
+
+.scroll-thumb {
+  position: absolute;
+  left: 3rpx;
+  right: 3rpx;
+  top: 20rpx;
+  height: 70rpx;
+  background: #3B82B5;
+  border-radius: 8rpx;
+}
+
+/* ========== Bottom Spacer ========== */
+.bottom-spacer {
+  height: 0;
+}

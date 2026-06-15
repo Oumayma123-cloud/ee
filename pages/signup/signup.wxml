@@ -1,0 +1,99 @@
+<view class="page">
+  <device-status-bar fillStatusBar="{{true}}" />
+  <!-- HEADER -->
+  <view class="header">
+
+    <view class="logo-container">
+      <image 
+        class="logo-img"
+        src="/assets/logo-tiqqa-header.png"
+        mode="widthFix"
+      />
+    </view>
+
+    <view class="progress-wrapper">
+      <view class="progress-bar">
+        <view class="progress-active"></view>
+      </view>
+      <text class="step">ETAPE 1/3</text>
+    </view>
+
+  </view>
+
+  <!-- CARD -->
+  <view class="card">
+
+    <text class="title">Inscription</text>
+    <text class="subtitle">
+      Saisissez vos informations personnelles
+    </text>
+
+    <input
+      class="input"
+      placeholder="Entrer votre prénom"
+      placeholder-class="ph"
+      value="{{firstName}}"
+      bindinput="onFirstNameInput"
+    />
+    <input
+      class="input"
+      placeholder="Entrer votre nom"
+      placeholder-class="ph"
+      value="{{lastName}}"
+      bindinput="onLastNameInput"
+    />
+
+    <!-- PHONE BOX -->
+    <view class="phone-box">
+
+      <image
+        class="operator-logo"
+        src="{{operatorLogo}}"
+        mode="aspectFit"
+        bindtap="openSimSelector"
+      />
+
+      <input
+        class="phone-input"
+        placeholder="Numéro de téléphone"
+        placeholder-class="ph"
+        maxlength="10"
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+      />
+
+    </view>
+
+    <input
+      class="input"
+      placeholder="Entrer votre CNI"
+      placeholder-class="ph"
+      value="{{cin}}"
+      bindinput="onCinInput"
+    />
+    <input
+      class="input"
+      placeholder="Entrer votre email"
+      placeholder-class="ph"
+      value="{{email}}"
+      bindinput="onEmailInput"
+    />
+
+    <view class="check-row">
+      <checkbox-group bindchange="onTermsChange">
+        <checkbox value="accepted" color="#B88E7E" checked="{{acceptTerms}}" />
+      </checkbox-group>
+      <text class="check-text">
+        J'accepte les conditions générale d'utilisation
+      </text>
+    </view>
+
+    <button class="btn" bindtap="goToVerification">
+      Suivant
+    </button>
+
+  </view>
+
+  <view class="footer-line"></view>
+
+</view>

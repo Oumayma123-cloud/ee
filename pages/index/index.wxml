@@ -1,0 +1,17 @@
+<view class="container">
+    <!-- Decorative motif background -->
+    <image src="/assets/motif-tiqqa.png" class="decor-circle" mode="aspectFit"></image>
+
+    <!-- Branding / Logo -->
+    <view class="branding">
+        <image src="/assets/logo-tiqqa.png" class="logo" mode="widthFix"></image>
+    </view>
+
+    <!-- Couple Image -->
+    <view class="image-container">
+        <image src="/assets/home-hero.png" class="couple" mode="widthFix"></image>
+    </view>
+
+    <!-- Home Indicator -->
+    <view class="home-indicator"></view>
+</view>

@@ -1,0 +1,92 @@
+<view class="page">
+  <view class="mobile-card">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <view class="content-scroll">
+      <view class="payment-hero-frame">
+        <view class="hero-strip-top">
+          <view class="hero-strip-top-caret"></view>
+        </view>
+        <view class="payment-hero">
+          <image class="hero-img" src="/assets/hero/hero-home2.png" mode="scaleToFill"></image>
+          <view class="hero-overlay">
+            <text class="hero-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+            <view class="hero-cta" bindtap="onHeroCta">
+              <text class="hero-cta-text">ACCÉDER</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="mint-from-hero">
+        <view class="hero-strip">
+          <view class="hero-strip-caret"></view>
+        </view>
+
+        <view class="detail-mint">
+          <view class="statut-card">
+            <view class="statut-card-head">
+              <text class="statut-card-title">paiement effectué</text>
+              <view class="statut-check-wrap">
+                <text class="statut-check">✓</text>
+              </view>
+            </view>
+            <view class="statut-body">
+              <view class="statut-body-inner">
+                <text class="statut-txt statut-txt--14">la date et l'heure initiales ne sont plus valables. Merci de bien vouloir </text>
+                <text class="statut-txt statut-txt--20">modifier votre RDV</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="statut-actions">
+            <view
+              class="statut-btn"
+              hover-class="statut-btn--hover"
+              hover-stay-time="100"
+              bindtap="onModifierRdv"
+            >MODIFIER LE RDV</view>
+            <view
+              class="statut-btn"
+              hover-class="statut-btn--hover"
+              hover-stay-time="100"
+              bindtap="onAnnulerRemboursement"
+            >ANNULER LE RDV ET REMBOURSEMENT</view>
+          </view>
+          <view class="detail-mint-spacer"></view>
+        </view>
+      </view>
+    </view>
+
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+
+  <view class="agency-modal-root" wx:if="{{showAgencyModal}}">
+    <view class="agency-modal-mask" catchtouchmove="noop"></view>
+    <view class="agency-modal-panel" catchtouchmove="noop">
+      <view class="agency-modal-text-wrap">
+        <text class="agency-modal-para">Rendez-vous dans l'agence Tasshilat la plus proche avec votre code de paiement pour finaliser la réservation. Veuillez vous y présenter muni(e) de ce code <text class="agency-modal-code">{{paymentCode}}</text></text>
+      </view>
+      <view class="agency-modal-close" bindtap="onCloseAgencyModal" hover-class="agency-modal-close--active" hover-stay-time="80">
+        <text class="agency-modal-x">×</text>
+      </view>
+    </view>
+  </view>
+</view>

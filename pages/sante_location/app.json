@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/sante_location/sante_location"
+  ],
+
+  "permission": {
+    "scope.userLocation": {
+      "desc": "Nous avons besoin de votre localisation"
+    }
+  }
+}

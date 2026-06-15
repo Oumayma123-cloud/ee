@@ -1,0 +1,13 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  padding: 40rpx 32rpx;
+}
+
+.log-item {
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: var(--color-text-secondary);
+  border-bottom: 1rpx solid var(--color-border);
+}
+  

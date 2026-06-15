@@ -1,0 +1,60 @@
+<!-- ========== Page Eau et Electricité ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" enhanced="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <tiqqa-header bind:back="onBack" />
+
+      <!-- 2. Blue Banner -->
+      <view class="blue-banner">
+        <text class="banner-script">Paiement</text>
+        <text class="banner-bold"> FACTURES</text>
+      </view>
+
+      <!-- 3. Category Pill -->
+      <view class="category-pill-row">
+        <view class="category-pill">
+          <image class="pill-icon" src="/assets/icons/icon-eau-elec.svg" mode="aspectFit"></image>
+          <text class="pill-label">Eau et Electricité</text>
+        </view>
+      </view>
+
+      <!-- 4. Operators List -->
+      <view class="operators-list">
+
+        <view class="operator-card" bindtap="onOperatorTap" data-id="srm-casa">
+          <image class="operator-card-illustration" src="/assets/icons/srm-cs-card-img.png" mode="aspectFit"></image>
+          <view class="operator-info">
+            <text class="operator-name">SRM_Casabalnca_Settat</text>
+            <text class="operator-subtitle">Eau & Electricite</text>
+          </view>
+          <view class="chevron-down-bold"></view>
+        </view>
+
+        <view class="operator-card" bindtap="onOperatorTap" data-id="rak">
+          <image class="operator-card-illustration" src="/assets/icons/rak-card-img.png" mode="aspectFit"></image>
+          <view class="operator-info">
+            <text class="operator-name">RAK</text>
+            <text class="operator-subtitle">Eau et Electricite</text>
+          </view>
+          <view class="chevron-down-bold"></view>
+        </view>
+
+        <view class="operator-card" bindtap="onOperatorTap" data-id="srm-rabat">
+          <image class="operator-card-illustration" src="/assets/icons/srm-rabat-card-img.png" mode="aspectFit"></image>
+          <view class="operator-info">
+            <text class="operator-name">SRM RABAT-SALE-KENITRA</text>
+            <text class="operator-subtitle">Eau & Electricite</text>
+          </view>
+          <view class="chevron-down-bold"></view>
+        </view>
+
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+</view>

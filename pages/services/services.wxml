@@ -1,0 +1,102 @@
+<view class="container">
+
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false" bindscroll="onScroll" scroll-top="{{scrollTopValue}}" scroll-with-animation="true">
+    <view class="scroll-inner">
+
+      <!-- 1. Header (White Background) -->
+      <tiqqa-header bind:back="onBack" />
+
+      <!-- 2. Light Blue Strip -->
+      <view class="top-strip"></view>
+
+      <!-- 3. Blue Zone (Hero Banner) -->
+      <view class="hero-section">
+        <view class="hero-window">
+          <!-- Window Header (Light blue with dots) -->
+          <view class="hero-window-header">
+            <view class="window-dots">
+              <view class="window-dot"></view>
+              <view class="window-dot window-dot--active"></view>
+              <view class="window-dot"></view>
+              <view class="window-dot"></view>
+            </view>
+          </view>
+          
+          <!-- Window Body (Image + Overlay) -->
+          <view class="hero-window-body">
+            <image class="hero-bg" src="/assets/hero-final.png" mode="aspectFill"></image>
+            <view class="hero-overlay">
+              <text class="hero-title">SIMPLIFIEZ-VOUS LA VIE</text>
+              <view class="hero-btn" bindtap="onHeroCta">
+                <text class="hero-btn-txt">ACCÉDER</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 4. Date Zone (Light Blue) -->
+      <view class="date-zone">
+        <view class="date-content">
+          <image class="date-icon" src="/assets/icons/icon-calendar.png" mode="aspectFit"></image>
+          <text class="date-text">MER 21 FÉV 2025 - 13:30</text>
+        </view>
+      </view>
+
+      <!-- 5. Services Zone (White) -->
+      <view class="services-section">
+        <view class="section-title-row">
+          <text class="section-title-script">Mes</text>
+          <text class="section-title-bold"> SERVICES</text>
+        </view>
+
+        <view class="grid-container">
+          <view class="services-grid">
+            <!-- Aide Ménagère -->
+            <view class="service-card" bindtap="onServiceTap" data-type="aide-menagere">
+              <view class="service-card-photo-wrap">
+                <image class="service-card-photo" src="/assets/aide_menager.png" mode="aspectFill"></image>
+              </view>
+              <text class="service-card-label">AIDE\nMENAGERE</text>
+            </view>
+
+            <!-- Paiement Factures -->
+            <view class="service-card" bindtap="onServiceTap" data-type="paiement-factures">
+              <view class="service-card-photo-wrap">
+                <image class="service-card-photo" src="/assets/payement_de_facture.png" mode="aspectFill"></image>
+              </view>
+              <text class="service-card-label">PAIEMENT\nFACTURES</text>
+            </view>
+
+            <!-- Démarches Administratives -->
+            <view class="service-card" bindtap="onServiceTap" data-type="demarches-admin">
+              <view class="service-card-photo-wrap">
+                <image class="service-card-photo" src="/assets/Demarche_administrative.png" mode="aspectFill"></image>
+              </view>
+              <text class="service-card-label">DEMARCHES\nADMINISTRATIVES</text>
+            </view>
+
+          </view>
+
+          <!-- Scroll indicator -->
+          <view class="scroll-indicator">
+            <view class="scroll-arrow" bindtap="onScrollUp">
+              <text class="scroll-arrow-text">↑</text>
+            </view>
+            <view class="scroll-track">
+              <view class="scroll-thumb" style="top: {{scrollThumbTop}}rpx;"></view>
+            </view>
+            <view class="scroll-arrow" bindtap="onScrollDown">
+              <text class="scroll-arrow-text">↓</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+</view>

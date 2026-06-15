@@ -1,0 +1,77 @@
+<!-- ========== Page Étapes de Renouvellement Passeport ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" enhanced="true" show-scrollbar="false" bindscroll="onScroll">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <tiqqa-header bind:back="onBack" />
+
+      <!-- 2. Body -->
+      <view class="body-section">
+
+        <!-- Titre -->
+        <view class="title-row">
+          <text class="title-script">{{titleScript}}</text>
+          <text class="title-bold"> {{titleBold}}</text>
+        </view>
+
+        <!-- Layout accordéon + scrollbar -->
+        <view class="accordion-layout-row">
+
+          <view class="accordion-list" style="{{showScrollbar ? '' : 'margin-right: 0px;'}}">
+            <block wx:for="{{steps}}" wx:for-index="idx" wx:for-item="step" wx:key="id">
+
+              <view class="step-wrapper">
+                
+                <!-- Bouton Header -->
+                <view class="header-button {{step.active ? 'header-button--active' : (step.highlightBlue ? 'header-button--highlight' : 'header-button--inactive')}}" bindtap="toggleStep" data-index="{{idx}}">
+                  <text class="item-title {{step.active ? 'item-title--active' : (step.highlightBlue ? 'item-title--highlight' : 'item-title--inactive')}}">{{step.title}}</text>
+                  <view class="chevron {{step.active ? 'chevron--active' : (step.highlightBlue ? 'chevron--highlight' : 'chevron--inactive')}}"></view>
+                </view>
+
+                <!-- Contenu Body (affiché en dessous, sans cadre) -->
+                <view wx:if="{{step.active}}" class="body-content">
+                  <rich-text class="item-rich-content" nodes="{{step.richContent}}"></rich-text>
+                </view>
+
+              </view>
+
+            </block>
+          </view>
+
+          <!-- Scrollbar custom -->
+          <view class="custom-scrollbar" wx:if="{{showScrollbar}}" style="margin-top: {{scrollbarMarginTop}}px;">
+            <view class="scrollbar-arrow-up">
+              <text class="scroll-arrow-char">↑</text>
+            </view>
+            <view class="scrollbar-track" style="height: {{scrollbarTrackHeight}}px;">
+              <view class="scrollbar-thumb" style="top: {{scrollThumbTop}}px; height: {{scrollbarThumbHeight}}px;"></view>
+            </view>
+            <view class="scrollbar-arrow-down">
+              <text class="scroll-arrow-char">↓</text>
+            </view>
+          </view>
+
+        </view>
+
+        <!-- Aide & Bouton -->
+        <view class="help-section" wx:if="{{showHelpSection}}">
+          <view class="help-text-container">
+            <text class="help-text-red">Besoin d'aide ? </text>
+            <text class="help-text-gray">Nos agents sont là pour vous</text>
+          </view>
+          <button class="call-btn" bindtap="onCallAgent">
+            <image class="call-btn-icon" src="/assets/icons/phone-accept.svg" mode="aspectFit"></image>
+            <text class="call-btn-txt">Appelez maintenant</text>
+          </button>
+        </view>
+
+        <view class="bottom-spacer"></view>
+      </view>
+
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" nav-class="custom-bottom-nav" bind:navtap="onNavTap" />
+</view>
+

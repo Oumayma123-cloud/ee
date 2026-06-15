@@ -1,0 +1,136 @@
+<view class="page">
+  <scroll-view
+    class="screen-scroll"
+    style="height: {{scrollViewHeight}}px;"
+    scroll-y
+    scroll-with-animation
+    scroll-top="{{scrollTop}}"
+    scroll-into-view="{{scrollIntoView}}"
+    bindscroll="onMainScroll"
+  >
+    <view class="screen">
+      <view class="dashboard-top-stack" style="{{dashboardTopStackStyle}}">
+      <view class="header-group" style="{{headerGroupLayoutStyle}}">
+        <view
+          class="header-inner"
+          style="padding-left: {{headerPadLeft}}px; padding-right: {{headerPadRight}}px;"
+        >
+          <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+          <view class="nav-band" style="padding-bottom: {{navBandBottomPad}}px;">
+            <view class="top-row" style="width: {{topRowWidthPx}}px;">
+              <view class="top-slot-back">
+                <view class="back-wrap" bindtap="onBack" style="{{backWrapStyle}}">
+                  <view class="back-circle">
+                    <text class="back-arrow">←</text>
+                  </view>
+                  <text class="back-text">Retour</text>
+                </view>
+              </view>
+              <view class="top-logo-slot" style="{{logoSlotStyle}}">
+                <image
+                  class="logo"
+                  src="/assets/logo/logo-tiqqa.png"
+                  mode="aspectFit"
+                ></image>
+              </view>
+            </view>
+            <view class="top-slot-avatar nav-band-avatar" style="{{avatarSlotStyle}}">
+              <view class="avatar-wrap avatar-wrap--overlap" bindtap="onProfileTap">
+                <image
+                  class="avatar"
+                  src="/assets/avatar/avatar-user.png"
+                  mode="aspectFill"
+                ></image>
+              </view>
+            </view>
+            <view class="header-mint-strip" style="{{headerMintStripStyle}}"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="hero-block" style="{{heroBlockStyle}}">
+        <image
+          class="hero-img"
+          src="/assets/hero/hero-home2.png"
+          mode="aspectFit"
+          lazy-load="{{false}}"
+        ></image>
+        <view class="hero-overlay">
+          <text class="hero-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+          <view class="hero-cta" bindtap="onHeroCta">
+            <text class="hero-cta-text">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+      </view>
+
+      <view class="hero-carousel-strip" style="{{heroCarouselStripStyle}}">
+        <view
+          class="carousel-btn"
+          style="width: {{carouselBtnPx}}px; height: {{carouselBtnPx}}px; border-radius: {{carouselBtnRadiusPx}}px;"
+          bindtap="onCarouselPrev"
+        >
+          <text class="carousel-arrow-txt">←</text>
+        </view>
+        <view
+          class="carousel-btn"
+          style="width: {{carouselBtnPx}}px; height: {{carouselBtnPx}}px; border-radius: {{carouselBtnRadiusPx}}px;"
+          bindtap="onCarouselNext"
+        >
+          <text class="carousel-arrow-txt">→</text>
+        </view>
+      </view>
+
+      <view class="main-surface">
+        <view class="section-heading-row">
+          <view class="section-dot"></view>
+          <view id="ma-sante" class="section-title-wrap">
+            <image
+              class="section-ma-sante-logo"
+              src="/assets/logo/ma-sante.png"
+              mode="aspectFit"
+            ></image>
+          </view>
+        </view>
+
+        <view class="service-grid">
+          <view class="service-card card-1" data-type="on-call" bindtap="onServiceTap">
+            <image class="service-card-image" src="/assets/services/service-doctor.png" mode="aspectFill"></image>
+            <text class="service-card-label">Médecin de garde</text>
+          </view>
+          <view class="service-card card-2" data-type="home-doctor" bindtap="onServiceTap">
+            <image class="service-card-image" src="/assets/services/service-home-doctor.png" mode="aspectFill"></image>
+            <text class="service-card-label">Médecin à domicile</text>
+          </view>
+          <view class="service-card card-3" data-type="nurse" bindtap="onServiceTap">
+            <image class="service-card-image service-card-image--cover" src="/assets/services/service-nurse.png" mode="aspectFill"></image>
+          </view>
+          <view class="service-card card-4" data-type="emergency" bindtap="onServiceTap">
+            <image class="service-card-image service-card-image--cover" src="/assets/services/service-ambulance.png" mode="aspectFill"></image>
+          </view>
+          <view class="service-card-full" data-type="ma-sante" bindtap="onServiceTap">
+            <image class="service-card-image-full" src="/assets/services/service-medicine.png" mode="aspectFill"></image>
+            <text class="service-card-label-full">MA SANTÉ</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="scroll-bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <!-- Ascenseur Figma : cercles ↑↓ + piste blanche + curseur vert -->
+  <view class="scroll-rail" style="{{scrollRailPositionStyle}}">
+    <view class="scroll-rail-btn" bindtap="onScrollRailUp" hover-class="scroll-rail-btn--hover">
+      <text class="scroll-rail-arrow">↑</text>
+    </view>
+    <view class="scroll-rail-track" style="{{scrollRailTrackStyle}}">
+      <view class="scroll-rail-thumb" style="top: {{scrollThumbTopPct}}%;"></view>
+    </view>
+    <view class="scroll-rail-btn" bindtap="onScrollRailDown" hover-class="scroll-rail-btn--hover">
+      <text class="scroll-rail-arrow">↓</text>
+    </view>
+  </view>
+
+  <bottom-nav-bar variant="fixed" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+</view>

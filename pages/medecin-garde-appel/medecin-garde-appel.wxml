@@ -1,0 +1,34 @@
+<view class="container">
+
+  <!-- Zone texte -->
+  <view class="call-info-area">
+    <text class="call-title">APPEL ENTRANT</text>
+    <text class="call-subtitle">MÉDECIN DE GARDE</text>
+  </view>
+
+  <!-- Espace vide central -->
+  <view class="call-spacer"></view>
+
+  <!-- Boutons ACCEPTER / REFUSER -->
+  <view class="call-actions">
+
+    <view class="call-action-item">
+      <text class="action-label">ACCEPTER</text>
+      <view class="call-btn call-btn--accept" bindtap="onAccept">
+        <image class="phone-img" src="/assets/icons/phone-accept.svg" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <view class="call-action-item">
+      <text class="action-label">REFUSER</text>
+      <view class="call-btn call-btn--refuse" bindtap="onRefuse">
+        <image class="phone-img phone-img--refuse" src="/assets/icons/phone-refuse.svg" mode="aspectFit"></image>
+      </view>
+    </view>
+
+  </view>
+
+  <!-- Bottom Navigation -->
+  <bottom-nav-bar variant="fixed" message-count="1" bind:navtap="onNavTap" />
+
+</view>

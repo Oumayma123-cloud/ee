@@ -1,0 +1,89 @@
+<view class="container">
+  <view class="shell">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  <view class="banner-area">
+    <view class="banner-top-bar"></view>
+    <view class="banner-section">
+      <image src="/assets/banner1.png" class="banner-img" mode="aspectFill"></image>
+      <view class="banner-content">
+        <text class="banner-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+        <view class="btn-acceder">ACCÉDER</view>
+      </view>
+    </view>
+    <view class="banner-nav-bar">
+      <view class="nav-arrow-wrapper">
+        <text class="arrow-text-banner">←</text>
+      </view>
+      <view class="nav-arrow-wrapper" bindtap="goToSanteCalendar">
+        <text class="arrow-text-banner">→</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">
+    <image src="/assets/ma sante.png" mode="aspectFit" class="section-title-img"></image>
+  </view>
+
+  <view class="main-content-wrapper">
+    <view class="services-grid">
+      <view class="service-card color-1" bindtap="goToMedecinGarde">
+        <image src="/assets/infirmier.png" mode="aspectFit"></image>
+        <text>MÉDECIN\nDE GARDE</text>
+      </view>
+      <view class="service-card color-2" bindtap="goToMedecinHoraire">
+        <image src="/assets/medecin1.png" mode="aspectFit"></image>
+        <text>MÉDECIN\nÀ DOMICILE</text>
+      </view>
+      <view class="service-card color-3" bindtap="goToSanteCalendar">
+        <image src="/assets/inf-dom.png" mode="aspectFit"></image>
+        <text>INFIRMIER À\nDOMICILE</text>
+      </view>
+      <view class="service-card color-4" bindtap="goToUrgence">
+        <image src="/assets/ambulance.png" mode="aspectFit"></image>
+        <text class="white-text">URGENCE 24/7</text>
+      </view>
+      <view class="service-card color-5" bindtap="goToSuiviMedicaments">
+        <image src="/assets/medicament.png" mode="aspectFit"></image>
+        <text>SUIVI\nMÉDICAMENTS</text>
+      </view>
+    </view>
+
+    <view class="side-scrollbar">
+      <view class="scroll-arrow-up" bindtap="scrollUp">
+        <text class="arrow-text-scroll">↑</text>
+      </view>
+      <view class="scroll-track" bindtap="onTrackTap">
+        <view
+          class="scroll-handle"
+          style="top: {{scrollHandleTop}}px;"
+          bindtouchstart="onHandleTouchStart"
+          bindtouchmove="onHandleTouchMove"
+          bindtap="onTrackTap"
+        ></view>
+      </view>
+      <view class="scroll-arrow-down" bindtap="scrollDown">
+        <text class="arrow-text-scroll">↓</text>
+      </view>
+    </view>
+  </view>
+
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

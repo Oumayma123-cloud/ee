@@ -1,0 +1,66 @@
+<view class="urgence-container" style="padding-top: {{statusBarHeight}}px;">
+  <!-- Header -->
+  <view class="header">
+    <view class="back-btn" bindtap="onBackTap">
+      <view class="back-circle">
+        <text class="back-arrow">←</text>
+      </view>
+      <text class="back-text">Retour</text>
+    </view>
+    
+    <image class="logo" src="../../assets/logo-tiqqa-header.png" mode="aspectFit"></image>
+
+    <view class="avatar-bubble" bindtap="onProfileTap">
+      <view class="avatar-wrap avatar-wrap--bubble">
+        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+  <!-- Body -->
+  <scroll-view class="body-scroll" scroll-y="true">
+    <!-- Top Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Hero Section (Dynamic) -->
+    <view class="hero-section">
+      <view class="operator-container">
+        <!-- Switch between Operator and Ambulance based on current step data -->
+        <image wx:if="{{stepsData[currentStep-1].heroType === 'operator'}}" class="operator-img" src="../../assets/center-appel.png" mode="aspectFit"></image>
+        <image wx:else class="ambulance-hero-img" src="../../assets/urg.png" mode="aspectFit"></image>
+      </view>
+      <view class="question-bubble">
+        <text class="bubble-text bubble-text-small">{{stepsData[currentStep-1].message}}</text>
+      </view>
+    </view>
+
+    <!-- Bottom Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Timeline Content (Dynamic) -->
+    <view class="timeline-container">
+      <view class="timeline-track">
+        <view class="timeline-line"></view>
+        <!-- The dot moves based on the current step. Each step is roughly 100rpx + gap. -->
+        <view class="timeline-dot-active" style="top: {{30 + (currentStep-1) * 115}}rpx"></view>
+      </view>
+
+      <view class="steps-list">
+        <!-- Show all steps. Previous steps will be marked differently if needed, but for now just show them all. -->
+        <block wx:for="{{stepsData}}" wx:key="id">
+          <view class="step-item {{item.id === currentStep ? 'step-active' : ''}} {{item.id < currentStep ? 'step-completed' : ''}}" bindtap="onStepTap" data-step="{{item.id}}">
+            <view class="step-content-row">
+              <text class="step-text">{{item.title}}</text>
+              <view class="check-mark-circle" wx:if="{{item.id === currentStep}}">✓</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+
+  <!-- Bottom Navigation -->
+  <bottom-nav-bar variant="fixed" active-tab="emergency" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+</view>

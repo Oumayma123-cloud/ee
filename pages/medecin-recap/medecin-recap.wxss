@@ -1,0 +1,233 @@
+page {
+  height: 100%;
+  background: #1d1f23;
+}
+
+.page-recap {
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 16rpx 0 calc(20rpx + env(safe-area-inset-bottom));
+  background: #1d1f23;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.mobile-card {
+  margin: 0 auto;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #ffffff;
+  box-shadow: 0 12rpx 48rpx rgba(0, 0, 0, 0.22);
+}
+
+.mobile-card--figma {
+  width: 750rpx;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 57.6923076923rpx;
+  min-height: 1619.2307692308rpx;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* New Header Styles from Photo */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.recap-green-zone {
+  width: 773.0769230769rpx;
+  height: 801.9230769231rpx;
+  margin-left: -11.5384615385rpx;
+  flex-shrink: 0;
+  background: #c1e2cb;
+  padding: 40rpx 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.recap-panel {
+  width: 594.2307692308rpx;
+  height: auto;
+  min-height: 713.4615384615rpx;
+  margin-left: 52.3076923077rpx;
+  margin-top: 0rpx;
+  background: #ffffff;
+  border-radius: 40rpx;
+  padding: 46.1538461538rpx 42.3076923077rpx;
+  box-sizing: border-box;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.05);
+}
+
+.recap-title {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 36rpx;
+  color: #2f7b43;
+  margin-bottom: 40rpx;
+  text-decoration: underline;
+  text-decoration-color: #2f7b43;
+  text-underline-offset: 8rpx;
+}
+
+.recap-item {
+  margin-bottom: 24rpx;
+}
+
+.recap-item--last {
+  margin-bottom: 0;
+}
+
+.recap-label {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 4rpx;
+}
+
+.recap-value {
+  display: block;
+  font-size: 30rpx;
+  color: #616161;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.confirm-area--recap {
+  flex-shrink: 0;
+  margin-top: 100rpx;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8rpx 40rpx 54rpx;
+  box-sizing: border-box;
+}
+
+.confirm-btn {
+  width: 607.6923076923rpx;
+  max-width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+  background: #77b080;
+  border-radius: 60rpx;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 20rpx rgba(119, 176, 128, 0.3);
+}
+
+.bottom-nav.bottom-nav--in-card {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0 0 57.6923076923rpx 57.6923076923rpx;
+  align-self: stretch;
+  border-top: none;
+  box-shadow: none;
+}

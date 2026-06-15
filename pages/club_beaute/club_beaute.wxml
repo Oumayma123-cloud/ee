@@ -1,0 +1,119 @@
+<view class="beaute-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="beaute-hero-area">
+      <view class="beaute-hero-main">
+        <image class="beaute-hero-img" src="/assets/club.png" mode="aspectFill"></image>
+        <view class="beaute-hero-overlay">
+          <text class="beaute-hero-title">TISSEZ DES LIENS DE CONFIANCE</text>
+          <view class="beaute-hero-btn" bindtap="onHeroCta">
+            <text class="beaute-hero-btn-txt">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Date Navigation Strip -->
+    <view class="beaute-date-strip">
+      <view class="date-arrow-btn" bindtap="onPrevDate">←</view>
+      <view class="date-center">
+        <image class="date-calendar-icon" src="/assets/vocale.png" mode="aspectFit"></image>
+        <text class="date-text">{{currentDate}}</text>
+      </view>
+      <view class="date-arrow-btn" bindtap="onNextDate">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="beaute-main-header">
+      <view class="beaute-title-row">
+        <image class="beaute-title-img-script" src="/assets/Clubs.png" mode="heightFix"></image>
+        <text class="beaute-title-text">BEAUTÉ</text>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards & Scrollbar Area -->
+    <view class="beaute-grid-container">
+
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="beaute-grid">
+
+          <!-- Activités Card -->
+          <view class="beaute-card" bindtap="onCardTap" data-type="activites">
+            <view class="beaute-card-img-wrap">
+              <image class="beaute-card-img" src="/assets/B1.png" mode="aspectFill"></image>
+            </view>
+            <view class="beaute-card-footer">
+              <text class="beaute-card-label">ACTIVITÉS</text>
+            </view>
+          </view>
+
+          <!-- Communauté Card -->
+          <view class="beaute-card" bindtap="onCardTap" data-type="communaute">
+            <view class="beaute-card-img-wrap">
+              <image class="beaute-card-img" src="/assets/B2.png" mode="aspectFill"></image>
+            </view>
+            <view class="beaute-card-footer">
+              <text class="beaute-card-label">COMMUNAUTÉ</text>
+            </view>
+          </view>
+
+          <!-- Vidéos Card -->
+          <view class="beaute-card" bindtap="onCardTap" data-type="videos">
+            <view class="beaute-card-img-wrap">
+              <image class="beaute-card-img" src="/assets/B3.png" mode="aspectFill"></image>
+            </view>
+            <view class="beaute-card-footer">
+              <text class="beaute-card-label">VIDÉOS</text>
+            </view>
+          </view>
+
+          <!-- Coach Card -->
+          <view class="beaute-card" bindtap="onCardTap" data-type="coach">
+            <view class="beaute-card-img-wrap">
+              <image class="beaute-card-img" src="/assets/B4.png" mode="aspectFill"></image>
+            </view>
+            <view class="beaute-card-footer">
+              <text class="beaute-card-label">COACH</text>
+            </view>
+          </view>
+
+        </view>
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+      <!-- Dynamic Functional Scrollbar -->
+      <view class="beaute-scrollbar">
+        <view class="beaute-scroll-arrow">↑</view>
+        <view class="beaute-scroll-track">
+          <view class="beaute-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+        </view>
+        <view class="beaute-scroll-arrow">↓</view>
+      </view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

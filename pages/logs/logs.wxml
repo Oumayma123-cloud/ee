@@ -1,0 +1,8 @@
+<view class="page">
+  <device-status-bar fillStatusBar="{{true}}" />
+  <view class="container container--no-tab log-list">
+  <block wx:for="{{logs}}" wx:for-item="log" wx:key="*this">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+  </view>
+</view>

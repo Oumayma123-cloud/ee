@@ -1,0 +1,385 @@
+/* Coque identique aux pages paiement / statut (750rpx, barre du bas intégrée) — maquette « RDV annulé » */
+
+page {
+  background: #ffffff;
+}
+
+.page {
+  min-height: 100vh;
+  background: #ffffff;
+  padding: 16rpx 0 calc(20rpx + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-card {
+  width: 750rpx;
+  margin: 0 auto;
+  border-radius: 57.6923076923rpx;
+  overflow: hidden;
+  background: #ffffff;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.content-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+/* New Header Styles from Photo */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+
+.annule-mint-zone {
+  position: relative;
+  width: 100%;
+  min-height: 680rpx;
+  margin-left: 0;
+  background: #c1e2cb;
+  padding: 36rpx 40rpx 24rpx;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 1;
+}
+
+/*
+ * Titre Figma : 194×21 px, left 59 px — Poppins 16 Bold, lh 21, letter-spacing 1 px, centré, uppercase
+ * rpx = px × (750/390)
+ */
+.annule-title {
+  display: block;
+  width: 373.0769230769rpx;
+  min-height: 40.3846153846rpx;
+  margin-left: 73.4615384615rpx;
+  margin-bottom: 16rpx;
+  box-sizing: border-box;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 30.7692307692rpx;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 40.3846153846rpx;
+  letter-spacing: 1.9230769231rpx;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  background: transparent;
+  opacity: 1;
+}
+
+/*
+ * Paragraphe : Inter — texte sur vert menthe
+ */
+.annule-desc-wrap {
+  width: 557.6923076923rpx;
+  min-height: 115.3846153846rpx;
+  margin-left: 73.4615384615rpx;
+  margin-bottom: 32rpx;
+  box-sizing: border-box;
+  opacity: 1;
+  background: transparent;
+}
+
+.annule-desc {
+  display: block;
+  width: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 21.1538461538rpx;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 28.8461538462rpx;
+  letter-spacing: 0;
+  color: #1c1b1f;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Carte « Récapitulatif » — maquette : 309×255 px, radius 11, fond #F0F7F2
+ * rpx = px × (750/390) ; pas de hauteur fixe pour éviter le scroll interne
+ */
+.annule-recap-card {
+  width: 594.2307692308rpx;
+  min-height: 0;
+  margin-left: 33.0769230769rpx;
+  margin-right: auto;
+  margin-top: 19.2307692308rpx;
+  background: #f0f7f2;
+  border-radius: 21.1538461538rpx;
+  padding: 26rpx 26rpx 28rpx;
+  box-sizing: border-box;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+  opacity: 1;
+}
+
+.annule-recap-header {
+  margin-bottom: 22rpx;
+}
+
+/*
+ * Titre : Inter Bold 16 / lh 21, #3E5E4E, capitalize
+ */
+.annule-recap-heading {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 30.7692307692rpx;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 40.3846153846rpx;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #3e5e4e;
+  background: transparent;
+}
+
+/* Fine ligne sous le titre (maquette), pas une barre épaisse */
+.annule-recap-divider {
+  width: 100%;
+  height: 1rpx;
+  margin-top: 14rpx;
+  background: #c5c5c5;
+  border-radius: 1rpx;
+}
+
+.annule-row {
+  margin-bottom: 22rpx;
+}
+
+.annule-row:last-child {
+  margin-bottom: 0;
+}
+
+/*
+ * Libellés : Inter Bold 14 / lh 21, #000000
+ */
+.annule-label {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 26.9230769231rpx;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 40.3846153846rpx;
+  letter-spacing: 0;
+  color: #000000;
+  background: transparent;
+  margin-bottom: 6rpx;
+}
+
+/*
+ * Valeurs : Inter Regular 14 / lh 21, #666666
+ */
+.annule-value {
+  display: block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 26.9230769231rpx;
+  font-weight: 400;
+  color: #666666;
+  line-height: 40.3846153846rpx;
+}
+
+/* Zone blanche : photo médecin + boutons (sous la menthe) */
+.annule-white-zone {
+  flex: 1;
+  min-height: 280rpx;
+  background: #ffffff;
+  padding: 0 0 24rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * Image médecin Figma : 100×125 px, left 150 px, top 527 px
+ * top 527 − (101 + 417) = 9 px sous le rectangle vert
+ */
+.annule-doctor-wrap {
+  position: relative;
+  width: 100%;
+  height: 240.3846153846rpx;
+  margin-top: 10rpx;
+  margin-bottom: 16rpx;
+  flex-shrink: 0;
+}
+
+.annule-doctor {
+  position: absolute;
+  left: 288.4615384615rpx;
+  top: 0;
+  width: 192.3076923077rpx;
+  height: 240.3846153846rpx;
+  display: block;
+  border-radius: 8rpx;
+  opacity: 1;
+}
+
+.annule-actions {
+  width: 594.2307692308rpx;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  flex-shrink: 0;
+}
+
+.annule-btn {
+  min-height: 88rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: center;
+  padding: 24rpx 20rpx;
+  box-sizing: border-box;
+  line-height: 1.3;
+}
+
+.annule-btn--primary {
+  background: #70B682;
+  color: #ffffff;
+  box-shadow: 0 6rpx 18rpx rgba(112, 182, 130, 0.28);
+}
+
+.annule-btn--secondary {
+  background: #1c1b1f;
+  color: #ffffff;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.18);
+}
+
+.annule-btn--hover {
+  opacity: 0.9;
+}
+
+.annule-bottom-spacer {
+  flex: 1;
+  min-height: 140rpx;
+}
+
+.bottom-nav.bottom-nav--in-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0 0 57.6923076923rpx 57.6923076923rpx;
+  align-self: stretch;
+  border-top: none;
+  box-shadow: none;
+}
+
+.bottom-nav.bottom-nav--light.bottom-nav--in-card {
+  background: #f5f5f5;
+}

@@ -1,0 +1,64 @@
+<view class="urgence-container" style="padding-top: {{statusBarHeight}}px;">
+  <!-- Header -->
+  <view class="header {{showModal ? 'blur-bg' : ''}}">
+    <view class="back-btn" bindtap="onBackTap">
+      <view class="back-circle">
+        <text class="back-arrow">←</text>
+      </view>
+      <text class="back-text">Retour</text>
+    </view>
+    
+    <image class="logo" src="../../assets/logo-tiqqa-header.png" mode="aspectFit"></image>
+
+    <view class="avatar-bubble" bindtap="onProfileTap">
+      <view class="avatar-wrap avatar-wrap--bubble">
+        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+      </view>
+      <view class="avatar-bubble-tail"></view>
+    </view>
+  </view>
+
+  <!-- Body -->
+  <scroll-view class="body-scroll {{showModal ? 'blur-bg' : ''}}" scroll-y="true">
+    <!-- Top Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Hero Section -->
+    <view class="hero-section">
+      <view class="operator-container">
+        <image class="ambulance-hero-img" src="../../assets/urg.png" mode="aspectFit"></image>
+      </view>
+      <view class="question-bubble">
+        <text class="bubble-text">Souhaitez-vous une ambulance pour votre retour</text>
+      </view>
+    </view>
+
+    <!-- Bottom Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Choice Section -->
+    <view class="choice-content">
+      <view class="action-buttons">
+        <view class="btn-oui" bindtap="onActionTap" data-type="oui">Oui</view>
+        <view class="btn-non" bindtap="onActionTap" data-type="non">Non</view>
+        <view class="btn-later" bindtap="onActionTap" data-type="later">Plus tard</view>
+      </view>
+    </view>
+
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+
+  <!-- Modal Overlay -->
+  <view class="modal-overlay" wx:if="{{showModal}}">
+    <view class="modal-box">
+      <view class="close-modal" bindtap="closeModal">✕</view>
+      <view class="modal-content">
+        <text class="modal-text">{{modalMessage}}</text>
+      </view>
+      <view class="modal-btn-ok" bindtap="onModalOk">OK</view>
+    </view>
+  </view>
+
+  <!-- Bottom Navigation -->
+  <bottom-nav-bar variant="fixed" active-tab="emergency" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+</view>

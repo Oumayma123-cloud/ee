@@ -1,0 +1,833 @@
+.suivi-container {
+  background-color: #ffffff;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.suivi-shell {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rpx;
+  padding-bottom: 140rpx;
+  box-sizing: border-box;
+}
+
+/* Header Styles */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  background: transparent;
+  padding: 10rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+/* Title Section */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx 30rpx 20rpx;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.section-title-img {
+  width: 500rpx;
+  height: 64rpx;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 12rpx;
+}
+
+.title-script {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 54rpx;
+  font-style: italic;
+  font-weight: 700;
+  color: #3c7d58;
+  line-height: 0.9;
+}
+
+.title-bold {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #3c7d58;
+  letter-spacing: 0.5rpx;
+  line-height: 1;
+  padding-bottom: 4rpx;
+}
+
+/* Main Content Grid */
+.main-content-wrapper {
+  display: flex;
+  position: relative;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15rpx;
+}
+
+.meds-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+/* Form Styles matching Sante_Dashboard 4 Mockup */
+.form-card {
+  background: #ffffff;
+  padding: 10rpx 10rpx 20rpx 10rpx;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 40rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-label {
+  font-size: 26rpx;
+  color: #000000;
+  font-weight: 800;
+  margin-bottom: 16rpx;
+  letter-spacing: 0.5rpx;
+}
+
+/* Rounded Select Box / Input Box Wrapper */
+.select-box-container {
+  height: 90rpx;
+  border: 2rpx solid #c8d3cd;
+  border-radius: 16rpx;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.select-value-text {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 600;
+}
+
+/* Input and Autocomplete inline layering */
+.input-autocomplete-wrap {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  width: 100%;
+  height: 100%;
+  font-size: 26rpx;
+  font-weight: 800;
+  color: #000000;
+  border: none;
+  background: transparent;
+  padding: 0;
+  z-index: 5;
+}
+
+.autocomplete-suggestion {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  font-size: 26rpx;
+  font-weight: 800;
+  z-index: 2;
+  line-height: 1;
+}
+
+.suggestion-typed {
+  color: transparent; /* Makes typed text double render transparent but hold its width */
+}
+
+.suggestion-gray {
+  color: #d0d0d0;
+}
+
+.input-placeholder {
+  color: #c0c0c0;
+  font-weight: 500;
+}
+
+.chevron-down-icon {
+  width: 32rpx;
+  height: 32rpx;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 10rpx;
+}
+
+.chevron-rotate {
+  transform: rotate(180deg);
+}
+
+.calendar-icon {
+  width: 34rpx;
+  height: 34rpx;
+  flex-shrink: 0;
+}
+
+/* Custom Expanded Dropdown List Styles */
+.dropdown-list-container {
+  margin-top: -4rpx;
+  border: 2rpx solid #c8d3cd;
+  border-top: none;
+  border-radius: 0 0 16rpx 16rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.04);
+  max-height: 480rpx;
+  overflow-y: auto;
+  z-index: 99;
+}
+
+.dropdown-item {
+  height: 80rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #f7f9f8;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item-text {
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 600;
+}
+
+.item-active {
+  background-color: #f5f8f6;
+}
+
+.item-active .dropdown-item-text {
+  color: #3c7d58;
+  font-weight: bold;
+}
+
+/* Bottom Actions with centered validation button */
+.footer-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+  width: 100%;
+}
+
+.btn-valider {
+  background: #3c7d58;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 800;
+  border-radius: 45rpx;
+  width: 500rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-shadow: 0 4rpx 10rpx rgba(60, 125, 88, 0.2);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-valider:active {
+  opacity: 0.9;
+}
+
+/* Scrollbar styles matching the mockup */
+.side-scrollbar {
+  width: 34rpx;
+  margin-left: 0;
+  margin-top: 10rpx;
+  height: 520rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-track {
+  width: 24rpx;
+  background: #f0f0f0;
+  border-radius: 20rpx;
+  flex: 1;
+  margin: 10rpx 0;
+  position: relative;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+}
+
+.scroll-handle {
+  width: 100%;
+  height: 140rpx;
+  background: #3c7d58;
+  border-radius: 20rpx;
+  position: absolute;
+  top: 60rpx;
+}
+
+.scroll-arrow-up, .scroll-arrow-down {
+  width: 32rpx;
+  height: 32rpx;
+  background: #dfe2e1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-text-scroll {
+  font-size: 16rpx;
+  color: #777777;
+  font-weight: bold;
+}
+
+.bottom-spacer {
+  height: 120rpx;
+}
+
+/* Custom Centered Date Picker Modal Styles */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.custom-date-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.15);
+  padding: 30rpx;
+  box-sizing: border-box;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.date-modal-header {
+  margin-bottom: 20rpx;
+}
+
+.month-selector {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.month-arrow {
+  font-size: 28rpx;
+  color: #3c7d58;
+  padding: 10rpx 20rpx;
+  font-weight: bold;
+}
+
+.month-title {
+  font-size: 28rpx;
+  font-weight: 800;
+  color: #333333;
+}
+
+.weekdays-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 15rpx;
+}
+
+.weekday-lbl {
+  font-size: 22rpx;
+  color: #888888;
+  font-weight: 700;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 15rpx;
+  margin-bottom: 30rpx;
+}
+
+.day-cell {
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.day-text {
+  font-size: 24rpx;
+  color: #333333;
+  font-weight: 700;
+}
+
+.day-empty {
+  pointer-events: none;
+}
+
+.day-empty .day-text {
+  color: transparent;
+}
+
+.day-selected {
+  background-color: #3c7d58 !important;
+}
+
+.day-selected .day-text {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.date-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20rpx;
+}
+
+.btn-cancel, .btn-confirm {
+  font-size: 24rpx;
+  font-weight: 800;
+  border-radius: 12rpx;
+  padding: 12rpx 30rpx;
+  margin: 0;
+  line-height: normal;
+  border: none;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #666666;
+}
+
+.btn-confirm {
+  background: #3c7d58;
+  color: #ffffff;
+}
+
+.btn-cancel:active, .btn-confirm:active {
+  opacity: 0.8;
+}
+
+/* Custom Centered Time Picker Modal Styles (Heure de prise) */
+.custom-time-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 580rpx;
+  background: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 12rpx 40rpx rgba(0, 0, 0, 0.15);
+  padding: 45rpx 40rpx;
+  box-sizing: border-box;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15rpx;
+  right: 25rpx;
+  font-size: 44rpx;
+  color: #888888;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  padding: 10rpx;
+  z-index: 1005;
+}
+
+.time-modal-header {
+  margin-bottom: 35rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.time-modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000000;
+  letter-spacing: 0.5rpx;
+}
+
+.time-selector-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 45rpx;
+}
+
+.time-select-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #eaeaea;
+  border-radius: 16rpx;
+  padding: 20rpx 16rpx;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.time-select-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.time-clock-icon {
+  width: 32rpx;
+  height: 32rpx;
+  opacity: 0.65;
+}
+
+.time-dropdown-scroll {
+  position: absolute;
+  top: calc(100% + 8rpx);
+  left: 0;
+  width: 100%;
+  max-height: 250rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.15);
+  border: 1rpx solid #e8e8e8;
+  z-index: 1002;
+  box-sizing: border-box;
+}
+
+.time-dropdown-item {
+  padding: 22rpx 32rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f8f8f8;
+  cursor: pointer;
+}
+
+.time-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.time-item-text {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.time-item-active {
+  background: #f0f7f3;
+}
+
+.time-item-active .time-item-text {
+  color: #3c7d58;
+  font-weight: bold;
+}
+
+.modal-btn-action {
+  background: #3c7d58;
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 800;
+  border-radius: 20rpx;
+  padding: 22rpx 0;
+  width: 80% !important;
+  text-align: center;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6rpx 16rpx rgba(60, 125, 88, 0.2);
+}
+
+.modal-btn-action:active {
+  opacity: 0.85;
+}
+
+/* Frequency Custom Modal Styles */
+.frequency-display-box {
+  background: #eaeaea;
+  border-radius: 16rpx;
+  padding: 26rpx 32rpx;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 45rpx;
+}
+
+.frequency-display-text {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* Matin/Soir Grid Layout for Double Modal Workflow */
+.time-selectors-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 25rpx;
+  width: 100%;
+  margin-bottom: 45rpx;
+  box-sizing: border-box;
+}
+
+.time-selector-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  flex: 1;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.time-selector-label {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #555555;
+  text-align: center;
+}
+
+/* Interval Incrementer Styles (Tous les X heures) */
+.interval-selector-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.interval-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40rpx;
+  width: 100%;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+
+.interval-btn {
+  background: #3c7d58;
+  color: #ffffff;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.interval-btn:active {
+  opacity: 0.75;
+}
+
+.interval-value-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 150rpx;
+}
+
+.interval-num {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #333333;
+  line-height: 1;
+}
+
+.interval-label {
+  font-size: 22rpx;
+  font-weight: bold;
+  color: #777777;
+  margin-top: 8rpx;
+}
+
+.section-sublabel {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  text-align: center;
+  width: 100%;
+  margin-top: 25rpx;
+}
+
+/* Day-of-week Vertical List Selector (Hebdomadaire) */
+.hebdo-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.day-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+}
+
+.day-list-item {
+  background: #eaeaea;
+  border-radius: 16rpx;
+  padding: 22rpx 32rpx;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-list-item:active {
+  opacity: 0.75;
+}
+
+.day-list-item-active {
+  background: #d8ede3;
+  border: 2rpx solid #3c7d58;
+}
+
+.day-list-item-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  text-align: center;
+}
+
+.day-list-item-active .day-list-item-text {
+  color: #3c7d58;
+  font-weight: 800;
+}
+

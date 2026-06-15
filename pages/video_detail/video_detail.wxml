@@ -1,0 +1,95 @@
+<view class="video-detail-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- Hero Section -->
+    <view class="video-hero-area">
+      <view class="video-hero-main">
+        <image class="video-hero-img" src="{{heroImage}}" mode="aspectFill"></image>
+        
+        <!-- Custom Hero Overlay -->
+        <view class="video-hero-overlay">
+          <view class="hero-overlay-content">
+            <image class="hero-overlay-logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+            <view class="hero-overlay-divider"></view>
+            <view class="hero-overlay-text-wrap">
+              <text class="hero-overlay-name">{{heroName}}</text>
+              <text class="hero-overlay-role">{{heroRole}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Main Content (Scrollable) -->
+    <view class="video-content-container">
+      <scroll-view class="content-scroll" scroll-y show-scrollbar="{{false}}" enhanced="{{true}}">
+        
+        <!-- Title -->
+        <view class="aide-header">
+          <text class="aide-title-script">Besoin</text>
+          <text class="aide-title-bold">D'AIDE ?</text>
+        </view>
+
+        <!-- Cards Grid -->
+        <view class="aide-grid">
+          
+          <!-- Card 1 -->
+          <view class="aide-card" bindtap="onActionTap" data-action="mardy">
+            <image class="aide-card-img" src="/assets/D.png" mode="aspectFit"></image>
+            <text class="aide-card-label">L'MARDYA</text>
+          </view>
+          
+          <!-- Card 2 -->
+          <view class="aide-card" bindtap="onActionTap" data-action="conseillers">
+            <image class="aide-card-img" src="/assets/D1.png" mode="aspectFit"></image>
+            <text class="aide-card-label">CONSEILLERS\nTIQQA</text>
+          </view>
+          
+          <!-- Card 3 -->
+          <view class="aide-card" bindtap="onActionTap" data-action="faq">
+            <image class="aide-card-img" src="/assets/D2.png" mode="aspectFit"></image>
+            <text class="aide-card-label">QUESTIONS\nFRÉQUENTES</text>
+          </view>
+          
+          <!-- Card 4 -->
+          <view class="aide-card" bindtap="onActionTap" data-action="videos">
+            <image class="aide-card-img" src="/assets/D3.png" mode="aspectFit"></image>
+            <text class="aide-card-label">VIDÉOS\nEXPLICATIVES</text>
+          </view>
+          
+          <!-- Card 5 -->
+          <view class="aide-card" bindtap="onActionTap" data-action="paroles">
+            <image class="aide-card-img" src="/assets/D4.png" mode="aspectFit"></image>
+            <text class="aide-card-label">PAROLES\nSINCÈRES</text>
+          </view>
+
+        </view>
+
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

@@ -1,0 +1,193 @@
+<view class="container">
+
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false" bindscroll="onScroll">
+    <view class="scroll-inner">
+
+      <!-- 1. Header (White Background) -->
+      <tiqqa-header bind:back="onBack" />
+
+
+      <!-- 3. Full-bleed Hero Banner -->
+      <view class="hero-section">
+        <!-- Hero Image + Title Overlay -->
+        <view class="hero-banner-container">
+          <image class="hero-bg" src="/assets/paiement-hero.png" mode="aspectFill"></image>
+          <view class="hero-overlay">
+            <text class="hero-title">PAIEMENT SÉCURISÉ 24H/24</text>
+          </view>
+        </view>
+
+        <!-- Navigation bar at the bottom of the blue zone -->
+        <view class="hero-nav-bar">
+          <view class="hero-nav-btn hero-nav-btn--left">
+            <view class="chevron-left-blue"></view>
+          </view>
+          <view class="hero-nav-btn hero-nav-btn--right">
+            <view class="chevron-right-blue"></view>
+          </view>
+        </view>
+      </view>
+
+
+      <!-- 5. Paiement Factures Section (White) -->
+      <view class="services-section">
+        <view class="section-title-row">
+          <text class="section-title-script">Paiement</text>
+          <text class="section-title-bold"> FACTURES</text>
+        </view>
+
+        <view class="grid-container">
+          <view class="services-grid">
+
+            <!-- EAU ET ELECTRICITÉ -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="eau-electricite">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-eau-elec.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">EAU ET\nELECTRICITÉ</text>
+            </view>
+
+            <!-- TÉLÉPHONIE ET INTERNET -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="telephone-internet">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-telephonie.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">TÉLÉPHONIE ET\nINTERNET</text>
+            </view>
+
+            <!-- TRANSPORT -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="transport">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-transport.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">TRANSPORT</text>
+            </view>
+
+            <!-- TRANSFERT -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="transfert">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-transfert.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">TRANSFERT</text>
+            </view>
+
+            <!-- IMPÔT ET TAXE -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="impot-taxe">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-impot-taxe.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">IMPÔT ET TAXE</text>
+            </view>
+
+            <!-- RECHARGE -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="recharge">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-recharge.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">RECHARGE</text>
+            </view>
+
+            <!-- COMMANDE CASH -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="commande-cash">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-commande-cash.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">COMMANDE CASH</text>
+            </view>
+
+            <!-- SOUSCRIPTION -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="souscription">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-souscription.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">SOUSCRIPTION</text>
+            </view>
+
+            <!-- ASSURANCE -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="assurance">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-assurance.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">ASSURANCE</text>
+            </view>
+
+            <!-- PAYPRO -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="paypro">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-paypro.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">PAYPRO</text>
+            </view>
+
+            <!-- BILLETTERIE -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="billetterie">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-billetterie.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">BILLETTERIE</text>
+            </view>
+
+            <!-- GAMING -->
+            <view class="pf-card" bindtap="onCategoryTap" data-type="gaming">
+              <view class="pf-card-icon-wrap">
+                <view class="pf-icon-circle">
+                  <image class="pf-icon-img" src="/assets/icons/icon-gaming.svg" mode="aspectFit"></image>
+                </view>
+              </view>
+              <text class="pf-card-label">GAMING</text>
+            </view>
+
+          </view>
+
+          <!-- Scroll indicator -->
+          <view class="scroll-indicator">
+            <view class="scroll-arrow" bindtap="onScrollUp">
+              <view class="chevron-up-gray"></view>
+            </view>
+            <view class="scroll-track">
+              <view class="scroll-thumb" style="top: {{scrollThumbTop}}rpx;"></view>
+            </view>
+            <view class="scroll-arrow" bindtap="onScrollDown">
+              <view class="chevron-down-gray"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+  <!-- Overlay to show payment_image_2 when showImage2 is true -->
+  <view class="image2-overlay" wx:if="{{showImage2}}" bindtap="onHideImage2">
+    <view class="image2-modal" catchtap="true">
+      <image src="/assets/payment_image_2.png" class="image2" mode="aspectFit" />
+      <view class="close-btn" bindtap="onHideImage2">×</view>
+    </view>
+  </view>
+
+</view>

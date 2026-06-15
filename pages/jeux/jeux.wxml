@@ -1,0 +1,102 @@
+<view class="jeux-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="jeux-hero-area">
+      <view class="jeux-hero-main">
+        <image class="jeux-hero-img" src="/assets/paiement-hero.png" mode="aspectFill"></image>
+        <view class="jeux-hero-overlay">
+          <text class="jeux-hero-title">DÉCOUVREZ NOS JEUX</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Navigation Strip (No Date) -->
+    <view class="jeux-nav-strip">
+      <view class="nav-arrow-btn" bindtap="onPrev">←</view>
+      <view class="nav-arrow-btn" bindtap="onNext">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="jeux-main-header">
+      <view class="jeux-title-row">
+        <text class="jeux-title-text">LISTE <text class="jeux-title-script">des</text> JEUX</text>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards Area -->
+    <view class="jeux-grid-container">
+
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="jeux-grid">
+
+          <!-- First Card (Full Width) -->
+          <view class="jeux-card jeux-card--full" bindtap="onCardTap" data-type="inspecteur">
+            <view class="jeux-card-img-wrap">
+              <image class="jeux-card-img" src="/assets/TM4.png" mode="aspectFill"></image>
+            </view>
+            <view class="jeux-card-footer">
+              <text class="jeux-card-label">ENQUÊTES</text>
+            </view>
+          </view>
+
+          <!-- Second Card (Spider Solitaire) -->
+          <view class="jeux-card" bindtap="onCardTap" data-type="spider">
+            <view class="jeux-card-img-wrap">
+              <image class="jeux-card-img" src="/assets/TM1.png" mode="aspectFill"></image>
+            </view>
+            <view class="jeux-card-footer">
+              <text class="jeux-card-label">SPIDER\nSOLITAIRE</text>
+            </view>
+          </view>
+
+          <!-- Third Card (Échecs) -->
+          <view class="jeux-card" bindtap="onCardTap" data-type="echecs">
+            <view class="jeux-card-img-wrap">
+              <image class="jeux-card-img" src="/assets/TM2.png" mode="aspectFill"></image>
+            </view>
+            <view class="jeux-card-footer">
+              <text class="jeux-card-label">ÉCHECS</text>
+            </view>
+          </view>
+
+          <!-- Fourth Card (Dames) -->
+          <view class="jeux-card" bindtap="onCardTap" data-type="dames">
+            <view class="jeux-card-img-wrap">
+              <image class="jeux-card-img" src="/assets/TM3.png" mode="aspectFill"></image>
+            </view>
+            <view class="jeux-card-footer">
+              <text class="jeux-card-label">DAMES</text>
+            </view>
+          </view>
+
+        </view>
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

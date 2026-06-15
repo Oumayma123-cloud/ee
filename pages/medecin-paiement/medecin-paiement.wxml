@@ -1,0 +1,89 @@
+<view class="page-paiement">
+  <view class="mobile-card mobile-card--figma">
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <scroll-view
+      id="payContentScroll"
+      class="content-scroll"
+      style="height: {{scrollViewInnerPx}}px;"
+      scroll-y
+      scroll-with-animation="{{false}}"
+      scroll-top="{{scrollTop}}"
+      scroll-into-view="{{scrollIntoView}}"
+      bindscroll="onContentScroll"
+      show-scrollbar="{{false}}"
+    >
+      <view class="content-scroll-inner">
+      <view class="payment-hero-frame">
+        <view class="hero-strip hero-strip--top"></view>
+        <view class="payment-hero">
+          <image class="hero-img" src="/assets/hero/hero-home2.png" mode="scaleToFill"></image>
+          <view class="hero-overlay">
+            <text class="hero-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+            <view class="hero-cta" bindtap="onHeroCta">
+              <text class="hero-cta-text">ACCÉDER</text>
+            </view>
+          </view>
+        </view>
+        <view class="hero-strip hero-strip--bottom"></view>
+      </view>
+
+      <view id="payScrollMid" class="pay-scroll-anchor"></view>
+
+      <view class="payment-grid">
+        <view
+          wx:for="{{cards}}"
+          wx:key="key"
+          class="pay-card pay-card--{{item.key}}"
+          data-key="{{item.key}}"
+          bindtap="onConfirmCard"
+        >
+          <view class="pay-card-top">
+            <image
+              class="pay-icon-img pay-icon-img--{{item.key}}"
+              src="{{item.iconSrc}}"
+              mode="aspectFit"
+            />
+            <text class="pay-title">{{item.title}}</text>
+          </view>
+          <view class="pay-confirm-row">
+            <view class="pay-confirm-btn">CONFIRMEZ</view>
+          </view>
+        </view>
+      </view>
+      <view id="payBottomAnchor" class="scroll-bottom-spacer"></view>
+      </view>
+    </scroll-view>
+
+    <view class="side-scroll-indicator">
+      <view class="side-scroll-arrow" bindtap="onScrollRailUp" hover-class="side-scroll-arrow--hover">
+        <text class="side-scroll-arrow-char">↑</text>
+      </view>
+      <view class="side-scroll-track">
+        <view class="side-scroll-thumb" style="top: {{scrollThumbTopPct}}%;"></view>
+      </view>
+      <view class="side-scroll-arrow" bindtap="onScrollRailDown" hover-class="side-scroll-arrow--hover">
+        <text class="side-scroll-arrow-char">↓</text>
+      </view>
+    </view>
+
+    <bottom-nav-bar active-tab="calendar" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>
+

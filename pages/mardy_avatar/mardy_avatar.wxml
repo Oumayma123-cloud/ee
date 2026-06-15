@@ -1,0 +1,39 @@
+<view class="container">
+  <!-- Header -->
+  <view class="header">
+    <view class="back-btn" bindtap="onBack">
+      <view class="back-circle"><text class="back-arrow">←</text></view>
+      <text class="back-text">Retour</text>
+    </view>
+    <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+    <view style="width: 100rpx;"></view> <!-- Spacer -->
+  </view>
+
+  <!-- Content -->
+  <view class="content">
+    <text class="title">Sélectionnez votre avatar préféré.</text>
+
+    <view class="avatars-row">
+      <!-- El Mardy -->
+      <view class="avatar-card" bindtap="selectAvatar" data-id="mardy">
+        <text class="avatar-name script-font">El Mardy</text>
+        <image class="avatar-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
+        <view class="checkbox-wrapper">
+          <view class="checkbox {{selected === 'mardy' ? 'checked' : ''}}"></view>
+        </view>
+      </view>
+
+      <!-- El Mardya -->
+      <view class="avatar-card" bindtap="selectAvatar" data-id="mardya">
+        <text class="avatar-name script-font">El Mardya</text>
+        <image class="avatar-img" src="/assets/benmimoun-2 (2).png" mode="aspectFill"></image>
+        <view class="checkbox-wrapper">
+          <view class="checkbox {{selected === 'mardya' ? 'checked' : ''}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Bottom Nav Bar -->
+  <bottom-nav-bar active-tab="mic" />
+</view>

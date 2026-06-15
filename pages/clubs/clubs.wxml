@@ -1,0 +1,171 @@
+<view class="clubs-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="clubs-hero-area">
+      <view class="clubs-hero-main">
+        <image class="clubs-hero-img" src="/assets/club.png" mode="aspectFill"></image>
+        <view class="clubs-hero-overlay">
+          <text class="clubs-hero-title">TISSEZ DES LIENS DE CONFIANCE</text>
+          <view class="clubs-hero-btn" bindtap="onHeroCta">
+            <text class="clubs-hero-btn-txt">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Date Navigation Strip -->
+    <view class="clubs-date-strip">
+      <view class="date-arrow-btn" bindtap="onPrevDate">←</view>
+      <view class="date-center">
+        <image class="date-calendar-icon" src="/assets/vocale.png" mode="aspectFit"></image>
+        <text class="date-text">{{currentDate}}</text>
+      </view>
+      <view class="date-arrow-btn" bindtap="onNextDate">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="clubs-main-header">
+      <view class="clubs-title-row">
+        <image class="clubs-title-clubs-img" src="/assets/Clubs.png" mode="aspectFit"></image>
+        <image class="clubs-title-logo" src="/assets/Objet dynamique vectoriel.png" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards & Scrollbar Area -->
+    <view class="clubs-grid-container">
+
+      <!-- Scrollable Grid View -->
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="clubs-grid">
+
+          <!-- Sport Card -->
+          <view class="club-card club-card--sport" bindtap="onClubTap" data-type="sport">
+            <image class="club-card-img" src="/assets/sport.png" mode="aspectFit"></image>
+            <text class="club-card-label">SPORT</text>
+          </view>
+
+          <!-- Cuisine Card -->
+          <view class="club-card club-card--cuisine" bindtap="onClubTap" data-type="cuisine">
+            <image class="club-card-img" src="/assets/cuisine.png" mode="aspectFit"></image>
+            <text class="club-card-label">CUISINE</text>
+          </view>
+
+          <!-- Finances Card -->
+          <view class="club-card club-card--finances" bindtap="onClubTap" data-type="finances">
+            <image class="club-card-img" src="/assets/finance.png" mode="aspectFit"></image>
+            <text class="club-card-label">FINANCES</text>
+          </view>
+
+          <!-- Jardinage Card -->
+          <view class="club-card club-card--jardinage" bindtap="onClubTap" data-type="jardinage">
+            <image class="club-card-img" src="/assets/jardinage.png" mode="aspectFit"></image>
+            <text class="club-card-label">JARDINAGE</text>
+          </view>
+
+          <!-- Beauté Card -->
+          <view class="club-card club-card--beaute" bindtap="onClubTap" data-type="beaute">
+            <image class="club-card-img" src="/assets/beaute.png" mode="aspectFit"></image>
+            <text class="club-card-label">BEAUTÉ</text>
+          </view>
+
+          <!-- Culture Card -->
+          <view class="club-card club-card--culture" bindtap="onClubTap" data-type="culture">
+            <image class="club-card-img" src="/assets/culture.png" mode="aspectFit"></image>
+            <text class="club-card-label">CULTURE</text>
+          </view>
+
+          <!-- Nutrition Card -->
+          <view class="club-card club-card--nutrition" bindtap="onClubTap" data-type="nutrition">
+            <image class="club-card-img" src="/assets/nutrition.png" mode="aspectFit"></image>
+            <text class="club-card-label">NUTRITION</text>
+          </view>
+
+          <!-- Voyages Card -->
+          <view class="club-card club-card--voyages" bindtap="onClubTap" data-type="voyages">
+            <image class="club-card-img" src="/assets/voyages.png" mode="aspectFit"></image>
+            <text class="club-card-label">VOYAGES</text>
+          </view>
+
+          <!-- Santé Card -->
+          <view class="club-card club-card--sante" bindtap="onClubTap" data-type="sante">
+            <image class="club-card-img" src="/assets/sante.png" mode="aspectFit"></image>
+            <text class="club-card-label">SANTÉ</text>
+          </view>
+
+          <!-- Bien-être Card -->
+          <view class="club-card club-card--bienetre" bindtap="onClubTap" data-type="bienetre">
+            <image class="club-card-img" src="/assets/bienetre.png" mode="aspectFit"></image>
+            <text class="club-card-label">BIEN-ÊTRE</text>
+          </view>
+
+          <!-- Religion Card -->
+          <view class="club-card club-card--religion" bindtap="onClubTap" data-type="religion">
+            <image class="club-card-img" src="/assets/religion.png" mode="aspectFit"></image>
+            <text class="club-card-label">RELIGION</text>
+          </view>
+
+          <!-- Solidarité Card -->
+          <view class="club-card club-card--solidarite" bindtap="onClubTap" data-type="solidarite">
+            <image class="club-card-img" src="/assets/solidarite.png" mode="aspectFit"></image>
+            <text class="club-card-label">SOLIDARITÉ</text>
+          </view>
+
+          <!-- Technologie Card -->
+          <view class="club-card club-card--technologie" bindtap="onClubTap" data-type="technologie">
+            <image class="club-card-img" src="/assets/T1.png" mode="aspectFit"></image>
+            <text class="club-card-label">TECHNOLOGIE</text>
+          </view>
+
+          <!-- Artisanat Card -->
+          <view class="club-card club-card--artisanat" bindtap="onClubTap" data-type="artisanat">
+            <image class="club-card-img" src="/assets/A.png" mode="aspectFit"></image>
+            <text class="club-card-label">ARTISANAT</text>
+          </view>
+
+          <!-- Sport Card -->
+          <view class="club-card club-card--sport" bindtap="onClubTap" data-type="sport">
+            <image class="club-card-img" src="/assets/sport.png" mode="aspectFit"></image>
+            <text class="club-card-label">SPORT</text>
+          </view>
+
+        </view>
+
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+      <!-- Dynamic Functional Scrollbar -->
+      <view class="clubs-scrollbar">
+        <view class="clubs-scroll-arrow">↑</view>
+        <view class="clubs-scroll-track">
+          <view class="clubs-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+        </view>
+        <view class="clubs-scroll-arrow">↓</view>
+      </view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

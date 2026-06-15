@@ -1,0 +1,365 @@
+/* ========== Page Services ========== */
+page {
+  background: #ffffff;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll-content {
+  width: 100%;
+  flex: 1;
+  padding-bottom: 140rpx;
+  box-sizing: border-box;
+}
+
+.scroll-inner {
+  width: 100%;
+}
+
+/* ========== 1. Header (White) ========== */
+.header-section {
+  background: #ffffff;
+  width: 100%;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 32rpx 12rpx;
+}
+
+.back-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 27rpx;
+  background: #EEEEEE;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1rpx 3rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-arrow-txt {
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.back-label {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.logo {
+  width: 150rpx;
+  height: 60rpx;
+}
+
+/* Avatar avec queue de bulle */
+.avatar-container {
+  position: relative;
+}
+
+.avatar-bubble {
+  position: relative;
+  width: 100rpx;
+  height: 110rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-img {
+  width: 100rpx;
+  height: 110rpx;
+  display: block;
+}
+
+.avatar-tail {
+  display: none; /* Hide the artificial HTML tail as it is already beautifully built into the Group PNG */
+}
+
+/* ========== 2. Top Strip (Icy Blue) ========== */
+.top-strip {
+  background-color: #D4EBF8;
+  height: 20rpx;
+  width: 100%;
+}
+
+/* ========== 3. Blue Zone (Hero) ========== */
+.hero-section {
+  background-color: #3B82B5;
+  padding: 36rpx 0 44rpx;
+}
+
+.hero-window {
+  margin: 0 44rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 12rpx 28rpx rgba(0, 0, 0, 0.2);
+}
+
+.hero-window-header {
+  background-color: #D4EBF8;
+  height: 52rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 32rpx;
+}
+
+.window-dots {
+  display: flex;
+  flex-direction: row;
+  gap: 16rpx;
+}
+
+.window-dot {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 9rpx;
+  background-color: #ffffff;
+}
+
+.window-dot--active {
+  background-color: #3B82B5;
+}
+
+.hero-window-body {
+  position: relative;
+  height: 330rpx;
+  background: #fff;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 170rpx;
+  padding: 0 32rpx 36rpx;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.hero-title {
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: 800;
+  letter-spacing: 1.5rpx;
+  margin-bottom: 20rpx;
+  text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.3);
+}
+
+.hero-btn {
+  background: #ffffff;
+  border-radius: 12rpx;
+  padding: 12rpx 36rpx;
+}
+
+.hero-btn-txt {
+  color: #000;
+  font-size: 22rpx;
+  font-weight: 900;
+  letter-spacing: 1rpx;
+}
+
+/* ========== 4. Date Zone (Light Blue) ========== */
+.date-zone {
+  background-color: #D4EBF8;
+  padding: 16rpx 0;
+}
+
+.date-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.date-icon {
+  width: 38rpx;
+  height: 38rpx;
+  opacity: 0.7;
+}
+
+.date-text {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+/* ========== 5. Services Section (White) ========== */
+.services-section {
+  background: #ffffff;
+  padding-top: 10rpx;
+  padding-bottom: 30rpx;
+}
+
+.section-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  margin: 28rpx 0 24rpx;
+}
+
+.section-title-script {
+  font-size: 48rpx;
+  font-weight: 400;
+  color: #333;
+  font-style: italic;
+  font-family: 'Times New Roman', serif;
+}
+
+.section-title-bold {
+  font-size: 30rpx;
+  font-weight: 800;
+  color: #60A5D1;
+  letter-spacing: 2rpx;
+  text-transform: uppercase;
+  margin-left: 12rpx;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0 32rpx 0 48rpx;
+  align-items: stretch;
+}
+
+.services-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+/* ========== Service Card ========== */
+.service-card {
+  width: 100%;
+  border-radius: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 20rpx 24rpx;
+  box-sizing: border-box;
+}
+
+.service-card:nth-child(1) { background-color: #7BB2D8; }
+.service-card:nth-child(2) { background-color: #A2D2EE; }
+.service-card:nth-child(3) { background-color: #92D9E2; }
+.service-card:nth-child(4) { background-color: #8FD8D2; }
+
+.service-card-photo-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  border-radius: 18rpx;
+  overflow: hidden;
+  margin-bottom: 14rpx;
+  background: transparent;
+}
+
+.service-card-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.service-card-label {
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.5rpx;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: pre-line;
+  margin-top: 4rpx;
+}
+
+/* ========== Scroll Indicator ========== */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  margin-left: 16rpx; 
+  padding: 20rpx 0;
+  flex-shrink: 0;
+}
+
+.scroll-arrow {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 24rpx;
+  background: #F0F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2rpx 4rpx rgba(255,255,255,0.5), 0 4rpx 8rpx rgba(0,0,0,0.1);
+  border: 1rpx solid #E5E5E5;
+}
+
+.scroll-arrow-text {
+  font-size: 20rpx;
+  color: #777;
+  font-weight: 600;
+}
+
+.scroll-track {
+  width: 24rpx;
+  height: 200rpx;
+  background: #FFFFFF;
+  border-radius: 12rpx;
+  position: relative;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  border: 1rpx solid #F0F0F0;
+}
+
+.scroll-thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60rpx;
+  background: #2A79B8;
+  border-radius: 12rpx;
+  top: 0;
+  transition: top 0.2s ease;
+}
+
+/* ========== Bottom Spacer ========== */
+.bottom-spacer {
+  display: none;
+}

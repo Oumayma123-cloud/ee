@@ -1,0 +1,415 @@
+page {
+  height: 100%;
+  background: #1d1f23;
+}
+
+.page-paiement {
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 16rpx 0 calc(20rpx + env(safe-area-inset-bottom));
+  background: #1d1f23;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mobile-card {
+  margin: 0 auto;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 12rpx 48rpx rgba(0, 0, 0, 0.22);
+}
+
+.mobile-card--figma {
+  width: 750rpx;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 57.6923076923rpx;
+  min-height: 1619.2307692308rpx;
+  position: relative;
+}
+
+/*
+ * Hauteur uniquement via style="height: {{scrollViewInnerPx}}px" (comme dashboard).
+ * Ne pas mettre flex:1 sur scroll-view : sous WeChat ça casse scroll-top / scrollHeight.
+ */
+.content-scroll {
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+/* Hauteur min. pour qu’il y ait toujours du scroll (sinon scroll-into-view / curseur ne servent à rien). */
+.content-scroll-inner {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 2800rpx;
+}
+
+/* New Header Styles from Photo */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  min-height: 120rpx;
+  height: auto;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.avatar-wrap {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.avatar-wrap--bubble {
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+
+.payment-hero-frame {
+  width: 750rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+  padding: 0;
+  margin-top: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Réf. image 2 : bandeau fin au-dessus (~15px), bandeau plus large en dessous (~45px @390) */
+.hero-strip {
+  height: 28.8461538462rpx;
+  flex-shrink: 0;
+  background: #c7e5d1;
+}
+
+.hero-strip--bottom {
+  height: 86.5384615385rpx;
+}
+
+/* Image 390×219 → hauteur seule 421.15rpx (pas de marge interne type « top 120 ») */
+.payment-hero {
+  position: relative;
+  height: 421.1538461538rpx;
+  flex-shrink: 0;
+  background: #c7e5d1;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 750rpx;
+  height: 421.1538461538rpx;
+  display: block;
+  opacity: 1;
+}
+
+/* Texte + CTA : bas gauche, au-dessus de la zone épaule (comme maquette) */
+.hero-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 28rpx 108rpx;
+  box-sizing: border-box;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.hero-title {
+  display: block;
+  max-width: 92%;
+  font-size: 26rpx;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1rpx;
+  line-height: 1.35;
+  text-transform: uppercase;
+  margin-bottom: 16rpx;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.5), 0 1rpx 2rpx rgba(0, 0, 0, 0.35);
+}
+
+.hero-cta {
+  min-height: 52rpx;
+  padding: 0 44rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.hero-cta-text {
+  color: #000000;
+  font-size: 20rpx;
+  font-weight: 800;
+  letter-spacing: 0.5rpx;
+  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.payment-grid {
+  /* Zone cartes comme la reference */
+  padding: 72rpx 24rpx 30rpx;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 223rpx 223rpx;
+  justify-content: center;
+  column-gap: 22rpx;
+  row-gap: 20rpx;
+  background: #ffffff;
+}
+
+.pay-card {
+  width: 223rpx;
+  height: 286rpx;
+  flex: none;
+  background: #82b791;
+  border-radius: 18rpx;
+  padding: 18rpx 12rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pay-card-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14rpx;
+}
+
+.pay-icon-img {
+  display: block;
+  width: 118rpx;
+  height: 118rpx;
+}
+
+.pay-icon-img--carte {
+  width: 132rpx;
+  height: 92rpx;
+}
+
+.pay-icon-img--tiers {
+  width: 108rpx;
+  height: 108rpx;
+}
+
+.pay-icon-img--chaaib {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.pay-title {
+  color: #ffffff;
+  font-size: 22rpx;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.15;
+  min-height: 54rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-confirm-row {
+  display: flex;
+  justify-content: center;
+}
+
+.pay-confirm-btn {
+  height: 42rpx;
+  min-width: 122rpx;
+  padding: 0 18rpx;
+  border-radius: 21rpx;
+  background: #2d6a4f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18rpx;
+  font-weight: 700;
+}
+
+.pay-card--tashilat {
+  background: #82b791;
+}
+
+.pay-card--carte,
+.pay-card--chaaib {
+  background: #82b791;
+}
+
+.pay-card--tiers {
+  background: #9bc4a8;
+}
+
+.scroll-bottom-spacer {
+  height: 120rpx;
+}
+
+/* Ascenseur : alignement maquette (carte 750rpx, ~75rpx du bord droit) */
+.side-scroll-indicator {
+  position: absolute;
+  left: 675rpx;
+  top: 900rpx;
+  width: 42rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rpx;
+  z-index: 500;
+  pointer-events: auto;
+}
+
+.side-scroll-arrow {
+  width: 42rpx;
+  height: 42rpx;
+  min-width: 42rpx;
+  min-height: 42rpx;
+  border-radius: 50%;
+  background: #e0e3e6;
+  border: 1rpx solid #d0d4d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.side-scroll-arrow-char {
+  color: #7b7f84;
+  font-size: 26rpx;
+  font-weight: 800;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.side-scroll-arrow--hover {
+  opacity: 0.88;
+}
+
+.side-scroll-track {
+  position: relative;
+  width: 26.9230769231rpx;
+  height: 234.6153846154rpx;
+  border-radius: 38.4615384615rpx;
+  background: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 8rpx 0 rgba(0, 0, 0, 0.25);
+}
+
+.side-scroll-thumb {
+  position: absolute;
+  left: 50%;
+  width: 24rpx;
+  height: 124rpx;
+  margin-left: -12rpx;
+  border-radius: 14rpx;
+  background: #2d6a4f;
+  box-sizing: border-box;
+}
+
+.bottom-nav.bottom-nav--in-card {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0 0 57.6923076923rpx 57.6923076923rpx;
+  align-self: stretch;
+  border-top: none;
+  box-shadow: none;
+}
+

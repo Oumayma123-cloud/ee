@@ -1,0 +1,99 @@
+<view class="bon-plan-container">
+  <view class="mobile-card">
+    
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="ess-hero-area">
+      <view class="ess-hero-strip ess-hero-strip--top"></view>
+      <view class="ess-hero-main">
+        <image class="ess-hero-img" src="/assets/bon10.png" mode="aspectFill"></image>
+        <view class="ess-hero-overlay">
+          <text class="ess-hero-title">BÉNÉFICIEZ D’OFFRES PRIVILÉGIÉES</text>
+          <view class="ess-hero-btn" bindtap="onHeroCta">
+            <text class="ess-hero-btn-txt">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+      <view class="ess-hero-strip ess-hero-strip--bottom"></view>
+    </view>
+
+    <!-- Arrow Navigation Strip -->
+    <view class="arrow-nav-strip">
+      <view class="nav-arrow-btn">←</view>
+      <view class="nav-arrow-btn">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="ess-main-header">
+      <view class="ess-title-row">
+        <image class="main-title-img" src="/assets/Mes services bon.png" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards & Scrollbar Area -->
+    <view class="ess-grid-container">
+      
+      <!-- Scrollable Grid View -->
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="ess-grid">
+          <view class="deal-card" wx:for="{{deals}}" wx:key="id" bindtap="onDealTap" data-id="{{item.id}}" style="background: {{item.bgColor}};">
+            
+            <!-- Brand Header using real logo images -->
+            <view class="brand-header">
+              <image class="brand-logo-img brand-logo-img--{{item.brandType}}" src="{{item.logo}}" mode="aspectFit"></image>
+            </view>
+            
+            <!-- Product image -->
+            <view class="card-img-wrap">
+              <image class="card-img card-img--{{item.brandType}}" src="{{item.image}}" mode="aspectFit"></image>
+            </view>
+            
+            <!-- Promo & Subtitle info -->
+            <view class="card-info">
+              <view class="card-promo-title-wrap">
+                <text class="card-promo-prefix" wx:if="{{item.titlePrefix}}">{{item.titlePrefix}}</text>
+                <text class="card-promo-suffix {{item.titlePrefix ? 'card-promo-suffix--price' : 'card-promo-suffix--percent'}}">{{item.titleSuffix}}</text>
+              </view>
+              <text class="card-promo-subtitle">{{item.subtitle}}</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+      <!-- Dynamic Functional Scrollbar -->
+      <view class="ess-scrollbar">
+        <view class="ess-scroll-arrow">↑</view>
+        <view class="ess-scroll-track">
+          <!-- Perfectly bounded custom scrollbar calculation using calc -->
+          <view class="ess-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+        </view>
+        <view class="ess-scroll-arrow">↓</view>
+      </view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

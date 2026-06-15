@@ -1,0 +1,119 @@
+<view class="cuisine-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="cuisine-hero-area">
+      <view class="cuisine-hero-main">
+        <image class="cuisine-hero-img" src="/assets/club.png" mode="aspectFill"></image>
+        <view class="cuisine-hero-overlay">
+          <text class="cuisine-hero-title">DÉCOUVREZ NOS CLUBS TIQQA</text>
+          <view class="cuisine-hero-btn" bindtap="onHeroCta">
+            <text class="cuisine-hero-btn-txt">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Date Navigation Strip -->
+    <view class="cuisine-date-strip">
+      <view class="date-arrow-btn" bindtap="onPrevDate">←</view>
+      <view class="date-center">
+        <image class="date-calendar-icon" src="/assets/vocale.png" mode="aspectFit"></image>
+        <text class="date-text">{{currentDate}}</text>
+      </view>
+      <view class="date-arrow-btn" bindtap="onNextDate">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="cuisine-main-header">
+      <view class="cuisine-title-row">
+        <image class="cuisine-title-img-script" src="/assets/Clubs.png" mode="heightFix"></image>
+        <text class="cuisine-title-text">CUISINE</text>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards & Scrollbar Area -->
+    <view class="cuisine-grid-container">
+
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="cuisine-grid">
+
+          <!-- Activités Card -->
+          <view class="cuisine-card" bindtap="onCardTap" data-type="activites">
+            <view class="cuisine-card-img-wrap">
+              <image class="cuisine-card-img" src="/assets/SI1.png" mode="aspectFill"></image>
+            </view>
+            <view class="cuisine-card-footer">
+              <text class="cuisine-card-label">ACTIVITÉS</text>
+            </view>
+          </view>
+
+          <!-- Communauté Card -->
+          <view class="cuisine-card" bindtap="onCardTap" data-type="communaute">
+            <view class="cuisine-card-img-wrap">
+              <image class="cuisine-card-img" src="/assets/SI2.png" mode="aspectFill"></image>
+            </view>
+            <view class="cuisine-card-footer">
+              <text class="cuisine-card-label">COMMUNAUTÉ</text>
+            </view>
+          </view>
+
+          <!-- Vidéos Card -->
+          <view class="cuisine-card" bindtap="onCardTap" data-type="videos">
+            <view class="cuisine-card-img-wrap">
+              <image class="cuisine-card-img" src="/assets/SI3.png" mode="aspectFill"></image>
+            </view>
+            <view class="cuisine-card-footer">
+              <text class="cuisine-card-label">VIDÉOS</text>
+            </view>
+          </view>
+
+          <!-- Coach Card -->
+          <view class="cuisine-card" bindtap="onCardTap" data-type="coach">
+            <view class="cuisine-card-img-wrap">
+              <image class="cuisine-card-img" src="/assets/SI4.png" mode="aspectFill"></image>
+            </view>
+            <view class="cuisine-card-footer">
+              <text class="cuisine-card-label">COACH</text>
+            </view>
+          </view>
+
+        </view>
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+      <!-- Dynamic Functional Scrollbar -->
+      <view class="cuisine-scrollbar">
+        <view class="cuisine-scroll-arrow">↑</view>
+        <view class="cuisine-scroll-track">
+          <view class="cuisine-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+        </view>
+        <view class="cuisine-scroll-arrow">↓</view>
+      </view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

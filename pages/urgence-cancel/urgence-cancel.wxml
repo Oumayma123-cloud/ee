@@ -1,0 +1,57 @@
+<view class="urgence-container" style="padding-top: {{statusBarHeight}}px;">
+  <!-- Header -->
+  <view class="header">
+    <view class="back-btn" bindtap="onBackTap">
+      <view class="back-circle">
+        <text class="back-arrow">←</text>
+      </view>
+      <text class="back-text">Retour</text>
+    </view>
+    
+    <image class="logo" src="../../assets/logo-tiqqa-header.png" mode="aspectFit"></image>
+
+    <view class="avatar-bubble" bindtap="onProfileTap">
+      <view class="avatar-wrap avatar-wrap--bubble">
+        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="body-scroll" scroll-y="true">
+    <!-- Top Separator -->
+    <view class="separator-bar"></view>
+
+    <!-- Hero Section -->
+    <view class="hero-section">
+      <view class="operator-container">
+        <image class="operator-img" src="../../assets/center-appel.png" mode="aspectFit"></image>
+      </view>
+      <view class="question-bubble">
+        <text class="bubble-text">Etes-vous sur de vouloir déclencher <text class="text-red">l'Appel d'urgence?</text></text>
+      </view>
+    </view>
+
+    <!-- Separator Bar -->
+    <view class="separator-bar"></view>
+
+    <!-- Cancel Card Section -->
+    <view class="cards-section">
+      <view class="cancel-card-single">
+        <view class="image-area">
+          <image class="card-urg-img grayed" src="../../assets/urg.png" mode="aspectFit"></image>
+          <view class="cancel-x">X</view>
+        </view>
+        <view class="card-footer footer-light">
+          <view class="btn-cancel-final" bindtap="onFinalCancel">
+            Ambulance Annulé
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="bottom-spacer"></view>
+  </scroll-view>
+
+  <!-- Bottom Navigation -->
+  <bottom-nav-bar variant="fixed" active-tab="emergency" message-count="{{messageCount}}" bind:navtap="onNavTap" />
+</view>

@@ -1,0 +1,105 @@
+/* ===== BASE ===== */
+page {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #C19A89 0%, #A57865 100%);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    width: 100%;
+    min-height: 100vh;
+    /* flat brown background like design screenshot */
+    background: #B38F7F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* ===== DECORATIVE CIRCLE ===== */
+.decor-circle {
+    position: absolute;
+    /* cover entire screen with motif, similar size to photo */
+    top: -20rpx;
+    right: -20rpx;
+    width: 120%;
+    height: 120%;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    object-fit: cover;
+}
+
+/* second circle for lower right element if image has two shapes */
+.decor-circle-small {
+    position: absolute;
+    bottom: -60rpx;
+    right: -80rpx;
+    width: 300rpx;
+    height: 300rpx;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===== BRANDING / LOGO ===== */
+.branding {
+    position: absolute;
+    top: 320rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.logo {
+    width: 400rpx;
+    margin-bottom: 30rpx;
+}
+
+.tagline-ar {
+    font-size: 36rpx;
+    color: #FFFFFF;
+    font-weight: 500;
+    margin-bottom: 16rpx;
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+}
+
+.tagline-fr {
+    font-size: 32rpx;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+/* ===== COUPLE IMAGE ===== */
+.image-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.couple {
+    width: 115%;
+}
+
+/* ===== HOME INDICATOR ===== */
+.home-indicator {
+    position: fixed;
+    bottom: 16rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 268rpx;
+    height: 10rpx;
+    background: #1C1C1C;
+    border-radius: 100rpx;
+    z-index: 100;
+}

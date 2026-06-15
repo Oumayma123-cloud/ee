@@ -1,0 +1,119 @@
+<view class="voyages-container">
+  <view class="mobile-card">
+
+    <!-- Standardized Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+          <view class="avatar-bubble-tail"></view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Hero Section -->
+    <view class="voyages-hero-area">
+      <view class="voyages-hero-main">
+        <image class="voyages-hero-img" src="/assets/club.png" mode="aspectFill"></image>
+        <view class="voyages-hero-overlay">
+          <text class="voyages-hero-title">TISSEZ DES LIENS DE CONFIANCE</text>
+          <view class="voyages-hero-btn" bindtap="onHeroCta">
+            <text class="voyages-hero-btn-txt">ACCÉDER</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Date Navigation Strip -->
+    <view class="voyages-date-strip">
+      <view class="date-arrow-btn" bindtap="onPrevDate">←</view>
+      <view class="date-center">
+        <image class="date-calendar-icon" src="/assets/vocale.png" mode="aspectFit"></image>
+        <text class="date-text">{{currentDate}}</text>
+      </view>
+      <view class="date-arrow-btn" bindtap="onNextDate">→</view>
+    </view>
+
+    <!-- Main Title -->
+    <view class="voyages-main-header">
+      <view class="voyages-title-row">
+        <image class="voyages-title-img-script" src="/assets/Clubs.png" mode="heightFix"></image>
+        <text class="voyages-title-text">VOYAGES</text>
+      </view>
+    </view>
+
+    <!-- Scrollable Cards & Scrollbar Area -->
+    <view class="voyages-grid-container">
+
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+        <view class="voyages-grid">
+
+          <!-- Activités Card -->
+          <view class="voyages-card" bindtap="onCardTap" data-type="activites">
+            <view class="voyages-card-img-wrap">
+              <image class="voyages-card-img" src="/assets/V1.png" mode="aspectFill"></image>
+            </view>
+            <view class="voyages-card-footer">
+              <text class="voyages-card-label">ACTIVITÉS</text>
+            </view>
+          </view>
+
+          <!-- Communauté Card -->
+          <view class="voyages-card" bindtap="onCardTap" data-type="communaute">
+            <view class="voyages-card-img-wrap">
+              <image class="voyages-card-img" src="/assets/V2.png" mode="aspectFill"></image>
+            </view>
+            <view class="voyages-card-footer">
+              <text class="voyages-card-label">COMMUNAUTÉ</text>
+            </view>
+          </view>
+
+          <!-- Vidéos Card -->
+          <view class="voyages-card" bindtap="onCardTap" data-type="videos">
+            <view class="voyages-card-img-wrap">
+              <image class="voyages-card-img" src="/assets/V3.png" mode="aspectFill"></image>
+            </view>
+            <view class="voyages-card-footer">
+              <text class="voyages-card-label">VIDÉOS</text>
+            </view>
+          </view>
+
+          <!-- Coach Card -->
+          <view class="voyages-card" bindtap="onCardTap" data-type="coach">
+            <view class="voyages-card-img-wrap">
+              <image class="voyages-card-img" src="/assets/V4.png" mode="aspectFill"></image>
+            </view>
+            <view class="voyages-card-footer">
+              <text class="voyages-card-label">COACH</text>
+            </view>
+          </view>
+
+        </view>
+        <view class="bottom-spacer"></view>
+      </scroll-view>
+
+      <!-- Dynamic Functional Scrollbar -->
+      <view class="voyages-scrollbar">
+        <view class="voyages-scroll-arrow">↑</view>
+        <view class="voyages-scroll-track">
+          <view class="voyages-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+        </view>
+        <view class="voyages-scroll-arrow">↓</view>
+      </view>
+
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

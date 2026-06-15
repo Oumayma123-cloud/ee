@@ -1,0 +1,52 @@
+<view class="container">
+
+  <scroll-view class="scroll-content" scroll-y="true" enhanced="true" show-scrollbar="false">
+
+    <!-- Header avec padding pour la barre de statut -->
+    <tiqqa-header bind:back="onBack" />
+
+    <!-- Bande verte fine séparatrice -->
+    <view class="green-strip"></view>
+
+    <!-- Hero Banner -->
+    <view class="banner-section">
+      <image src="/assets/hero/hero-home2.png" class="banner-img" mode="aspectFill"></image>
+      <view class="banner-overlay">
+        <text class="banner-title">PRÉSERVEZ VOTRE CAPITAL SANTÉ</text>
+        <view class="btn-acceder">
+          <text class="btn-acceder-txt">ACCÉDER</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Bande verte navigation (flèches) -->
+    <view class="nav-strip">
+      <view class="nav-arrow-circle">
+        <text class="nav-arrow-txt">←</text>
+      </view>
+      <view class="nav-arrow-circle">
+        <text class="nav-arrow-txt">→</text>
+      </view>
+    </view>
+
+    <!-- Contenu principal : Image médecin + bouton -->
+    <view class="main-content">
+      <view class="doctor-display">
+        <image src="/assets/medecin_de_garde.png" class="doctor-hero-img" mode="aspectFit"></image>
+      </view>
+      <view class="action-area">
+        <view class="btn-demande" bindtap="onDemandeTap">
+          <text class="btn-demande-txt">Demande de medecin de garde</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Espace pour la bottom nav -->
+    <view class="bottom-spacer"></view>
+
+  </scroll-view>
+
+  <!-- Bottom Navigation (fixe, hors du scroll) -->
+  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+</view>

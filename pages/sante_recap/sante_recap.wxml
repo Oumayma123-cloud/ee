@@ -1,0 +1,74 @@
+<view class="container">
+  <view class="shell">
+    <!-- Header -->
+    <view class="horaire-header-wrap">
+      <view class="status-row">
+        <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+      </view>
+      <view class="top-bar top-bar--horaire">
+        <view class="back-wrap" bindtap="onBack">
+          <view class="back-circle">←</view>
+          <text class="back-text">Retour</text>
+        </view>
+        <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+        <view class="avatar-bubble" bindtap="onProfileTap">
+          <view class="avatar-wrap avatar-wrap--bubble">
+            <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- Top Green Section -->
+    <view class="recap-top-section">
+      <view class="section-title">RENDEZ VOUS ANNULÉ</view>
+      
+      <view class="recap-card">
+        <view class="card-header">Récapitulatif</view>
+        <view class="card-divider"></view>
+        
+        <view class="info-group">
+          <view class="info-label">Date</view>
+          <view class="info-value">Mardi 13 avril à 12h</view>
+        </view>
+        
+        <view class="info-group">
+          <view class="info-label">Adresse d'intervention</view>
+          <view class="info-value">60, Avenue Hassan 2, Res Yasmine</view>
+        </view>
+        
+        <view class="info-group">
+          <view class="info-label">Le montant à payer</view>
+          <view class="info-value">150 Dhs</view>
+        </view>
+        
+        <view class="info-group">
+          <view class="info-label">Mode de paiement</view>
+          <view class="info-value">Espèces</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- White Section with Nurse -->
+    <view class="recap-bottom-section">
+      <image src="/assets/infirmier.png" class="nurse-img" mode="aspectFit"></image>
+      
+      <view class="action-buttons">
+        <button class="btn btn-confirm" bindtap="onConfirm">Confirmez le Rendez-vous</button>
+        <button class="btn btn-cancel" bindtap="onCancel">Annulez</button>
+      </view>
+    </view>
+
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+    <!-- Modal d'alerte -->
+    <view class="modal-overlay" wx:if="{{showModal}}">
+      <view class="modal-content">
+        <text class="modal-text">Rendez-vous dans l'agence Tasshilat la plus proche avec votre code de paiement pour finaliser la réservation. Veuillez vous y présenter muni(e) de ce code XXXX</text>
+        <view class="modal-close" bindtap="closeModal">
+          <text class="close-icon">✕</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
