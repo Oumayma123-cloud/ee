@@ -19,7 +19,6 @@
     </view>
 
     <view class="banner-area">
-      <view class="banner-top-bar"></view>
       <view class="banner-section">
         <image src="/assets/banner1.png" class="banner-img" mode="aspectFill"></image>
         <view class="banner-content">
@@ -42,23 +41,25 @@
     </view>
 
     <view class="main-content-wrapper">
-      <view class="cards-grid">
-        <view class="pay-card" wx:for="{{payMethods}}" wx:key="title">
-          <image src="{{item.image}}" class="card-image" mode="aspectFit"></image>
-          <text class="card-title">{{item.title}}</text>
-          <button class="confirm-btn" size="mini" bindtap="onConfirm" data-title="{{item.title}}">CONFIRMEZ</button>
+      <scroll-view class="grid-scroll-view" scroll-y="true" show-scrollbar="{{false}}" enhanced="{{true}}" bindscroll="onGridScroll" scroll-top="{{scrollTop}}">
+        <view class="cards-grid">
+          <view class="pay-card" wx:for="{{payMethods}}" wx:key="title">
+            <image src="{{item.image}}" class="card-image" mode="aspectFit"></image>
+            <text class="card-title">{{item.title}}</text>
+            <button class="confirm-btn" size="mini" bindtap="onConfirm" data-title="{{item.title}}">CONFIRMEZ</button>
+          </view>
         </view>
-      </view>
+      </scroll-view>
 
       <view class="side-scrollbar">
-        <view class="scroll-arrow-up">
-          <text class="arrow-text">←</text>
+        <view class="scroll-arrow-up" bindtap="onScrollUp">
+          <text class="arrow-text">↑</text>
         </view>
         <view class="scroll-track">
-          <view class="scroll-handle"></view>
+          <view class="scroll-handle" style="top: {{handleTop || 0}}rpx;"></view>
         </view>
-        <view class="scroll-arrow-down">
-          <text class="arrow-text">←</text>
+        <view class="scroll-arrow-down" bindtap="onScrollDown">
+          <text class="arrow-text">↓</text>
         </view>
       </view>
     </view>

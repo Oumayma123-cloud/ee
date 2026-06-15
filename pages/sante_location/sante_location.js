@@ -45,6 +45,12 @@ Page({
   },
 
   onFinalConfirm() {
+    const booking = wx.getStorageSync('infirmier_booking') || {};
+    booking.address = this.data.address;
+    booking.latitude = this.data.latitude;
+    booking.longitude = this.data.longitude;
+    wx.setStorageSync('infirmier_booking', booking);
+
     const query = `date=${encodeURIComponent(this.data.date)}&slot=${encodeURIComponent(this.data.slot)}&address=${encodeURIComponent(this.data.address)}`;
     wx.navigateTo({ url: `/pages/sante_paymethod/sante_paymethod?${query}` });
   },

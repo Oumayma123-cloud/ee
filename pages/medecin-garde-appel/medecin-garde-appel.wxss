@@ -86,14 +86,14 @@
   justify-content: center;
 }
 
-/* ACCEPTER = rouge */
+/* ACCEPTER = vert */
 .call-btn--accept {
-  background-color: #E53935;
+  background-color: #7ED85C;
 }
 
-/* REFUSER = vert */
+/* REFUSER = rouge */
 .call-btn--refuse {
-  background-color: #7ED85C;
+  background-color: #E53935;
 }
 
 /* Icône téléphone SVG */

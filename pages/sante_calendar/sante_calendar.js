@@ -85,6 +85,9 @@ Page({
     const { selectedDay, currentMonth, currentYear } = this.data;
     const date = `${selectedDay}/${currentMonth}/${currentYear}`;
 
+    const booking = { date };
+    wx.setStorageSync('infirmier_booking', booking);
+
     wx.navigateTo({
       url: `/pages/sante_horaire/sante_horaire?date=${date}`
     });

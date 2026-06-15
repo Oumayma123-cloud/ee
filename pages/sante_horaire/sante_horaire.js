@@ -36,6 +36,10 @@ Page({
       wx.showToast({ title: 'Choisissez un horaire', icon: 'none' });
       return;
     }
+    const booking = wx.getStorageSync('infirmier_booking') || {};
+    booking.slot = this.data.selectedSlot;
+    wx.setStorageSync('infirmier_booking', booking);
+
     const query = `date=${encodeURIComponent(this.data.date)}&slot=${encodeURIComponent(this.data.selectedSlot)}`;
     wx.navigateTo({ url: `/pages/sante_location/sante_location?${query}` });
   },

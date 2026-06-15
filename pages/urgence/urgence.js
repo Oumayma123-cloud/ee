@@ -1,3 +1,5 @@
+const { defaultBottomNavTap } = require('../../utils/defaultNavTap.js');
+
 Page({
   data: {
     statusBarHeight: 20,
@@ -27,12 +29,7 @@ Page({
     });
   },
 
-  onNavTap: function(e) {
-    const action = e.detail.action;
-    if (action === 'home') {
-      wx.reLaunch({ url: '../home/home' });
-    }
-  },
+  onNavTap: defaultBottomNavTap,
 
   onProfileTap: function() {
     wx.navigateTo({

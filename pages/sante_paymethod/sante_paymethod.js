@@ -27,6 +27,10 @@ Page({
 
   onConfirm() {
     const { date, slot, address, tarif, remaining } = this.data;
+    const booking = wx.getStorageSync('infirmier_booking') || {};
+    booking.amount = tarif;
+    wx.setStorageSync('infirmier_booking', booking);
+
     const query = `date=${encodeURIComponent(date)}&slot=${encodeURIComponent(slot)}&address=${encodeURIComponent(address)}&tarif=${encodeURIComponent(tarif)}&remaining=${encodeURIComponent(remaining)}`;
     wx.navigateTo({
       url: `/pages/sante_carte/sante_carte?${query}`

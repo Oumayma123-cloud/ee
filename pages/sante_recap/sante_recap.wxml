@@ -29,22 +29,22 @@
         
         <view class="info-group">
           <view class="info-label">Date</view>
-          <view class="info-value">Mardi 13 avril à 12h</view>
+          <view class="info-value">{{bookingDate}} à {{bookingSlot}}</view>
         </view>
         
         <view class="info-group">
           <view class="info-label">Adresse d'intervention</view>
-          <view class="info-value">60, Avenue Hassan 2, Res Yasmine</view>
+          <view class="info-value">{{bookingAddress}}</view>
         </view>
         
         <view class="info-group">
           <view class="info-label">Le montant à payer</view>
-          <view class="info-value">150 Dhs</view>
+          <view class="info-value">{{bookingAmount}}</view>
         </view>
         
         <view class="info-group">
           <view class="info-label">Mode de paiement</view>
-          <view class="info-value">Espèces</view>
+          <view class="info-value">{{bookingPaymentMethod}}</view>
         </view>
       </view>
     </view>
@@ -64,7 +64,7 @@
     <!-- Modal d'alerte -->
     <view class="modal-overlay" wx:if="{{showModal}}">
       <view class="modal-content">
-        <text class="modal-text">Rendez-vous dans l'agence Tasshilat la plus proche avec votre code de paiement pour finaliser la réservation. Veuillez vous y présenter muni(e) de ce code XXXX</text>
+        <text class="modal-text">{{modalText}}</text>
         <view class="modal-close" bindtap="closeModal">
           <text class="close-icon">✕</text>
         </view>

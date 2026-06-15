@@ -1,19 +1,44 @@
+page {
+  background-color: #ffffff !important;
+  width: 750rpx !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@font-face {
+  font-family: 'The Cottage';
+  src: url('/fonts/The-Cottage.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 .container {
-  background-color: #d0d0d0;
+  background-color: #ffffff !important;
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 750rpx !important;
+  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: stretch;
+  align-items: stretch;
 }
 
 .shell {
-  width: 100%;
+  width: 750rpx !important;
+  max-width: 100% !important;
   min-height: 100vh;
-  background: #f4f5f4;
-  border-radius: 30rpx;
+  background: #ffffff !important;
+  border-radius: 0rpx !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   padding-top: 8rpx;
+  margin: 0 !important;
 }
 
 /* New Header Styles from Photo */
@@ -28,6 +53,9 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 750rpx !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
 .status-row {
@@ -95,39 +123,69 @@
 }
 
 .avatar-wrap {
-  width: 150rpx;
-  height: 150rpx;
-  border-radius: 50%;
-  background: transparent;
+  position: relative;
+  width: 120rpx;
+  height: 130rpx;
 }
 
 .avatar-wrap--bubble {
-  border: none;
-  box-shadow: none;
-  overflow: hidden;
+  position: relative;
+  z-index: 4;
+}
+
+.avatar-wrap--bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  border-top: 18rpx solid #fff;
+  z-index: 4;
+  pointer-events: none;
 }
 
 .avatar {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 54rpx;
+  border: 5rpx solid #fff;
+  display: block;
+  position: relative;
+  z-index: 4;
+  background: #e8e8e8;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.14);
+}
+
+.banner-area {
+  width: 750rpx !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .banner-top-bar {
   background-color: #b8d8c1;
   height: 22rpx;
-  width: 100%;
+  width: 100% !important;
 }
 
 .banner-section {
   position: relative;
-  height: 230rpx;
+  height: 310rpx;
   overflow: hidden;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .banner-img {
-  width: 100%;
+  width: 100% !important;
   height: 100%;
+  display: block;
 }
 
 .banner-content {
@@ -166,6 +224,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 180rpx;
+  width: 750rpx !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .nav-arrow-wrapper {
@@ -186,22 +247,24 @@
 }
 
 .section-title {
-  text-align: center;
-  margin: 16rpx 0 14rpx;
-  font-size: 34rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24rpx 0 20rpx;
 }
 
 .thin {
-  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'The Cottage', 'Brush Script MT', cursive;
   font-weight: 400;
   color: #123a53;
-  margin-right: 6rpx;
+  font-size: 56rpx;
+  margin-right: 12rpx;
 }
 
 .bold {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
-  font-size: 36rpx;
+  font-size: 38rpx;
   text-transform: uppercase;
   color: #1c7a61;
 }
@@ -215,6 +278,13 @@
   justify-content: center;
 }
 
+.grid-scroll-view {
+  flex: 1;
+  height: 580rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .cards-grid {
   flex: 1;
   display: flex;
@@ -225,13 +295,14 @@
   row-gap: 30rpx;
   column-gap: 32rpx;
   padding-right: 20rpx; /* Pour compenser la scrollbar */
+  padding-bottom: 50rpx; /* Pour permettre un defilement suffisant et voir les cartes completement */
 }
 
 .pay-card {
   width: 232rpx;   /* 116px * 2 */
   height: 298rpx;  /* 149px * 2 */
   border-radius: 18rpx; /* ~9px * 2 */
-  background: #83bf95;
+  background: #8bbd9a;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -267,58 +338,63 @@
   padding: 0 !important;
 }
 
+.confirm-btn::after {
+  border: none !important;
+}
+
 .side-scrollbar {
   position: absolute;
-  right: 16rpx;
-  top: 16rpx;
-  width: 28rpx;
-  height: 350rpx;
+  right: 20rpx;
+  top: 120rpx;
+  width: 44rpx;
+  height: 380rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .scroll-track {
-  width: 20rpx;
-  background: #e6e6e6;
-  border-radius: 20rpx;
-  flex: 1;
-  margin: 10rpx 0;
+  width: 28rpx;
+  height: 272rpx;
+  background: #ffffff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
   position: relative;
+  margin: 10rpx 0;
 }
 
 .scroll-handle {
   width: 100%;
-  height: 66rpx;
-  background: #3c7d58;
-  border-radius: 20rpx;
+  height: 100rpx;
+  background: #3b7a57;
+  border-radius: 20px;
   position: absolute;
-  top: 70rpx;
+  top: 0;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
 }
 
 .scroll-arrow-up,
 .scroll-arrow-down {
-  width: 28rpx;
-  height: 28rpx;
-  background: #dfe2e1;
+  width: 44rpx;
+  height: 44rpx;
+  background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.12);
 }
 
-.scroll-arrow-icon {
-  width: 10rpx;
-  height: 10rpx;
-  opacity: 0.5;
-}
-
-.scroll-arrow-up {
-  transform: rotate(90deg);
-}
-
-.scroll-arrow-down {
-  transform: rotate(-90deg);
+.scroll-arrow-up .arrow-text,
+.scroll-arrow-down .arrow-text {
+  font-size: 20rpx;
+  color: #707070;
+  font-weight: 500;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 

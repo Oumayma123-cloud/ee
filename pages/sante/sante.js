@@ -62,7 +62,7 @@ Page({
   // Navigation vers Urgence
   goToUrgence() {
     wx.navigateTo({
-      url: '/pages/essentiels/essentiels'
+      url: '/pages/urgence/urgence'
     });
   },
 

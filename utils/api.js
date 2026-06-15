@@ -154,6 +154,93 @@ function getMockResponse(path, method, data) {
     };
   }
 
+  // Mocks pour Infirmier à domicile
+  if (path === '/api/mobile/v1/sante/infirmier-a-domicile' && method === 'POST') {
+    const newPrestation = {
+      id: 800,
+      utilisateur_id: data ? (data.parent_id || 521) : 521,
+      status: 'en_attente',
+      date_prestation: data ? data.date_prestation : new Date().toISOString(),
+      ville_beneficiaire: data ? (data.ville_beneficiaire || 'Casablanca') : 'Casablanca',
+      adresse_beneficiaire: data ? (data.adresse_beneficiaire || 'Casablanca') : 'Casablanca',
+      numero_telephone_beneficiaire: data ? (data.numero_telephone_beneficiaire || '0666666666') : '0666666666',
+      cree_le: new Date().toISOString()
+    };
+    wx.setStorageSync('mock_infirmier_prestation', newPrestation);
+    return {
+      status: 'success',
+      data: newPrestation,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/infirmier-a-domicile/en-cours') && method === 'GET') {
+    const prestation = wx.getStorageSync('mock_infirmier_prestation') || null;
+    return {
+      status: 'success',
+      data: prestation,
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/sante/infirmier-a-domicile' && method === 'GET') {
+    const cur = wx.getStorageSync('mock_infirmier_prestation');
+    return {
+      status: 'success',
+      data: cur ? [cur] : [],
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/infirmier-a-domicile/') && path.endsWith('/cloturer') && method === 'PUT') {
+    wx.removeStorageSync('mock_infirmier_prestation');
+    return {
+      status: 'success',
+      data: { message: 'Prestation cloturée avec succès' },
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/infirmier-a-domicile/') && path.endsWith('/restore-cloturer') && method === 'PUT') {
+    const restored = {
+      id: 800,
+      utilisateur_id: 521,
+      status: 'en_attente',
+      date_prestation: new Date().toISOString(),
+      ville_beneficiaire: 'Casablanca',
+      adresse_beneficiaire: 'Casablanca',
+      numero_telephone_beneficiaire: '0666666666',
+      cree_le: new Date().toISOString()
+    };
+    wx.setStorageSync('mock_infirmier_prestation', restored);
+    return {
+      status: 'success',
+      data: restored,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/infirmier-a-domicile/') && method === 'GET') {
+    const id = path.split('/').pop();
+    if (id !== 'en-cours' && id !== 'details') {
+      const cur = wx.getStorageSync('mock_infirmier_prestation') || {
+        id: Number(id) || 800,
+        utilisateur_id: 521,
+        status: 'en_attente',
+        date_prestation: new Date().toISOString(),
+        ville_beneficiaire: 'Casablanca',
+        adresse_beneficiaire: 'Casablanca',
+        numero_telephone_beneficiaire: '0666666666',
+        cree_le: new Date().toISOString()
+      };
+      return {
+        status: 'success',
+        data: cur,
+        mock: true
+      };
+    }
+  }
+
   return null;
 }
 
@@ -309,6 +396,36 @@ function cloturerMedecinGarde(id, parentId) {
   });
 }
 
+function creerDemandeInfirmier(data) {
+  return request('/api/mobile/v1/sante/infirmier-a-domicile', 'POST', data);
+}
+
+function getCurrentPrestationInfirmier(parentId) {
+  return request(`/api/mobile/v1/sante/infirmier-a-domicile/en-cours?parent_id=${parentId}`, 'GET');
+}
+
+function cloturerDemandeInfirmier(id, parentId) {
+  return request(`/api/mobile/v1/sante/infirmier-a-domicile/${id}/cloturer`, 'PUT', {
+    parent_id: String(parentId)
+  });
+}
+
+function getPrestationsInfirmier() {
+  return request('/api/mobile/v1/sante/infirmier-a-domicile', 'GET');
+}
+
+function getPrestationDetailInfirmier(id) {
+  return request(`/api/mobile/v1/sante/infirmier-a-domicile/${id}`, 'GET');
+}
+
+function modifierDemandeInfirmier(id, data) {
+  return request(`/api/mobile/v1/sante/infirmier-a-domicile/${id}`, 'PUT', data);
+}
+
+function restoreCloturerDemandeInfirmier(id) {
+  return request(`/api/mobile/v1/sante/infirmier-a-domicile/${id}/restore-cloturer`, 'PUT');
+}
+
 module.exports = {
   BASE_URL,
   login,
@@ -324,5 +441,13 @@ module.exports = {
   ajouterFamille,
   creerDemandeMedecinGarde,
   getCurrentPrestationMedecinGarde,
-  cloturerMedecinGarde
+  cloturerMedecinGarde,
+  creerDemandeInfirmier,
+  getCurrentPrestationInfirmier,
+  cloturerDemandeInfirmier,
+  getPrestationsInfirmier,
+  getPrestationDetailInfirmier,
+  modifierDemandeInfirmier,
+  restoreCloturerDemandeInfirmier
 };
+
