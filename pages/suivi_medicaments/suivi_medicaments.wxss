@@ -201,7 +201,7 @@
 }
 
 .title-container .section-title-img {
-  width: 560rpx !important;
+  width: 617rpx !important;
   display: block;
 }
 
