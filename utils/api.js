@@ -13,7 +13,8 @@ function shouldUseMockFromError(errMsg) {
   return false;
 }
 
-function getMockResponse(path, method, data) {
+function getMockResponse(originalPath, method, data) {
+  const path = originalPath.split('?')[0];
   if (path === '/api/mobile/v1/auth/login') {
     return {
       status: 'success',
@@ -463,7 +464,7 @@ function getMockResponse(path, method, data) {
   }
 
   if (path.startsWith('/api/mobile/v1/sante/medicaments') && method === 'GET') {
-    const parts = path.split('?');
+    const parts = originalPath.split('?');
     let q = '';
     if (parts[1]) {
       const queryParams = parts[1].split('&');
@@ -633,15 +634,21 @@ const FORCE_MOCK_ENDPOINTS = [
 
 function request(path, method = 'GET', data = null, headers = {}) {
   return new Promise((resolve, reject) => {
+    const cleanPath = path.split('?')[0];
+    const token = wx.getStorageSync('access_token');
+    const isMockUser = token === 'mock_access_token_dev';
 
-    // Prevent ugly 404 console logs by bypassing the network entirely for endpoints we KNOW are missing.
-    if (
-      FORCE_MOCK_ENDPOINTS.includes(path) || 
-      path.startsWith('/api/mobile/v1/utilisateur/contacts/') ||
-      path.startsWith('/api/mobile/v1/sante/medicaments')
-    ) {
+    // Prevent ugly 404/401 console logs by bypassing the network entirely for endpoints we KNOW are missing
+    // or if we are using the mock user session.
+    const isForceMock = 
+      isMockUser ||
+      FORCE_MOCK_ENDPOINTS.includes(cleanPath) || 
+      cleanPath.startsWith('/api/mobile/v1/utilisateur/contacts/') ||
+      cleanPath.startsWith('/api/mobile/v1/sante/medicaments');
+
+    if (isForceMock) {
       const mockResponse = getMockResponse(path, method, data);
-      if (mockResponse) {
+      if (mockResponse !== null) {
         setTimeout(() => {
           resolve(mockResponse);
         }, 200); // Simulate network delay
