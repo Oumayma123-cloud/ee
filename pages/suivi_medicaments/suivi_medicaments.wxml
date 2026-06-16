@@ -42,7 +42,7 @@
 
     <!-- Title Section -->
     <view class="title-container">
-      <image src="/assets/title-liste-medicaments.png" class="section-title-img" mode="aspectFit"></image>
+      <image src="/assets/title-liste-medicaments.png" class="section-title-img" mode="widthFix"></image>
       <view class="add-btn-circle" bindtap="onAddMedicament">
         <text class="add-icon">+</text>
       </view>

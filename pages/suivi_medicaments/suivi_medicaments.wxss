@@ -201,8 +201,8 @@
 }
 
 .section-title-img {
-  width: 520rpx;
-  height: 68rpx;
+  width: 500rpx;
+  height: auto;
   opacity: 1;
 }
 
