@@ -220,7 +220,6 @@
   font-weight: bold;
   color: #3c7d58;
   letter-spacing: 0.5rpx;
-  text-transform: uppercase;
 }
 
 .add-btn-circle {
