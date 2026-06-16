@@ -200,9 +200,26 @@
   box-sizing: border-box;
 }
 
-.title-container .section-title-img {
-  width: 580rpx !important;
-  display: block;
+.section-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+}
+
+.title-script {
+  font-family: 'The Cottage', 'Brush Script MT', 'Georgia', cursive;
+  font-size: 38rpx;
+  font-weight: 400;
+  color: #000000;
+}
+
+.title-bold {
+  font-family: 'Ole', 'Poppins', -apple-system, sans-serif;
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #3c7d58;
+  letter-spacing: 0.5rpx;
+  text-transform: uppercase;
 }
 
 .add-btn-circle {

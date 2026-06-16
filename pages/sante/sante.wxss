@@ -187,16 +187,34 @@
 }
 
 .section-title {
-  text-align: center;
+  padding-left: 79rpx;
   margin: 24rpx 0 20rpx;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  box-sizing: border-box;
 }
 
-.section-title .section-title-img {
-  width: 480rpx !important;
-  display: block;
+.section-title-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 12rpx;
+}
+
+.title-script {
+  font-family: 'The Cottage', 'Brush Script MT', 'Georgia', cursive;
+  font-size: 38rpx;
+  font-weight: 400;
+  color: #000000;
+}
+
+.title-bold {
+  font-family: 'Ole', 'Poppins', -apple-system, sans-serif;
+  font-size: 35rpx;
+  font-weight: bold;
+  color: #3c7d58;
+  letter-spacing: 0.5rpx;
+  text-transform: uppercase;
 }
 
 .main-content-wrapper {

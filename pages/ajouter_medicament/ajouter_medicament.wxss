@@ -112,43 +112,34 @@
   height: 100%;
 }
 
-/* Title Section */
 .title-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 40rpx 30rpx 20rpx;
+  justify-content: flex-start;
+  padding: 40rpx 30rpx 20rpx 79rpx;
   box-sizing: border-box;
   width: 100%;
 }
 
-.title-container .section-title-img {
-  width: 500rpx !important;
-  display: block;
-}
-
 .section-title-wrap {
   display: flex;
-  align-items: flex-end;
+  align-items: baseline;
   gap: 12rpx;
 }
 
 .title-script {
-  font-family: "Georgia", "Times New Roman", serif;
-  font-size: 54rpx;
-  font-style: italic;
-  font-weight: 700;
-  color: #3c7d58;
-  line-height: 0.9;
+  font-family: 'The Cottage', 'Brush Script MT', 'Georgia', cursive;
+  font-size: 38rpx;
+  font-weight: 400;
+  color: #000000;
 }
 
 .title-bold {
-  font-size: 34rpx;
-  font-weight: 800;
+  font-family: 'Ole', 'Poppins', -apple-system, sans-serif;
+  font-size: 35rpx;
+  font-weight: bold;
   color: #3c7d58;
   letter-spacing: 0.5rpx;
-  line-height: 1;
-  padding-bottom: 4rpx;
 }
 
 /* Main Content Grid */

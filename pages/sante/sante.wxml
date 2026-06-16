@@ -38,7 +38,10 @@
   </view>
 
   <view class="section-title">
-    <image src="/assets/ma sante.png" mode="widthFix" class="section-title-img"></image>
+    <view class="section-title-wrap">
+      <text class="title-script">Ma</text>
+      <text class="title-bold">SANTÉ</text>
+    </view>
   </view>
 
   <view class="main-content-wrapper">

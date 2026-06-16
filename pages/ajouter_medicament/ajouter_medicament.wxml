@@ -22,7 +22,10 @@
 
     <!-- Title Section -->
     <view class="title-container">
-      <image src="/assets/title-ajouter-medicament.png" class="section-title-img" mode="widthFix"></image>
+      <view class="section-title-wrap">
+        <text class="title-script">Mon</text>
+        <text class="title-bold">Médicament À Ajouter</text>
+      </view>
     </view>
 
     <!-- Content Grid Layout -->

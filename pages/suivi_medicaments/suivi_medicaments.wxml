@@ -42,7 +42,10 @@
 
     <!-- Title Section -->
     <view class="title-container">
-      <image src="/assets/title-liste-medicaments.png" class="section-title-img" mode="widthFix"></image>
+      <view class="section-title-wrap">
+        <text class="title-script">Ma</text>
+        <text class="title-bold">LISTE DES MÉDICAMENTS</text>
+      </view>
       <view class="add-btn-circle" bindtap="onAddMedicament">
         <text class="add-icon">+</text>
       </view>
