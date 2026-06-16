@@ -128,9 +128,10 @@
 }
 
 .title-script {
-  font-family: 'The Cottage', 'Brush Script MT', 'Georgia', cursive;
-  font-size: 38rpx;
-  font-weight: 400;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 44rpx;
+  font-weight: normal;
   color: #000000;
 }
 
