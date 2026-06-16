@@ -21,6 +21,7 @@ Page({
     showFrequencyDropdown: false, // Starts closed, opens on click
     startDate: '20/02/2025', // Figma mockup date default
     messageCount: 6,
+    editId: null,
 
     // Custom Date Picker Modal States
     showDatePickerModal: false,
@@ -61,6 +62,23 @@ Page({
   },
 
   onLoad: function (options) {
+    if (options.id) {
+      this.setData({ editId: options.id });
+      this.loadMedicationToEdit(options.id);
+    }
+  },
+
+  loadMedicationToEdit: function (id) {
+    const allMeds = wx.getStorageSync('medications') || [];
+    const med = allMeds.find(m => Number(m.id) === Number(id));
+    if (med) {
+      this.setData({
+        medName: med.name || '',
+        selectedFrequency: med.frequency || '1 fois/jrs',
+        startDate: med.date_debut || '20/02/2025',
+        frequencyText: med.instructions || med.nextDose || '1 fois/jrs à 9 heure'
+      });
+    }
   },
 
   onReady() {
@@ -503,28 +521,53 @@ Page({
       instructions: this.data.frequencyText
     };
 
-    wx.showLoading({ title: 'Ajout...' });
-    api.ajouterMedicamentSuivi(payload)
-      .then((res) => {
-        wx.hideLoading();
-        wx.showToast({
-          title: 'Médicament ajouté',
-          icon: 'success',
-          duration: 1500,
-          success: () => {
-            setTimeout(() => {
-              this.onBack();
-            }, 1500);
-          }
+    if (this.data.editId) {
+      wx.showLoading({ title: 'Modification...' });
+      api.modifierMedicamentSuivi(this.data.editId, payload)
+        .then((res) => {
+          wx.hideLoading();
+          wx.showToast({
+            title: 'Médicament modifié',
+            icon: 'success',
+            duration: 1500,
+            success: () => {
+              setTimeout(() => {
+                this.onBack();
+              }, 1500);
+            }
+          });
+        })
+        .catch((err) => {
+          wx.hideLoading();
+          wx.showToast({
+            title: 'Erreur lors de la modif',
+            icon: 'none'
+          });
         });
-      })
-      .catch((err) => {
-        wx.hideLoading();
-        wx.showToast({
-          title: 'Erreur lors de l\'ajout',
-          icon: 'none'
+    } else {
+      wx.showLoading({ title: 'Ajout...' });
+      api.ajouterMedicamentSuivi(payload)
+        .then((res) => {
+          wx.hideLoading();
+          wx.showToast({
+            title: 'Médicament ajouté',
+            icon: 'success',
+            duration: 1500,
+            success: () => {
+              setTimeout(() => {
+                this.onBack();
+              }, 1500);
+            }
+          });
+        })
+        .catch((err) => {
+          wx.hideLoading();
+          wx.showToast({
+            title: 'Erreur lors de l\'ajout',
+            icon: 'none'
+          });
         });
-      });
+    }
   },
 
   // Scrollbar Methods

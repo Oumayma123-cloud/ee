@@ -57,7 +57,7 @@ Page({
 
   onToggleSwitch: function (e) {
     const id = e.currentTarget.dataset.id;
-    const med = this.data.medications.find(m => m.id === id);
+    const med = this.data.medications.find(m => Number(m.id) === Number(id));
     if (!med) return;
 
     const nextChecked = !med.checked;
@@ -65,7 +65,7 @@ Page({
     api.modifierMedicamentSuivi(id, { checked: nextChecked })
       .then((res) => {
         const medications = this.data.medications.map(m => {
-          if (m.id === id) {
+          if (Number(m.id) === Number(id)) {
             return { ...m, checked: nextChecked };
           }
           return m;
@@ -201,19 +201,21 @@ Page({
 
   onModify: function(e) {
     const id = e.currentTarget.dataset.id;
-    wx.showToast({ title: 'Modification non supportée', icon: 'none' });
+    wx.navigateTo({
+      url: `/pages/ajouter_medicament/ajouter_medicament?id=${id}`
+    });
   },
 
   onPause: function(e) {
     const id = e.currentTarget.dataset.id;
-    const med = this.data.medications.find(m => m.id === id);
+    const med = this.data.medications.find(m => Number(m.id) === Number(id));
     if (!med) return;
 
     const nextChecked = !med.checked;
     api.modifierMedicamentSuivi(id, { checked: nextChecked })
       .then((res) => {
         const medications = this.data.medications.map(m => {
-          if (m.id === id) {
+          if (Number(m.id) === Number(id)) {
             return { ...m, checked: nextChecked };
           }
           return m;
@@ -240,7 +242,7 @@ Page({
           api.supprimerMedicamentSuivi(id)
             .then(() => {
               wx.hideLoading();
-              const medications = this.data.medications.filter(med => med.id !== id);
+              const medications = this.data.medications.filter(med => Number(med.id) !== Number(id));
               this.setData({ medications });
               wx.showToast({
                 title: 'Supprimé',
