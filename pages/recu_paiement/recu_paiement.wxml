@@ -41,12 +41,12 @@
             <view class="detail-row">
               <text class="detail-label">Date de paiement</text>
               <text class="detail-colon">:</text>
-              <text class="detail-value">01/09/2025 12:07:37</text>
+              <text class="detail-value">{{dateStr}}</text>
             </view>
             <view class="detail-row">
               <text class="detail-label">N° de paiement</text>
               <text class="detail-colon">:</text>
-              <text class="detail-value">014491</text>
+              <text class="detail-value">{{tx}}</text>
             </view>
             <view class="detail-row">
               <text class="detail-label">Code d'autorisation</text>
@@ -66,7 +66,7 @@
             <view class="detail-row">
               <text class="detail-label">N° transaction</text>
               <text class="detail-colon">:</text>
-              <text class="detail-value">25244MHIF12512365</text>
+              <text class="detail-value">{{tx}}</text>
             </view>
           </view>
         </view>
@@ -78,12 +78,12 @@
             <view class="detail-row">
               <text class="detail-label">Identifiant</text>
               <text class="detail-colon">:</text>
-              <text class="detail-value">475-17567247572651</text>
+              <text class="detail-value">{{pack}}</text>
             </view>
             <view class="detail-row">
               <text class="detail-label">Montant</text>
               <text class="detail-colon">:</text>
-              <text class="detail-value">199 MAD</text>
+              <text class="detail-value">{{amount}}</text>
             </view>
           </view>
         </view>
@@ -95,7 +95,7 @@
             <view class="detail-row">
               <text class="detail-label">Nom</text>
               <text class="detail-colon">:</text>
-              <text class="detail-value">Thiufa Souad</text>
+              <text class="detail-value">{{clientName}}</text>
             </view>
           </view>
         </view>

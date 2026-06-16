@@ -42,31 +42,16 @@
 
         <!-- Plans -->
         <view class="plans-container">
-          <!-- Plan 1 -->
-          <view class="plan-card {{selectedPlan === '1_mois' ? 'plan-card--selected' : ''}}" bindtap="selectPlan" data-plan="1_mois">
+          <view class="plan-card {{selectedPlanId === item.id ? 'plan-card--selected' : ''}}" wx:for="{{plans}}" wx:key="id" bindtap="selectPlan" data-plan-id="{{item.id}}">
             <view class="plan-info">
-              <text class="plan-duration">1 mois</text>
+              <text class="plan-duration">{{item.name}}</text>
               <view class="plan-price-wrap">
-                <text class="plan-price-bold">199 MAD</text>
-                <text class="plan-price-small"> / 1 mois</text>
+                <text class="plan-price-bold">{{item.price}} MAD</text>
+                <text class="plan-price-small"> / {{item.duration}} {{item.duration > 1 ? 'mois' : 'mois'}}</text>
               </view>
             </view>
-            <view class="plan-radio {{selectedPlan === '1_mois' ? 'plan-radio--selected' : ''}}">
-              <text wx:if="{{selectedPlan === '1_mois'}}" class="radio-check">✓</text>
-            </view>
-          </view>
-
-          <!-- Plan 2 -->
-          <view class="plan-card {{selectedPlan === '3_mois' ? 'plan-card--selected' : ''}}" bindtap="selectPlan" data-plan="3_mois">
-            <view class="plan-info">
-              <text class="plan-duration">3 mois</text>
-              <view class="plan-price-wrap">
-                <text class="plan-price-bold">597 MAD</text>
-                <text class="plan-price-small"> / 3 mois</text>
-              </view>
-            </view>
-            <view class="plan-radio {{selectedPlan === '3_mois' ? 'plan-radio--selected' : ''}}">
-              <text wx:if="{{selectedPlan === '3_mois'}}" class="radio-check">✓</text>
+            <view class="plan-radio {{selectedPlanId === item.id ? 'plan-radio--selected' : ''}}">
+              <text wx:if="{{selectedPlanId === item.id}}" class="radio-check">✓</text>
             </view>
           </view>
         </view>

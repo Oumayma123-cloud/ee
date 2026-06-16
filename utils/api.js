@@ -744,6 +744,140 @@ function getMockResponse(originalPath, method, data) {
     };
   }
 
+  // Abonnement & Packs Mocks
+  if (path === '/api/mobile/v1/paiements/abonnement/packs' && method === 'GET') {
+    return {
+      status: 'success',
+      data: [
+        { id: 1, name: 'Pack Premium 1 Mois', duration: 1, price: 199.00, description: 'Accès premium pendant 30 jours' },
+        { id: 3, name: 'Pack Premium 3 Mois', duration: 3, price: 597.00, description: 'Accès premium pendant 90 jours (Économique)' }
+      ],
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/abonnement/list-packs' && method === 'GET') {
+    return {
+      status: 'success',
+      data: [
+        { id: 1, name: 'Pack Premium 1 Mois', duration: 1, price: 199.00 },
+        { id: 3, name: 'Pack Premium 3 Mois', duration: 3, price: 597.00 }
+      ],
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/abonnement/paiement' && method === 'POST') {
+    const packId = data ? data.pack_id : 1;
+    const price = packId === 3 ? 597.00 : 199.00;
+    return {
+      status: 'success',
+      data: {
+        success: true,
+        transactionNumber: 'SUB-' + Math.floor(Math.random() * 1000000),
+        montant: price,
+        pack_id: packId,
+        date_debut: new Date().toISOString(),
+        date_fin: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
+      },
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/paiements/abonnement/current/') && method === 'GET') {
+    return {
+      status: 'success',
+      data: {
+        id: 406,
+        pack_id: 1,
+        status: 'actif',
+        date_debut: new Date().toISOString(),
+        date_fin: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString()
+      },
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/abonnement/actifs' && method === 'GET') {
+    return {
+      status: 'success',
+      data: [
+        {
+          id: 406,
+          pack_id: 1,
+          status: 'actif',
+          date_debut: new Date().toISOString(),
+          date_fin: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString()
+        }
+      ],
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/abonnement/dernier-paye' && method === 'GET') {
+    return {
+      status: 'success',
+      data: {
+        id: 406,
+        pack_id: 1,
+        status: 'actif',
+        date_debut: new Date().toISOString(),
+        date_fin: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString()
+      },
+      mock: true
+    };
+  }
+
+  // Credit Card & Payzone Mocks
+  if (path === '/api/mobile/v1/paiements/m2t/formulaire-enregistrement-carte' && method === 'GET') {
+    return {
+      status: 'success',
+      data: {
+        url: 'https://m2t.ma/formulaire-enregistrement-carte-mocked-webview',
+        token: 'm2t-reg-token-xyz'
+      },
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/m2t/cartes-enregistrees' && method === 'GET') {
+    const savedCards = wx.getStorageSync('mock_saved_cards') || [
+      { id: 1, brand: 'Visa', last4: '4242', expMonth: '12', expYear: '2028', token: 'card-token-1' },
+      { id: 2, brand: 'MasterCard', last4: '8888', expMonth: '06', expYear: '2029', token: 'card-token-2' }
+    ];
+    if (!wx.getStorageSync('mock_saved_cards')) {
+      wx.setStorageSync('mock_saved_cards', savedCards);
+    }
+    return {
+      status: 'success',
+      data: savedCards,
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/m2t/generer-token' && method === 'POST') {
+    return {
+      status: 'success',
+      data: {
+        token: 'token-' + Math.random().toString(36).substring(7),
+        card_brand: data ? data.card_brand : 'Visa',
+        last_4: data ? data.last_4 : '4242'
+      },
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/payzone/paiement-carte-bancaire' && method === 'POST') {
+    return {
+      status: 'success',
+      data: {
+        url: 'https://payzone.ma/paiement-mocked-webview',
+        transaction_id: 'pz-' + Math.floor(Math.random() * 1000000)
+      },
+      mock: true
+    };
+  }
+
   return null;
 }
 
@@ -1035,6 +1169,42 @@ function creerPaiementUtilisateur(data) {
   return request('/api/mobile/v1/paiements/utilisateur-paiements', 'POST', data);
 }
 
+function getAbonnementPacks() {
+  return request('/api/mobile/v1/paiements/abonnement/packs', 'GET');
+}
+
+function getPacksFromM2T() {
+  return request('/api/mobile/v1/paiements/abonnement/list-packs', 'GET');
+}
+
+function paiementPack(data) {
+  return request('/api/mobile/v1/paiements/abonnement/paiement', 'POST', data);
+}
+
+function getAbonnementActuels() {
+  return request('/api/mobile/v1/paiements/abonnement/actifs', 'GET');
+}
+
+function getDernierAbonnement() {
+  return request('/api/mobile/v1/paiements/abonnement/dernier-paye', 'GET');
+}
+
+function getFormulaireEnregistrementCarte() {
+  return request('/api/mobile/v1/paiements/m2t/formulaire-enregistrement-carte', 'GET');
+}
+
+function getCartesEnregistrees() {
+  return request('/api/mobile/v1/paiements/m2t/cartes-enregistrees', 'GET');
+}
+
+function genererTokenCarte(data) {
+  return request('/api/mobile/v1/paiements/m2t/generer-token', 'POST', data);
+}
+
+function paiementCartePayzone(data) {
+  return request('/api/mobile/v1/paiements/payzone/paiement-carte-bancaire', 'POST', data);
+}
+
 module.exports = {
   BASE_URL,
   getSliders,
@@ -1046,6 +1216,15 @@ module.exports = {
   verifierFacturesImpayees,
   verifierPaiement,
   creerPaiementUtilisateur,
+  getAbonnementPacks,
+  getPacksFromM2T,
+  paiementPack,
+  getAbonnementActuels,
+  getDernierAbonnement,
+  getFormulaireEnregistrementCarte,
+  getCartesEnregistrees,
+  genererTokenCarte,
+  paiementCartePayzone,
   login,
   register,
   getProfile,
