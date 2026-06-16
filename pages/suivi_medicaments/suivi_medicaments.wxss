@@ -196,12 +196,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30rpx 40rpx 10rpx;
+  padding: 30rpx 20rpx 10rpx 79rpx;
   box-sizing: border-box;
 }
 
 .title-container .section-title-img {
-  width: 617rpx !important;
+  width: 580rpx !important;
   display: block;
 }
 
