@@ -196,7 +196,6 @@
 
 .section-title .section-title-img {
   width: 480rpx !important;
-  height: auto !important;
   display: block;
 }
 

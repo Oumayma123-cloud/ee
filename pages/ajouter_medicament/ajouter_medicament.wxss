@@ -124,7 +124,6 @@
 
 .title-container .section-title-img {
   width: 500rpx !important;
-  height: auto !important;
   display: block;
 }
 
