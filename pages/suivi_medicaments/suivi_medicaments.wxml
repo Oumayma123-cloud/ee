@@ -43,7 +43,7 @@
     <!-- Title Section -->
     <view class="title-container">
       <view class="section-title-wrap">
-        <text class="title-script">Ma</text>
+        <text class="title-script">MA</text>
         <text class="title-bold">LISTE DES MÉDICAMENTS</text>
       </view>
       <view class="add-btn-circle" bindtap="onAddMedicament">

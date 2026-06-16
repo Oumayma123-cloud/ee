@@ -193,10 +193,11 @@
 
 /* Title Section */
 .title-container {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 30rpx 20rpx 10rpx 79rpx;
+  justify-content: center;
+  padding: 30rpx 40rpx 10rpx;
   box-sizing: border-box;
 }
 
@@ -223,6 +224,10 @@
 }
 
 .add-btn-circle {
+  position: absolute;
+  right: 40rpx;
+  top: 50%;
+  transform: translateY(-50%);
   width: 54rpx;
   height: 54rpx;
   border-radius: 50%;
