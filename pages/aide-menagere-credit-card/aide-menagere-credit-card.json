@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Paiement par carte",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "bottom-nav-bar": "/components/bottom-nav-bar/bottom-nav-bar"
+  }
+}

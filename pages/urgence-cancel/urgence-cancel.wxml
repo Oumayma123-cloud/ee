@@ -8,11 +8,11 @@
       <text class="back-text">Retour</text>
     </view>
     
-    <image class="logo" src="../../assets/logo-tiqqa-header.png" mode="aspectFit"></image>
+    <image class="logo" src="/assets/logo-tiqqa-header.png" mode="aspectFit"></image>
 
     <view class="avatar-bubble" bindtap="onProfileTap">
       <view class="avatar-wrap avatar-wrap--bubble">
-        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+        <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
       </view>
     </view>
   </view>

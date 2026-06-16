@@ -1,0 +1,378 @@
+/* ========== Container ========== */
+page {
+  background: #FFFFFF;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+}
+
+.scroll-content {
+  flex: 1;
+  overflow: hidden;
+}
+
+.scroll-inner {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+}
+
+/* ========== Header ========== */
+.header-section {
+  background: #FFFFFF;
+  padding-bottom: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 28rpx 14rpx;
+}
+
+.back-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.back-circle {
+  width: 52rpx;
+  height: 52rpx;
+  border-radius: 26rpx;
+  background: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-arrow-txt {
+  font-size: 26rpx;
+  color: #333;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.back-label {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.logo {
+  width: 140rpx;
+  height: 56rpx;
+}
+
+/* Bubble avatar */
+.avatar-container {
+  position: relative;
+}
+
+.avatar-bubble {
+  position: relative;
+  width: 100rpx;
+  height: 110rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-img {
+  width: 100rpx;
+  height: 110rpx;
+  display: block;
+}
+
+/* ========== Hero Slider Section ========== */
+.hero-section {
+  background: #3A7EA7; /* Medium steel blue */
+  padding: 24rpx 40rpx; /* Matches mockup margins */
+  position: relative;
+  z-index: 2;
+}
+
+.banner-container {
+  width: 100%;
+  height: 300rpx; /* Matches the 1024x461 image aspect ratio to avoid side cropping */
+  border-radius: 20rpx;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+}
+
+.banner-img {
+  width: 100%;
+  height: calc(100% - 40rpx); /* Leaves space for browser header */
+  margin-top: 40rpx; /* Pushes image down below the header */
+  display: block;
+}
+
+/* Browser mockup header */
+.browser-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40rpx;
+  background: #A9D3EC; /* Light blue color from mockup */
+  display: flex;
+  align-items: center;
+  z-index: 4;
+}
+
+/* Navigation arrows */
+.nav-arrow {
+  position: absolute;
+  top: calc(50% + 20rpx); /* Shifted down by half the browser header height */
+  transform: translateY(-50%);
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.1);
+}
+
+.nav-arrow-left {
+  left: 20rpx;
+}
+
+.nav-arrow-right {
+  right: 20rpx;
+}
+
+.arrow-char {
+  font-size: 26rpx;
+  color: #777777;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Dots in top right of browser header */
+.dot-container {
+  position: absolute;
+  top: 14rpx;
+  right: 24rpx;
+  display: flex;
+  flex-direction: row;
+  gap: 8rpx;
+  z-index: 5;
+}
+
+.slide-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 6rpx;
+  background: #FFFFFF;
+}
+
+.slide-dot--active {
+  background: #4E82A5; /* Blue active dot */
+}
+
+/* Text and Button Overlays */
+.banner-text-overlay {
+  position: absolute;
+  left: 36rpx;
+  bottom: 24rpx;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-overlay-title {
+  color: #FFFFFF;
+  font-size: 26rpx;
+  font-weight: bold;
+  line-height: 1.25;
+  letter-spacing: 0.5rpx;
+  text-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.4);
+}
+
+.banner-overlay-btn {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  width: 160rpx;
+  height: 48rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.15);
+}
+
+.banner-overlay-btn:active {
+  opacity: 0.9;
+}
+
+.banner-overlay-btn-txt {
+  color: #1A1A1A;
+  font-size: 18rpx;
+  font-weight: bold;
+  letter-spacing: 1rpx;
+}
+
+/* ========== Date Time Strip ========== */
+.datetime-strip {
+  background: #C7E2F2; /* Very light sky blue strip */
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.calendar-icon {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.datetime-text {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #2E2A28;
+  letter-spacing: 1rpx;
+}
+
+/* ========== Payment Selection Grid ========== */
+.payment-section {
+  background: #FFFFFF;
+  padding: 44rpx 40rpx;
+}
+
+.payment-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24rpx; /* Small, tight gap between cards */
+  justify-content: center; /* Center the cards together */
+}
+
+.payment-card {
+  width: 240rpx; /* Extremely compact width */
+  height: 320rpx; /* Shorter height to match */
+  border-radius: 20rpx;
+  padding: 12rpx 8rpx 12rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+/* Card custom backgrounds */
+.card-tashilat {
+  background: #5FA1CD;
+}
+
+.card-creditcard {
+  background: #5FA1CD;
+}
+
+.card-tierce {
+  background: #A9D3EC;
+}
+
+.card-chaabi {
+  background: #2E6188; /* Darker blue card */
+}
+
+/* Logo wrappers */
+.logo-wrap {
+  width: 100%;
+  height: 140rpx; /* Taller logo area to accommodate larger images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-img-tashilat {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.logo-img-cc {
+  width: 190rpx;
+  height: 110rpx;
+}
+
+.logo-img-tierce {
+  width: 130rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+}
+
+.logo-img-chaabi {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+/* Card labels */
+.card-label {
+  color: #FFFFFF;
+  font-size: 22rpx; /* Smaller font size */
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 4rpx;
+  margin-bottom: 6rpx;
+}
+
+/* Confirm buttons */
+.confirm-btn {
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  height: 44rpx; /* Tighter button */
+  width: 160rpx; /* Fits narrow card perfectly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.confirm-btn:active {
+  opacity: 0.85;
+}
+
+.confirm-btn-txt {
+  font-size: 16rpx; /* Smaller font size */
+  font-weight: bold;
+  letter-spacing: 1.5rpx;
+}
+
+.card-tashilat .confirm-btn-txt {
+  color: #5FA1CD;
+}
+
+.card-creditcard .confirm-btn-txt {
+  color: #5FA1CD;
+}
+
+.card-tierce .confirm-btn-txt {
+  color: #A9D3EC;
+}
+
+.card-chaabi .confirm-btn-txt {
+  color: #2E6188;
+}
+
+/* ========== Bottom Spacer ========== */
+.bottom-spacer {
+  height: 160rpx;
+  background: #FFFFFF;
+}

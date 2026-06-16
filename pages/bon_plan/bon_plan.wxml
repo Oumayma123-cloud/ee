@@ -53,7 +53,7 @@
     <view class="ess-grid-container">
       
       <!-- Scrollable Grid View -->
-      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" scroll-top="{{scrollTopValue}}" show-scrollbar="{{false}}" enhanced="{{true}}">
         <view class="ess-grid">
           <view class="deal-card" wx:for="{{deals}}" wx:key="id" bindtap="onDealTap" data-id="{{item.id}}" style="background: {{item.bgColor}};">
             
@@ -83,12 +83,17 @@
 
       <!-- Dynamic Functional Scrollbar -->
       <view class="ess-scrollbar">
-        <view class="ess-scroll-arrow">↑</view>
-        <view class="ess-scroll-track">
+        <view class="ess-scroll-arrow" bindtap="scrollUp">↑</view>
+        <view class="ess-scroll-track" bindtap="onTrackTap">
           <!-- Perfectly bounded custom scrollbar calculation using calc -->
-          <view class="ess-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+          <view 
+            class="ess-scroll-thumb" 
+            style="top: {{thumbTopStyle || '0rpx'}};"
+            bindtouchstart="onTouchStart"
+            bindtouchmove="onTouchMove"
+          ></view>
         </view>
-        <view class="ess-scroll-arrow">↓</view>
+        <view class="ess-scroll-arrow" bindtap="scrollDown">↓</view>
       </view>
 
     </view>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200">
+  <!-- Siren lights above -->
+  <g stroke="#6B7280" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <!-- Left light ray -->
+    <line x1="75" y1="15" x2="60" y2="35" />
+    <!-- Center top -->
+    <line x1="120" y1="10" x2="120" y2="28" />
+    <!-- Right light ray -->
+    <line x1="165" y1="15" x2="180" y2="35" />
+  </g>
+  
+  <!-- Red siren light -->
+  <path d="M 70 40 Q 120 20 170 40 L 165 50 Q 120 35 75 50 Z" fill="#E63946" />
+  
+  <!-- Main ambulance body -->
+  <g stroke="#525355" stroke-width="3.5" fill="#F5F5F5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Front cabin -->
+    <path d="M 160 70 L 190 70 Q 200 70 200 80 L 200 140 Q 200 150 190 150 L 160 150 Z" />
+    
+    <!-- Main cargo body -->
+    <path d="M 30 80 Q 25 80 25 90 L 25 145 Q 25 155 35 155 L 160 155 Q 170 155 170 145 L 170 85 Q 170 75 160 70 L 50 70 Q 40 70 30 80 Z" />
+    
+    <!-- Left side door -->
+    <rect x="35" y="90" width="40" height="55" rx="3" fill="none" stroke="#525355" stroke-width="3" />
+    
+    <!-- Windows cabin -->
+    <rect x="172" y="80" width="22" height="25" fill="none" stroke="#525355" stroke-width="2.5" />
+    
+    <!-- Back panel outline -->
+    <rect x="165" y="75" width="28" height="35" fill="none" stroke="#525355" stroke-width="2.5" />
+  </g>
+  
+  <!-- Front wheels -->
+  <g stroke="#525355" stroke-width="3" fill="none">
+    <circle cx="55" cy="160" r="18" />
+    <circle cx="55" cy="160" r="8" fill="#525355" />
+    
+    <circle cx="165" cy="160" r="18" />
+    <circle cx="165" cy="160" r="8" fill="#525355" />
+  </g>
+  
+  <!-- Red medical cross/star symbol -->
+  <g fill="#E63946">
+    <!-- Horizontal bar -->
+    <rect x="85" y="108" width="50" height="12" rx="3" />
+    <!-- Vertical bar -->
+    <rect x="106" y="87" width="12" height="50" rx="3" />
+  </g>
+  
+  <!-- Connection lines from cabin to body -->
+  <line x1="160" y1="85" x2="170" y2="85" stroke="#525355" stroke-width="2.5" />
+</svg>

@@ -4,7 +4,22 @@
     <view class="scroll-inner">
 
       <!-- 1. Header -->
-      <tiqqa-header bind:back="onBack" />
+      <view class="header-section" style="padding-top: {{statusBarHeight + 10}}px;">
+        <view class="header-content">
+          <view class="back-btn" bindtap="onBack">
+            <view class="back-circle">
+              <text class="back-arrow-txt">←</text>
+            </view>
+            <text class="back-label">Retour</text>
+          </view>
+          <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
+          <view class="avatar-container">
+            <view class="avatar-bubble">
+              <image src="/assets/assets/avatar/Group 1000000900.png" class="avatar-img" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+      </view>
 
       <!-- 2. Hero Section (woman overflows upward only) -->
       <view class="hero-section">
@@ -26,14 +41,14 @@ chez vous</text>
         <!-- Month Navigation -->
         <view class="month-nav">
           <view class="month-arrow" bindtap="onPrevMonth">
-            <text class="month-arrow-txt">◄</text>
+            <text class="month-arrow-txt">←</text>
           </view>
           <view class="month-title-wrap">
             <text class="month-name-txt">{{monthName}}</text>
             <text class="year-txt">{{year}}</text>
           </view>
           <view class="month-arrow" bindtap="onNextMonth">
-            <text class="month-arrow-txt">►</text>
+            <text class="month-arrow-txt">→</text>
           </view>
         </view>
 
@@ -76,5 +91,5 @@ chez vous</text>
     </view>
   </scroll-view>
 
-  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar message-count="6" bind:navtap="onNavTap" />
 </view>

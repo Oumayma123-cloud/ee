@@ -22,18 +22,29 @@
 
       <!-- Hero Section -->
       <view class="ess-hero-area">
-        <view class="ess-hero-main">
-          <image class="ess-hero-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
-          <view class="ess-hero-overlay">
-            <text class="ess-hero-title" style="text-transform: uppercase;">PAROLES SINCÈRES</text>
-            <view class="ess-hero-btn" bindtap="onHeroCta">
-              <text class="ess-hero-btn-txt" style="text-transform: none;">En savoir plus</text>
+        <swiper class="ess-hero-main" current="{{heroCurrent}}" bindchange="onHeroChange" circular="true" style="height: 360rpx;">
+          <swiper-item>
+            <image class="ess-hero-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
+            <view class="ess-hero-overlay">
+              <text class="ess-hero-title" style="text-transform: uppercase;">PAROLES SINCÈRES</text>
+              <view class="ess-hero-btn" bindtap="onHeroCta">
+                <text class="ess-hero-btn-txt" style="text-transform: none;">En savoir plus</text>
+              </view>
             </view>
-          </view>
-        </view>
+          </swiper-item>
+          <swiper-item>
+            <image class="ess-hero-img" src="/assets/benmimoun-2 (2).png" mode="aspectFill"></image>
+            <view class="ess-hero-overlay">
+              <text class="ess-hero-title" style="text-transform: uppercase;">PAROLES SINCÈRES</text>
+              <view class="ess-hero-btn" bindtap="onHeroCta">
+                <text class="ess-hero-btn-txt" style="text-transform: none;">En savoir plus</text>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
         <view class="ess-hero-nav">
-          <view class="ess-hero-nav-arrow">←</view>
-          <view class="ess-hero-nav-arrow">→</view>
+          <view class="ess-hero-nav-arrow" bindtap="onHeroPrev">←</view>
+          <view class="ess-hero-nav-arrow" bindtap="onHeroNext">→</view>
         </view>
       </view>
 

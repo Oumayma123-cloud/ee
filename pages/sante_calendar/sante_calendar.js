@@ -12,12 +12,27 @@ Page({
     currentMonth: 9,
     currentMonthLabel: 'Septembre',
     selectedDay: 14,
+    todayDay: 0,
+    isCurrentMonth: false,
 
     weeks: ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'],
     calendarDays: []
   },
 
   onLoad() {
+    const now = new Date();
+    const todayYear = now.getFullYear();
+    const todayMonth = now.getMonth() + 1;
+    const todayDay = now.getDate();
+
+    const currentYear = this.data.currentYear || todayYear;
+    const currentMonth = this.data.currentMonth || todayMonth;
+
+    this.setData({
+      todayDay,
+      isCurrentMonth: (currentYear === todayYear && currentMonth === todayMonth)
+    });
+
     this.updateMonthLabel();
     this.generateCalendar();
   },
@@ -69,7 +84,15 @@ Page({
       currentYear--;
     }
 
-    this.setData({ currentMonth, currentYear }, () => {
+    const now = new Date();
+    const todayYear = now.getFullYear();
+    const todayMonth = now.getMonth() + 1;
+
+    this.setData({ 
+      currentMonth, 
+      currentYear,
+      isCurrentMonth: (currentYear === todayYear && currentMonth === todayMonth)
+    }, () => {
       this.updateMonthLabel();
       this.generateCalendar();
     });
@@ -94,7 +117,12 @@ Page({
   },
 
   onBack() {
-    wx.navigateBack();
+    const pages = getCurrentPages();
+    if (pages.length > 1) {
+      wx.navigateBack();
+    } else {
+      wx.reLaunch({ url: '/pages/sante/sante' });
+    }
   },
   onPrev() {
     wx.navigateTo({ url: '/pages/sante/sante' });

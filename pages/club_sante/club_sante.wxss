@@ -243,16 +243,12 @@
   width: 100%;
 }
 
-.sante-title-script {
-  font-size: 32rpx;
-  font-weight: 400;
-  color: #000000;
-  font-style: italic;
-  font-family: 'Georgia', serif;
-  line-height: 1;
+.sante-title-img-script {
+  height: 60rpx;
+  display: block;
 }
 
-.sante-title-bold {
+.sante-title-text {
   font-size: 22rpx;
   font-weight: 800;
   color: #88A98E; /* Sage Green */

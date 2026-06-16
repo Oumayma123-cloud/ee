@@ -1,0 +1,120 @@
+<!-- ========== Page Agences Locaux ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <view class="header-section" style="padding-top: {{statusBarHeight + 10}}px;">
+        <view class="header-content">
+          <view class="back-btn" bindtap="onBack">
+            <view class="back-circle">
+              <text class="back-arrow-txt">←</text>
+            </view>
+            <text class="back-label">Retour</text>
+          </view>
+          <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
+          
+          <!-- Female bubble avatar (represented exactly like mockup) -->
+          <view class="avatar-container">
+            <view class="avatar-bubble">
+              <image src="/assets/avatar/avatar-user.png" class="avatar-img" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 2. Hero Section Banner (Tashilat storefront banner) -->
+      <view class="hero-section">
+        <view class="banner-container">
+          <!-- Mockup Browser Header Bar -->
+          <view class="browser-header">
+            <!-- 4 Dots (3 white, 1 active blue) on the right -->
+            <view class="dot-container">
+              <view class="slide-dot"></view>
+              <view class="slide-dot"></view>
+              <view class="slide-dot"></view>
+              <view class="slide-dot slide-dot--active"></view>
+            </view>
+          </view>
+
+          <!-- Storefront image background -->
+          <image class="banner-img" src="/assets/tashilat_agency_store.jpg" mode="aspectFill"></image>
+
+          <!-- Navigation Arrow Circles on the sides -->
+          <view class="nav-arrow nav-arrow-left">
+            <text class="arrow-char">←</text>
+          </view>
+          <view class="nav-arrow nav-arrow-right">
+            <text class="arrow-char">→</text>
+          </view>
+
+          <!-- Text Overlay -->
+          <view class="banner-text-overlay">
+            <text class="banner-overlay-title">TROUVEZ FACILEMENT LES AGENCES</text>
+            <text class="banner-overlay-title">TASSHILAT PRÈS DE CHEZ VOUS</text>
+            <view class="banner-overlay-btn" bindtap="onReturnToPayment">
+              <text class="banner-overlay-btn-txt">TROUVER UNE AGENCE</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 3. Agencies Content Card -->
+      <view class="content-card">
+        <!-- Section Title -->
+        <text class="section-title">Agences à proximité</text>
+
+        <!-- Agency 1 (Clicking the card opens full native map view) -->
+        <view class="agency-item" bindtap="onOpenAgdal">
+          <view class="agency-header">
+            <text class="agency-name">Agence Rabat Agdal</text>
+            <text class="agency-distance">02 KM</text>
+          </view>
+          
+          <!-- Mockup Map 1 View -->
+          <view class="map-view">
+            <image class="map-bg-img" src="/assets/mock-map.png" mode="aspectFill"></image>
+            <!-- Map labels -->
+            <text class="map-lbl map-lbl-hospital">Hopital\nCheikh Zaïd</text>
+            <text class="map-lbl map-lbl-avenue">Avenue Al Ma...</text>
+            <!-- Tashilat/Chaabi Pin -->
+            <image class="map-pin-tashilat" src="{{paymentLogo}}" mode="aspectFit"></image>
+          </view>
+        </view>
+
+        <!-- Agency 2 (Clicking the card opens full native map view) -->
+        <view class="agency-item" bindtap="onOpenIrfane">
+          <view class="agency-header">
+            <text class="agency-name">Agence Al Irfane</text>
+            <text class="agency-distance">03 KM</text>
+          </view>
+          
+          <!-- Mockup Map 2 View -->
+          <view class="map-view">
+            <image class="map-bg-img" src="/assets/mock-map.png" mode="aspectFill"></image>
+            <!-- Map labels -->
+            <text class="map-lbl map-lbl-hospital">Hopital\nCheikh Zaïd</text>
+            <text class="map-lbl map-lbl-avenue2">Avenue Al Ma...</text>
+            <!-- N1 badge overlay -->
+            <view class="map-badge-n1">
+              <text class="n1-txt">N1</text>
+            </view>
+            <!-- Tashilat/Chaabi Pin (different position) -->
+            <image class="map-pin-tashilat2" src="{{paymentLogo}}" mode="aspectFit"></image>
+          </view>
+        </view>
+
+        <!-- Action Button -->
+        <view class="btn-wrap">
+          <view class="btn-return" bindtap="onReturnToPayment">
+            <text class="btn-return-txt">RETOUR AU PAIEMENT</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar message-count="6" bind:navtap="onNavTap" />
+</view>

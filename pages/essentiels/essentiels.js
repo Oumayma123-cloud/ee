@@ -2,7 +2,8 @@ const { defaultBottomNavTap } = require('../../utils/defaultNavTap.js');
 
 Page({
   data: {
-    // Current avatar and info
+    heroCurrent: 0,
+    heroImagesCount: 2
   },
 
   onBack() {
@@ -10,6 +11,22 @@ Page({
   },
 
   onNavTap: defaultBottomNavTap,
+
+  onHeroPrev() {
+    let current = this.data.heroCurrent;
+    current = current > 0 ? current - 1 : this.data.heroImagesCount - 1;
+    this.setData({ heroCurrent: current });
+  },
+
+  onHeroNext() {
+    let current = this.data.heroCurrent;
+    current = current < this.data.heroImagesCount - 1 ? current + 1 : 0;
+    this.setData({ heroCurrent: current });
+  },
+
+  onHeroChange(e) {
+    this.setData({ heroCurrent: e.detail.current });
+  },
 
   onHeroCta() {
     wx.showToast({ title: 'Accéder bientôt', icon: 'none' });

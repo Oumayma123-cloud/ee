@@ -1,4 +1,5 @@
 const { defaultBottomNavTap } = require('../../utils/defaultNavTap.js');
+const api = require('../../utils/api.js');
 
 Page({
   data: {
@@ -490,48 +491,40 @@ Page({
       name = 'DOLIPRANE';
     }
 
-    // Add to storage list so suivi_medicaments can load it
-    let meds = wx.getStorageSync('medications');
-    if (!meds) {
-      meds = [
-        {
-          id: 1,
-          name: 'DOLIPRANE',
-          checked: true,
-          frequency: '2 fois/jrs',
-          nextDose: '8h00'
-        },
-        {
-          id: 2,
-          name: 'DIFAL',
-          checked: true,
-          frequency: '3 fois/jrs',
-          nextDose: '9h00'
-        }
-      ];
-    }
-
-    const newMed = {
-      id: Date.now(),
+    const payload = {
       name: name.toUpperCase(),
-      checked: true,
-      frequency: this.data.selectedFrequency,
-      nextDose: time
+      type: this.data.selectedFrequency,
+      heures: this.data.selectedFrequency === '3 fois/jrs' 
+        ? [this.data.selectedTimeMatin, this.data.selectedTimeMidi, this.data.selectedTimeSoir]
+        : (this.data.selectedFrequency === '2 fois/jrs' 
+            ? [this.data.selectedTimeMatin, this.data.selectedTimeSoir] 
+            : [this.data.selectedTimeMatin]),
+      date_debut: this.data.startDate,
+      instructions: this.data.frequencyText
     };
 
-    meds.push(newMed);
-    wx.setStorageSync('medications', meds);
-
-    wx.showToast({
-      title: 'Médicament ajouté',
-      icon: 'success',
-      duration: 1500,
-      success: () => {
-        setTimeout(() => {
-          this.onBack();
-        }, 1500);
-      }
-    });
+    wx.showLoading({ title: 'Ajout...' });
+    api.ajouterMedicamentSuivi(payload)
+      .then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: 'Médicament ajouté',
+          icon: 'success',
+          duration: 1500,
+          success: () => {
+            setTimeout(() => {
+              this.onBack();
+            }, 1500);
+          }
+        });
+      })
+      .catch((err) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: 'Erreur lors de l\'ajout',
+          icon: 'none'
+        });
+      });
   },
 
   // Scrollbar Methods

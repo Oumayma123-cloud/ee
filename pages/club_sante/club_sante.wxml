@@ -47,8 +47,8 @@
     <!-- Main Title -->
     <view class="sante-main-header">
       <view class="sante-title-row">
-        <text class="sante-title-script">Club</text>
-        <text class="sante-title-bold">SANTÉ</text>
+        <image class="sante-title-img-script" src="/assets/Clubs.png" mode="heightFix"></image>
+        <text class="sante-title-text">SANTÉ</text>
       </view>
     </view>
 

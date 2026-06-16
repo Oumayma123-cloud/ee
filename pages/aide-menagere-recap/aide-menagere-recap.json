@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "",
+  "usingComponents": {
+    "bottom-nav-bar": "/components/bottom-nav-bar/bottom-nav-bar"
+  }
+}

@@ -28,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40rpx 0 20rpx;
+  padding: 0 80rpx 0 20rpx;
   box-sizing: border-box;
   background: #ffffff;
 }
@@ -77,8 +77,8 @@
 }
 
 .avatar-wrap {
-  width: 150rpx;
-  height: 150rpx;
+  width: 104rpx;
+  height: 104rpx;
   border-radius: 50%;
   background: transparent;
 }

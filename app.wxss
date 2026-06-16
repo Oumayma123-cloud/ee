@@ -355,4 +355,15 @@ textarea {
 @import "pages/video_detail/video_detail.wxss";
 @import "pages/ajouter_famille/ajouter_famille.wxss";
 
+/* Global overrides to align header avatar bubble to the right and avoid WeChat capsule button overlap */
+.top-bar--horaire, .header {
+  padding: 0 80rpx 0 20rpx !important;
+}
+
+.avatar-wrap {
+  width: 104rpx !important;
+  height: 104rpx !important;
+}
+
+
 

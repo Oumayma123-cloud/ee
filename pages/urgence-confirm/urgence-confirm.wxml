@@ -12,7 +12,7 @@
 
     <view class="avatar-bubble" bindtap="onProfileTap">
       <view class="avatar-wrap avatar-wrap--bubble">
-        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+        <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
       </view>
     </view>
   </view>

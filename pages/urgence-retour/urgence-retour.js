@@ -1,3 +1,5 @@
+const api = require('../../utils/api.js');
+
 Page({
   data: {
     statusBarHeight: 20,
@@ -26,7 +28,8 @@ Page({
     const type = e.currentTarget.dataset.type;
     this.setData({
       showModal: true,
-      modalMessage: this.data.messages[type]
+      modalMessage: this.data.messages[type],
+      tappedType: type
     });
     if (wx.vibrateShort) wx.vibrateShort();
   },
@@ -37,14 +40,43 @@ Page({
 
   onModalOk: function() {
     this.setData({ showModal: false });
-    // Optionnel : Retour à l'accueil après confirmation
-    // wx.reLaunch({ url: '../home/home' });
+    const type = this.data.tappedType;
+    if (type === 'oui') {
+      const authUser = wx.getStorageSync('auth_user') || {};
+      const parentId = authUser.id || 521;
+      const currentPrestation = wx.getStorageSync('mock_ambulance_prestation') || { id: 489 };
+      const id = currentPrestation.id || 489;
+
+      wx.showLoading({ title: 'Demande en cours...' });
+      api.demanderRetourAmbulance(id, {
+        parent_id: String(parentId),
+        type: 'retour'
+      })
+      .then((res) => {
+        wx.hideLoading();
+        wx.navigateTo({
+          url: '../urgence-success/urgence-success?type=retour'
+        });
+      })
+      .catch((err) => {
+        wx.hideLoading();
+        wx.showToast({ title: 'Erreur demande', icon: 'none' });
+      });
+    } else if (type === 'later') {
+      wx.navigateTo({
+        url: '../urgence-success/urgence-success?type=retour'
+      });
+    } else {
+      wx.reLaunch({
+        url: '/pages/sante/sante'
+      });
+    }
   },
 
   onNavTap: function(e) {
     const action = e.detail.action;
     if (action === 'home') {
-      wx.reLaunch({ url: '../home/home' });
+      wx.reLaunch({ url: '/pages/sante/sante' });
     } else if (action === 'emergency') {
       wx.redirectTo({ url: '../urgence/urgence' });
     }

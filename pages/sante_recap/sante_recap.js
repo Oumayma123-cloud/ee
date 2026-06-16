@@ -68,16 +68,23 @@ Page({
       parent_id: String(parent_id)
     };
 
+    const modifyId = wx.getStorageSync('modify_prestation_id');
+
     console.log('[Infirmier] Sending demand payload:', payload);
     wx.showLoading({ title: 'Enregistrement...' });
 
-    api.creerDemandeInfirmier(payload)
+    const apiCall = modifyId 
+      ? api.modifierDemandeInfirmier(modifyId, payload)
+      : api.creerDemandeInfirmier(payload);
+
+    apiCall
       .then((res) => {
         wx.hideLoading();
-        console.log('[Infirmier] Demand created successfully:', res);
+        console.log('[Infirmier] Demand resolved successfully:', res);
         const prestation = res.data || {};
         wx.setStorageSync('current_infirmier_prestation', prestation);
         wx.removeStorageSync('infirmier_booking');
+        wx.removeStorageSync('modify_prestation_id');
 
         let text = 'Votre demande de rendez-vous a bien été enregistrée. Statut : En attente.';
         const methodUpper = String(this.data.bookingPaymentMethod).toUpperCase();
@@ -92,7 +99,7 @@ Page({
       })
       .catch((err) => {
         wx.hideLoading();
-        console.error('[Infirmier] Failed to create demand:', err);
+        console.error('[Infirmier] Failed to resolve demand:', err);
         wx.showToast({
           title: err.message || 'Erreur lors de la réservation',
           icon: 'none'

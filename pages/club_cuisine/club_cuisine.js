@@ -50,8 +50,20 @@ Page({
 
   onCardTap(e) {
     const type = e.currentTarget.dataset.type;
-    const labels = { activites: 'Activités', communaute: 'Communauté', videos: 'Vidéos', coach: 'Coach' };
-    wx.showToast({ title: labels[type] || type, icon: 'none' });
+    if (type === 'videos') {
+      wx.navigateTo({ url: '/pages/videos/videos' });
+      return;
+    }
+    const labels = {
+      activites: 'Activités',
+      communaute: 'Communauté',
+      videos: 'Vidéos',
+      coach: 'Coach'
+    };
+    wx.showToast({
+      title: labels[type] || type,
+      icon: 'none'
+    });
   },
 
   onProfileTap() {

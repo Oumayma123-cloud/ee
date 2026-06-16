@@ -14,7 +14,12 @@ Page({
   },
 
   onBack() {
-    wx.navigateBack();
+    const pages = getCurrentPages();
+    if (pages.length > 1) {
+      wx.navigateBack();
+    } else {
+      wx.reLaunch({ url: '/pages/essentiels/essentiels' });
+    }
   },
 
   onReady() {
@@ -40,6 +45,7 @@ Page({
 
   // Flèche droite du bandeau "santé" -> page calendrier
   goToSanteCalendar() {
+    wx.removeStorageSync('modify_prestation_id');
     wx.navigateTo({
       url: '/pages/sante_calendar/sante_calendar'
     });

@@ -380,36 +380,39 @@
 
 /* Custom Scrollbar Styles */
 .ess-scrollbar {
-  width: 40rpx;
+  width: 56rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10rpx;
-  height: 100%;
-  padding-bottom: 20rpx;
+  gap: 16rpx;
+  height: 440rpx; /* Shorter scrollbar */
+  align-self: center; /* Center vertically */
   box-sizing: border-box;
 }
 
 .ess-scroll-arrow {
-  width: 40rpx;
-  height: 40rpx;
-  background: #f2f2f2;
+  width: 56rpx;
+  height: 56rpx;
+  background: linear-gradient(180deg, #ffffff 0%, #ededed 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20rpx;
-  color: #b3b3b3;
+  font-size: 26rpx;
+  color: #7f8c8d;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+  border: 1rpx solid #e0e0e0;
 }
 
 .ess-scroll-track {
-  width: 14rpx;
+  width: 24rpx;
   flex: 1;
   background: #ffffff;
-  border: 1rpx solid #e6e6e6;
-  border-radius: 10rpx;
+  border-radius: 12rpx;
   position: relative;
   height: 100%;
+  box-shadow: inset 0 2rpx 6rpx rgba(0, 0, 0, 0.06), 0 2rpx 4rpx rgba(0, 0, 0, 0.04);
+  border: 1rpx solid #e2e2e2;
 }
 
 .ess-scroll-thumb {
@@ -417,9 +420,10 @@
   left: 0;
   width: 100%;
   height: 80rpx;
-  background: #EEC683; /* Yellow scrollbar thumb */
-  border-radius: 10rpx;
+  background: #eab524; /* Bright gold/yellow matching the theme and image2 */
+  border-radius: 12rpx;
   transition: top 0.05s linear;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .bottom-spacer {

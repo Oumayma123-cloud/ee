@@ -1,24 +1,10 @@
 const { defaultBottomNavTap } = require('../../utils/defaultNavTap.js');
+const api = require('../../utils/api.js');
 
 Page({
   data: {
     messageCount: 6,
-    medications: [
-      {
-        id: 1,
-        name: 'DOLIPRANE',
-        checked: true,
-        frequency: '2 fois/jour',
-        nextDose: '8h00'
-      },
-      {
-        id: 2,
-        name: 'DIFAL',
-        checked: true,
-        frequency: '3 fois/jour',
-        nextDose: '9h00'
-      }
-    ],
+    medications: [],
     // Scrollbar synchronisation
     scrollHandleTop: 0, // top en px relatif à `.scroll-track`
     trackHeight: 0,
@@ -28,50 +14,28 @@ Page({
   },
 
   onLoad: function (options) {
-    let meds = wx.getStorageSync('medications');
-    if (!meds) {
-      meds = [
-        {
-          id: 1,
-          name: 'DOLIPRANE',
-          checked: true,
-          frequency: '2 fois/jour',
-          nextDose: '8h00'
-        },
-        {
-          id: 2,
-          name: 'DIFAL',
-          checked: true,
-          frequency: '3 fois/jour',
-          nextDose: '9h00'
-        }
-      ];
-      wx.setStorageSync('medications', meds);
-    }
-    this.setData({ medications: meds });
+    this.loadMedications();
   },
 
   onShow: function () {
-    const meds = wx.getStorageSync('medications');
-    if (meds) {
-      this.setData({ medications: meds });
-      // Re-initialize scroll metrics since the list height might have changed
-      setTimeout(() => {
-        this.initScrollMetrics();
-      }, 300);
-    }
+    this.loadMedications();
   },
 
-  onReady() {
-    this.initScrollMetrics();
-  },
-
-  onPageScroll(e) {
-    this.updateHandleFromScroll(e.scrollTop);
-  },
-
-  onResize() {
-    this.initScrollMetrics();
+  loadMedications: function() {
+    const authUser = wx.getStorageSync('auth_user') || {};
+    const parentId = authUser.id || 521;
+    
+    api.getMedicamentsSuivi(parentId)
+      .then((res) => {
+        const meds = res.data || [];
+        this.setData({ medications: meds });
+        setTimeout(() => {
+          this.initScrollMetrics();
+        }, 300);
+      })
+      .catch((err) => {
+        console.error('Failed to load medications:', err);
+      });
   },
 
   onBack: function () {
@@ -93,14 +57,24 @@ Page({
 
   onToggleSwitch: function (e) {
     const id = e.currentTarget.dataset.id;
-    const medications = this.data.medications.map(med => {
-      if (med.id === id) {
-        return { ...med, checked: !med.checked };
-      }
-      return med;
-    });
-    this.setData({ medications });
-    wx.setStorageSync('medications', medications);
+    const med = this.data.medications.find(m => m.id === id);
+    if (!med) return;
+
+    const nextChecked = !med.checked;
+    
+    api.modifierMedicamentSuivi(id, { checked: nextChecked })
+      .then((res) => {
+        const medications = this.data.medications.map(m => {
+          if (m.id === id) {
+            return { ...m, checked: nextChecked };
+          }
+          return m;
+        });
+        this.setData({ medications });
+      })
+      .catch((err) => {
+        wx.showToast({ title: 'Erreur mise à jour', icon: 'none' });
+      });
   },
 
   // Scrollbar Methods
@@ -202,17 +176,54 @@ Page({
   },
 
   onRappels: function() {
-    wx.showToast({ title: 'Mes rappels du jour', icon: 'none' });
+    const authUser = wx.getStorageSync('auth_user') || {};
+    const parentId = authUser.id || 521;
+
+    wx.showLoading({ title: 'Chargement...' });
+    api.getMedicamentsSuivi(parentId)
+      .then((res) => {
+        wx.hideLoading();
+        const activeMeds = (res.data || []).filter(m => m.checked);
+        const names = activeMeds.map(m => m.name).join(', ');
+        wx.showModal({
+          title: 'Rappels du jour',
+          content: activeMeds.length > 0 ? `Médicaments à prendre aujourd'hui : ${names}` : 'Aucun rappel aujourd\'hui.',
+          showCancel: false,
+          confirmText: 'OK',
+          confirmColor: '#3c7d58'
+        });
+      })
+      .catch((err) => {
+        wx.hideLoading();
+        wx.showToast({ title: 'Erreur', icon: 'none' });
+      });
   },
 
   onModify: function(e) {
     const id = e.currentTarget.dataset.id;
-    wx.showToast({ title: 'Modifier Doliprane/Difal', icon: 'none' });
+    wx.showToast({ title: 'Modification non supportée', icon: 'none' });
   },
 
   onPause: function(e) {
     const id = e.currentTarget.dataset.id;
-    wx.showToast({ title: 'Médicament mis en pause', icon: 'none' });
+    const med = this.data.medications.find(m => m.id === id);
+    if (!med) return;
+
+    const nextChecked = !med.checked;
+    api.modifierMedicamentSuivi(id, { checked: nextChecked })
+      .then((res) => {
+        const medications = this.data.medications.map(m => {
+          if (m.id === id) {
+            return { ...m, checked: nextChecked };
+          }
+          return m;
+        });
+        this.setData({ medications });
+        wx.showToast({ title: nextChecked ? 'Médicament activé' : 'Médicament mis en pause', icon: 'success' });
+      })
+      .catch((err) => {
+        wx.showToast({ title: 'Erreur', icon: 'none' });
+      });
   },
 
   onDelete: function(e) {
@@ -225,16 +236,24 @@ Page({
       confirmColor: '#d9534f',
       success: (res) => {
         if (res.confirm) {
-          const medications = this.data.medications.filter(med => med.id !== id);
-          this.setData({ medications });
-          wx.setStorageSync('medications', medications);
-          wx.showToast({
-            title: 'Supprimé',
-            icon: 'success'
-          });
-          setTimeout(() => {
-            this.initScrollMetrics();
-          }, 300);
+          wx.showLoading({ title: 'Suppression...' });
+          api.supprimerMedicamentSuivi(id)
+            .then(() => {
+              wx.hideLoading();
+              const medications = this.data.medications.filter(med => med.id !== id);
+              this.setData({ medications });
+              wx.showToast({
+                title: 'Supprimé',
+                icon: 'success'
+              });
+              setTimeout(() => {
+                this.initScrollMetrics();
+              }, 300);
+            })
+            .catch((err) => {
+              wx.hideLoading();
+              wx.showToast({ title: 'Erreur suppression', icon: 'none' });
+            });
         }
       }
     });

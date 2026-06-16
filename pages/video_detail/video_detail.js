@@ -37,8 +37,34 @@ Page({
 
   onLoad(options) {
     const id = options.id || 'video1';
-    if (VIDEO_DATA[id]) {
-      this.setData(VIDEO_DATA[id]);
+    const activeVideos = wx.getStorageSync('active_videos') || [];
+    const video = activeVideos.find(v => String(v.id) === String(id));
+
+    if (video) {
+      let heroName = 'TARIK HAJJI';
+      let heroRole = 'CO-FONDATEUR DE TIQQA';
+      const titre = video.titre || '';
+
+      if (titre.includes('Farida') || titre.includes('Familial')) {
+        heroName = 'FARIDA BENCHEKROUN';
+        heroRole = 'MAMAN';
+      } else if (titre.includes('Ilham') || titre.includes('Simple')) {
+        heroName = 'ILHAM';
+        heroRole = 'BELLE FILLE';
+      } else if (titre.includes('Atika') || titre.includes('Mémoire')) {
+        heroName = 'ATIKA BOUCETTA';
+        heroRole = 'MAMAN';
+      }
+
+      this.setData({
+        heroImage: video.image_url || '/assets/P1.png',
+        heroName: heroName,
+        heroRole: heroRole
+      });
+    } else {
+      if (VIDEO_DATA[id]) {
+        this.setData(VIDEO_DATA[id]);
+      }
     }
   },
 

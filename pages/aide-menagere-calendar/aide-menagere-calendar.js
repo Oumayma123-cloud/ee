@@ -10,12 +10,16 @@ Page({
     month: 6, // 0-indexed: 6 = Juillet
     selectedDay: 17,
     monthName: 'JUILLET',
-    calendarDays: []
+    calendarDays: [],
+    type: ''
   },
 
-  onLoad() {
+  onLoad(options) {
     const sys = wx.getSystemInfoSync();
-    this.setData({ statusBarHeight: sys.statusBarHeight || 20 });
+    this.setData({ 
+      statusBarHeight: sys.statusBarHeight || 20,
+      type: options.type || ''
+    });
     this.buildCalendar();
   },
 
@@ -72,13 +76,14 @@ Page({
   },
 
   onSuivant() {
-    const { selectedDay, month, year } = this.data;
+    const { selectedDay, month, year, type } = this.data;
     if (!selectedDay) {
       wx.showToast({ title: 'Veuillez choisir une date', icon: 'none' });
       return;
     }
-    // Navigate to next step (time selection or confirmation)
-    wx.showToast({ title: `RDV le ${selectedDay} ${MONTHS_FR[month]}`, icon: 'success' });
+    wx.navigateTo({
+      url: `/pages/aide-menagere-time/aide-menagere-time?day=${selectedDay}&month=${month}&year=${year}&type=${type}`
+    });
   },
 
   onBack() {

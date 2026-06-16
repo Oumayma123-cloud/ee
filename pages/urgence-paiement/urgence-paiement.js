@@ -16,7 +16,7 @@ Page({
   },
 
   onHomeReturn: function() {
-    wx.reLaunch({ url: '../home/home' });
+    wx.reLaunch({ url: '/pages/sante/sante' });
   },
 
   onCloseTap: function() {
@@ -34,7 +34,7 @@ Page({
   onNavTap: function(e) {
     const action = e.detail.action;
     if (action === 'home') {
-      wx.reLaunch({ url: '../home/home' });
+      wx.reLaunch({ url: '/pages/sante/sante' });
     } else if (action === 'emergency') {
       wx.redirectTo({ url: '../urgence/urgence' });
     }

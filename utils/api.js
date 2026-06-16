@@ -220,6 +220,26 @@ function getMockResponse(path, method, data) {
     };
   }
 
+  if (path.startsWith('/api/mobile/v1/sante/infirmier-a-domicile/') && method === 'PUT') {
+    const id = path.split('/').pop();
+    if (id !== 'cloturer' && id !== 'restore-cloturer') {
+      const current = wx.getStorageSync('mock_infirmier_prestation') || {};
+      const updated = {
+        ...current,
+        id: Number(id) || current.id || 800,
+        ...data,
+        status: 'en_attente',
+        cree_le: current.cree_le || new Date().toISOString()
+      };
+      wx.setStorageSync('mock_infirmier_prestation', updated);
+      return {
+        status: 'success',
+        data: updated,
+        mock: true
+      };
+    }
+  }
+
   if (path.startsWith('/api/mobile/v1/sante/infirmier-a-domicile/') && method === 'GET') {
     const id = path.split('/').pop();
     if (id !== 'en-cours' && id !== 'details') {
@@ -240,6 +260,365 @@ function getMockResponse(path, method, data) {
       };
     }
   }
+  // Mocks for Urgence/Ambulance
+  if (path === '/api/mobile/v1/sante/demande-ambulance' && method === 'POST') {
+    const newPrestation = {
+      id: 489,
+      utilisateur_id: data ? (data.parent_id || 521) : 521,
+      status: 'en_attente',
+      ville_beneficiaire: data ? (data.villeBeneficiaire || 'Rabat') : 'Rabat',
+      adresse_beneficiaire: data ? (data.adresseBeneficiaire || '123 Avenue Mohamed VI') : '123 Avenue Mohamed VI',
+      numero_telephone_beneficiaire: data ? (data.numeroTelephoneBeneficiaire || '0612345678') : '0612345678',
+      cree_le: new Date().toISOString()
+    };
+    wx.setStorageSync('mock_ambulance_prestation', newPrestation);
+    return {
+      status: 'success',
+      data: newPrestation,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/demande-ambulance/en-cours') && method === 'GET') {
+    const prestation = wx.getStorageSync('mock_ambulance_prestation') || {
+      id: 489,
+      utilisateur_id: 521,
+      status: 'en_attente',
+      ville_beneficiaire: 'Rabat',
+      adresse_beneficiaire: '123 Avenue Mohamed VI',
+      numero_telephone_beneficiaire: '0612345678',
+      cree_le: new Date().toISOString()
+    };
+    return {
+      status: 'success',
+      data: prestation,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/demande-ambulance/') && path.endsWith('/retour-maison') && method === 'POST') {
+    const current = wx.getStorageSync('mock_ambulance_prestation') || { id: 489 };
+    const updated = { ...current, needRetour: true, retourData: data };
+    wx.setStorageSync('mock_ambulance_prestation', updated);
+    return {
+      status: 'success',
+      data: updated,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/demande-ambulance/') && path.endsWith('/informations') && method === 'PUT') {
+    const current = wx.getStorageSync('mock_ambulance_prestation') || { id: 489 };
+    const updated = { ...current, ...data };
+    wx.setStorageSync('mock_ambulance_prestation', updated);
+    return {
+      status: 'success',
+      data: updated,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/demande-ambulance/') && path.endsWith('/restore-cloturer') && method === 'PUT') {
+    const restored = {
+      id: 489,
+      utilisateur_id: 521,
+      status: 'en_attente',
+      ville_beneficiaire: 'Rabat',
+      adresse_beneficiaire: '123 Avenue Mohamed VI',
+      numero_telephone_beneficiaire: '0612345678',
+      cree_le: new Date().toISOString()
+    };
+    wx.setStorageSync('mock_ambulance_prestation', restored);
+    return {
+      status: 'success',
+      data: restored,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/demande-ambulance/') && method === 'PUT') {
+    // Cloturer demande
+    wx.removeStorageSync('mock_ambulance_prestation');
+    return {
+      status: 'success',
+      data: { message: 'Prestation cloturée avec succès' },
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/demande-ambulance/') && method === 'GET') {
+    const id = path.split('/').pop();
+    if (id !== 'en-cours') {
+      const cur = wx.getStorageSync('mock_ambulance_prestation') || {
+        id: Number(id) || 489,
+        utilisateur_id: 521,
+        status: 'en_attente',
+        ville_beneficiaire: 'Rabat',
+        adresse_beneficiaire: '123 Avenue Mohamed VI',
+        numero_telephone_beneficiaire: '0612345678',
+        cree_le: new Date().toISOString()
+      };
+      return {
+        status: 'success',
+        data: cur,
+        mock: true
+      };
+    }
+  }
+
+  if (path === '/api/mobile/v1/sante/demande-ambulance' && method === 'GET') {
+    const cur = wx.getStorageSync('mock_ambulance_prestation');
+    return {
+      status: 'success',
+      data: cur ? [cur] : [],
+      mock: true
+    };
+  }
+
+  // Suivi Médicaments Mocks
+  if (path.startsWith('/api/mobile/v1/sante/medicaments/suivi') && method === 'GET') {
+    if (path.endsWith('/jour')) {
+      const allMeds = wx.getStorageSync('medications') || [];
+      return {
+        status: 'success',
+        data: allMeds.filter(m => m.checked),
+        mock: true
+      };
+    } else {
+      let allMeds = wx.getStorageSync('medications');
+      if (!allMeds) {
+        allMeds = [
+          {
+            id: 1,
+            name: 'DOLIPRANE',
+            checked: true,
+            frequency: '2 fois/jrs',
+            nextDose: '8h00'
+          },
+          {
+            id: 2,
+            name: 'DIFAL',
+            checked: true,
+            frequency: '3 fois/jrs',
+            nextDose: '9h00'
+          }
+        ];
+        wx.setStorageSync('medications', allMeds);
+      }
+      return {
+        status: 'success',
+        data: allMeds,
+        mock: true
+      };
+    }
+  }
+
+  if (path === '/api/mobile/v1/sante/medicaments/suivi' && method === 'POST') {
+    const allMeds = wx.getStorageSync('medications') || [];
+    const newMed = {
+      id: Date.now(),
+      name: data.name ? data.name.toUpperCase() : (data.medicament_id === 27003 ? 'DOLIPRANE' : 'AUTRE'),
+      checked: true,
+      frequency: data.type || '1 fois/jrs',
+      nextDose: data.heures ? data.heures.join(', ') : '08:00'
+    };
+    allMeds.push(newMed);
+    wx.setStorageSync('medications', allMeds);
+    return {
+      status: 'success',
+      data: newMed,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/medicaments/suivi/') && method === 'PATCH') {
+    const id = Number(path.split('/').pop());
+    const allMeds = wx.getStorageSync('medications') || [];
+    let updatedMed = null;
+    const nextMeds = allMeds.map(med => {
+      if (med.id === id) {
+        updatedMed = { ...med, ...data };
+        return updatedMed;
+      }
+      return med;
+    });
+    wx.setStorageSync('medications', nextMeds);
+    return {
+      status: 'success',
+      data: updatedMed,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/medicaments/suivi/') && method === 'DELETE') {
+    const id = Number(path.split('/').pop());
+    const allMeds = wx.getStorageSync('medications') || [];
+    const nextMeds = allMeds.filter(med => med.id !== id);
+    wx.setStorageSync('medications', nextMeds);
+    return {
+      status: 'success',
+      data: { success: true },
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/sante/medicaments') && method === 'GET') {
+    const parts = path.split('?');
+    let q = '';
+    if (parts[1]) {
+      const queryParams = parts[1].split('&');
+      for (let param of queryParams) {
+        if (param.startsWith('q=')) {
+          q = decodeURIComponent(param.split('=')[1]);
+          break;
+        }
+      }
+    }
+    const items = [
+      { id: 27003, name: 'DOLIPRANE' },
+      { id: 27004, name: 'DIFAL' },
+      { id: 27005, name: 'ASPIRINE' },
+      { id: 27006, name: 'PARACETAMOL' },
+      { id: 27007, name: 'SPASFON' },
+      { id: 27008, name: 'IBUPROFENE' }
+    ];
+    const filtered = items.filter(i => i.name.toLowerCase().includes(q.toLowerCase()));
+    return {
+      status: 'success',
+      data: filtered,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/slider/liste') && method === 'GET') {
+    return {
+      status: 'success',
+      data: [
+        {
+          id: 1,
+          titre: "Découvrez nos bons plans chez hard auto - batteries",
+          image: "/assets/bon4.png",
+          type: "bons_plans",
+          color: "#F7DC7C",
+          actif: true
+        },
+        {
+          id: 2,
+          titre: "Découvrez nos bons plans chez hard auto - filtres",
+          image: "/assets/bon3.png",
+          type: "bons_plans",
+          color: "#FAEAB0",
+          actif: true
+        },
+        {
+          id: 3,
+          titre: "Découvrez nos bons plans chez hard auto - freinage",
+          image: "/assets/bon5.png",
+          type: "bons_plans",
+          color: "#EEC683",
+          actif: true
+        },
+        {
+          id: 4,
+          titre: "Découvrez nos bons plans chez hard auto - pneus bridgestone",
+          image: "/assets/bon6.png",
+          type: "bons_plans",
+          color: "#F7DC7C",
+          actif: true
+        },
+        {
+          id: 5,
+          titre: "Découvrez nos bons chez auditec - appareils auditifs",
+          image: "/assets/bon2.png",
+          type: "bons_plans",
+          color: "#FAEAB0",
+          actif: true
+        },
+        {
+          id: 6,
+          titre: "Voyage istanbul - monarch travel",
+          image: "/assets/bon9.png",
+          type: "bons_plans",
+          color: "#EEC683",
+          actif: true
+        },
+        {
+          id: 7,
+          titre: "MERZOUGA ET ERFOUD - monarch travel",
+          image: "/assets/bon8.png",
+          type: "bons_plans",
+          color: "#FAEAB0",
+          actif: true
+        },
+        {
+          id: 8,
+          titre: "Eco-lodge SAFA BOULAOUANE - monarch travel",
+          image: "/assets/bon7.png",
+          type: "bons_plans",
+          color: "#EEC683",
+          actif: true
+        },
+        {
+          id: 9,
+          titre: "Sur toute la gamme nadari",
+          image: "/assets/bon1.png",
+          type: "bons_plans",
+          color: "#FAEAB0",
+          actif: true
+        }
+      ],
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/clubs/thematiques/videos' && method === 'GET') {
+    return {
+      status: 'success',
+      data: [
+        {
+          id: 5,
+          titre: "Rêve Familial",
+          description: "Dans cette vidéo pleine d'émotion, Mme Farida exprime sa gratitude envers son fils Tareq et toute l'équipe qui ont créé Tiqaa. L'histoire vraie d'une application née d'un lien familial fort et de l'amour d'une mère.",
+          url: "",
+          image_url: "/assets/P2.png",
+          duration: null
+        },
+        {
+          id: 3,
+          titre: "Cap Futur",
+          description: "Découvrez la mission de Tiqaa : offrir une solution simple, pratique et perfectly adaptée aux seniors pour faciliter le quotidien et renforcer l'autonomie. Une innovation qui a du sens et qui transforme vraiment la vie !",
+          url: "",
+          image_url: "/assets/P3.png",
+          duration: null
+        },
+        {
+          id: 4,
+          titre: "Vie Simple",
+          description: "Découvrez l'application Tiqaa, la solution pensée spécialement pour simplifier votre quotidien ! Un outil pratique, accessible et parfaitement adapté aux besoins des seniors pour favoriser l'autonomie et le bien-être.",
+          url: "",
+          image_url: "/assets/P4.png",
+          duration: null
+        },
+        {
+          id: 2,
+          titre: "Nouvel Élan",
+          description: "Découvrez Tiqaa, une technologie vraiment humaine conçue pour faciliter votre quotidien, renforcer les liens sociaux et encourager un vieillissement actif et épanoui. Une plateforme pensée par et pour les seniors !",
+          url: "",
+          image_url: "/assets/P1.png",
+          duration: null
+        },
+        {
+          id: 1,
+          titre: "Mémoire Vive",
+          description: "Mme Atika partage avec sincérité son témoignage sur l'application Tiqaa et comment cette technologie va transformer son quotidien. Une expérience humaine touchante qui montre l'impact positif de la tech sur la vie des seniors.",
+          url: "",
+          image_url: "/assets/P5.png",
+          duration: 5
+        }
+      ],
+      mock: true
+    };
+  }
 
   return null;
 }
@@ -256,7 +635,11 @@ function request(path, method = 'GET', data = null, headers = {}) {
   return new Promise((resolve, reject) => {
 
     // Prevent ugly 404 console logs by bypassing the network entirely for endpoints we KNOW are missing.
-    if (FORCE_MOCK_ENDPOINTS.includes(path) || path.startsWith('/api/mobile/v1/utilisateur/contacts/')) {
+    if (
+      FORCE_MOCK_ENDPOINTS.includes(path) || 
+      path.startsWith('/api/mobile/v1/utilisateur/contacts/') ||
+      path.startsWith('/api/mobile/v1/sante/medicaments')
+    ) {
       const mockResponse = getMockResponse(path, method, data);
       if (mockResponse) {
         setTimeout(() => {
@@ -266,15 +649,21 @@ function request(path, method = 'GET', data = null, headers = {}) {
       }
     }
 
+    const headersCombined = {
+      'Content-Type': 'application/json',
+      ...headers
+    };
+    const token = wx.getStorageSync('access_token');
+    if (token) {
+      headersCombined['Authorization'] = `Bearer ${token}`;
+    }
+
     wx.request({
       url: `${BASE_URL}${path}`,
       method,
       data,
       timeout: 15000,
-      header: {
-        'Content-Type': 'application/json',
-        ...headers
-      },
+      header: headersCombined,
       success: (res) => {
         const body = res.data || {};
         
@@ -426,8 +815,72 @@ function restoreCloturerDemandeInfirmier(id) {
   return request(`/api/mobile/v1/sante/infirmier-a-domicile/${id}/restore-cloturer`, 'PUT');
 }
 
+function creerDemandeAmbulance(data) {
+  return request('/api/mobile/v1/sante/demande-ambulance', 'POST', data);
+}
+
+function getCurrentPrestationAmbulance(parentId) {
+  return request(`/api/mobile/v1/sante/demande-ambulance/en-cours?parent_id=${parentId}`, 'GET');
+}
+
+function getDemandeAmbulanceDetail(id, parentId) {
+  return request(`/api/mobile/v1/sante/demande-ambulance/${id}?parent_id=${parentId}`, 'GET');
+}
+
+function getDemandesAmbulance(parentId) {
+  return request(`/api/mobile/v1/sante/demande-ambulance?parent_id=${parentId}`, 'GET');
+}
+
+function demanderRetourAmbulance(id, data) {
+  return request(`/api/mobile/v1/sante/demande-ambulance/${id}/retour-maison`, 'POST', data);
+}
+
+function updateDemandeAmbulanceInfo(id, data) {
+  return request(`/api/mobile/v1/sante/demande-ambulance/${id}/informations`, 'PUT', data);
+}
+
+function cloturerDemandeAmbulance(id, parentId) {
+  return request(`/api/mobile/v1/sante/demande-ambulance/${id}`, 'PUT', {
+    parent_id: String(parentId)
+  });
+}
+
+function restoreCloturerDemandeAmbulance(id) {
+  return request(`/api/mobile/v1/sante/demande-ambulance/${id}/restore-cloturer`, 'PUT');
+}
+
+function getMedicamentsSuivi(parentId) {
+  return request(`/api/mobile/v1/sante/medicaments/suivi?parent_id=${parentId}`, 'GET');
+}
+
+function ajouterMedicamentSuivi(data) {
+  return request('/api/mobile/v1/sante/medicaments/suivi', 'POST', data);
+}
+
+function modifierMedicamentSuivi(id, data) {
+  return request(`/api/mobile/v1/sante/medicaments/suivi/${id}`, 'PATCH', data);
+}
+
+function supprimerMedicamentSuivi(id) {
+  return request(`/api/mobile/v1/sante/medicaments/suivi/${id}`, 'DELETE');
+}
+
+function rechercheMedicaments(q) {
+  return request(`/api/mobile/v1/sante/medicaments?q=${encodeURIComponent(q)}&fields=minimal`, 'GET');
+}
+
+function getSliders(page = 1, pageSize = 200, dansHome = true) {
+  return request(`/api/mobile/v1/slider/liste?page=${page}&pageSize=${pageSize}&dans_home=${dansHome}`, 'GET');
+}
+
+function getClubVideos() {
+  return request('/api/mobile/v1/clubs/thematiques/videos', 'GET');
+}
+
 module.exports = {
   BASE_URL,
+  getSliders,
+  getClubVideos,
   login,
   register,
   getProfile,
@@ -448,6 +901,19 @@ module.exports = {
   getPrestationsInfirmier,
   getPrestationDetailInfirmier,
   modifierDemandeInfirmier,
-  restoreCloturerDemandeInfirmier
+  restoreCloturerDemandeInfirmier,
+  creerDemandeAmbulance,
+  getCurrentPrestationAmbulance,
+  getDemandeAmbulanceDetail,
+  getDemandesAmbulance,
+  demanderRetourAmbulance,
+  updateDemandeAmbulanceInfo,
+  cloturerDemandeAmbulance,
+  restoreCloturerDemandeAmbulance,
+  getMedicamentsSuivi,
+  ajouterMedicamentSuivi,
+  modifierMedicamentSuivi,
+  supprimerMedicamentSuivi,
+  rechercheMedicaments
 };
 

@@ -31,7 +31,13 @@ Page({
     wx.showToast({ title: 'Fin du parcours', icon: 'none' });
   },
   onModify() {
-    wx.navigateTo({ url: '/pages/sante_horaire/sante_horaire' });
+    const prestation = this.data.prestation || wx.getStorageSync('current_infirmier_prestation') || {};
+    if (prestation.id) {
+      wx.setStorageSync('modify_prestation_id', prestation.id);
+    } else {
+      wx.removeStorageSync('modify_prestation_id');
+    }
+    wx.reLaunch({ url: '/pages/sante_calendar/sante_calendar' });
   },
 
   onCancelRemboursement() {

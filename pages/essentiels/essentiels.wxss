@@ -290,31 +290,37 @@
 
 /* Scrollbar Decorative */
 .ess-scrollbar {
-  width: 40rpx;
+  width: 56rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10rpx;
+  gap: 16rpx;
+  height: 440rpx; /* Shorter scrollbar */
+  align-self: center; /* Center vertically */
 }
 
 .ess-scroll-arrow {
-  width: 40rpx;
-  height: 40rpx;
-  background: #f0f0f0;
+  width: 56rpx;
+  height: 56rpx;
+  background: linear-gradient(180deg, #ffffff 0%, #ededed 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20rpx;
-  color: #999;
+  font-size: 26rpx;
+  color: #7f8c8d;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
+  border: 1rpx solid #e0e0e0;
 }
 
 .ess-scroll-track {
-  width: 14rpx;
+  width: 24rpx;
   flex: 1;
-  background: #f5f5f5;
-  border-radius: 7rpx;
+  background: #ffffff;
+  border-radius: 12rpx;
   position: relative;
+  box-shadow: inset 0 2rpx 6rpx rgba(0, 0, 0, 0.06), 0 2rpx 4rpx rgba(0, 0, 0, 0.04);
+  border: 1rpx solid #e2e2e2;
 }
 
 .ess-scroll-thumb {
@@ -324,7 +330,8 @@
   width: 100%;
   height: 120rpx;
   background: #6b4c3e; /* Brown thumb */
-  border-radius: 7rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .ess-bottom-spacer {

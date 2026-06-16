@@ -1,0 +1,119 @@
+<!-- ========== Page Détail Paiement Carte Bancaire ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <view class="header-section" style="padding-top: {{statusBarHeight + 10}}px;">
+        <view class="header-content">
+          <view class="back-btn" bindtap="onBack">
+            <view class="back-circle">
+              <text class="back-arrow-txt">←</text>
+            </view>
+            <text class="back-label">Retour</text>
+          </view>
+          <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
+          <view class="avatar-container">
+            <view class="avatar-bubble">
+              <image src="/assets/assets/avatar/Group 1000000900.png" class="avatar-img" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 2. Hero Slider Section (Grandfather holding credit card) -->
+      <view class="hero-section">
+        <view class="banner-container">
+          <!-- Mockup Browser Header Bar -->
+          <view class="browser-header">
+            <view class="dot-container">
+              <view class="slide-dot slide-dot--active"></view>
+              <view class="slide-dot"></view>
+              <view class="slide-dot"></view>
+              <view class="slide-dot"></view>
+            </view>
+          </view>
+
+          <!-- Grandfather image background -->
+          <image class="banner-img" src="/assets/payment_image_2.png" mode="aspectFill"></image>
+
+          <!-- Navigation Arrow Circles on the sides -->
+          <view class="nav-arrow nav-arrow-left">
+            <text class="arrow-char">←</text>
+          </view>
+          <view class="nav-arrow nav-arrow-right">
+            <text class="arrow-char">→</text>
+          </view>
+
+          <!-- Text Overlay (No Access button here) -->
+          <view class="banner-text-overlay">
+            <text class="banner-overlay-title">EFFECTUEZ VOTRE PAIEMENT</text>
+            <text class="banner-overlay-title">EN TOUTE SÉCURITÉ</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 3. Form Section -->
+      <view class="form-section">
+        <!-- Title 1: Le mode de paiement -->
+        <view class="section-title-wrap">
+          <text class="section-title">Le mode de paiement</text>
+          <view class="title-underline"></view>
+        </view>
+
+        <!-- Credit Card Type Selector Preview -->
+        <view class="card-type-box">
+          <text class="card-type-label">{{paymentLabel}}</text>
+          <image class="card-type-icon" src="{{paymentIcon}}" mode="aspectFit"></image>
+        </view>
+
+        <!-- Title 2: Détail de paiement -->
+        <view class="section-title-wrap no-underline-margin">
+          <text class="section-title">Détail de paiement</text>
+        </view>
+
+        <!-- Inputs Form -->
+        <view class="inputs-container">
+          <view class="input-row">
+            <text class="input-label">Numéro de carte :</text>
+            <input class="input-field" value="{{cardNumber}}" placeholder="0000 0000 0000 0000" bindinput="onCardNumberInput" type="number" />
+          </view>
+
+          <view class="input-row">
+            <text class="input-label">Date d'expiration :</text>
+            <input class="input-field" value="{{expiryDate}}" placeholder="MM/AAAA" bindinput="onExpiryDateInput" />
+          </view>
+
+          <view class="input-row">
+            <text class="input-label">CVC :</text>
+            <input class="input-field" value="{{cvc}}" placeholder="123" bindinput="onCvcInput" type="number" />
+          </view>
+
+          <view class="input-row">
+            <text class="input-label">Adresse facturation :</text>
+            <input class="input-field" value="{{billingAddress}}" placeholder="Adresse de facturation" bindinput="onBillingAddressInput" />
+          </view>
+        </view>
+
+        <!-- Checkbox CGU -->
+        <view class="cgu-row" bindtap="onToggleCheckbox">
+          <view class="checkbox-box {{cguChecked ? 'checked' : ''}}">
+            <text class="check-icon" wx:if="{{cguChecked}}">✔</text>
+          </view>
+          <text class="cgu-text">Confirmer l'acceptation de CGU</text>
+        </view>
+
+        <!-- Confirm Button -->
+        <view class="confirm-btn-wrap">
+          <view class="submit-btn" bindtap="onSubmit">
+            <text class="submit-btn-txt">CONFIRMEZ</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar message-count="6" bind:navtap="onNavTap" />
+</view>

@@ -1,0 +1,129 @@
+<!-- ========== Page Sélection Paiement Aide Ménagère ========== -->
+<view class="container">
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <view class="header-section" style="padding-top: {{statusBarHeight + 10}}px;">
+        <view class="header-content">
+          <view class="back-btn" bindtap="onBack">
+            <view class="back-circle">
+              <text class="back-arrow-txt">←</text>
+            </view>
+            <text class="back-label">Retour</text>
+          </view>
+          <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
+          <view class="avatar-container">
+            <view class="avatar-bubble">
+              <image src="/assets/assets/avatar/Group 1000000900.png" class="avatar-img" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 2. Hero Slider Section -->
+      <view class="hero-section">
+        <view class="banner-container">
+          <!-- Mockup Browser Header Bar -->
+          <view class="browser-header">
+            <!-- 4 Dots (3 white, 1 blue) on the right -->
+            <view class="dot-container">
+              <view class="slide-dot {{currentSlide === 0 ? 'slide-dot--active' : ''}}" bindtap="onSetSlide" data-index="0"></view>
+              <view class="slide-dot" bindtap="onSetSlide" data-index="1"></view>
+              <view class="slide-dot" bindtap="onSetSlide" data-index="2"></view>
+              <view class="slide-dot {{currentSlide === 1 ? 'slide-dot--active' : ''}}" bindtap="onSetSlide" data-index="1"></view>
+            </view>
+          </view>
+
+          <!-- Couple or Agency image background -->
+          <image class="banner-img" src="{{currentSlide === 0 ? '/assets/124e2dfa-4aec-418c-8c81-a6f8614c3670.jpg' : '/assets/tashilat_agency_store.jpg'}}" mode="aspectFill"></image>
+
+          <!-- Navigation Arrow Circles on the sides -->
+          <view class="nav-arrow nav-arrow-left" bindtap="onPrevSlide">
+            <text class="arrow-char">←</text>
+          </view>
+          <view class="nav-arrow nav-arrow-right" bindtap="onNextSlide">
+            <text class="arrow-char">→</text>
+          </view>
+
+          <!-- Text and Access Button Overlay -->
+          <view class="banner-text-overlay" wx:if="{{currentSlide === 0}}">
+            <text class="banner-overlay-title">PARCE QUE VOUS MÉRITEZ</text>
+            <text class="banner-overlay-title">DU TEMPS POUR VOUS!</text>
+            <view class="banner-overlay-btn">
+              <text class="banner-overlay-btn-txt">ACCÉDER</text>
+            </view>
+          </view>
+
+          <!-- Tashilat Agency Text Overlay -->
+          <view class="banner-text-overlay" wx:if="{{currentSlide === 1}}">
+            <text class="banner-overlay-title">TROUVEZ FACILEMENT LES AGENCES</text>
+            <text class="banner-overlay-title">TASSHILAT PRÈS DE CHEZ VOUS</text>
+            <view class="banner-overlay-btn" bindtap="onFindAgency">
+              <text class="banner-overlay-btn-txt">TROUVER UNE AGENCE</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 3. Date Time Strip -->
+      <view class="datetime-strip">
+        <image class="calendar-icon" src="/assets/icons/icon-calendar.png" mode="aspectFit"></image>
+        <text class="datetime-text">{{dateTimeStr}}</text>
+      </view>
+
+      <!-- 4. Payment Selection Grid -->
+      <view class="payment-section">
+        <view class="payment-grid">
+          <!-- Card 1: Tashilat -->
+          <view class="payment-card card-tashilat">
+            <view class="logo-wrap">
+              <image class="logo-img-tashilat" src="/assets/tashilat_logo_blend.png" mode="aspectFit"></image>
+            </view>
+            <text class="card-label">Tashilat</text>
+            <view class="confirm-btn" bindtap="onConfirmPayment" data-method="Tashilat">
+              <text class="confirm-btn-txt">CONFIRMEZ</text>
+            </view>
+          </view>
+
+          <!-- Card 2: Carte bancaire -->
+          <view class="payment-card card-creditcard">
+            <view class="logo-wrap">
+              <image class="logo-img-cc" src="/assets/payment_credit_card.png" mode="aspectFit"></image>
+            </view>
+            <text class="card-label">Carte bancaire</text>
+            <view class="confirm-btn" bindtap="onConfirmPayment" data-method="Carte bancaire">
+              <text class="confirm-btn-txt">CONFIRMEZ</text>
+            </view>
+          </view>
+
+          <!-- Card 3: Paiement par un tierce -->
+          <view class="payment-card card-tierce">
+            <view class="logo-wrap">
+              <image class="logo-img-tierce" src="/assets/payment_tierce_user.png" mode="aspectFill"></image>
+            </view>
+            <text class="card-label">{{tierceLabel}}</text>
+            <view class="confirm-btn" bindtap="onConfirmPayment" data-method="Paiement par un tierce">
+              <text class="confirm-btn-txt">CONFIRMEZ</text>
+            </view>
+          </view>
+
+          <!-- Card 4: CHAABI CASH -->
+          <view class="payment-card card-chaabi">
+            <view class="logo-wrap">
+              <image class="logo-img-chaabi" src="/assets/chaabi_logo_blend.png" mode="aspectFit"></image>
+            </view>
+            <text class="card-label">{{chaabiLabel}}</text>
+            <view class="confirm-btn" bindtap="onConfirmPayment" data-method="Chaabi Cash">
+              <text class="confirm-btn-txt">CONFIRMEZ</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar message-count="6" bind:navtap="onNavTap" />
+</view>

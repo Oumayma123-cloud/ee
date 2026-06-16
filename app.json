@@ -6,6 +6,14 @@
     "pages/services/services",
     "pages/aide-menagere/aide-menagere",
     "pages/aide-menagere-calendar/aide-menagere-calendar",
+    "pages/aide-menagere-time/aide-menagere-time",
+    "pages/aide-menagere-location/aide-menagere-location",
+    "pages/aide-menagere-confirm/aide-menagere-confirm",
+    "pages/aide-menagere-payment/aide-menagere-payment",
+    "pages/aide-menagere-credit-card/aide-menagere-credit-card",
+    "pages/aide-menagere-agences/aide-menagere-agences",
+    "pages/aide-menagere-tashilat/aide-menagere-tashilat",
+    "pages/aide-menagere-recap/aide-menagere-recap",
     "pages/demarches-admin/demarches-admin",
     "pages/passport-steps/passport-steps",
     "pages/paiement-factures/paiement-factures",
@@ -82,7 +90,9 @@
       "desc": "Pour afficher votre position sur la carte et confirmer le lieu du rendez-vous"
     }
   },
-  "requiredPrivateInfos": ["getLocation"],
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#B38F7F",

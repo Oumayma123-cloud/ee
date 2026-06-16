@@ -60,6 +60,10 @@ Page({
 
   onCardTap(e) {
     const type = e.currentTarget.dataset.type;
+    if (type === 'videos') {
+      wx.navigateTo({ url: '/pages/videos/videos' });
+      return;
+    }
     const labels = {
       activites: 'Activités',
       communaute: 'Communauté',

@@ -16,14 +16,15 @@
 
 /* Header Styles */
 .header {
-  height: 80rpx;
+  position: relative;
+  width: 100%;
+  height: 90rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40rpx;
-  background: white;
-  position: sticky;
-  top: 0;
+  padding: 0 20rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
   z-index: 100;
 }
 
@@ -55,25 +56,28 @@
 }
 
 .logo {
-  width: 180rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
   height: 60rpx;
-  display: block;
-  flex-shrink: 0;
-  margin: 0 auto;
 }
 
 .avatar-bubble {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 10;
+  z-index: 100;
 }
 
 .avatar-wrap {
-  width: 150rpx;
-  height: 150rpx;
+  width: 104rpx;
+  height: 104rpx;
   border-radius: 50%;
   background: transparent;
 }
@@ -249,12 +253,164 @@
   font-weight: bold;
 }
 
-.demo-controls {
-  margin: 40rpx;
-  padding: 20rpx;
-  background: rgba(0,0,0,0.05);
+/* Orange warning step */
+.step-warning {
+  background: #FF9500;
+  box-shadow: 0 6rpx 15rpx rgba(255,149,0,0.35);
+}
+
+.step-warning .step-text {
+  color: white;
+}
+
+.cancel-mark-circle {
+  width: 44rpx;
+  height: 44rpx;
+  background: white;
+  color: #FF9500;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+/* Warning triangle hero */
+.warning-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280rpx;
+  height: 280rpx;
+}
+
+/* CSS-only triangle using border trick */
+.warning-triangle-css {
+  width: 0;
+  height: 0;
+  border-left: 140rpx solid transparent;
+  border-right: 140rpx solid transparent;
+  border-bottom: 240rpx solid #FF9500;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.warning-excl {
+  position: absolute;
+  bottom: -210rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 130rpx;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+
+/* Nurse Card Styles for Step 4 of Retour */
+.hero-section-nurse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.nurse-card {
+  width: 650rpx;
+  height: 360rpx;
+  border-radius: 32rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.2);
+}
+
+.nurse-card-header {
+  height: 64rpx;
+  background-color: #6C4C3E;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 32rpx;
+}
+
+.nurse-dots {
+  display: flex;
+  gap: 16rpx;
+}
+
+.nurse-dot {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.nurse-card-body {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.nurse-bg-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.nurse-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.38); /* Subtle overlay for text readability */
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24rpx 36rpx;
+  box-sizing: border-box;
+}
+
+.nurse-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 95%;
+}
+
+.nurse-title {
+  color: #ffffff;
+  font-size: 26rpx;
+  font-weight: 800;
+  line-height: 34rpx;
+  margin-bottom: 8rpx;
+  letter-spacing: 1.5rpx;
+}
+
+.nurse-subtitle {
+  color: #ffffff;
+  font-size: 20rpx;
+  font-weight: 500;
+  line-height: 28rpx;
+  margin-bottom: 16rpx;
+}
+
+.nurse-btn {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 22rpx;
+  font-weight: 800;
+  padding: 10rpx 28rpx;
+  border-radius: 14rpx;
   text-align: center;
-  border-radius: 20rpx;
-  font-size: 24rpx;
-  color: #666;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.15);
 }

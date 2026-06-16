@@ -1,0 +1,165 @@
+<view class="container {{(paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash') ? 'tierce-bg' : ''}}">
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
+    <view class="scroll-inner">
+
+      <!-- 1. Header -->
+      <view class="header-section" style="padding-top: {{statusBarHeight + 10}}px;">
+        <view class="header-content">
+          <view class="back-btn" bindtap="onBack">
+            <view class="back-circle">
+              <text class="back-arrow-txt">←</text>
+            </view>
+            <text class="back-label">Retour</text>
+          </view>
+          <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
+          <view class="avatar-container">
+            <view class="avatar-bubble">
+              <image src="/assets/assets/avatar/Group 1000000900.png" class="avatar-img" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- FLOW A: Paiement par un tierce (Solliciter mon enfant / Attente de paiement) -->
+      <block wx:if="{{paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire' || paymentVal === 'Espèces'}}">
+        <!-- 2. Hero Section Banner -->
+        <view class="hero-section">
+          <view class="banner-container">
+            <view class="browser-header">
+              <view class="dot-container">
+                <view class="slide-dot"></view>
+                <view class="slide-dot {{currentSlide === 0 ? 'slide-dot--active' : ''}}" bindtap="onSetSlide" data-index="0"></view>
+                <view class="slide-dot"></view>
+                <view class="slide-dot {{currentSlide === 1 ? 'slide-dot--active' : ''}}" bindtap="onSetSlide" data-index="1"></view>
+              </view>
+            </view>
+            <image class="banner-img" src="{{currentSlide === 0 ? '/assets/payment_image_2.png' : '/assets/tashilat_agency_store.jpg'}}" mode="aspectFill"></image>
+            <view class="nav-arrow nav-arrow-left" bindtap="onPrevSlide">
+              <text class="arrow-char">←</text>
+            </view>
+            <view class="nav-arrow nav-arrow-right" bindtap="onNextSlide">
+              <text class="arrow-char">→</text>
+            </view>
+            
+            <view class="banner-text-overlay" wx:if="{{currentSlide === 0}}">
+              <text class="banner-overlay-title">EFFECTUEZ VOTRE PAIEMENT</text>
+              <text class="banner-overlay-title">EN TOUTE SÉCURITÉ</text>
+            </view>
+
+            <view class="banner-text-overlay" wx:if="{{currentSlide === 1}}">
+              <text class="banner-overlay-title">TROUVEZ FACILEMENT LES AGENCES</text>
+              <text class="banner-overlay-title">TASSHILAT PRÈS DE CHEZ VOUS</text>
+              <view class="banner-overlay-btn" bindtap="onFindAgency">
+                <text class="banner-overlay-btn-txt">TROUVER UNE AGENCE</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 3. White Form Card -->
+        <view class="form-section">
+          <!-- Solliciter mon enfant Button box -->
+          <view class="solliciter-box">
+            <text class="solliciter-text">Solliciter mon enfant</text>
+            <view class="solliciter-icon"></view>
+          </view>
+
+          <!-- Status Message -->
+          <view class="status-msg-wrap">
+            <text class="status-msg-title">Votre commande est en attente de paiement</text>
+          </view>
+
+          <!-- Info Rows -->
+          <view class="info-lines">
+            <view class="info-line-row">
+              <text class="info-line-label">Numéro de carte :</text>
+              <text class="info-line-val">0598 550 993 34</text>
+            </view>
+            <view class="info-line-row">
+              <text class="info-line-label">Date de la commande :</text>
+              <text class="info-line-val">{{orderDate}}</text>
+            </view>
+            <view class="info-line-row">
+              <text class="info-line-label">Code de paiement :</text>
+              <text class="info-line-val">AZ44LK5578</text>
+            </view>
+            <view class="info-line-row">
+              <text class="info-line-label">Code expirée dans :</text>
+              <text class="info-line-val">1J 23H 34min</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 4. Action Buttons -->
+        <view class="action-btn-wrap">
+          <view class="btn-share" bindtap="onShareCode">
+            <text class="btn-share-txt">PARTAGER LE CODE AVEC MON ENFANT</text>
+          </view>
+          <view class="btn-cancel-order" bindtap="onCancelOrder">
+            <text class="btn-cancel-txt">ANNULER</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- FLOW B: Standard Confirmation Page -->
+      <block wx:else>
+        <!-- 2. Blue Section (RDV Confirmé & Récapitulatif) -->
+        <view class="blue-section">
+          <view class="rdv-status">
+            <text class="status-title">RDV CONFIRMÉ</text>
+            <view class="check-circle">
+              <text class="check-mark">✔</text>
+            </view>
+          </view>
+
+          <!-- Recap Card -->
+          <view class="recap-card">
+            <view class="recap-header">
+              <text class="recap-title">Récapitulatif</text>
+              <view class="recap-underline"></view>
+            </view>
+            <view class="recap-body">
+              <view class="recap-row">
+                <text class="recap-label">Date : </text>
+                <text class="recap-val">{{dateVal}}</text>
+              </view>
+              <view class="recap-row">
+                <text class="recap-label">Adresse d'intervention : </text>
+                <text class="recap-val">{{addressVal}}</text>
+              </view>
+              <view class="recap-row">
+                <text class="recap-label">Le montant à payer : </text>
+                <text class="recap-val">{{amountVal}}</text>
+              </view>
+              <view class="recap-row">
+                <text class="recap-label">Mode de paiement : </text>
+                <text class="recap-val">{{paymentVal}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 3. White Section (Woman & Action Buttons) -->
+        <view class="white-section">
+          <view class="woman-container">
+            <image class="woman-img {{paymentVal === 'Paiement par un tierce' || paymentVal === 'Carte bancaire' ? 'man-confirm-img' : ''}}" src="{{confirmImage}}" mode="{{paymentVal === 'Paiement par un tierce' || paymentVal === 'Carte bancaire' ? 'aspectFill' : 'aspectFit'}}"></image>
+          </view>
+
+          <!-- Action Buttons -->
+          <view class="btn-wrap">
+            <view class="btn btn-modify" bindtap="onModify">
+              <text class="btn-txt">MODIFIEZ</text>
+            </view>
+            <view class="btn btn-cancel" bindtap="onCancel">
+              <text class="btn-txt">ANNULEZ</text>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <view class="bottom-spacer"></view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar message-count="6" bind:navtap="onNavTap" />
+</view>

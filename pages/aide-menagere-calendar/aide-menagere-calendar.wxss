@@ -1,13 +1,13 @@
 /* ========== Container ========== */
 page {
-  background: #CEE8F8;
+  background: #FFFFFF;
 }
 
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #CEE8F8;
+  background: #FFFFFF;
 }
 
 .scroll-content {
@@ -18,11 +18,12 @@ page {
 .scroll-inner {
   display: flex;
   flex-direction: column;
+  background: #FFFFFF;
 }
 
 /* ========== Header ========== */
 .header-section {
-  background: #CEE8F8;
+  background: #FFFFFF;
   padding-bottom: 0;
   position: relative;
   z-index: 10;
@@ -71,19 +72,23 @@ page {
   height: 56rpx;
 }
 
-/* Circular avatar */
+/* Circular avatar / Bubble avatar */
 .avatar-container {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
-  overflow: hidden;
-  border: 3rpx solid #CEE8F8;
-  box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.avatar-bubble {
+  position: relative;
+  width: 100rpx;
+  height: 110rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .avatar-img {
-  width: 80rpx;
-  height: 80rpx;
+  width: 100rpx;
+  height: 110rpx;
   display: block;
 }
 
@@ -95,8 +100,8 @@ page {
  * overflow: visible lets her head render above the hero boundary.
  */
 .hero-section {
-  background: #CEE8F8;
-  height: 260rpx;
+  background: #A9D3EC;
+  height: 380rpx;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -115,33 +120,33 @@ page {
 }
 
 .hero-bubble {
-  background: #FFFFFF;
-  border-radius: 18rpx;
-  padding: 22rpx 26rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.08);
+  background: #FAF0ED;
+  border-radius: 24rpx;
+  padding: 24rpx 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
 }
 
 .hero-bubble-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: #1A3D5C;
+  color: #2E2A28;
   line-height: 1.5;
 }
 
-/* Woman: in-flow, anchored to bottom, overflows upward with negative margin */
+/* Woman: in-flow, aligned to bottom, fits within height without overflow */
 .hero-right {
-  width: 240rpx;
-  height: 350rpx;
+  width: 300rpx;
+  height: 380rpx;
   flex-shrink: 0;
   align-self: flex-end;
-  margin-top: -90rpx;
+  margin-top: 0;
   z-index: 5;
   overflow: visible;
 }
 
 .hero-woman {
-  width: 240rpx;
-  height: 314rpx;
+  width: 300rpx;
+  height: 380rpx;
   display: block;
 }
 
@@ -151,7 +156,7 @@ page {
  * BLUE background like the design — dark navy text on blue.
  */
 .calendar-section {
-  background: #CEE8F8;
+  background: #5391C0;
   padding: 24rpx 32rpx 28rpx;
   position: relative;
   z-index: 3;
@@ -164,13 +169,15 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.4);
 }
 
 .month-arrow {
-  width: 52rpx;
-  height: 52rpx;
-  border-radius: 26rpx;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
   background: #FFFFFF;
   display: flex;
   align-items: center;
@@ -179,8 +186,8 @@ page {
 }
 
 .month-arrow-txt {
-  font-size: 20rpx;
-  color: #1A3D5C;
+  font-size: 24rpx;
+  color: #5391C0;
   font-weight: 900;
 }
 
@@ -191,19 +198,19 @@ page {
   gap: 18rpx;
 }
 
-/* JUILLET: large bold dark navy on blue bg */
+/* JUILLET: large bold white text */
 .month-name-txt {
   font-size: 44rpx;
   font-weight: 900;
-  color: #1A3D5C;
+  color: #FFFFFF;
   letter-spacing: 1rpx;
 }
 
-/* 2025: smaller dark */
+/* 2025: white text */
 .year-txt {
   font-size: 30rpx;
   font-weight: 400;
-  color: #1A3D5C;
+  color: #FFFFFF;
 }
 
 /* Days Header */
@@ -211,7 +218,7 @@ page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 8rpx;
+  margin-bottom: 12rpx;
   padding-bottom: 8rpx;
 }
 
@@ -248,10 +255,9 @@ page {
   justify-content: center;
 }
 
-/* Selected day: white rounded square with dark text */
+/* Selected day: light blue rounded square with white text */
 .day-cell--selected {
-  background: #FFFFFF;
-  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.12);
+  background: #84BBE4;
 }
 
 .day-num {
@@ -262,29 +268,29 @@ page {
 }
 
 .day-cell--selected .day-num {
-  color: #1A3D5C !important;
+  color: #FFFFFF !important;
   font-weight: 800;
 }
 
 .day-num--selected {
-  color: #1A3D5C !important;
+  color: #FFFFFF !important;
   font-weight: 800;
 }
 
 /* ========== SUIVANT Button ========== */
 .btn-suivant-wrap {
-  background: #CEE8F8;
-  padding: 32rpx 60rpx 36rpx;
+  background: #FFFFFF;
+  padding: 36rpx 60rpx 40rpx;
 }
 
 .btn-suivant {
-  background: #1A3D5C;
+  background: #2A5F89;
   border-radius: 60rpx;
   height: 96rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6rpx 18rpx rgba(26, 61, 92, 0.28);
+  box-shadow: 0 4rpx 12rpx rgba(42, 95, 137, 0.2);
 }
 
 .btn-suivant:active {
@@ -294,12 +300,13 @@ page {
 .btn-suivant-txt {
   color: #FFFFFF;
   font-size: 28rpx;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 4rpx;
 }
 
 /* ========== Bottom Spacer ========== */
 .bottom-spacer {
-  height: 0;
+  height: 160rpx;
+  background: #FFFFFF;
 }
 

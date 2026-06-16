@@ -12,7 +12,7 @@
 
     <view class="avatar-bubble" bindtap="onProfileTap">
       <view class="avatar-wrap avatar-wrap--bubble">
-        <image class="avatar" src="/assets/prof.png" mode="aspectFill"></image>
+        <image class="avatar" src="/assets/profile.png" mode="aspectFill"></image>
       </view>
     </view>
   </view>
@@ -41,7 +41,7 @@
       <view class="location-box">
         <view class="location-info">
           <text class="location-label">Lieu</text>
-          <text class="location-value">350 B......</text>
+          <text class="location-value">{{locationLabel}}</text>
         </view>
         <view class="edit-btn">
           <!-- Simple pencil icon placeholder -->
@@ -51,7 +51,14 @@
 
       <!-- Map Area -->
       <view class="map-container">
-        <image class="map-img" src="../../assets/map-tracking.png" mode="aspectFill"></image>
+        <map
+          class="map-component"
+          latitude="{{latitude}}"
+          longitude="{{longitude}}"
+          markers="{{markers}}"
+          scale="14"
+          show-location
+        ></map>
       </view>
 
       <!-- Buttons -->
