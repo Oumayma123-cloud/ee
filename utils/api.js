@@ -660,7 +660,6 @@ function request(path, method = 'GET', data = null, headers = {}) {
       'Content-Type': 'application/json',
       ...headers
     };
-    const token = wx.getStorageSync('access_token');
     if (token) {
       headersCombined['Authorization'] = `Bearer ${token}`;
     }
