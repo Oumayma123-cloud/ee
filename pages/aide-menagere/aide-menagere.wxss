@@ -92,25 +92,25 @@
 
 /* ========== Hero Slider Section ========== */
 .hero-section {
-  background: #3A7EA7; /* Medium steel blue */
-  padding: 24rpx 40rpx; /* Matches mockup margins */
+  background: transparent;
+  padding: 0;
   position: relative;
   z-index: 2;
 }
 
 .banner-container {
   width: 100%;
-  height: 300rpx; /* Matches the 1024x461 image aspect ratio to avoid side cropping */
-  border-radius: 20rpx;
+  height: 380rpx;
+  border-radius: 0;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+  box-shadow: none;
 }
 
 .banner-img {
   width: 100%;
-  height: calc(100% - 40rpx); /* Leaves space for browser header */
-  margin-top: 40rpx; /* Pushes image down below the header */
+  height: 100%;
+  margin-top: 0;
   display: block;
 }
 
