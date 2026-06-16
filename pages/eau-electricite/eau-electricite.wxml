@@ -20,36 +20,110 @@
         </view>
       </view>
 
-      <!-- 4. Operators List -->
-      <view class="operators-list">
-
-        <view class="operator-card" bindtap="onOperatorTap" data-id="srm-casa">
-          <image class="operator-card-illustration" src="/assets/icons/srm-cs-card-img.png" mode="aspectFit"></image>
-          <view class="operator-info">
-            <text class="operator-name">SRM_Casabalnca_Settat</text>
-            <text class="operator-subtitle">Eau & Electricite</text>
+      <!-- STEP 1: Operators List -->
+      <view class="operators-list" wx:if="{{step === 1}}">
+        <view class="operator-card" wx:for="{{operators}}" wx:key="code" bindtap="onSelectOperator" data-operator="{{item}}">
+          <view class="operator-logo-wrap">
+            <image class="operator-logo-img" src="{{item.logo || '/assets/icons/default-operator.png'}}" mode="aspectFit"></image>
           </view>
-          <view class="chevron-down-bold"></view>
-        </view>
-
-        <view class="operator-card" bindtap="onOperatorTap" data-id="rak">
-          <image class="operator-card-illustration" src="/assets/icons/rak-card-img.png" mode="aspectFit"></image>
           <view class="operator-info">
-            <text class="operator-name">RAK</text>
-            <text class="operator-subtitle">Eau et Electricite</text>
+            <text class="operator-name">{{item.name}}</text>
+            <text class="operator-subtitle">Eau & Electricité</text>
           </view>
-          <view class="chevron-down-bold"></view>
+          <view class="chevron-right-bold"></view>
         </view>
+        <view class="empty-state" wx:if="{{operators.length === 0 && !isLoading}}">
+          <text class="empty-text">Aucun opérateur disponible</text>
+        </view>
+      </view>
 
-        <view class="operator-card" bindtap="onOperatorTap" data-id="srm-rabat">
-          <image class="operator-card-illustration" src="/assets/icons/srm-rabat-card-img.png" mode="aspectFit"></image>
-          <view class="operator-info">
-            <text class="operator-name">SRM RABAT-SALE-KENITRA</text>
-            <text class="operator-subtitle">Eau & Electricite</text>
+      <!-- STEP 2: Services List -->
+      <view class="step-container" wx:if="{{step === 2}}">
+        <view class="step-header">
+          <text class="step-title">Sélectionnez le service</text>
+          <text class="step-subtitle">{{selectedOperator.name}}</text>
+        </view>
+        <view class="services-list">
+          <view class="service-card" wx:for="{{services}}" wx:key="code" bindtap="onSelectService" data-service="{{item}}">
+            <text class="service-name">{{item.name}}</text>
+            <view class="chevron-right-bold"></view>
           </view>
-          <view class="chevron-down-bold"></view>
         </view>
+      </view>
 
+      <!-- STEP 3: Form Fields Input -->
+      <view class="step-container" wx:if="{{step === 3}}">
+        <view class="step-header">
+          <text class="step-title">Saisir les informations</text>
+          <text class="step-subtitle">{{selectedOperator.name}} - {{selectedService.name}}</text>
+        </view>
+        <view class="form-card">
+          <view class="form-group" wx:for="{{formFields}}" wx:key="dataName" wx:if="{{item.type !== 'hidden'}}">
+            <text class="input-label">{{item.label}}</text>
+            <input class="form-input" placeholder="Saisir {{item.label}}" data-name="{{item.dataName}}" bindinput="onFormFieldInput" value="{{formValues[item.dataName] || ''}}"/>
+          </view>
+          <button class="submit-btn" bindtap="onSubmitForm">Vérifier les factures</button>
+        </view>
+      </view>
+
+      <!-- STEP 4: Unpaid Bills List -->
+      <view class="step-container" wx:if="{{step === 4}}">
+        <view class="step-header">
+          <text class="step-title">Factures Impayées</text>
+          <text class="step-subtitle">Sélectionnez les factures à régler</text>
+        </view>
+        <view class="bills-list">
+          <view class="bill-card" wx:for="{{unpaidBills}}" wx:key="id">
+            <view class="bill-details">
+              <text class="bill-ref">Réf: {{item.reference}}</text>
+              <text class="bill-date">Date limite : {{item.dateLimit}}</text>
+              <text class="bill-desc" wx:if="{{item.description}}">{{item.description}}</text>
+            </view>
+            <view class="bill-price">
+              <text class="bill-amount">{{item.montant}} DHS</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="total-bar">
+          <view class="total-info">
+            <text class="total-label">Total à payer</text>
+            <text class="total-amount">{{totalAmount}} DHS</text>
+          </view>
+          <button class="pay-btn" bindtap="onPayBills">Procéder au Paiement</button>
+        </view>
+      </view>
+
+      <!-- STEP 5: Payment Success Screen -->
+      <view class="step-container" wx:if="{{step === 5}}">
+        <view class="success-card">
+          <view class="success-icon-circle">
+            <icon type="success" size="50" color="#3B82B5" />
+          </view>
+          <text class="success-title">Paiement Réussi !</text>
+          <text class="success-subtitle">Votre facture a été réglée avec succès.</text>
+          
+          <view class="receipt-details">
+            <view class="receipt-row">
+              <text class="receipt-label">Opérateur</text>
+              <text class="receipt-value">{{selectedOperator.name}}</text>
+            </view>
+            <view class="receipt-row">
+              <text class="receipt-label">Service</text>
+              <text class="receipt-value">{{selectedService.name}}</text>
+            </view>
+            <view class="receipt-row">
+              <text class="receipt-label">Montant payé</text>
+              <text class="receipt-value">{{totalAmount}} DHS</text>
+            </view>
+            <view class="receipt-row">
+              <text class="receipt-label">N° de Transaction</text>
+              <text class="receipt-value">{{transactionNumber}}</text>
+            </view>
+          </view>
+
+          <button class="done-btn" bindtap="onFinish">Terminer</button>
+        </view>
       </view>
 
       <view class="bottom-spacer"></view>
