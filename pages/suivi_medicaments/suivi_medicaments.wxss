@@ -200,10 +200,10 @@
   box-sizing: border-box;
 }
 
-.section-title-img {
-  width: 500rpx;
-  height: auto;
-  opacity: 1;
+.title-container .section-title-img {
+  width: 560rpx !important;
+  height: auto !important;
+  display: block;
 }
 
 .add-btn-circle {

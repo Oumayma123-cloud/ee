@@ -22,7 +22,7 @@
 
     <!-- Title Section -->
     <view class="title-container">
-      <image src="/assets/title-ajouter-medicament.png" class="section-title-img" mode="aspectFit"></image>
+      <image src="/assets/title-ajouter-medicament.png" class="section-title-img" mode="widthFix"></image>
     </view>
 
     <!-- Content Grid Layout -->

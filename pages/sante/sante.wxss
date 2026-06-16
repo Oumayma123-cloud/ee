@@ -194,9 +194,10 @@
   align-items: center;
 }
 
-.section-title-img {
-  width: 250rpx;
-  height: 60rpx;
+.section-title .section-title-img {
+  width: 480rpx !important;
+  height: auto !important;
+  display: block;
 }
 
 .main-content-wrapper {

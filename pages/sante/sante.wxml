@@ -38,7 +38,7 @@
   </view>
 
   <view class="section-title">
-    <image src="/assets/ma sante.png" mode="aspectFit" class="section-title-img"></image>
+    <image src="/assets/ma sante.png" mode="widthFix" class="section-title-img"></image>
   </view>
 
   <view class="main-content-wrapper">
