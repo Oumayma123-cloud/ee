@@ -15,7 +15,7 @@
           <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
           <view class="avatar-container">
             <view class="avatar-bubble">
-              <image src="/assets/assets/avatar/Group 1000000900.png" class="avatar-img" mode="aspectFit"></image>
+              <image src="/assets/avatar/avatar-user.png" class="avatar-img" mode="aspectFit"></image>
               <view class="avatar-tail"></view>
             </view>
           </view>

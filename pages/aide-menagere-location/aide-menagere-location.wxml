@@ -15,7 +15,7 @@
           <image src="/assets/logtiqqa.png" class="logo" mode="aspectFit"></image>
           <view class="avatar-container">
             <view class="avatar-bubble">
-              <image src="/assets/assets/avatar/Group 1000000900.png" class="avatar-img" mode="aspectFit"></image>
+              <image src="/assets/avatar/avatar-user.png" class="avatar-img" mode="aspectFit"></image>
             </view>
           </view>
         </view>
@@ -47,16 +47,7 @@
 
           <!-- Map Container -->
           <view class="map-container">
-            <map
-              id="menagereMap"
-              style="width: 100%; height: 100%;"
-              latitude="{{latitude}}"
-              longitude="{{longitude}}"
-              scale="{{scale}}"
-              markers="{{markers}}"
-              polyline="{{polyline}}"
-              show-location="true"
-            ></map>
+            <image src="/assets/map-tracking.png" style="width: 100%; height: 100%; display: block;" mode="aspectFill"></image>
           </view>
         </view>
       </view>
