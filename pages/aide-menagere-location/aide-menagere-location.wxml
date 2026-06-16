@@ -47,7 +47,7 @@
 
           <!-- Map Container -->
           <view class="map-container">
-            <image src="/assets/map-tracking.png" style="width: 100%; height: 100%; display: block;" mode="aspectFill"></image>
+            <image src="/assets/mock-map.png" style="width: 100%; height: 100%; display: block;" mode="aspectFill"></image>
           </view>
         </view>
       </view>
