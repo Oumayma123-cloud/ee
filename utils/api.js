@@ -621,6 +621,129 @@ function getMockResponse(originalPath, method, data) {
     };
   }
 
+  if (path === '/api/mobile/v1/paiements/epag/facturier/categories' && method === 'GET') {
+    return {
+      status: 'success',
+      data: [
+        { code: '001', name: 'EAU ET ELECTRICITÉ' },
+        { code: '002', name: 'TÉLÉPHONIE ET INTERNET' },
+        { code: '003', name: 'TRANSPORT' },
+        { code: '004', name: 'IMPÔT ET TAXE' }
+      ],
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/paiements/epag/facturier/') && path.endsWith('/list') && method === 'GET') {
+    const categoryCode = path.split('/')[7];
+    let facturiers = [];
+    if (categoryCode === '001') {
+      facturiers = [
+        { code: '0009', name: 'Lydec', logo: '/assets/icons/logo-lydec.png' },
+        { code: '0013', name: 'Redal', logo: '/assets/icons/logo-redal.png' },
+        { code: '0027', name: 'Amendis', logo: '/assets/icons/logo-amendis.png' }
+      ];
+    } else if (categoryCode === '002') {
+      facturiers = [
+        { code: '1007', name: 'Maroc Telecom', logo: '/assets/icons/logo-maroc-telecom.png' },
+        { code: '1008', name: 'Orange', logo: '/assets/icons/logo-orange.png' },
+        { code: '1009', name: 'Inwi', logo: '/assets/icons/logo-inwi.png' }
+      ];
+    } else {
+      facturiers = [
+        { code: '0051', name: 'CTM Voyage', logo: '/assets/icons/logo-ctm.png' },
+        { code: '0052', name: 'ONCF', logo: '/assets/icons/logo-oncf.png' }
+      ];
+    }
+    return {
+      status: 'success',
+      data: facturiers,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/paiements/epag/facturier/') && path.endsWith('/services') && method === 'GET') {
+    const facturierCode = path.split('/')[7];
+    let services = [
+      { code: '0001', name: 'Paiement Facture' },
+      { code: '0002', name: 'Recharge Mobile' }
+    ];
+    if (facturierCode === '1007') {
+      services = [
+        { code: '1017', name: 'Paiement Fixe' },
+        { code: '1027', name: 'Paiement Mobile' },
+        { code: '1037', name: 'Paiement Internet' }
+      ];
+    }
+    return {
+      status: 'success',
+      data: services,
+      mock: true
+    };
+  }
+
+  if (path.startsWith('/api/mobile/v1/paiements/epag/facturier/') && path.includes('/form/') && method === 'GET') {
+    const parts = path.split('/');
+    const facturierCode = parts[7];
+    const serviceCode = parts[9];
+    
+    let fields = [
+      { dataName: 'nofacture', label: 'Numéro de Facture', type: 'text', required: true },
+      { dataName: 'search_crit', label: 'Critère', type: 'hidden', value: '2' }
+    ];
+    if (serviceCode === '1027') {
+      fields = [
+        { dataName: 'idmobile', label: 'Numéro Mobile', type: 'text', required: true },
+        { dataName: 'reference2', label: 'Référence', type: 'text', required: true },
+        { dataName: 'search_crit', label: 'Critère', type: 'hidden', value: '2' }
+      ];
+    }
+    return {
+      status: 'success',
+      data: { fields },
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/epag/facturier/factures-impayees' && method === 'POST') {
+    const factures = [
+      { id: 'fact_01', reference: 'FACT-2026-A', montant: 180.00, dateLimit: '2026-07-15', description: 'Facture Electricité' },
+      { id: 'fact_02', reference: 'FACT-2026-B', montant: 95.50, dateLimit: '2026-06-30', description: 'Facture Eau' }
+    ];
+    return {
+      status: 'success',
+      data: { factures },
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/epag/facturier/verifier-paiement' && method === 'POST') {
+    return {
+      status: 'success',
+      data: {
+        status: 'valide',
+        transactionNumber: data && data.transactionNumber ? data.transactionNumber : '100142699737',
+        auditNumber: data && data.auditNumber ? data.auditNumber : '4a79e841-7ff6-4307-95f1-fecd5a871c83'
+      },
+      mock: true
+    };
+  }
+
+  if (path === '/api/mobile/v1/paiements/utilisateur-paiements' && method === 'POST') {
+    return {
+      status: 'success',
+      data: {
+        id: Math.floor(Math.random() * 1000) + 1,
+        utilisateur_id: data && data.utilisateur_id ? data.utilisateur_id : 521,
+        service_id: data && data.service_id ? data.service_id : 4,
+        montant: data && data.montant ? data.montant : 197.00,
+        status: 'paye',
+        cree_le: new Date().toISOString()
+      },
+      mock: true
+    };
+  }
+
   return null;
 }
 
@@ -644,7 +767,8 @@ function request(path, method = 'GET', data = null, headers = {}) {
       isMockUser ||
       FORCE_MOCK_ENDPOINTS.includes(cleanPath) || 
       cleanPath.startsWith('/api/mobile/v1/utilisateur/contacts/') ||
-      cleanPath.startsWith('/api/mobile/v1/sante/medicaments');
+      cleanPath.startsWith('/api/mobile/v1/sante/medicaments') ||
+      cleanPath.startsWith('/api/mobile/v1/paiements');
 
     if (isForceMock) {
       const mockResponse = getMockResponse(path, method, data);
@@ -883,10 +1007,45 @@ function getClubVideos() {
   return request('/api/mobile/v1/clubs/thematiques/videos', 'GET');
 }
 
+function getFacturierCategories() {
+  return request('/api/mobile/v1/paiements/epag/facturier/categories', 'GET');
+}
+
+function getFacturiersByCategory(categoryCode) {
+  return request(`/api/mobile/v1/paiements/epag/facturier/${categoryCode}/list`, 'GET');
+}
+
+function getServicesByFacturier(facturierCode) {
+  return request(`/api/mobile/v1/paiements/epag/facturier/${facturierCode}/services`, 'GET');
+}
+
+function getFormByFacturierAndService(facturierCode, serviceCode) {
+  return request(`/api/mobile/v1/paiements/epag/facturier/${facturierCode}/form/${serviceCode}`, 'GET');
+}
+
+function verifierFacturesImpayees(data) {
+  return request('/api/mobile/v1/paiements/epag/facturier/factures-impayees', 'POST', data);
+}
+
+function verifierPaiement(data) {
+  return request('/api/mobile/v1/paiements/epag/facturier/verifier-paiement', 'POST', data);
+}
+
+function creerPaiementUtilisateur(data) {
+  return request('/api/mobile/v1/paiements/utilisateur-paiements', 'POST', data);
+}
+
 module.exports = {
   BASE_URL,
   getSliders,
   getClubVideos,
+  getFacturierCategories,
+  getFacturiersByCategory,
+  getServicesByFacturier,
+  getFormByFacturierAndService,
+  verifierFacturesImpayees,
+  verifierPaiement,
+  creerPaiementUtilisateur,
   login,
   register,
   getProfile,
