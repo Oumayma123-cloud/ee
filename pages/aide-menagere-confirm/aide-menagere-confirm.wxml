@@ -1,5 +1,5 @@
 <view class="container {{(paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire') ? 'tierce-bg' : ''}}">
-  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
+  <scroll-view class="scroll-content {{showModal ? 'page-blur' : ''}}" scroll-y="true" show-scrollbar="false">
     <view class="scroll-inner">
 
       <!-- 1. Header -->
@@ -144,5 +144,22 @@
     </view>
   </scroll-view>
 
-  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
+  <bottom-nav-bar class="{{showModal ? 'page-blur' : ''}}" variant="fixed" message-count="0" bind:navtap="onNavTap" />
+
+  <!-- Custom Cancel Confirmation Modal Overlay -->
+  <view wx:if="{{showModal}}" class="modal-overlay" bindtap="onModalClose">
+    <view class="modal-card" catchtap="onPreventBubble">
+      <text class="modal-icon">?</text>
+      <text class="modal-title-text">Souhaitez-vous annuler le\nrendez-vous?</text>
+      <text class="modal-sub-text">Attention : cette action n'entraine\npas de remboursement.</text>
+      <view class="modal-buttons-row">
+        <view class="modal-btn btn-oui" bindtap="onModalConfirm">
+          <text class="modal-btn-txt btn-oui-txt">OUI</text>
+        </view>
+        <view class="modal-btn btn-non" bindtap="onModalClose">
+          <text class="modal-btn-txt btn-non-txt">NON</text>
+        </view>
+      </view>
+  </view>
+</view>
 </view>

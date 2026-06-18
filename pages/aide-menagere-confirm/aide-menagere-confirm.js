@@ -12,7 +12,8 @@ Page({
     year: '',
     timeIndex: '',
     type: '',
-    currentSlide: 0
+    currentSlide: 0,
+    showModal: false
   },
 
   onLoad(options) {
@@ -93,15 +94,8 @@ Page({
   },
 
   onCancelOrder() {
-    const { day, month, year, timeIndex, addressVal, type, paymentVal } = this.data;
-    wx.navigateTo({
-      url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`,
-      fail: (err) => {
-        console.warn("navigateTo failed to cancel page, trying redirectTo:", err);
-        wx.redirectTo({
-          url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
-        });
-      }
+    this.setData({
+      showModal: true
     });
   },
 
@@ -119,10 +113,35 @@ Page({
   },
 
   onCancel() {
-    const { day, month, year, timeIndex, addressVal, type } = this.data;
-    wx.navigateTo({
-      url: `/pages/aide-menagere-payment/aide-menagere-payment?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}`
+    this.setData({
+      showModal: true
     });
+  },
+
+  onModalConfirm() {
+    const { day, month, year, timeIndex, addressVal, type, paymentVal } = this.data;
+    this.setData({
+      showModal: false
+    });
+    wx.navigateTo({
+      url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`,
+      fail: (err) => {
+        console.warn("navigateTo failed to cancel page, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
+        });
+      }
+    });
+  },
+
+  onModalClose() {
+    this.setData({
+      showModal: false
+    });
+  },
+
+  onPreventBubble() {
+    // Prevent event propagation inside modal card
   },
 
   onPrevSlide() {
