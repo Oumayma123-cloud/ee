@@ -225,12 +225,15 @@ page {
   flex-direction: column;
   gap: 20rpx;
   align-items: center;
+  width: 100%;
+  padding: 0 40rpx;
+  box-sizing: border-box;
 }
 
 .btn {
   border-radius: 60rpx;
   height: 90rpx;
-  width: 580rpx; /* Wider buttons to match mockup */
+  width: 500rpx; /* Reduced width to match Image 2 exactly */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -468,17 +471,22 @@ page {
   gap: 20rpx;
   align-items: center;
   margin-top: 36rpx;
+  width: 100%;
+  padding: 0 40rpx;
+  box-sizing: border-box;
 }
 
 .btn-share {
   background: #5FA1CD;
   border-radius: 60rpx;
   height: 86rpx;
-  width: 580rpx;
+  width: 640rpx; /* Maximize width to fit text beautifully */
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4rpx 12rpx rgba(95, 161, 205, 0.25);
+  box-sizing: border-box;
+  padding: 0 20rpx;
 }
 
 .btn-share:active {
@@ -487,20 +495,24 @@ page {
 
 .btn-share-txt {
   color: #FFFFFF;
-  font-size: 26rpx;
+  font-size: 28rpx; /* Sleek and highly readable */
   font-weight: bold;
-  letter-spacing: 2rpx;
+  letter-spacing: 1rpx;
+  white-space: nowrap; /* Forces text to stay on a single line */
+  text-align: center;
 }
 
 .btn-cancel-order {
   background: #234D6F;
   border-radius: 60rpx;
   height: 86rpx;
-  width: 580rpx;
+  width: 640rpx; /* Match width */
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4rpx 12rpx rgba(35, 77, 111, 0.25);
+  box-sizing: border-box;
+  padding: 0 20rpx;
 }
 
 .btn-cancel-order:active {
@@ -509,7 +521,75 @@ page {
 
 .btn-cancel-txt {
   color: #FFFFFF;
+  font-size: 28rpx; /* Match size */
+  font-weight: bold;
+  letter-spacing: 1rpx;
+  white-space: nowrap; /* Forces text to stay on a single line */
+  text-align: center;
+}
+
+.card-header-flex {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 12rpx;
+}
+
+.title-with-check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 0.5rpx;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.check-icon-wrap {
+  width: 46rpx;
+  height: 46rpx;
+  border-radius: 23rpx;
+  background: #4CD964;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 8rpx rgba(76, 217, 100, 0.3);
+  flex-shrink: 0;
+}
+
+.check-icon {
+  color: #FFFFFF;
   font-size: 26rpx;
   font-weight: bold;
-  letter-spacing: 2rpx;
+  line-height: 1;
+}
+
+.text-desc {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+  text-align: center;
+  margin-top: 10rpx;
+}
+
+.bold-desc {
+  font-weight: bold;
+  color: #000000;
+}
+
+.status-card-box {
+  min-height: 540rpx; /* Matches the exact height of the card in Image 2 */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 70rpx; /* Generous layout spacing */
+  padding: 60rpx 40rpx;
 }

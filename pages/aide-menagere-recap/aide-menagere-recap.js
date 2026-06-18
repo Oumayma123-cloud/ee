@@ -73,7 +73,13 @@ Page({
   onConfirmPay() {
     const { day, month, year, timeIndex, addressVal, type, paymentMethod } = this.data;
     wx.navigateTo({
-      url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}`
+      url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}`,
+      fail: (err) => {
+        console.warn("navigateTo failed in onConfirmPay, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}`
+        });
+      }
     });
   },
 
@@ -82,16 +88,30 @@ Page({
   },
 
   onCancel() {
-    wx.showModal({
-      title: 'Annuler la réservation',
-      content: 'Êtes-vous sûr de vouloir annuler la réservation ?',
-      success: (res) => {
-        if (res.confirm) {
-          wx.reLaunch({
-            url: '/pages/services/services'
-          });
-        }
+    this.setData({
+      showModal: true
+    });
+  },
+
+  onModalConfirm() {
+    const { day, month, year, timeIndex, addressVal, type, paymentMethod } = this.data;
+    this.setData({
+      showModal: false
+    });
+    wx.navigateTo({
+      url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentMethod)}`,
+      fail: (err) => {
+        console.warn("navigateTo failed in onModalConfirm, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentMethod)}`
+        });
       }
+    });
+  },
+
+  onModalClose() {
+    this.setData({
+      showModal: false
     });
   },
 

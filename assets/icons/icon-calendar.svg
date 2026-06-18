@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+  <!-- Outer Rounded Box -->
+  <rect x="6" y="9" width="32" height="28" rx="5" stroke="#61605B" stroke-width="3.6" fill="none"/>
+  
+  <!-- Divider Line -->
+  <line x1="6" y1="18" x2="38" y2="18" stroke="#61605B" stroke-width="3.6"/>
+  
+  <!-- 3 Loops at the top -->
+  <rect x="10.5" y="4" width="4" height="10" rx="2" stroke="#61605B" stroke-width="3.2" fill="#F6F8FA"/>
+  <rect x="20" y="4" width="4" height="10" rx="2" stroke="#61605B" stroke-width="3.2" fill="#F6F8FA"/>
+  <rect x="29.5" y="4" width="4" height="10" rx="2" stroke="#61605B" stroke-width="3.2" fill="#F6F8FA"/>
+  
+  <!-- Row 1 Circles -->
+  <circle cx="13" cy="23.5" r="1.8" stroke="#61605B" stroke-width="3.2" fill="none"/>
+  <circle cx="22" cy="23.5" r="1.8" stroke="#61605B" stroke-width="3.2" fill="none"/>
+  <circle cx="31" cy="23.5" r="1.8" stroke="#61605B" stroke-width="3.2" fill="none"/>
+  
+  <!-- Row 2 Circles -->
+  <circle cx="13" cy="32.5" r="1.8" stroke="#61605B" stroke-width="3.2" fill="none"/>
+  <circle cx="22" cy="32.5" r="1.8" stroke="#61605B" stroke-width="3.2" fill="none"/>
+  <circle cx="31" cy="32.5" r="1.8" stroke="#61605B" stroke-width="3.2" fill="none"/>
+</svg>

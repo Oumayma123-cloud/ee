@@ -160,7 +160,7 @@ page {
 /* ========== Location/Map Section ========== */
 .location-section {
   background: #5391C0;
-  padding: 32rpx 40rpx 40rpx;
+  padding: 24rpx 40rpx 24rpx;
   position: relative;
   z-index: 3;
 }
@@ -176,7 +176,7 @@ page {
   border-radius: 20rpx;
   height: 96rpx;
   padding: 0 32rpx;
-  margin-bottom: 24rpx;
+  margin-bottom: 16rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -213,14 +213,15 @@ page {
 
 /* Map Container */
 .map-container {
-  width: 480rpx;
-  height: 480rpx;
+  width: 100%;
+  height: 420rpx;
   margin: 0 auto; /* Center the square map */
   border: 4rpx solid #FFFFFF;
-  border-radius: 12rpx;
+  border-radius: 20rpx;
   overflow: hidden;
   box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
   display: block;
+  box-sizing: border-box;
 }
 
 .map-image {
@@ -232,17 +233,17 @@ page {
 /* ========== Action Buttons ========== */
 .btn-wrap {
   background: #FFFFFF;
-  padding: 32rpx 60rpx 40rpx;
+  padding: 24rpx 40rpx 24rpx;
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
+  gap: 16rpx;
   align-items: center;
 }
 
 .btn {
   border-radius: 60rpx;
   height: 90rpx;
-  width: 580rpx; /* Widened to 580rpx to match mockup proportions */
+  width: 500rpx; /* Reduced width to match Image 2 exactly */
   display: flex;
   align-items: center;
   justify-content: center;

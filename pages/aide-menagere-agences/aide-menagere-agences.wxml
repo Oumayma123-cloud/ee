@@ -32,8 +32,8 @@
             <view class="dot-container">
               <view class="slide-dot"></view>
               <view class="slide-dot"></view>
-              <view class="slide-dot"></view>
               <view class="slide-dot slide-dot--active"></view>
+              <view class="slide-dot"></view>
             </view>
           </view>
 
@@ -116,5 +116,5 @@
     </view>
   </scroll-view>
 
-  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
 </view>

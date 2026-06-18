@@ -11,14 +11,14 @@
 /* Local badge styles to bypass WeChat global class descendant selector limitation */
 .nav-badge-slot {
   position: relative;
-  width: 40rpx;
-  height: 40rpx;
+  width: 64rpx;
+  height: 64rpx;
   flex-shrink: 0;
 }
 
 .nav-badge-slot .nav-icon {
-  width: 44rpx;
-  height: 44rpx;
+  width: 64rpx;
+  height: 64rpx;
   display: block;
 }
 

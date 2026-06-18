@@ -377,82 +377,31 @@ page {
   height: 160rpx;
 }
 
-/* Saved Cards Styles */
-.saved-cards-section {
-  margin-bottom: 36rpx;
-}
-
-.saved-cards-list {
+/* Details List */
+.details-list {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
-  margin-top: 16rpx;
+  gap: 22rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
 }
 
-.saved-card-item {
-  background: #F4F8FB;
-  border: 2rpx solid #E1EDF4;
-  border-radius: 16rpx;
-  padding: 24rpx;
+.detail-row {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-.saved-card-item--selected {
-  border-color: #5FA1CD;
-  background: #EBF3F8;
-}
-
-.card-left {
-  display: flex;
-  align-items: center;
-  gap: 20rpx;
-}
-
-.card-icon {
-  width: 60rpx;
-  height: 40rpx;
-}
-
-.card-name {
-  font-size: 26rpx;
-  color: #333333;
-  font-weight: 600;
-}
-
-.card-radio {
-  width: 36rpx;
-  height: 36rpx;
-  border-radius: 18rpx;
-  border: 2rpx solid #B0C4DE;
-  display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
 }
 
-.card-radio--selected {
-  border-color: #5FA1CD;
-  background: #5FA1CD;
-}
-
-.radio-check {
-  color: #FFFFFF;
-  font-size: 20rpx;
-  font-weight: bold;
-}
-
-.plus-circle {
-  width: 44rpx;
-  height: 44rpx;
-  border-radius: 22rpx;
-  background: #5FA1CD;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.detail-label {
   font-size: 28rpx;
   font-weight: bold;
+  color: #000000;
+  width: 290rpx; /* Left column width */
+}
+
+.detail-value {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
 }
 

@@ -1,4 +1,4 @@
-<view class="container {{(paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash') ? 'tierce-bg' : ''}}">
+<view class="container {{(paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire') ? 'tierce-bg' : ''}}">
   <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
     <view class="scroll-inner">
 
@@ -21,7 +21,7 @@
       </view>
 
       <!-- FLOW A: Paiement par un tierce (Solliciter mon enfant / Attente de paiement) -->
-      <block wx:if="{{paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire' || paymentVal === 'Espèces'}}">
+      <block wx:if="{{paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire'}}">
         <!-- 2. Hero Section Banner -->
         <view class="hero-section">
           <view class="banner-container">
@@ -56,44 +56,27 @@
           </view>
         </view>
 
-        <!-- 3. White Form Card -->
-        <view class="form-section">
-          <!-- Solliciter mon enfant Button box -->
-          <view class="solliciter-box">
-            <text class="solliciter-text">Solliciter mon enfant</text>
-            <view class="solliciter-icon"></view>
+        <!-- 3. Reschedule Status Card (RDV PASSÉ & PAIEMENT EFFECTUÉ) -->
+        <view class="form-section status-card-box">
+          <view class="card-header-flex">
+            <view class="title-with-check">
+              <text class="card-title">RDV PASSÉ &\nPAIEMENT EFFECTUÉ</text>
+              <view class="check-icon-wrap">
+                <text class="check-icon">✓</text>
+              </view>
+            </view>
           </view>
 
-          <!-- Status Message -->
-          <view class="status-msg-wrap">
-            <text class="status-msg-title">Votre commande est en attente de paiement</text>
-          </view>
-
-          <!-- Info Rows -->
-          <view class="info-lines">
-            <view class="info-line-row">
-              <text class="info-line-label">Numéro de carte :</text>
-              <text class="info-line-val">0598 550 993 34</text>
-            </view>
-            <view class="info-line-row">
-              <text class="info-line-label">Date de la commande :</text>
-              <text class="info-line-val">{{orderDate}}</text>
-            </view>
-            <view class="info-line-row">
-              <text class="info-line-label">Code de paiement :</text>
-              <text class="info-line-val">AZ44LK5578</text>
-            </view>
-            <view class="info-line-row">
-              <text class="info-line-label">Code expirée dans :</text>
-              <text class="info-line-val">1J 23H 34min</text>
-            </view>
+          <view class="text-desc">
+            <text>La date et l'heure initiales ne sont plus valables. Merci de bien vouloir </text>
+            <text class="bold-desc">modifier votre RDV</text>
           </view>
         </view>
 
         <!-- 4. Action Buttons -->
         <view class="action-btn-wrap">
-          <view class="btn-share" bindtap="onShareCode">
-            <text class="btn-share-txt">PARTAGER LE CODE AVEC MON ENFANT</text>
+          <view class="btn-share" bindtap="onModify">
+            <text class="btn-share-txt">REPROGRAMMER UN RDV</text>
           </view>
           <view class="btn-cancel-order" bindtap="onCancelOrder">
             <text class="btn-cancel-txt">ANNULER</text>
@@ -161,5 +144,5 @@
     </view>
   </scroll-view>
 
-  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
 </view>

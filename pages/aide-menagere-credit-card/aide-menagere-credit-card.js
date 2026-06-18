@@ -20,7 +20,7 @@ Page({
     expiryDate: '',
     cvc: '',
     billingAddress: '',
-    cguChecked: true
+    cguChecked: false
   },
 
   onLoad(options) {
@@ -105,7 +105,7 @@ Page({
   },
 
   onSubmit() {
-    const { selectedCardId, cguChecked } = this.data;
+    const { cguChecked } = this.data;
 
     if (!cguChecked) {
       wx.showToast({
@@ -115,69 +115,15 @@ Page({
       return;
     }
 
-    const { day, month, year, timeIndex, address, payment, type } = this.data;
+    const { day, month, year, timeIndex, address, type } = this.data;
 
-    if (selectedCardId === 'new') {
-      const { cardNumber, expiryDate, cvc, billingAddress } = this.data;
-      if (!cardNumber || !expiryDate || !cvc || !billingAddress) {
-        wx.showToast({
-          title: 'Veuillez remplir tous les champs',
-          icon: 'none'
-        });
-        return;
-      }
-
-      wx.showLoading({ title: 'Génération du Token...' });
-      
-      const last_4 = cardNumber.replace(/\s/g, '').slice(-4);
-      
-      api.genererTokenCarte({
-        card_brand: 'Visa',
-        last_4: last_4
-      })
-      .then(res => {
-        wx.hideLoading();
-        const token = res.data?.token || 'mocked-token-xyz';
-        
-        // Add new card to local mock store
-        const newCard = {
-          id: Date.now(),
-          brand: 'Visa',
-          last4: last_4,
-          expMonth: expiryDate.split('/')[0] || '12',
-          expYear: expiryDate.split('/')[1] || '2030',
-          token: token
-        };
-        const currentCards = wx.getStorageSync('mock_saved_cards') || [];
-        currentCards.push(newCard);
-        wx.setStorageSync('mock_saved_cards', currentCards);
-
-        wx.showToast({ title: 'Carte Tokenisée', icon: 'success' });
-        
-        setTimeout(() => {
-          wx.navigateTo({
-            url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent(payment + ' (Carte Enregistrée)')}&type=${type}`
-          });
-        }, 800);
-      })
-      .catch(err => {
-        wx.hideLoading();
-        wx.showToast({ title: 'Erreur de tokenisation', icon: 'none' });
+    wx.showLoading({ title: 'Validation du paiement...' });
+    setTimeout(() => {
+      wx.hideLoading();
+      wx.navigateTo({
+        url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent('Carte bancaire')}&type=${type}`
       });
-
-    } else {
-      // Using existing card
-      const selectedCard = this.data.savedCards.find(c => c.id === selectedCardId);
-      const cardLabel = selectedCard ? `${selectedCard.brand} (**** ${selectedCard.last4})` : 'Carte enregistrée';
-      
-      wx.showLoading({ title: 'Validation du paiement...' });
-      setTimeout(() => {
-        wx.hideLoading();
-        wx.navigateTo({
-          url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent(payment + ' (' + cardLabel + ')')}&type=${type}`
-        });
-      }, 800);
-    }
+    }, 800);
   },
 
   onNavTap(e) {

@@ -93,16 +93,6 @@ Page({
   },
 
   onProceedPayment() {
-    const { cguChecked } = this.data;
-
-    if (!cguChecked) {
-      wx.showToast({
-        title: 'Veuillez accepter les CGU',
-        icon: 'none'
-      });
-      return;
-    }
-
     this.setData({
       showSuccessModal: true
     });
@@ -112,9 +102,22 @@ Page({
     this.setData({
       showSuccessModal: false
     });
-    const { day, month, year, timeIndex, address, type, paymentMethod } = this.data;
+    const day = this.data.day || '';
+    const month = this.data.month || '';
+    const year = this.data.year || '';
+    const timeIndex = this.data.timeIndex || '';
+    const address = this.data.address || '';
+    const type = this.data.type || '';
+    const paymentMethod = this.data.paymentMethod || 'Tashilat';
+
     wx.navigateTo({
-      url: `/pages/aide-menagere-recap/aide-menagere-recap?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&type=${type}&payment=${encodeURIComponent(paymentMethod)}`
+      url: `/pages/aide-menagere-recap/aide-menagere-recap?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&type=${type}&payment=${encodeURIComponent(paymentMethod)}`,
+      fail: (err) => {
+        console.warn("navigateTo failed in onCloseModal, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-recap/aide-menagere-recap?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&type=${type}&payment=${encodeURIComponent(paymentMethod)}`
+        });
+      }
     });
   },
 

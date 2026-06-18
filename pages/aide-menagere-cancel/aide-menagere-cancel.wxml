@@ -1,0 +1,105 @@
+<view class="container tierce-bg cancel-page">
+  <view class="header-section {{showModal ? 'page-blur' : ''}}">
+    <view class="status-row">
+      <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
+    </view>
+    <view class="header-content">
+      <view class="back-btn" bindtap="onBackTap">
+        <view class="back-circle">
+          <text class="back-arrow-txt">←</text>
+        </view>
+        <text class="back-label">Retour</text>
+      </view>
+      <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+      <view class="avatar-container" bindtap="onProfileTap">
+        <view class="avatar-bubble">
+          <image class="avatar-img" src="/assets/avatar/avatar-user.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="scroll-content {{showModal ? 'page-blur' : ''}}" scroll-y="true">
+    <view class="scroll-inner">
+      <!-- 1. Blue Zone (Top part) -->
+      <view class="blue-zone">
+        <!-- Title and Check badge -->
+        <view class="title-row">
+          <text class="cancel-title">RENDEZ VOUS ANNULÉ</text>
+          <view class="check-badge">
+            <text class="check-text">✓</text>
+          </view>
+        </view>
+
+        <!-- Subtitle message -->
+        <view class="subtitle-wrap">
+          <text class="cancel-subtitle">Suite à l'annulation de votre rendez-vous, une notification vous sera envoyée dès que le remboursement sera effectué. ou vous pouvez reprogrammer un autre RDV</text>
+        </view>
+
+        <!-- Recap Card -->
+        <view class="recap-card">
+          <view class="recap-header">
+            <text class="recap-title">Récapitulatif</text>
+            <view class="recap-underline"></view>
+          </view>
+          <view class="recap-body">
+            <view class="recap-row">
+              <text class="recap-label">Date : </text>
+              <text class="recap-val">{{dateVal}}</text>
+            </view>
+            <view class="recap-row">
+              <text class="recap-label">Adresse d'intervention : </text>
+              <text class="recap-val">{{addressVal}}</text>
+            </view>
+            <view class="recap-row">
+              <text class="recap-label">Le montant à payer : </text>
+              <text class="recap-val">{{amountVal}}</text>
+            </view>
+            <view class="recap-row">
+              <text class="recap-label">Mode de paiement : </text>
+              <text class="recap-val">{{paymentVal}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 2. White Zone (Bottom part) -->
+      <view class="white-zone">
+        <view class="lady-container">
+          <image class="lady-img" src="/assets/aide-menagere-woman-transparent-v2.png" mode="aspectFit"></image>
+        </view>
+
+        <!-- Action Buttons -->
+        <view class="action-btn-wrap">
+          <view class="btn-share" bindtap="onModify">
+            <text class="btn-share-txt">REPROGRAMMER UN RDV</text>
+          </view>
+          <view class="btn-cancel-order" bindtap="onCancelExit">
+            <text class="btn-cancel-txt">ANNULEZ</text>
+          </view>
+        </view>
+
+        <!-- Bottom nav spacer -->
+        <view class="bottom-spacer"></view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <bottom-nav-bar class="{{showModal ? 'page-blur' : ''}}" variant="fixed" active-tab="services" message-count="6" bind:navtap="onNavTap" />
+
+  <!-- Custom Cancel Confirmation Modal Overlay -->
+  <view wx:if="{{showModal}}" class="modal-overlay" bindtap="onModalClose">
+    <view class="modal-card" catchtap="onPreventBubble">
+      <text class="modal-icon">?</text>
+      <text class="modal-text">Vous êtes sur\nde bien vouloir annuler ?</text>
+      <view class="modal-buttons-row">
+        <view class="modal-btn btn-oui" bindtap="onModalConfirm">
+          <text class="modal-btn-txt btn-oui-txt">OUI</text>
+        </view>
+        <view class="modal-btn btn-non" bindtap="onModalClose">
+          <text class="modal-btn-txt btn-non-txt">NON</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

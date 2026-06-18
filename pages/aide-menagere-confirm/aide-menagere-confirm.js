@@ -31,7 +31,7 @@ Page({
     const shortDays = ['DIM', 'LUN', 'MAR', 'MER', 'JEU', 'VEN', 'SAM'];
     
     let dateStr = 'SAM 22 FÉV 2025 - 14:30';
-    let rawOrderDate = '22/02/2025';
+    let rawOrderDate = '21/06/2025';
 
     if (options.day && options.month && options.year) {
       try {
@@ -93,15 +93,14 @@ Page({
   },
 
   onCancelOrder() {
-    wx.showModal({
-      title: 'Annuler la commande',
-      content: 'Êtes-vous sûr de vouloir annuler cette commande ?',
-      success: (res) => {
-        if (res.confirm) {
-          wx.reLaunch({
-            url: '/pages/services/services'
-          });
-        }
+    const { day, month, year, timeIndex, addressVal, type, paymentVal } = this.data;
+    wx.navigateTo({
+      url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`,
+      fail: (err) => {
+        console.warn("navigateTo failed to cancel page, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
+        });
       }
     });
   },
@@ -109,21 +108,20 @@ Page({
   onModify() {
     const { day, month, year, timeIndex, addressVal, type } = this.data;
     wx.navigateTo({
-      url: `/pages/aide-menagere-payment/aide-menagere-payment?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}`
+      url: `/pages/aide-menagere-calendar/aide-menagere-calendar?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}`,
+      fail: (err) => {
+        console.warn("navigateTo failed in onModify, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-calendar/aide-menagere-calendar?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}`
+        });
+      }
     });
   },
 
   onCancel() {
-    wx.showModal({
-      title: 'Annuler le RDV',
-      content: 'Êtes-vous sûr de vouloir annuler ce rendez-vous ?',
-      success: (res) => {
-        if (res.confirm) {
-          wx.reLaunch({
-            url: '/pages/services/services'
-          });
-        }
-      }
+    const { day, month, year, timeIndex, addressVal, type } = this.data;
+    wx.navigateTo({
+      url: `/pages/aide-menagere-payment/aide-menagere-payment?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}`
     });
   },
 

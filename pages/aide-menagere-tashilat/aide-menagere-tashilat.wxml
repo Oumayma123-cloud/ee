@@ -21,21 +21,21 @@
         </view>
       </view>
 
-      <!-- 2. Hero Section Banner (Grandfather holding credit card like Image 1) -->
+      <!-- 2. Hero Section Banner (Tashilat Storefront) -->
       <view class="hero-section">
         <view class="banner-container">
           <!-- Mockup Browser Header Bar -->
           <view class="browser-header">
             <view class="dot-container">
+              <view class="slide-dot"></view>
+              <view class="slide-dot"></view>
               <view class="slide-dot slide-dot--active"></view>
-              <view class="slide-dot"></view>
-              <view class="slide-dot"></view>
               <view class="slide-dot"></view>
             </view>
           </view>
 
-          <!-- Grandfather image background -->
-          <image class="banner-img" src="/assets/payment_image_2.png" mode="aspectFill"></image>
+          <!-- Storefront image background -->
+          <image class="banner-img" src="/assets/tashilat_agency_store.jpg" mode="aspectFill"></image>
 
           <!-- Navigation Arrow Circles on the sides -->
           <view class="nav-arrow nav-arrow-left">
@@ -45,10 +45,13 @@
             <text class="arrow-char">→</text>
           </view>
 
-          <!-- Text Overlay -->
+          <!-- Text Overlay and Button -->
           <view class="banner-text-overlay">
-            <text class="banner-overlay-title">EFFECTUEZ VOTRE PAIEMENT</text>
-            <text class="banner-overlay-title">EN TOUTE SÉCURITÉ</text>
+            <text class="banner-overlay-title">TROUVEZ FACILEMENT LES AGENCES</text>
+            <text class="banner-overlay-title">TASSHILAT PRÈS DE CHEZ VOUS</text>
+            <view class="banner-overlay-btn" bindtap="onFindAgency">
+              <text class="banner-overlay-btn-txt">TROUVER UNE AGENCE</text>
+            </view>
           </view>
         </view>
       </view>
@@ -61,10 +64,15 @@
           <view class="title-underline"></view>
         </view>
 
-        <!-- Payment Type Selector Preview (Rounded box style) -->
+        <!-- Payment Type Selector Preview (Logo left, Text right) -->
         <view class="card-type-box">
-          <text class="card-type-label">{{paymentName}}</text>
-          <image class="card-type-icon" src="{{paymentLogo}}" mode="aspectFit"></image>
+          <image class="card-type-logo-left" src="{{paymentLogo}}" mode="aspectFit"></image>
+          <text class="card-type-label-right">{{paymentName}}</text>
+        </view>
+
+        <!-- Description text right below the card type box -->
+        <view class="payment-desc-row">
+          <text class="payment-desc-txt">{{paymentDesc}}</text>
         </view>
 
         <!-- Title 2: Détail de paiement -->
@@ -72,35 +80,24 @@
           <text class="section-title">Détail de paiement</text>
         </view>
 
-        <!-- Details List (Inputs container style) -->
-        <view class="inputs-container">
-          <view class="input-row">
-            <text class="input-label">Code de paiement :</text>
-            <input class="input-field" disabled value="{{paymentCode}}" />
+        <!-- Read-only details list (No input borders, matching credit card style) -->
+        <view class="details-list">
+          <view class="detail-row">
+            <text class="detail-label">Code de paiement :</text>
+            <text class="detail-value">{{paymentCode}}</text>
           </view>
-
-          <view class="input-row">
-            <text class="input-label">Le montant à payer est :</text>
-            <input class="input-field" disabled value="{{amountVal}} Dhs" />
+          <view class="detail-row">
+            <text class="detail-label">Le montant à payer est :</text>
+            <text class="detail-value">{{amountVal}} Dhs</text>
           </view>
-
-          <view class="input-row">
-            <text class="input-label">Mode de paiement :</text>
-            <input class="input-field" disabled value="{{paymentMode}}" />
+          <view class="detail-row">
+            <text class="detail-label">Mode de paiement :</text>
+            <text class="detail-value">{{paymentMode}}</text>
           </view>
-
-          <view class="input-row">
-            <text class="input-label">Temps restant pour le paiement :</text>
-            <input class="input-field" disabled value="{{paymentTime}}" />
+          <view class="detail-row">
+            <text class="detail-label">Temps restant pour le paiement :</text>
+            <text class="detail-value">{{paymentTime}}</text>
           </view>
-        </view>
-
-        <!-- Checkbox CGU -->
-        <view class="cgu-row" bindtap="onToggleCheckbox">
-          <view class="checkbox-box {{cguChecked ? 'checked' : ''}}">
-            <text class="check-icon" wx:if="{{cguChecked}}">✔</text>
-          </view>
-          <text class="cgu-text">Confirmer l'acceptation de CGU</text>
         </view>
 
         <!-- Confirm Button -->
@@ -115,15 +112,15 @@
     </view>
   </scroll-view>
 
-  <!-- Custom Modal Popup (Image 2) -->
+  <!-- Custom Modal Popup (Image 2 Success modal style) -->
   <view class="modal-overlay" wx:if="{{showSuccessModal}}">
     <view class="modal-card">
-      <text class="modal-text">Rendez-vous dans l'agence Tasshilat la plus proche avec votre code de paiement pour finaliser la réservation. Veuillez vous y présenter muni(e) de ce code 53442219</text>
+      <text class="modal-text">Rendez-vous dans l'agence Tasshilate la plus proche avec votre code de paiement pour finaliser la réservation. Veuillez vous y présenter muni(e) de ce code {{paymentCode}}</text>
       <view class="modal-close-btn" bindtap="onCloseModal">
         <text class="modal-close-icon">×</text>
       </view>
     </view>
   </view>
 
-  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
 </view>

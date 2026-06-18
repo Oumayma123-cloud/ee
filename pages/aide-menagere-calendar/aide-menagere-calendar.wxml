@@ -91,5 +91,5 @@ chez vous</text>
     </view>
   </scroll-view>
 
-  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
 </view>

@@ -6,9 +6,6 @@
   <view class="nav-item" data-action="messages" bindtap="onTap">
     <view class="nav-badge-slot">
       <image class="nav-icon {{activeTab === 'messages' ? 'active' : ''}}" src="/assets/icons/icon-heart.svg" mode="aspectFit" />
-      <view wx:if="{{messageCount > 0}}" class="nav-badge">
-        <view class="badge">{{messageCount}}</view>
-      </view>
     </view>
   </view>
   
@@ -21,18 +18,12 @@
   </view>
   
   <view class="nav-item" data-action="calendar" bindtap="onTap">
-    <image class="nav-icon {{activeTab === 'calendar' ? 'active' : ''}}" src="/assets/icons/icon-calendar.png" mode="aspectFit" />
+    <image class="nav-icon {{activeTab === 'calendar' ? 'active' : ''}}" src="/assets/icons/icon-calendar.svg" mode="aspectFit" />
   </view>
   
   <view class="nav-item" data-action="emergency" bindtap="onTap">
     <view class="nav-ambulance-slot">
-      <image class="nav-icon--ambulance {{activeTab === 'emergency' ? 'active' : ''}}" src="/assets/icons/icon-emergency.png" mode="aspectFit" />
-      <view class="nav-ambulance-siren"></view>
-      <view class="nav-ambulance-star">
-        <view class="nav-ambulance-star-bar"></view>
-        <view class="nav-ambulance-star-bar nav-ambulance-star-bar--r60"></view>
-        <view class="nav-ambulance-star-bar nav-ambulance-star-bar--rm60"></view>
-      </view>
+      <image class="nav-icon--ambulance {{activeTab === 'emergency' ? 'active' : ''}}" src="/assets/icons/icon-emergency.svg" mode="aspectFit" />
     </view>
   </view>
 </view>

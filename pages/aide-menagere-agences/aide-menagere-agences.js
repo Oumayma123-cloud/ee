@@ -86,9 +86,22 @@ Page({
   },
 
   onReturnToPayment() {
-    const { day, month, year, timeIndex, address, type, payment } = this.data;
+    const day = this.data.day || '';
+    const month = this.data.month || '';
+    const year = this.data.year || '';
+    const timeIndex = this.data.timeIndex || '';
+    const address = this.data.address || '';
+    const type = this.data.type || '';
+    const payment = this.data.payment || 'Tashilat';
+
     wx.navigateTo({
-      url: `/pages/aide-menagere-tashilat/aide-menagere-tashilat?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&type=${type}&payment=${encodeURIComponent(payment)}`
+      url: `/pages/aide-menagere-tashilat/aide-menagere-tashilat?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&type=${type}&payment=${encodeURIComponent(payment)}`,
+      fail: (err) => {
+        console.warn("navigateTo failed, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-tashilat/aide-menagere-tashilat?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&type=${type}&payment=${encodeURIComponent(payment)}`
+        });
+      }
     });
   },
 

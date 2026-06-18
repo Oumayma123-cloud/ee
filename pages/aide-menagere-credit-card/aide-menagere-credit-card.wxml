@@ -63,70 +63,32 @@
 
         <!-- Credit Card Type Selector Preview -->
         <view class="card-type-box">
-          <text class="card-type-label">{{paymentLabel}}</text>
-          <image class="card-type-icon" src="{{paymentIcon}}" mode="aspectFit"></image>
-        </view>
-
-        <!-- Section: Cartes Enregistrées -->
-        <view class="saved-cards-section" wx:if="{{savedCards && savedCards.length > 0}}">
-          <view class="section-title-wrap no-underline-margin">
-            <text class="section-title">Vos cartes enregistrées</text>
-          </view>
-          
-          <view class="saved-cards-list">
-            <view class="saved-card-item {{selectedCardId === item.id ? 'saved-card-item--selected' : ''}}" 
-                  wx:for="{{savedCards}}" 
-                  wx:key="id" 
-                  bindtap="onSelectSavedCard" 
-                  data-card-id="{{item.id}}">
-              <view class="card-left">
-                <image class="card-icon" src="/assets/payment_credit_card.png" mode="aspectFit"></image>
-                <text class="card-name">{{item.brand}} (**** {{item.last4}})</text>
-              </view>
-              <view class="card-radio {{selectedCardId === item.id ? 'card-radio--selected' : ''}}">
-                <text wx:if="{{selectedCardId === item.id}}" class="radio-check">✓</text>
-              </view>
-            </view>
-
-            <!-- Option to use another card -->
-            <view class="saved-card-item {{selectedCardId === 'new' ? 'saved-card-item--selected' : ''}}" 
-                  bindtap="onSelectNewCard">
-              <view class="card-left">
-                <view class="plus-circle">+</view>
-                <text class="card-name">Saisir une nouvelle carte</text>
-              </view>
-              <view class="card-radio {{selectedCardId === 'new' ? 'card-radio--selected' : ''}}">
-                <text wx:if="{{selectedCardId === 'new'}}" class="radio-check">✓</text>
-              </view>
-            </view>
-          </view>
+          <text class="card-type-label">Carte de crédit</text>
+          <image class="card-type-icon" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235391C0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='2' y='5' width='20' height='14' rx='2'/><line x1='2' y1='10' x2='22' y2='10'/><line x1='6' y1='15' x2='10' y2='15'/></svg>" mode="aspectFit"></image>
         </view>
 
         <!-- Title 2: Détail de paiement -->
-        <view class="section-title-wrap no-underline-margin" wx:if="{{selectedCardId === 'new'}}">
-          <text class="section-title">Détail de la nouvelle carte</text>
+        <view class="section-title-wrap no-underline-margin">
+          <text class="section-title">Détail de paiement</text>
         </view>
 
-        <!-- Inputs Form -->
-        <view class="inputs-container" wx:if="{{selectedCardId === 'new'}}">
-          <view class="input-row">
-            <text class="input-label">Numéro de carte :</text>
-            <input class="input-field" value="{{cardNumber}}" placeholder="0000 0000 0000 0000" bindinput="onCardNumberInput" type="number" />
+        <!-- Read-only payment details -->
+        <view class="details-list">
+          <view class="detail-row">
+            <text class="detail-label">Numéro de carte :</text>
+            <text class="detail-value">0598 550 993 34</text>
           </view>
-
-          <view class="input-row">
-            <text class="input-label">Date d'expiration :</text>
-            <input class="input-field" value="{{expiryDate}}" placeholder="MM/AAAA" bindinput="onExpiryDateInput" />
+          <view class="detail-row">
+            <text class="detail-label">Date d'expiration :</text>
+            <text class="detail-value">21/06/2030</text>
           </view>
-
-          <view class="input-row">
-            <text class="input-label">CVC :</text>
-            <input class="input-field" value="{{cvc}}" placeholder="123" bindinput="onCvcInput" type="number" />
+          <view class="detail-row">
+            <text class="detail-label">CVC :</text>
+            <text class="detail-value">435</text>
           </view>
-
-          <view class="input-row">
-            <text class="input-label">Adresse facturation :</text>
-            <input class="input-field" value="{{billingAddress}}" placeholder="Adresse de facturation" bindinput="onBillingAddressInput" />
+          <view class="detail-row">
+            <text class="detail-label">Adresse facturation :</text>
+            <text class="detail-value">Espèces</text>
           </view>
         </view>
 
@@ -150,5 +112,5 @@
     </view>
   </scroll-view>
 
-  <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
 </view>
