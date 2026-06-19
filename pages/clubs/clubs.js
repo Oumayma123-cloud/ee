@@ -3,6 +3,7 @@ const { defaultBottomNavTap } = require('../../utils/defaultNavTap.js');
 Page({
   data: {
     scrollPercent: 0,
+    scrollTopValue: 0,
     currentDate: 'DIM 23 FÉV 2025 - 10:30',
     dates: [
       'DIM 23 FÉV 2025 - 10:30',
@@ -51,9 +52,24 @@ Page({
     }
   },
 
+  scrollUp() {
+    let newScroll = this.data.scrollTopValue - 300;
+    if (newScroll < 0) newScroll = 0;
+    this.setData({ scrollTopValue: newScroll });
+  },
+
+  scrollDown() {
+    let newScroll = this.data.scrollTopValue + 300;
+    this.setData({ scrollTopValue: newScroll });
+  },
+
   onScroll(e) {
     const { scrollTop, scrollHeight, clientHeight } = e.detail;
     const maxScroll = scrollHeight - clientHeight;
+    
+    // Track the internal scroll top so the arrows work smoothly
+    this.data.scrollTopValue = scrollTop;
+
     if (maxScroll <= 0) {
       this.setData({ scrollPercent: 0 });
       return;

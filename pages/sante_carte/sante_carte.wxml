@@ -41,7 +41,7 @@
     </view>
 
     <view class="main-content-wrapper">
-      <scroll-view class="grid-scroll-view" scroll-y="true" show-scrollbar="{{false}}" enhanced="{{true}}" bindscroll="onGridScroll" scroll-top="{{scrollTop}}">
+      <scroll-view class="grid-scroll-view" scroll-y="true" show-scrollbar="{{false}}" enhanced="{{true}}" scroll-with-animation="true" bindscroll="onGridScroll" scroll-top="{{scrollTop}}">
         <view class="cards-grid">
           <view class="pay-card" wx:for="{{payMethods}}" wx:key="title">
             <image src="{{item.image}}" class="card-image" mode="aspectFit"></image>
@@ -55,8 +55,8 @@
         <view class="scroll-arrow-up" bindtap="onScrollUp">
           <text class="arrow-text">↑</text>
         </view>
-        <view class="scroll-track">
-          <view class="scroll-handle" style="top: {{handleTop || 0}}rpx;"></view>
+        <view class="scroll-track" bindtap="onTrackTap">
+          <view class="scroll-handle" style="top: {{handleTopPx || 0}}px;" bindtouchstart="onHandleTouchStart" bindtouchmove="onHandleTouchMove" bindtap="onTrackTap"></view>
         </view>
         <view class="scroll-arrow-down" bindtap="onScrollDown">
           <text class="arrow-text">↓</text>

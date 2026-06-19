@@ -20,7 +20,7 @@ Page({
   },
 
   onMardy: function () {
-    wx.navigateTo({ url: '/pages/mardy_avatar/mardy_avatar' });
+    wx.navigateTo({ url: '/pages/avatar/avatar' });
   },
 
   onUrgences: function () {

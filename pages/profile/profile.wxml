@@ -38,6 +38,16 @@
           </view>
         </view>
 
+        <view class="figma-menu-item" bindtap="onPaiementsTap">
+          <view class="figma-icon-placeholder">
+            <text style="color: white; font-size: 28rpx;">$</text>
+          </view>
+          <view class="figma-menu-content">
+            <text class="figma-menu-label">Mes Paiements</text>
+            <text class="figma-menu-arrow">></text>
+          </view>
+        </view>
+
         <view class="figma-menu-item" bindtap="onReglagesTap">
           <view class="figma-icon-placeholder">
             <image src="/assets/icons/lucide-cog.svg" mode="aspectFit" class="figma-icon-img"></image>
@@ -48,7 +58,7 @@
           </view>
         </view>
 
-        <view class="figma-menu-item">
+        <view class="figma-menu-item" bindtap="onJeuxTap">
           <view class="figma-icon-placeholder">
             <image src="/assets/icons/lucide-gamepad.svg" mode="aspectFit" class="figma-icon-img"></image>
           </view>
@@ -69,7 +79,7 @@
         </view>
       </view>
 
-      <view class="figma-logout-wrap">
+      <view class="figma-logout-wrap" bindtap="onLogout">
         <view class="figma-logout-btn">
           <view class="figma-logout-left">
             <image src="/assets/icons/lucide-logout.svg" mode="aspectFit" class="figma-icon-img logout-icon-img"></image>

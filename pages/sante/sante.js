@@ -163,12 +163,20 @@ Page({
   },
 
   scrollUp() {
-    wx.pageScrollTo({ scrollTop: 0, duration: 180 });
+    wx.createSelectorQuery().selectViewport().scrollOffset((res) => {
+      const currentScrollTop = res.scrollTop;
+      const targetScrollTop = Math.max(0, currentScrollTop - 300);
+      wx.pageScrollTo({ scrollTop: targetScrollTop, duration: 300 });
+    }).exec();
   },
 
   scrollDown() {
-    const { maxScrollTop } = this.data;
-    wx.pageScrollTo({ scrollTop: maxScrollTop, duration: 180 });
+    wx.createSelectorQuery().selectViewport().scrollOffset((res) => {
+      const currentScrollTop = res.scrollTop;
+      const { maxScrollTop } = this.data;
+      const targetScrollTop = Math.min(maxScrollTop, currentScrollTop + 300);
+      wx.pageScrollTo({ scrollTop: targetScrollTop, duration: 300 });
+    }).exec();
   },
 
   onProfileTap: function() {

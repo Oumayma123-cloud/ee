@@ -10,7 +10,12 @@ Page({
     type: 'Appartement',
     dateVal: 'Mardi 13 avril à 12h',
     amountVal: '180 Dhs',
-    showModal: false
+    showModal1: false,
+    showModal2: false,
+    showSuccessModal: false,
+    showConfirmModal: false,
+    showFinalCancelModal: false,
+    showLastInfoModal: false
   },
 
   onLoad(options) {
@@ -30,7 +35,7 @@ Page({
 
     let dayName = 'Mardi';
     let monthName = month;
-    
+
     // Parse month index if it's a number or string
     let monthIdx = parseInt(month) - 1;
     if (isNaN(monthIdx) || monthIdx < 0 || monthIdx > 11) {
@@ -96,27 +101,68 @@ Page({
 
   onCancelExit() {
     this.setData({
-      showModal: true
-    });
-  },
-
-  onModalConfirm() {
-    this.setData({
-      showModal: false
-    });
-    wx.reLaunch({
-      url: '/pages/services/services'
-    });
-  },
-
-  onModalClose() {
-    this.setData({
-      showModal: false
+      showModal1: true
     });
   },
 
   onPreventBubble() {
     // Prevent event propagation inside modal card
+  },
+
+  onModal1Confirm() {
+    this.setData({
+      showModal1: false,
+      showModal2: true
+    });
+  },
+
+  onModal1Close() {
+    this.setData({
+      showModal1: false
+    });
+  },
+
+  onModal2Confirm() {
+    this.setData({
+      showModal2: false,
+      showSuccessModal: true
+    });
+  },
+
+  onModal2Close() {
+    this.setData({
+      showModal2: false
+    });
+  },
+
+  onSuccessModalClose() {
+    this.setData({
+      showSuccessModal: false,
+      showConfirmModal: true
+    });
+  },
+
+  onConfirmModalClose() {
+    this.setData({
+      showConfirmModal: false,
+      showFinalCancelModal: true
+    });
+  },
+
+  onFinalCancelModalClose() {
+    this.setData({
+      showFinalCancelModal: false,
+      showLastInfoModal: true
+    });
+  },
+
+  onLastInfoModalClose() {
+    this.setData({
+      showLastInfoModal: false
+    });
+    wx.reLaunch({
+      url: '/pages/services/services'
+    });
   },
 
   onNavTap(e) {

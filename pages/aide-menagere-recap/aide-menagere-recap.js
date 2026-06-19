@@ -73,11 +73,11 @@ Page({
   onConfirmPay() {
     const { day, month, year, timeIndex, addressVal, type, paymentMethod } = this.data;
     wx.navigateTo({
-      url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}`,
+      url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}&from=recap`,
       fail: (err) => {
         console.warn("navigateTo failed in onConfirmPay, trying redirectTo:", err);
         wx.redirectTo({
-          url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}`
+          url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&payment=${encodeURIComponent(paymentMethod)}&type=${type}&from=recap`
         });
       }
     });

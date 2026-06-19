@@ -383,3 +383,60 @@
 .btn-non-txt {
   color: #FFFFFF;
 }
+
+/* ========== Custom Success Modal (Modal 3) Styles ========== */
+.success-card {
+  width: 580rpx;
+  background: rgba(62, 62, 62, 0.95); /* Sleek semi-transparent dark charcoal grey */
+  border-radius: 40rpx;
+  padding: 60rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12rpx 36rpx rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
+
+.success-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 30rpx;
+  white-space: pre-line;
+}
+
+.success-subtitle {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #FFFFFF;
+  opacity: 0.9;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 50rpx;
+  white-space: pre-line;
+}
+
+.success-close-btn {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  border: 4rpx solid #FFFFFF;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.success-close-btn:active {
+  opacity: 0.7;
+}
+
+.success-close-txt {
+  color: #FFFFFF;
+  font-size: 44rpx;
+  font-weight: bold;
+  line-height: 1;
+}

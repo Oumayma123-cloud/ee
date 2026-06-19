@@ -1,0 +1,51 @@
+<view class="container">
+  <!-- Header -->
+  <view class="avatar-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 9999; padding-top: 100rpx; width: 100%;">
+    <view class="back-btn" bindtap="onBack">
+      <view class="back-circle"><text class="back-arrow">←</text></view>
+      <text class="back-text">Retour</text>
+    </view>
+    <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
+    <view style="width: 140rpx;"></view> <!-- Spacer to perfectly center the logo -->
+  </view>
+
+  <!-- Content (pushed down by header) -->
+  <view class="content" style="margin-top: 200rpx;">
+    <view class="title-container">
+      <text class="title">Sélectionnez votre\navatar préféré.</text>
+    </view>
+
+    <view class="avatars-row">
+      <!-- El Mardy -->
+      <view class="avatar-card" bindtap="selectAvatar" data-id="elmardy">
+        <view class="avatar-labels">
+          <text class="script-text">El Mardy</text>
+          <text class="bold-text">El Mardy</text>
+        </view>
+        <image class="avatar-img" src="/assets/profile2.png" mode="aspectFill"></image>
+        <view class="checkbox-wrapper">
+          <view class="custom-checkbox {{selectedAvatar === 'elmardy' ? 'checked' : ''}}"></view>
+        </view>
+      </view>
+
+      <!-- El Mardya -->
+      <view class="avatar-card" bindtap="selectAvatar" data-id="elmardya">
+        <view class="avatar-labels">
+          <text class="script-text">El Mardya</text>
+          <text class="bold-text">El Mardya</text>
+        </view>
+        <image class="avatar-img" src="/assets/photo-re.png" mode="aspectFill"></image>
+        <view class="checkbox-wrapper">
+          <view class="custom-checkbox {{selectedAvatar === 'elmardya' ? 'checked' : ''}}"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view style="flex: 1;"></view>
+
+  <!-- Bottom Nav Bar -->
+  <view class="nav-bar-container">
+    <bottom-nav-bar active-tab="home" variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

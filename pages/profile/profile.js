@@ -99,6 +99,16 @@ Page({
     });
   },
 
+  onJeuxTap() {
+    wx.navigateTo({
+      url: '/pages/jeux/jeux'
+    });
+  },
+
+  onPaiementsTap() {
+    wx.navigateTo({ url: '/pages/paiements/paiements' });
+  },
+
   onAjouterMembreTap() {
     wx.navigateTo({
       url: '/pages/ajouter_famille/ajouter_famille'
@@ -207,6 +217,25 @@ Page({
         wx.showToast({ title: 'Erreur', icon: 'none' });
       });
     }
+  },
+
+  onLogout() {
+    wx.showModal({
+      title: 'Déconnexion',
+      content: 'Êtes-vous sûr de vouloir vous déconnecter ?',
+      confirmColor: '#c19a89',
+      success: (res) => {
+        if (res.confirm) {
+          // Clear any stored user data if necessary
+          // wx.clearStorageSync();
+          
+          // Redirect to the welcome/login page (index)
+          wx.reLaunch({
+            url: '/pages/index/index'
+          });
+        }
+      }
+    });
   },
 
   onNavTap(e) {

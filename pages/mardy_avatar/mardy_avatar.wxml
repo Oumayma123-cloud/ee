@@ -1,16 +1,16 @@
 <view class="container">
   <!-- Header -->
-  <view class="header">
-    <view class="back-btn" bindtap="onBack">
-      <view class="back-circle"><text class="back-arrow">←</text></view>
-      <text class="back-text">Retour</text>
+  <view class="avatar-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 9999; padding-top: 100rpx; width: 100%; height: 100rpx; display: flex; align-items: center; justify-content: space-between; padding: 100rpx 40rpx 0; background: #ffffff; box-sizing: border-box;">
+    <view class="back-btn" bindtap="onBack" style="display: flex; align-items: center; gap: 15rpx; width: 140rpx;">
+      <view class="back-circle" style="width: 50rpx; height: 50rpx; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><text class="back-arrow" style="font-size: 24rpx; color: #666;">←</text></view>
+      <text class="back-text" style="font-size: 26rpx; color: #000; font-weight: 600;">Retour</text>
     </view>
-    <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit"></image>
-    <view style="width: 100rpx;"></view> <!-- Spacer -->
+    <image class="logo" src="/assets/logo/logo-tiqqa.png" mode="aspectFit" style="width: 150rpx; height: 60rpx;"></image>
+    <view style="width: 140rpx;"></view> <!-- Spacer -->
   </view>
 
   <!-- Content -->
-  <view class="content">
+  <view class="content" style="margin-top: 200rpx;">
     <text class="title">Sélectionnez votre avatar préféré.</text>
 
     <view class="avatars-row">

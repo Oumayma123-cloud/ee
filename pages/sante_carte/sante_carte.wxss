@@ -31,13 +31,16 @@ page {
 .shell {
   width: 750rpx !important;
   max-width: 100% !important;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   background: #ffffff !important;
   border-radius: 0rpx !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   padding-top: 8rpx;
+  padding-bottom: 140rpx; /* Space for bottom nav */
+  box-sizing: border-box;
   margin: 0 !important;
 }
 
@@ -272,15 +275,17 @@ page {
 .main-content-wrapper {
   display: flex;
   flex: 1;
+  min-height: 0; /* Ensures the flex item can shrink and scroll-view overflows */
   position: relative;
   padding: 20rpx 20rpx 12rpx;
   box-sizing: border-box;
   justify-content: center;
+  overflow: hidden;
 }
 
 .grid-scroll-view {
   flex: 1;
-  height: 580rpx;
+  height: 100%;
   width: 100%;
   box-sizing: border-box;
 }
@@ -295,7 +300,7 @@ page {
   row-gap: 30rpx;
   column-gap: 32rpx;
   padding-right: 20rpx; /* Pour compenser la scrollbar */
-  padding-bottom: 50rpx; /* Pour permettre un defilement suffisant et voir les cartes completement */
+  padding-bottom: 120rpx; /* Pour permettre un defilement suffisant et voir les cartes completement */
 }
 
 .pay-card {
@@ -345,57 +350,56 @@ page {
 .side-scrollbar {
   position: absolute;
   right: 20rpx;
-  top: 120rpx;
-  width: 56rpx;
-  height: 380rpx;
+  top: 40rpx;
+  width: 60rpx;
+  height: 480rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16rpx;
+  gap: 24rpx;
 }
 
 .scroll-track {
-  width: 24rpx;
-  height: 272rpx;
+  width: 32rpx;
+  flex: 1;
   background: #ffffff;
-  border-radius: 12rpx;
+  border-radius: 16rpx;
   position: relative;
-  box-shadow: inset 0 2rpx 6rpx rgba(0, 0, 0, 0.06), 0 2rpx 4rpx rgba(0, 0, 0, 0.04);
-  border: 1rpx solid #e2e2e2;
+  box-sizing: border-box;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  border: none;
 }
 
 .scroll-handle {
   width: 100%;
-  height: 100rpx;
-  background: #3b7a57;
-  border-radius: 12rpx;
+  height: 120rpx;
+  background: #3c7d58;
+  border-radius: 16rpx;
   position: absolute;
   top: 0;
-  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .scroll-arrow-up,
 .scroll-arrow-down {
-  width: 56rpx;
-  height: 56rpx;
-  background: linear-gradient(180deg, #ffffff 0%, #ededed 100%);
+  width: 60rpx;
+  height: 60rpx;
+  background: linear-gradient(180deg, #f0f0f0 0%, #dcdcdc 100%);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.12);
-  border: 1rpx solid #e0e0e0;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+  border: none;
 }
 
 .scroll-arrow-up .arrow-text,
 .scroll-arrow-down .arrow-text {
-  font-size: 26rpx;
-  color: #7f8c8d;
-  font-weight: bold;
+  font-size: 32rpx;
+  color: #727c80;
+  font-weight: 400;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-

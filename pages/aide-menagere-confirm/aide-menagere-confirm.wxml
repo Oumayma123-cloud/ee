@@ -1,5 +1,5 @@
 <view class="container {{(paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire') ? 'tierce-bg' : ''}}">
-  <scroll-view class="scroll-content {{showModal ? 'page-blur' : ''}}" scroll-y="true" show-scrollbar="false">
+  <scroll-view class="scroll-content" scroll-y="true" show-scrollbar="false">
     <view class="scroll-inner">
 
       <!-- 1. Header -->
@@ -20,8 +20,82 @@
         </view>
       </view>
 
-      <!-- FLOW A: Paiement par un tierce (Solliciter mon enfant / Attente de paiement) -->
-      <block wx:if="{{paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire'}}">
+      <!-- FLOW C: Paiement par un tierce (Solliciter mon enfant / Attente de paiement) -->
+      <block wx:if="{{fromVal !== 'recap' && (paymentVal === 'Paiement par un tierce' || paymentVal === 'Tashilat' || paymentVal === 'Chaabi Cash' || paymentVal === 'Carte bancaire')}}">
+        <!-- 2. Hero Section Banner -->
+        <view class="hero-section">
+          <view class="banner-container">
+            <!-- Mockup Browser Header Bar -->
+            <view class="browser-header">
+              <view class="dot-container">
+                <view class="slide-dot"></view>
+                <view class="slide-dot"></view>
+                <view class="slide-dot slide-dot--active"></view>
+                <view class="slide-dot"></view>
+              </view>
+            </view>
+            <image class="banner-img" src="/assets/payment_image_2.png" mode="aspectFill"></image>
+            <view class="nav-arrow nav-arrow-left">
+              <text class="arrow-char">←</text>
+            </view>
+            <view class="nav-arrow nav-arrow-right">
+              <text class="arrow-char">→</text>
+            </view>
+            <view class="banner-text-overlay">
+              <text class="banner-overlay-title">EFFECTUEZ VOTRE PAIEMENT</text>
+              <text class="banner-overlay-title">EN TOUTE SÉCURITÉ</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 3. Form Section Card -->
+        <view class="form-section">
+          <!-- Solliciter mon enfant block -->
+          <view class="solliciter-box">
+            <text class="solliciter-text">Solliciter mon enfant</text>
+            <view class="solliciter-icon"></view>
+          </view>
+
+          <!-- Status Message -->
+          <view class="status-msg-wrap">
+            <text class="status-msg-title">Votre commande est en\nattente de paiement</text>
+          </view>
+
+          <!-- Info lines -->
+          <view class="info-lines">
+            <view class="info-line-row">
+              <text class="info-line-label">Numéro de carte :</text>
+              <text class="info-line-val">0598 550 993 34</text>
+            </view>
+            <view class="info-line-row">
+              <text class="info-line-label">Date de la commande :</text>
+              <text class="info-line-val">{{orderDate}}</text>
+            </view>
+            <view class="info-line-row">
+              <text class="info-line-label">Code de paiement :</text>
+              <text class="info-line-val">AZ44LK578</text>
+            </view>
+            <view class="info-line-row">
+              <text class="info-line-label">Code expirée dans :</text>
+              <text class="info-line-val">1J 23H 34min</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 4. Action Buttons -->
+        <view class="action-btn-wrap">
+          <view class="btn-share" bindtap="onShareCode">
+            <text class="btn-share-txt" wx:if="{{paymentVal === 'Paiement par un tierce'}}">PARTAGER LE CODE AVEC MON ENFANT</text>
+            <text class="btn-share-txt" wx:else>PARTAGER LE CODE DE PAIEMENT</text>
+          </view>
+          <view class="btn-cancel-order" bindtap="onCancelOrder">
+            <text class="btn-cancel-txt">ANNULER</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- FLOW A: Reschedule Flow (All payment methods) -->
+      <block wx:elif="{{fromVal === 'recap'}}">
         <!-- 2. Hero Section Banner -->
         <view class="hero-section">
           <view class="banner-container">
@@ -84,6 +158,7 @@
         </view>
       </block>
 
+
       <!-- FLOW B: Standard Confirmation Page -->
       <block wx:else>
         <!-- 2. Blue Section (RDV Confirmé & Récapitulatif) -->
@@ -144,22 +219,5 @@
     </view>
   </scroll-view>
 
-  <bottom-nav-bar class="{{showModal ? 'page-blur' : ''}}" variant="fixed" message-count="0" bind:navtap="onNavTap" />
-
-  <!-- Custom Cancel Confirmation Modal Overlay -->
-  <view wx:if="{{showModal}}" class="modal-overlay" bindtap="onModalClose">
-    <view class="modal-card" catchtap="onPreventBubble">
-      <text class="modal-icon">?</text>
-      <text class="modal-title-text">Souhaitez-vous annuler le\nrendez-vous?</text>
-      <text class="modal-sub-text">Attention : cette action n'entraine\npas de remboursement.</text>
-      <view class="modal-buttons-row">
-        <view class="modal-btn btn-oui" bindtap="onModalConfirm">
-          <text class="modal-btn-txt btn-oui-txt">OUI</text>
-        </view>
-        <view class="modal-btn btn-non" bindtap="onModalClose">
-          <text class="modal-btn-txt btn-non-txt">NON</text>
-        </view>
-      </view>
-  </view>
-</view>
+  <bottom-nav-bar variant="fixed" message-count="0" bind:navtap="onNavTap" />
 </view>

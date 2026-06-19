@@ -1,0 +1,186 @@
+<view class="notifications-container">
+  <view class="mobile-card">
+
+    <tiqqa-header showBack="{{true}}" bind:back="onBack" />
+
+    <!-- Main Content -->
+    <view class="content-container">
+      <scroll-view scroll-y class="scroll-area" show-scrollbar="{{false}}" enhanced="{{true}}">
+
+        <view class="notif-page-title-wrap">
+          <text class="notif-page-title">Notifications</text>
+        </view>
+
+        <!-- Notification Items List -->
+        <view class="notif-list">
+
+          <!-- Item 1 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="1">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--blue">
+                <image class="notif-icon" src="/assets/NO6.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Visite médecin à domicile</text>
+                <text class="notif-desc">Votre RDV avec le médecin est prévue le 12/06 à 12h00.</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">2 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 2 -->
+          <view class="notif-item notif-item--unread" bindtap="onNotifTap" data-id="2">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--green">
+                <image class="notif-icon" src="/assets/NO5.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Aide ménagère</text>
+                <text class="notif-desc">Découvrez notre article "Les bienfaits du jeûne" dans le club Religion.</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">6 days ago</text>
+              <view class="notif-unread-dot"></view>
+            </view>
+          </view>
+
+          <!-- Item 3 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="3">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--pink">
+                <image class="notif-icon" src="/assets/NO4.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Nouveaux bons plans</text>
+                <text class="notif-desc">-20% chez Nadari sur toute la gamme. Profitez-en maintenant !</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">9 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 4 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="4">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--orange">
+                <image class="notif-icon" src="/assets/Nf6.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Profil incomplet</text>
+                <text class="notif-desc">Votre profil n'est pas encore complet. Cliquez ici pour le finaliser.</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">13 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 5 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="5">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--purple">
+                <image class="notif-icon" src="/assets/Nf5.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Nouvelle activité ajoutée</text>
+                <text class="notif-desc">Sortie "Balade au parc" organisée le samedi à 11h. Inscrivez-vous vite !</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">4 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 6 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="6">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--yellow">
+                <image class="notif-icon" src="/assets/Nf4.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Nouvelle activité ajoutée !</text>
+                <text class="notif-desc">Rejoignez "Atelier de Peinture" ce vendredi à 14h.</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">2 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 7 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="7">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--green">
+                <image class="notif-icon" src="/assets/Nf1.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Nouveau contenu spirituel</text>
+                <text class="notif-desc">Découvrez notre article "Les bienfaits du jeûne" dans le club Religion.</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">6 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 8 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="8">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--red">
+                <image class="notif-icon" src="/assets/Nf2.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Nouveau bon plan !</text>
+                <text class="notif-desc">-20% chez Nadari sur toute la gamme. Profitez-en maintenant !</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">9 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 9 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="9">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--orange">
+                <image class="notif-icon" src="/assets/Nf6.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Profil incomplet</text>
+                <text class="notif-desc">Votre profil n'est pas encore complet. Cliquez ici pour le finaliser.</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">13 days ago</text>
+            </view>
+          </view>
+
+          <!-- Item 10 -->
+          <view class="notif-item" bindtap="onNotifTap" data-id="10">
+            <view class="notif-left">
+              <view class="notif-icon-wrap notif-icon-bg--pink">
+                <image class="notif-icon" src="/assets/Nf3.png" mode="aspectFit"></image>
+              </view>
+              <view class="notif-info">
+                <text class="notif-name">Événement local / sortie</text>
+                <text class="notif-desc">Sortie "Balade au parc" organisée le samedi à 11h. Inscrivez-vous vite !</text>
+              </view>
+            </view>
+            <view class="notif-right">
+              <text class="notif-time">4 days ago</text>
+            </view>
+          </view>
+
+        </view>
+
+      </scroll-view>
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

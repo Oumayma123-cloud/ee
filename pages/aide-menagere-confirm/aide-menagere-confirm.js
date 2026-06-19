@@ -12,8 +12,8 @@ Page({
     year: '',
     timeIndex: '',
     type: '',
-    currentSlide: 0,
-    showModal: false
+    fromVal: '',
+    currentSlide: 0
   },
 
   onLoad(options) {
@@ -55,7 +55,7 @@ Page({
 
     // Determine confirmation image based on payment method
     let confirmImage = '/assets/aide-menagere-woman-transparent-v2.png';
-    if (payment === 'Paiement par un tierce' || payment === 'Carte bancaire') {
+    if (payment === 'Paiement par un tierce') {
       confirmImage = '/assets/payment_tierce_user.png';
     }
 
@@ -71,7 +71,8 @@ Page({
       month: options.month || '',
       year: options.year || '',
       timeIndex: options.timeIndex || '',
-      type: options.type || ''
+      type: options.type || '',
+      fromVal: options.from || ''
     });
   },
 
@@ -88,14 +89,27 @@ Page({
     });
     setTimeout(() => {
       wx.navigateTo({
-        url: `/pages/aide-menagere-agences/aide-menagere-agences?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
+        url: `/pages/aide-menagere-agences/aide-menagere-agences?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`,
+        fail: (err) => {
+          console.warn("navigateTo failed to agences page, trying redirectTo:", err);
+          wx.redirectTo({
+            url: `/pages/aide-menagere-agences/aide-menagere-agences?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
+          });
+        }
       });
     }, 1000);
   },
 
   onCancelOrder() {
-    this.setData({
-      showModal: true
+    const { day, month, year, timeIndex, addressVal, type, paymentVal } = this.data;
+    wx.navigateTo({
+      url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`,
+      fail: (err) => {
+        console.warn("navigateTo failed to cancel page, trying redirectTo:", err);
+        wx.redirectTo({
+          url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
+        });
+      }
     });
   },
 
@@ -113,35 +127,10 @@ Page({
   },
 
   onCancel() {
-    this.setData({
-      showModal: true
-    });
-  },
-
-  onModalConfirm() {
-    const { day, month, year, timeIndex, addressVal, type, paymentVal } = this.data;
-    this.setData({
-      showModal: false
-    });
+    const { day, month, year, timeIndex, addressVal, type } = this.data;
     wx.navigateTo({
-      url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`,
-      fail: (err) => {
-        console.warn("navigateTo failed to cancel page, trying redirectTo:", err);
-        wx.redirectTo({
-          url: `/pages/aide-menagere-cancel/aide-menagere-cancel?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}&payment=${encodeURIComponent(paymentVal)}`
-        });
-      }
+      url: `/pages/aide-menagere-payment/aide-menagere-payment?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(addressVal)}&type=${type}`
     });
-  },
-
-  onModalClose() {
-    this.setData({
-      showModal: false
-    });
-  },
-
-  onPreventBubble() {
-    // Prevent event propagation inside modal card
   },
 
   onPrevSlide() {

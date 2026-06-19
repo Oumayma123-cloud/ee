@@ -1,5 +1,6 @@
 {
-  "entryPagePath": "pages/aide-menagere/aide-menagere",
+  "entryPagePath":  "pages/index/index",
+
   "pages": [
     "pages/index/index",
     "pages/dashboard/dashboard",
@@ -64,6 +65,8 @@
     "pages/recu_paiement/recu_paiement",
     "pages/mardy_avatar/mardy_avatar",
     "pages/mardy_chat/mardy_chat",
+    "pages/avatar/avatar",
+    "pages/mardy_video/mardy_video",
     "pages/suivi_medicaments/suivi_medicaments",
     "pages/ajouter_medicament/ajouter_medicament",
     "pages/clubs/clubs",
@@ -83,7 +86,9 @@
     "pages/club_sport/club_sport",
     "pages/jeux/jeux",
     "pages/videos/videos",
-    "pages/video_detail/video_detail"
+    "pages/video_detail/video_detail",
+    "pages/notifications/notifications",
+    "pages/paiements/paiements"
   ],
   "permission": {
     "scope.userLocation": {

@@ -309,6 +309,8 @@ textarea {
 @import "pages/videos/videos.wxss";
 @import "pages/video_detail/video_detail.wxss";
 @import "pages/ajouter_famille/ajouter_famille.wxss";
+@import "pages/notifications/notifications.wxss";
+@import "pages/paiements/paiements.wxss";
 
 
 /* Global overrides to align header avatar bubble to the right and avoid WeChat capsule button overlap */

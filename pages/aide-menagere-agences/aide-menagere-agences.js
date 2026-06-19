@@ -42,7 +42,17 @@ Page({
     const sys = wx.getSystemInfoSync();
     const payment = options.payment ? decodeURIComponent(options.payment) : 'Tashilat';
     const isChaabi = payment.toLowerCase() === 'chaabi cash';
-    const logoPath = isChaabi ? '/assets/chaabi_logo_blend.png' : '/assets/tashilat_logo_blend.png';
+    const isCarte = payment === 'Carte bancaire';
+    const isTierce = payment === 'Paiement par un tierce';
+    
+    let logoPath = '/assets/tashilat_logo_blend.png';
+    if (isChaabi) {
+      logoPath = '/assets/chaabi_logo_blend.png';
+    } else if (isCarte) {
+      logoPath = '/assets/payment_credit_card.png';
+    } else if (isTierce) {
+      logoPath = '/assets/payment_tierce_user.png';
+    }
     
     const markersAgdal = [
       {

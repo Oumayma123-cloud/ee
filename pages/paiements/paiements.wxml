@@ -1,0 +1,120 @@
+<view class="paiements-container">
+  <view class="mobile-card">
+
+    <tiqqa-header showBack="{{true}}" bind:back="onBack" />
+
+    <!-- Main Content -->
+    <view class="content-container">
+      <scroll-view scroll-y class="scroll-area" show-scrollbar="{{false}}" enhanced="{{true}}">
+
+        <view class="page-title-wrap">
+          <text class="page-title">Paiements en attente</text>
+        </view>
+
+        <!-- Payment Items List -->
+        <view class="payments-list">
+
+          <!-- Item 1 -->
+          <view class="payment-item">
+            <view class="payment-left">
+              <view class="payment-icon-wrap">
+                <image class="payment-icon" src="/assets/NO6.png" mode="aspectFit"></image>
+              </view>
+              <view class="payment-info">
+                <text class="payment-name">Visite médecin à domicile</text>
+                <text class="payment-date">24/06/2025</text>
+              </view>
+            </view>
+            <view class="payment-right">
+              <text class="payment-amount">147 MAD</text>
+              <view class="pay-btn" bindtap="onPay" data-id="1">
+                <text class="pay-btn-text">Payer</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- Item 2 -->
+          <view class="payment-item">
+            <view class="payment-left">
+              <view class="payment-icon-wrap">
+                <image class="payment-icon" src="/assets/NO5.png" mode="aspectFit"></image>
+              </view>
+              <view class="payment-info">
+                <text class="payment-name">Aide ménagère</text>
+                <text class="payment-date">12/06/2025</text>
+              </view>
+            </view>
+            <view class="payment-right">
+              <text class="payment-amount">200 MAD</text>
+              <view class="pay-btn" bindtap="onPay" data-id="2">
+                <text class="pay-btn-text">Payer</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- Item 3 -->
+          <view class="payment-item">
+            <view class="payment-left">
+              <view class="payment-icon-wrap">
+                <image class="payment-icon" src="/assets/NO4.png" mode="aspectFit"></image>
+              </view>
+              <view class="payment-info">
+                <text class="payment-name">Sortie bouskoura</text>
+                <text class="payment-date">25/04/2025</text>
+              </view>
+            </view>
+            <view class="payment-right">
+              <text class="payment-amount">200 MAD</text>
+              <view class="pay-btn" bindtap="onPay" data-id="3">
+                <text class="pay-btn-text">Payer</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- Item 4 -->
+          <view class="payment-item">
+            <view class="payment-left">
+              <view class="payment-icon-wrap">
+                <image class="payment-icon" src="/assets/NO6.png" mode="aspectFit"></image>
+              </view>
+              <view class="payment-info">
+                <text class="payment-name">Visite infirmier à domicile</text>
+                <text class="payment-date">30/06/2025</text>
+              </view>
+            </view>
+            <view class="payment-right">
+              <text class="payment-amount">98 MAD</text>
+              <view class="pay-btn" bindtap="onPay" data-id="4">
+                <text class="pay-btn-text">Payer</text>
+              </view>
+            </view>
+          </view>
+
+          <!-- Item 5 -->
+          <view class="payment-item">
+            <view class="payment-left">
+              <view class="payment-icon-wrap">
+                <image class="payment-icon" src="/assets/NO6.png" mode="aspectFit"></image>
+              </view>
+              <view class="payment-info">
+                <text class="payment-name">Visite infirmier à domicile</text>
+                <text class="payment-date">30/06/2025</text>
+              </view>
+            </view>
+            <view class="payment-right">
+              <text class="payment-amount">98 MAD</text>
+              <view class="pay-btn" bindtap="onPay" data-id="5">
+                <text class="pay-btn-text">Payer</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+
+      </scroll-view>
+    </view>
+
+    <!-- Bottom Navigation Bar -->
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+  </view>
+</view>

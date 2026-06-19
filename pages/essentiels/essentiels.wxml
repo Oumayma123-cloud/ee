@@ -22,9 +22,9 @@
 
       <!-- Hero Section -->
       <view class="ess-hero-area">
-        <swiper class="ess-hero-main" current="{{heroCurrent}}" bindchange="onHeroChange" circular="true" style="height: 360rpx;">
+        <swiper class="ess-hero-main" current="{{heroCurrent}}" bindchange="onHeroChange" circular="true" style="height: 460rpx;">
           <swiper-item>
-            <image class="ess-hero-img" src="/assets/benmimoun-2 (1).png" mode="aspectFill"></image>
+            <image class="ess-hero-img" src="/assets/pan.png" mode="aspectFill"></image>
             <view class="ess-hero-overlay">
               <text class="ess-hero-title" style="text-transform: uppercase;">PAROLES SINCÈRES</text>
               <view class="ess-hero-btn" bindtap="onHeroCta">
@@ -33,7 +33,7 @@
             </view>
           </swiper-item>
           <swiper-item>
-            <image class="ess-hero-img" src="/assets/benmimoun-2 (2).png" mode="aspectFill"></image>
+            <image class="ess-hero-img" src="/assets/pan.png" mode="aspectFill"></image>
             <view class="ess-hero-overlay">
               <text class="ess-hero-title" style="text-transform: uppercase;">PAROLES SINCÈRES</text>
               <view class="ess-hero-btn" bindtap="onHeroCta">

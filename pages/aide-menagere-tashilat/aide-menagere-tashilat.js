@@ -28,6 +28,7 @@ Page({
     const payment = options.payment ? decodeURIComponent(options.payment) : 'Tashilat';
     const isChaabi = payment.toLowerCase() === 'chaabi cash';
     const isTierce = payment === 'Paiement par un tierce';
+    const isCarte = payment === 'Carte bancaire';
 
     let pName = 'Tashilat';
     let pLogo = '/assets/tashilat_logo_blend.png';
@@ -47,6 +48,13 @@ Page({
       pCode = 'AZ44LK5578';
       pMode = 'En ligne / Par un tiers';
       pTime = '1J 23H';
+    } else if (isCarte) {
+      pName = 'Carte de crédit';
+      pLogo = '/assets/payment_credit_card.png';
+      pDesc = 'Veuillez valider le paiement par votre carte de crédit';
+      pCode = 'CB99824412';
+      pMode = 'En ligne / Carte bancaire';
+      pTime = '10 min';
     }
 
     this.setData({

@@ -15,33 +15,62 @@ Page({
   },
 
   onReady() {
-    wx.createSelectorQuery().in(this).select('.grid-scroll-view').boundingClientRect(rect => {
-      if (rect) {
-        this.setData({ scrollViewHeight: rect.height });
+    this.initScrollMetrics();
+  },
+
+  initScrollMetrics() {
+    const query = wx.createSelectorQuery().in(this);
+    
+    query.select('.grid-scroll-view').boundingClientRect();
+    query.select('.cards-grid').boundingClientRect();
+    query.select('.scroll-track').boundingClientRect();
+    query.select('.scroll-handle').boundingClientRect();
+    
+    query.exec((res) => {
+      const scrollRect = res[0];
+      const gridRect = res[1];
+      const trackRect = res[2];
+      const handleRect = res[3];
+      
+      let updates = {};
+      if (scrollRect) updates.scrollViewHeight = scrollRect.height;
+      if (scrollRect && gridRect) updates.maxScroll = Math.max(0, gridRect.height - scrollRect.height);
+      if (trackRect) {
+        updates.trackHeightPx = trackRect.height;
+        updates.trackTopPx = trackRect.top;
       }
-    }).exec();
+      if (handleRect) updates.handleHeightPx = handleRect.height;
+      
+      this.setData(updates);
+    });
   },
 
   onGridScroll(e) {
     const scrollTop = e.detail.scrollTop;
     const scrollHeight = e.detail.scrollHeight;
-    const clientHeight = this.data.scrollViewHeight || 290;
+    const clientHeight = this.data.scrollViewHeight || e.detail.clientHeight || 300;
     const maxScroll = scrollHeight - clientHeight;
+    
     if (maxScroll <= 0) return;
 
     const ratio = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
-    // Track height is 272rpx, thumb height is 100rpx.
-    // Max travel = 272 - 100 = 172rpx.
-    const handleTop = ratio * 172;
+    
+    const trackH = this.data.trackHeightPx || 160;
+    const handleH = this.data.handleHeightPx || 60; 
+    const maxTravel = Math.max(0, trackH - handleH);
+    
+    const handleTopPx = ratio * maxTravel;
+    
     this.setData({
-      handleTop: handleTop,
-      scrollTopVal: scrollTop
+      handleTopPx: handleTopPx,
+      scrollTopVal: scrollTop,
+      maxScroll: maxScroll
     });
   },
 
   onScrollUp() {
     const current = this.data.scrollTopVal || 0;
-    const next = Math.max(current - 60, 0);
+    const next = Math.max(current - 150, 0);
     this.setData({
       scrollTopVal: next,
       scrollTop: next
@@ -50,10 +79,55 @@ Page({
 
   onScrollDown() {
     const current = this.data.scrollTopVal || 0;
-    const next = current + 60;
+    const maxScroll = this.data.maxScroll || 300;
+    const next = Math.min(current + 150, maxScroll);
     this.setData({
       scrollTopVal: next,
       scrollTop: next
+    });
+  },
+
+  onTrackTap(e) {
+    const touchY =
+      (e && e.detail && typeof e.detail.y === 'number' && e.detail.y) ||
+      (e && e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientY) ||
+      (e && e.touches && e.touches[0] && e.touches[0].clientY);
+    if (typeof touchY !== 'number') return;
+    this.scrollByTouchY(touchY, true);
+  },
+
+  onHandleTouchStart(e) {
+    const touchY = e.touches && e.touches[0] && e.touches[0].clientY;
+    if (typeof touchY !== 'number') return;
+    const scrollHandleTop = this.data.handleTopPx || 0;
+    this.setData({
+      dragOffsetY: touchY - (this.data.trackTopPx || 0) - scrollHandleTop
+    });
+  },
+
+  onHandleTouchMove(e) {
+    const touchY = e.touches && e.touches[0] && e.touches[0].clientY;
+    if (typeof touchY !== 'number') return;
+    this.scrollByTouchY(touchY, false);
+  },
+
+  scrollByTouchY(touchY, isTap) {
+    const trackHeight = this.data.trackHeightPx || 160;
+    const trackTop = this.data.trackTopPx || 0;
+    const handleHeight = this.data.handleHeightPx || 60;
+    const maxScrollTop = this.data.maxScroll || 300;
+    const dragOffsetY = this.data.dragOffsetY || (handleHeight / 2);
+
+    const maxHandleTop = Math.max(trackHeight - handleHeight, 1);
+    const baseY = touchY - trackTop - (isTap ? handleHeight / 2 : dragOffsetY);
+    const clampedTop = Math.max(0, Math.min(baseY, maxHandleTop));
+    const ratio = clampedTop / maxHandleTop;
+    const targetScrollTop = ratio * maxScrollTop;
+
+    this.setData({
+      handleTopPx: clampedTop,
+      scrollTop: targetScrollTop,
+      scrollTopVal: targetScrollTop
     });
   },
 

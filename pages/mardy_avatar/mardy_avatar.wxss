@@ -56,12 +56,13 @@
 }
 
 .title {
-  font-size: 44rpx;
+  font-size: 42rpx;
   font-weight: 800;
-  text-align: center;
+  text-align: left;
   color: #000000;
   margin-bottom: 80rpx;
-  line-height: 1.2;
+  line-height: 1.4;
+  width: 100%;
 }
 
 .avatars-row {

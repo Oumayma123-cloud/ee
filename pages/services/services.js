@@ -46,8 +46,8 @@ Page({
   onScroll(e) {
     const scrollTop = e.detail.scrollTop;
     this.data.currentScrollTop = scrollTop;
-    const maxScroll = 600;
-    const maxThumbTop = 120;
+    const maxScroll = 300;
+    const maxThumbTop = 170;
     const thumbTop = Math.min((scrollTop / maxScroll) * maxThumbTop, maxThumbTop);
     this.setData({ scrollThumbTop: thumbTop });
   },

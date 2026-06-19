@@ -1,5 +1,5 @@
 <view class="container tierce-bg cancel-page">
-  <view class="header-section {{showModal ? 'page-blur' : ''}}">
+  <view class="header-section {{showModal1 || showModal2 || showSuccessModal || showConfirmModal || showFinalCancelModal || showLastInfoModal ? 'page-blur' : ''}}">
     <view class="status-row">
       <device-status-bar fillStatusBar="{{true}}" edgePadding="{{false}}" />
     </view>
@@ -19,7 +19,7 @@
     </view>
   </view>
 
-  <scroll-view class="scroll-content {{showModal ? 'page-blur' : ''}}" scroll-y="true">
+  <scroll-view class="scroll-content {{showModal1 || showModal2 || showSuccessModal || showConfirmModal || showFinalCancelModal || showLastInfoModal ? 'page-blur' : ''}}" scroll-y="true">
     <view class="scroll-inner">
       <!-- 1. Blue Zone (Top part) -->
       <view class="blue-zone">
@@ -85,20 +85,81 @@
     </view>
   </scroll-view>
 
-  <bottom-nav-bar class="{{showModal ? 'page-blur' : ''}}" variant="fixed" active-tab="services" message-count="6" bind:navtap="onNavTap" />
+  <bottom-nav-bar class="{{showModal1 || showModal2 || showSuccessModal || showConfirmModal || showFinalCancelModal || showLastInfoModal ? 'page-blur' : ''}}" variant="fixed" active-tab="services" message-count="6" bind:navtap="onNavTap" />
 
-  <!-- Custom Cancel Confirmation Modal Overlay -->
-  <view wx:if="{{showModal}}" class="modal-overlay" bindtap="onModalClose">
+  <!-- Custom Cancel Confirmation Modal 1 -->
+  <view wx:if="{{showModal1}}" class="modal-overlay" bindtap="onModal1Close">
     <view class="modal-card" catchtap="onPreventBubble">
       <text class="modal-icon">?</text>
       <text class="modal-text">Vous êtes sur\nde bien vouloir annuler ?</text>
       <view class="modal-buttons-row">
-        <view class="modal-btn btn-oui" bindtap="onModalConfirm">
+        <view class="modal-btn btn-oui" bindtap="onModal1Confirm">
           <text class="modal-btn-txt btn-oui-txt">OUI</text>
         </view>
-        <view class="modal-btn btn-non" bindtap="onModalClose">
+        <view class="modal-btn btn-non" bindtap="onModal1Close">
           <text class="modal-btn-txt btn-non-txt">NON</text>
         </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Custom Cancel Confirmation Modal 2 (Warning) -->
+  <view wx:if="{{showModal2}}" class="modal-overlay" bindtap="onModal2Close">
+    <view class="modal-card" catchtap="onPreventBubble">
+      <text class="modal-icon">?</text>
+      <text class="modal-text">Souhaitez-vous annuler le\nrendez-vous ?\n<text class="modal-warning-sub">Attention : cette action n'entraîne pas de remboursement.</text></text>
+      <view class="modal-buttons-row">
+        <view class="modal-btn btn-oui" bindtap="onModal2Confirm">
+          <text class="modal-btn-txt btn-oui-txt">OUI</text>
+        </view>
+        <view class="modal-btn btn-non" bindtap="onModal2Close">
+          <text class="modal-btn-txt btn-non-txt">NON</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Custom Success Modal (Modal 3) -->
+  <view wx:if="{{showSuccessModal}}" class="modal-overlay" bindtap="onSuccessModalClose">
+    <view class="success-card" catchtap="onPreventBubble">
+      <text class="success-title">Vos modifications\nont bien été enregistrées</text>
+      <text class="success-subtitle">Vous recevrez une notification\nde rappel la veille du RDV.</text>
+      <view class="success-close-btn" bindtap="onSuccessModalClose">
+        <text class="success-close-txt">✕</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Custom Confirm Modal (Modal 4) -->
+  <view wx:if="{{showConfirmModal}}" class="modal-overlay" bindtap="onConfirmModalClose">
+    <view class="success-card" catchtap="onPreventBubble">
+      <text class="success-title">Votre nouveau rendez-vous\na bien été enregistré.</text>
+      <text class="success-subtitle">Vous recevrez une notification\nde rappel la veille du RDV.</text>
+      <view class="success-close-btn" bindtap="onConfirmModalClose">
+        <text class="success-close-txt">✕</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Custom Final Cancel Modal (Modal 5) -->
+  <view wx:if="{{showFinalCancelModal}}" class="modal-overlay" bindtap="onFinalCancelModalClose">
+    <view class="modal-card" catchtap="onPreventBubble">
+      <text class="modal-icon">?</text>
+      <text class="modal-text">Votre rendez-vous a été annulé\navec succès.</text>
+      <view class="modal-buttons-row" style="justify-content: center;">
+        <view class="modal-btn btn-oui" style="max-width: 280rpx;" bindtap="onFinalCancelModalClose">
+          <text class="modal-btn-txt btn-oui-txt">OK</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Custom Last Info Modal (Modal 6) -->
+  <view wx:if="{{showLastInfoModal}}" class="modal-overlay" bindtap="onLastInfoModalClose">
+    <view class="success-card" catchtap="onPreventBubble">
+      <text class="success-title" style="margin-bottom: 50rpx;">Votre demande a bien été\nprise en compte ! [leila xxx]\ninterviendra à l'adresse\nindiquée dans les délais\nprévus. Vous recevrez une\nnotification avant son arrivée.</text>
+      <view class="success-close-btn" bindtap="onLastInfoModalClose">
+        <text class="success-close-txt">✕</text>
       </view>
     </view>
   </view>

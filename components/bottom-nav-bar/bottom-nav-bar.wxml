@@ -1,11 +1,18 @@
 <view class="bottom-nav {{variant === 'fixed' ? 'safe-bottom' : ''}} bottom-nav--light">
   <view class="nav-item" data-action="home" bindtap="onTap">
-    <image class="nav-icon {{activeTab === 'home' ? 'active' : ''}}" src="/assets/icons/icon-settings.svg" mode="aspectFit" />
+    <image wx:if="{{isAideMenagere}}" class="nav-icon {{activeTab === 'home' ? 'active' : ''}}" src="/assets/icons/icon-settings.svg" mode="aspectFit" />
+    <image wx:else class="nav-icon {{activeTab === 'home' ? 'active' : ''}}" src="/assets/icons/icon-home.png" mode="aspectFit" />
   </view>
   
   <view class="nav-item" data-action="messages" bindtap="onTap">
     <view class="nav-badge-slot">
-      <image class="nav-icon {{activeTab === 'messages' ? 'active' : ''}}" src="/assets/icons/icon-heart.svg" mode="aspectFit" />
+      <image wx:if="{{isAideMenagere}}" class="nav-icon {{activeTab === 'messages' ? 'active' : ''}}" src="/assets/icons/icon-heart.svg" mode="aspectFit" />
+      <block wx:else>
+        <image class="nav-icon {{activeTab === 'messages' ? 'active' : ''}}" src="/assets/icons/icon-message.png" mode="aspectFit" />
+        <view class="nav-badge" wx:if="{{messageCount > 0}}">
+          <text class="badge">{{messageCount}}</text>
+        </view>
+      </block>
     </view>
   </view>
   

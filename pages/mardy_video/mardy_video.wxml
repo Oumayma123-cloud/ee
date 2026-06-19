@@ -1,0 +1,89 @@
+<view class="video-page-container">
+  <view class="mobile-card">
+
+    <tiqqa-header showBack="{{true}}" bind:back="onBack" />
+
+
+    <view class="content-container">
+      <view class="page-title-wrap">
+        <text class="page-title">{{avatarName}}</text>
+      </view>
+
+      <view class="video-section">
+        <view class="video-player">
+          <image class="video-poster" src="{{avatarImage}}" mode="aspectFill"></image>
+          <view class="video-dark-overlay" bindtap="toggleModal"></view>
+          
+          <!-- Welcome Modal Overlay -->
+          <view class="welcome-modal" wx:if="{{showModal}}" bindtap="closeModal">
+            <text class="modal-title">Bienvenue</text>
+            <text class="modal-text">Salam, je m'améliore chaque jour.
+Au moindre doute ou hésitation, nos
+conseillers Tiqqa sont là pour vous
+24 sur 24</text>
+          </view>
+
+          <!-- Simple Video Controls -->
+          <view class="simple-video-controls" wx:if="{{!showModal}}">
+            <view class="icon-btn" bindtap="onMicClick">
+              <text class="control-icon">🎙️</text>
+            </view>
+            <view class="icon-btn" bindtap="onCrossClick">
+              <text class="control-icon cross-icon">✕</text>
+            </view>
+          </view>
+
+          <!-- Mockup Video Controls -->
+          <view class="video-controls" wx:if="{{showModal}}">
+            <view class="progress-bar"></view>
+            <view class="controls-row">
+              <text class="time-text">00:00 · 00:00</text>
+              <view class="icons-center">
+                <view class="icon-wrap">
+                  <text class="icon">🔇</text>
+                </view>
+                <view class="icon-wrap" bindtap="closeModal">
+                  <text class="icon icon-cross">✕</text>
+                </view>
+              </view>
+              <view class="icons-right">
+                <view class="icon-wrap">
+                  <text class="icon">⚙️</text>
+                </view>
+                <view class="icon-wrap">
+                  <text class="icon">⛶</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <bottom-nav-bar variant="fixed" message-count="6" bind:navtap="onNavTap" />
+
+    <!-- Full Screen Custom Alert Overlay -->
+    <view class="custom-alert-overlay" wx:if="{{showAlert}}" bindtap="closeAlert"></view>
+    <view class="custom-alert-box" wx:if="{{showAlert}}">
+      <view class="alert-avatar-bubble">
+        <view class="avatar-wrap avatar-wrap--alert">
+          <image class="avatar" src="{{avatarImage}}" mode="aspectFill"></image>
+        </view>
+        <view class="avatar-bubble-tail--alert"></view>
+      </view>
+      
+      <view class="alert-close" catchtap="closeAlert">✕</view>
+      
+      <view class="alert-content">
+        <text class="alert-text">{{alertMessage}}</text>
+      </view>
+      
+      <view class="alert-actions">
+        <button class="alert-btn alert-btn-primary" catchtap="onConfirmAlert">{{alertConfirmBtn}}</button>
+        <button class="alert-btn alert-btn-secondary" catchtap="closeAlert">{{alertCancelBtn}}</button>
+      </view>
+    </view>
+
+  </view>
+</view>

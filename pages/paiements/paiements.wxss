@@ -1,0 +1,149 @@
+/* ============================================================
+   Paiements en attente – paiements.wxss
+   ============================================================ */
+
+.paiements-container {
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mobile-card {
+  width: 750rpx;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 57.69rpx;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ── Content ────────────────────────────────────────────── */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 110rpx;
+}
+
+.scroll-area {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.page-title-wrap {
+  padding: 30rpx 40rpx 20rpx;
+}
+
+.page-title {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: 0.5rpx;
+}
+
+/* ── Payments List ──────────────────────────────────────── */
+.payments-list {
+  padding: 10rpx 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.payment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx 30rpx;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.06);
+  border: 1rpx solid #f0f0f0;
+}
+
+.payment-left {
+  display: flex;
+  align-items: center;
+  gap: 22rpx;
+  flex: 1;
+  min-width: 0;
+}
+
+.payment-icon-wrap {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 18rpx;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.payment-icon {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.payment-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+  min-width: 0;
+}
+
+.payment-name {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #1a1a1a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.payment-date {
+  font-size: 22rpx;
+  color: #999999;
+  font-weight: 400;
+}
+
+/* ── Right Side ─────────────────────────────────────────── */
+.payment-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10rpx;
+  flex-shrink: 0;
+  margin-left: 20rpx;
+}
+
+.payment-amount {
+  font-size: 26rpx;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.pay-btn {
+  background: #8C7362;
+  border-radius: 12rpx;
+  padding: 8rpx 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-btn-text {
+  color: #ffffff;
+  font-size: 22rpx;
+  font-weight: 600;
+}

@@ -56,7 +56,7 @@
     <view class="clubs-grid-container">
 
       <!-- Scrollable Grid View -->
-      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" show-scrollbar="{{false}}" enhanced="{{true}}">
+      <scroll-view class="content-scroll" scroll-y bindscroll="onScroll" scroll-top="{{scrollTopValue}}" scroll-with-animation="true" show-scrollbar="{{false}}" enhanced="{{true}}">
         <view class="clubs-grid">
 
           <!-- Sport Card -->
@@ -156,11 +156,11 @@
 
       <!-- Dynamic Functional Scrollbar -->
       <view class="clubs-scrollbar">
-        <view class="clubs-scroll-arrow">↑</view>
+        <view class="clubs-scroll-arrow" bindtap="scrollUp">↑</view>
         <view class="clubs-scroll-track">
-          <view class="clubs-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 0.8}}rpx);"></view>
+          <view class="clubs-scroll-thumb" style="top: calc({{scrollPercent}}% - {{scrollPercent * 1.1}}rpx);"></view>
         </view>
-        <view class="clubs-scroll-arrow">↓</view>
+        <view class="clubs-scroll-arrow" bindtap="scrollDown">↓</view>
       </view>
 
     </view>

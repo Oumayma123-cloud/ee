@@ -144,7 +144,7 @@
 .ess-hero-main {
   position: relative;
   width: 100%;
-  height: 360rpx;
+  height: 460rpx;
 }
 
 .ess-hero-img {
@@ -195,7 +195,7 @@
 
 /* Main Content */
 .ess-main {
-  padding: 40rpx 40rpx 120rpx;
+  padding: 40rpx 70rpx 120rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,30 +225,29 @@
 .ess-grid-container {
   display: flex;
   width: 100%;
-  gap: 30rpx;
 }
 
 .ess-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20rpx;
+  gap: 30rpx;
   flex: 1;
 }
 
 .ess-card {
-  height: 340rpx;
+  height: 280rpx;
   border-radius: 20rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 30rpx 10rpx 20rpx;
+  padding: 20rpx 10rpx 20rpx;
   box-sizing: border-box;
 }
 
 .ess-card-img {
   width: 100%;
-  height: 220rpx;
+  height: 180rpx;
 }
 
 .ess-card-label {

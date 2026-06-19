@@ -16,7 +16,7 @@ page {
 .scroll-content {
   width: 100%;
   flex: 1;
-  padding-bottom: 140rpx;
+  min-height: 0;
   box-sizing: border-box;
 }
 
@@ -108,7 +108,7 @@ page {
 /* ========== 3. Blue Zone (Hero) ========== */
 .hero-section {
   background-color: #3B82B5;
-  padding: 36rpx 0 44rpx;
+  padding: 24rpx 0 28rpx;
 }
 
 .hero-window {
@@ -147,7 +147,7 @@ page {
 
 .hero-window-body {
   position: relative;
-  height: 330rpx;
+  height: 270rpx;
   background: #fff;
 }
 
@@ -196,7 +196,7 @@ page {
 /* ========== 4. Date Zone (Light Blue) ========== */
 .date-zone {
   background-color: #D4EBF8;
-  padding: 16rpx 0;
+  padding: 10rpx 0;
 }
 
 .date-content {
@@ -231,7 +231,7 @@ page {
   flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  margin: 28rpx 0 24rpx;
+  margin: 18rpx 0 16rpx;
 }
 
 .section-title-script {
@@ -254,7 +254,7 @@ page {
 .grid-container {
   display: flex;
   flex-direction: row;
-  padding: 0 32rpx 0 48rpx;
+  padding: 0 60rpx 0 80rpx;
   align-items: stretch;
 }
 
@@ -262,7 +262,7 @@ page {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20rpx;
+  gap: 40rpx;
 }
 
 /* ========== Service Card ========== */
@@ -272,7 +272,7 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24rpx 20rpx 24rpx;
+  padding: 24rpx 16rpx 24rpx;
   box-sizing: border-box;
 }
 
@@ -298,7 +298,7 @@ page {
 
 .service-card-label {
   color: #fff;
-  font-size: 22rpx;
+  font-size: 20rpx;
   font-weight: 800;
   text-align: center;
   letter-spacing: 0.5rpx;
@@ -314,9 +314,8 @@ page {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16rpx;
-  margin-left: 16rpx; 
-  padding: 20rpx 0;
+  padding-top: 0;
+  margin-left: 20rpx; 
   flex-shrink: 0;
   width: 56rpx;
 }
@@ -341,7 +340,11 @@ page {
 
 .scroll-track {
   width: 24rpx;
-  height: 200rpx;
+  height: 240rpx !important;
+  min-height: 240rpx !important;
+  max-height: 240rpx !important;
+  flex: 0 0 240rpx !important;
+  margin: 20rpx 0;
   background: #ffffff;
   border-radius: 12rpx;
   position: relative;
@@ -353,7 +356,7 @@ page {
   position: absolute;
   left: 0;
   right: 0;
-  height: 60rpx;
+  height: 70rpx !important;
   background: #2A79B8;
   border-radius: 12rpx;
   top: 0;
@@ -363,5 +366,7 @@ page {
 
 /* ========== Bottom Spacer ========== */
 .bottom-spacer {
-  display: none;
+  display: block;
+  height: 400rpx;
+  width: 100%;
 }

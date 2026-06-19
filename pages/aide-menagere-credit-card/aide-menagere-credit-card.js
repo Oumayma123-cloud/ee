@@ -115,13 +115,19 @@ Page({
       return;
     }
 
-    const { day, month, year, timeIndex, address, type } = this.data;
+    const { day, month, year, timeIndex, address, type, payment } = this.data;
 
     wx.showLoading({ title: 'Validation du paiement...' });
     setTimeout(() => {
       wx.hideLoading();
       wx.navigateTo({
-        url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent('Carte bancaire')}&type=${type}`
+        url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent(payment)}&type=${type}`,
+        fail: (err) => {
+          console.warn("navigateTo failed to confirm page, trying redirectTo:", err);
+          wx.redirectTo({
+            url: `/pages/aide-menagere-confirm/aide-menagere-confirm?day=${day}&month=${month}&year=${year}&timeIndex=${timeIndex}&address=${encodeURIComponent(address)}&payment=${encodeURIComponent(payment)}&type=${type}`
+          });
+        }
       });
     }, 800);
   },

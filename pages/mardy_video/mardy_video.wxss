@@ -1,0 +1,457 @@
+/* ============================================================
+   Mardy Video Page – mardy_video.wxss
+   ============================================================ */
+
+.video-page-container {
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mobile-card {
+  width: 750rpx;
+  height: 100%;
+  margin: 0 auto;
+  border-radius: 57.69rpx;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.horaire-header-wrap {
+  flex-shrink: 0;
+  background: #ffffff;
+  padding-top: 10rpx;
+  padding-bottom: 8rpx;
+  box-sizing: border-box;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  padding: 0 34rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.top-bar--horaire {
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx 0 20rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.back-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  z-index: 15;
+}
+
+.back-circle {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  background: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.back-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 60rpx;
+  z-index: 10;
+}
+
+.avatar-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 15;
+}
+
+.avatar-wrap {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: transparent;
+  overflow: hidden;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.1);
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.avatar-bubble-tail {
+  width: 0;
+  height: 0;
+  border-left: 8rpx solid transparent;
+  border-right: 8rpx solid transparent;
+  border-top: 10rpx solid #ffffff;
+  margin-top: -2rpx;
+  filter: drop-shadow(0 4rpx 4rpx rgba(0,0,0,0.1));
+}
+
+/* ── Content ────────────────────────────────────────────── */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 110rpx;
+}
+
+.page-title-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.page-title {
+  font-size: 38rpx;
+  font-weight: 900;
+  color: #8C7362;
+  letter-spacing: 1rpx;
+}
+
+/* ── Video Player ───────────────────────────────────────── */
+.video-section {
+  padding: 0 40rpx;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-player {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  max-height: 850rpx; 
+  border-radius: 20rpx;
+  overflow: hidden;
+  background: #000000;
+  margin-bottom: 40rpx;
+}
+
+.video-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-dark-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6); 
+}
+
+/* ── Welcome Modal ──────────────────────────────────────── */
+.welcome-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 50rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.3);
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.modal-title {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #8C7362;
+  margin-bottom: 30rpx;
+}
+
+.modal-text {
+  font-size: 28rpx;
+  color: #333333;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ── Simple Video Controls ──────────────────────────────── */
+.simple-video-controls {
+  position: absolute;
+  bottom: 50rpx;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+  z-index: 5;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.control-icon {
+  color: #ffffff;
+  font-size: 44rpx;
+  text-shadow: 0 4rpx 8rpx rgba(0,0,0,0.5);
+  opacity: 0.9;
+}
+
+.cross-icon {
+  font-size: 50rpx;
+  font-weight: bold;
+}
+
+/* ── Mockup Video Controls ─────────────────────────────────────── */
+.video-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 30rpx;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  z-index: 5;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4rpx;
+  background: rgba(255,255,255,0.2);
+  margin-bottom: 30rpx;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.time-text {
+  color: #888888;
+  font-size: 20rpx;
+  font-weight: 500;
+}
+
+.icons-center {
+  display: flex;
+  gap: 40rpx;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.icons-right {
+  display: flex;
+  gap: 30rpx;
+  align-items: center;
+}
+
+.icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  color: #888888;
+  font-size: 34rpx;
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+
+.icon-cross {
+  font-size: 44rpx;
+  font-weight: bold;
+}
+
+/* ── Custom Alert Box ───────────────────────────────────── */
+.custom-alert-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.custom-alert-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  background: #5C544F;
+  border-radius: 30rpx;
+  padding: 80rpx 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10rpx 40rpx rgba(0,0,0,0.4);
+  z-index: 105;
+  box-sizing: border-box;
+}
+
+.alert-avatar-bubble {
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-wrap--alert {
+  width: 120rpx;
+  height: 120rpx;
+  border: 6rpx solid #ffffff;
+  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.2);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-bubble-tail--alert {
+  width: 0;
+  height: 0;
+  border-left: 12rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  border-top: 14rpx solid #ffffff;
+  margin-top: -2rpx;
+}
+
+.alert-close {
+  position: absolute;
+  top: 20rpx;
+  right: 30rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.alert-content {
+  margin-bottom: 50rpx;
+  width: 100%;
+}
+
+.alert-text {
+  color: #ffffff;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 1.5;
+  font-weight: 500;
+  display: block;
+}
+
+.alert-actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.alert-btn {
+  flex: 1;
+  height: 70rpx;
+  border-radius: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  line-height: 70rpx;
+}
+
+.alert-btn-primary {
+  background: #A67C6A;
+}
+
+.alert-btn-secondary {
+  background: #A89E9A;
+}
+
+/* ── Alert Trigger Buttons ─────────────────────────────── */
+.alert-triggers {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+  padding: 30rpx 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.trigger-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  padding: 20rpx 30rpx;
+  border-radius: 20rpx;
+  flex: 1;
+  min-height: 100rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.12);
+  transition: all 0.2s;
+}
+
+.trigger-btn--danger {
+  background: linear-gradient(135deg, #e55353, #c0392b);
+}
+
+.trigger-btn--cancel {
+  background: linear-gradient(135deg, #5C544F, #3d3530);
+}
+
+.trigger-btn--doctor {
+  background: linear-gradient(135deg, #A67C6A, #7d5a4f);
+}
+
+.trigger-icon {
+  font-size: 40rpx;
+  line-height: 1;
+}
+
+.trigger-label {
+  font-size: 20rpx;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.5rpx;
+}

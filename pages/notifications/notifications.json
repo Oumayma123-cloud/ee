@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "device-status-bar": "../../components/device-status-bar/device-status-bar",
+    "bottom-nav-bar": "../../components/bottom-nav-bar/bottom-nav-bar",
+    "tiqqa-header": "../../components/tiqqa-header/tiqqa-header"
+  },
+  "navigationStyle": "custom"
+}

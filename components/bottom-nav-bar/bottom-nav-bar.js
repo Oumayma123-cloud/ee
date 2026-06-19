@@ -40,6 +40,8 @@ Component({
       if (action === 'calendar') {
         wx.removeStorageSync('modify_prestation_id');
         wx.navigateTo({ url: '/pages/sante_calendar/sante_calendar' });
+      } else if (action === 'messages') {
+        wx.navigateTo({ url: '/pages/notifications/notifications' });
       }
       this.triggerEvent('navtap', { action });
     }
